@@ -39,3 +39,98 @@ CREATE TABLE Comentario(
 );
 
 
+DROP PROCEDURE FiltrarEstudiante
+
+CALL FiltrarEstudiante ('2')
+
+DELIMITER //
+
+CREATE PROCEDURE FiltrarEstudiante(IN parametro_texto VARCHAR(255))
+BEGIN
+    SELECT * FROM Estudiante
+    WHERE (parametro_texto IS NULL OR CAST(id_estudiante AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+      OR (parametro_texto IS NULL OR nombre_estudiante LIKE CONCAT('%', parametro_texto, '%') OR correo_estudiante LIKE CONCAT('%', parametro_texto, '%'));
+END;
+
+DELIMITER ;
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE FiltrarBiologo(
+  IN nombre_biologo VARCHAR(255),
+  IN id_biologo INT,
+  IN correo_Biologo VARCHAR(255)
+)
+BEGIN
+  SELECT *
+  FROM Biologo
+  WHERE
+    (nombre_biologo = nombre_biologo OR nombre_biologo IS NULL) OR
+    (id_biologo = id_biologo OR id_biologo IS NULL) OR
+    (correo_Biologo = correo_Biologo OR correo_Biologo IS NULL);
+END //
+
+DELIMITER ;
+
+CALL FiltrarBiologo (NULL, 1, NULL)
+
+
+DELIMITER //
+
+CREATE PROCEDURE FiltrarAdmin(IN parametro_texto VARCHAR(255))
+BEGIN
+    SELECT * FROM Administrativo
+    WHERE (parametro_texto IS NULL OR CAST(id_admin AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+      OR (parametro_texto IS NULL OR nombre_admin LIKE CONCAT('%', parametro_texto, '%') OR correo_admin LIKE CONCAT('%', parametro_texto, '%'));
+END;
+
+DELIMITER ;
+
+CALL FiltrarAdmin ('Gu')
+
+
+
+
+DELIMITER //
+
+
+DROP PROCEDURE FiltrarFauna
+CREATE PROCEDURE FiltrarFauna(IN parametro_texto VARCHAR(255))
+BEGIN
+    SELECT * FROM Fauna
+    WHERE (parametro_texto IS NULL OR CAST(id_fauna AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+       OR (parametro_texto IS NULL OR nombre_animal LIKE CONCAT('%', parametro_texto, '%')
+		 OR (parametro_texto IS NULL OR nombre_cientifico_fauna LIKE CONCAT('%', parametro_texto, '%')
+		 OR (parametro_texto IS NULL OR categoria_fauna LIKE CONCAT('%', parametro_texto, '%'))
+END;
+
+DELIMITER ;
+
+CALL FiltrarFauna ('1')
+
+
+CREATE PROCEDURE FiltrarPublicaciones(IN parametro_texto VARCHAR(255))
+BEGIN
+    SELECT * FROM Publicaciones
+    WHERE (parametro_texto IS NULL OR CAST(id_publicacion AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+       OR (parametro_texto IS NULL OR titulo LIKE CONCAT('%', parametro_texto, '%'))
+		 OR (parametro_texto IS NULL OR lugar LIKE CONCAT('%', parametro_texto, '%'))
+		 OR (parametro_texto IS NULL OR CAST(fecha_publicacion AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+		 OR (parametro_texto IS NULL OR CAST(id_flora AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+		 OR (parametro_texto IS NULL OR CAST(fecha_publicacion AS VARCHAR(50)) LIKE CONCAT('%', parametro_texto, '%'))
+END;
+
+
+CALL FiltrarPublicaciones('Campus')
+
+
+
+
+
+
+
+
+
+
