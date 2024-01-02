@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="output.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+    h1, h2{
+        font-family: "Roboto", sans-serif;
+    }
+    header p{
+        font-family: 'Montserrat', sans-serif;
+    }
+    p{
+        font-family: 'Raleway', sans-serif;
+    }
+    aside ul li p{
+        font-family: 'Montserrat', sans-serif;
+    }
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-clear-button {
+        -webkit-appearance: none;
+        appearance: none;
+        display: none;
+    }
+    #toggleButton.closed::before {
+    content: '☰'; /* Icono para desplegar el aside */
+    }
+    #toggleButton.opened::before {
+        content: '✕'; /* Icono para cerrar el aside */
+    }
+    #contenido {
+    pointer-events: auto;
+    transition: background-color 0.3s ease;
+    }
+    #toggleButton.opened + #contenido{
+        pointer-events: none;
+        background-color: rgba(0, 0, 0, 0.5);;
+    }
+    </style>
+</head>
+<body class="bg-white w-full h-full box-border">
+    <header class="w-full bg-[#276B58] fixed">
+        <div class="flex items-center justify-between px-4 py-2">
+            <div class="flex items-center ml-4">
+                <button id="toggleButton" class="p-2 text-[#FFFFFF] text-3xl lg:hidden xl:hidden md:hidden fixed closed"></button>
+                <img class="left-5 object-cover h-[75px] top-[14px] absolute hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-4.png?raw=true" />
+                <img class="h-[68px] mb-[10px] ml-[2px] object-cover hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/logo_utp.png?raw=true" />
+                <img class="object-cover h-[75px] top-[13px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
+                <h1 class="text-[#FFFFFF] text-2xl ml-12 md:ml-6 hidden lg:block xl:block md:block">Flora y Fauna UTP</h1> <!--Titulo-->
+            </div>
+                
+            <div class="flex items-center"> <!--Barra de busqueda-->
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[30rem] lg:ml-[30rem] md:ml-[20rem] lg:block md:block xl:block hidden h-5">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6" alt="">
+                <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[32rem] md:w-[22rem] hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
+            </div>
+            <div> <!--Iniciar sesion o perfil del usuario-->
+                <button class="xl:p-2 lg:p-2 p-1 w-[8rem] h-10 bg-[#F0FEF8] rounded-[50px] relative"><a href="#">Iniciar Sesión</a></button>
+            </div>
+        </div>
+    </header>
+    <div class="flex"> <!--Contenido completo-->
+        <section class="relative top-40 ">
+            <div>
+                <img>
+                <h3>Inicio</h3>
+            </div>
+            <hr>
+            <div class="bg-[#F0FEF8]">
+                <h3>Categorias</h3>
+                <a href="">Flora</a>
+                <a href="">Hierbas</a>
+                <a href="">Planta</a>
+                <a href="">Árboles</a>
+                <hr>
+                <a href="">Fauna</a>
+                <a href="">Aves</a>
+                <a href="">Reptiles</a>
+                <a href="">Artrópodos</a>
+                <a href="">Mamíferos</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
