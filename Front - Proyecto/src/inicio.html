@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
@@ -16,7 +17,7 @@
     header p{
         font-family: 'Montserrat', sans-serif;
     }
-    p{
+    p, a{
         font-family: 'Raleway', sans-serif;
     }
     aside ul li p{
@@ -45,14 +46,14 @@
     </style>
 </head>
 <body class="bg-white w-full h-full box-border">
-    <header class="w-full bg-[#276B58] fixed">
-        <div class="flex items-center justify-between px-4 py-2">
+    <header class="w-full bg-[#276B58] fixed z-[2]">
+        <div class="flex items-center justify-between px-4 py-2 ">
             <div class="flex items-center ml-4">
-                <button id="toggleButton" class="p-2 text-[#FFFFFF] text-3xl lg:hidden xl:hidden md:hidden fixed closed"></button>
-                <img class="left-5 object-cover h-[75px] top-[14px] absolute hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-4.png?raw=true" />
-                <img class="h-[68px] mb-[10px] ml-[2px] object-cover hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/logo_utp.png?raw=true" />
-                <img class="object-cover h-[75px] top-[13px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
-                <h1 class="text-[#FFFFFF] text-2xl ml-12 md:ml-6 hidden lg:block xl:block md:block">Flora y Fauna UTP</h1> <!--Titulo-->
+                <button id="toggleButton" class="p-2 text-[#FFFFFF] text-3xl lg:hidden xl:hidden fixed closed"></button>
+                <img class="left-5 object-cover h-[68px] top-[14px] absolute hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-4.png?raw=true" />
+                <img class="h-[60px] mb-[10px] ml-[2px] object-cover hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/logo_utp.png?raw=true" />
+                <img class="object-cover h-[68px] top-[13.3px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
+                <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
                 
             <div class="flex items-center"> <!--Barra de busqueda-->
@@ -61,31 +62,164 @@
                 <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[32rem] md:w-[22rem] hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
             </div>
             <div> <!--Iniciar sesion o perfil del usuario-->
-                <button class="xl:p-2 lg:p-2 p-1 w-[8rem] h-10 bg-[#F0FEF8] rounded-[50px] relative"><a href="#">Iniciar Sesión</a></button>
+                <button class="xl:p-2 lg:p-2 p-[0.5] w-[8rem] xl:h-10 lg:h-10 h-8 bg-[#F0FEF8] rounded-[50px]"><a href="#" class="">Iniciar Sesión</a></button>
             </div>
         </div>
     </header>
-    <div class="flex"> <!--Contenido completo-->
-        <section class="relative top-40 ">
-            <div>
-                <img>
-                <h3>Inicio</h3>
+    <div class="bg-[#FFFFFF] min-h-screen"> <!--Contenido completo-->
+        <section class="fixed top-28 w-48 hidden lg:block xl:block 2xl:block left-7">
+            <div class="flex items-center mb-3">
+                <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
+                <a href="#" class="ml-2 text-lg">Inicio</a>
             </div>
             <hr>
-            <div class="bg-[#F0FEF8]">
+            <div class="bg-[#F0FEF8] grid mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
                 <h3>Categorias</h3>
-                <a href="">Flora</a>
-                <a href="">Hierbas</a>
-                <a href="">Planta</a>
-                <a href="">Árboles</a>
-                <hr>
-                <a href="">Fauna</a>
-                <a href="">Aves</a>
-                <a href="">Reptiles</a>
-                <a href="">Artrópodos</a>
-                <a href="">Mamíferos</a>
+                <ul class="ml-2">
+                    <li>
+                        <a href="" class="hover:underline cursor-pointer hover:text-[#276B58]">Flora</a>
+                        <div>
+                            <ul class="grid ml-4">
+                                <li>
+                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#276B58]">Hierbas</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#276B58]">Planta</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#276B58]">Árboles</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="" class="hover:underline cursor-pointer hover:text-[#276B58]">Fauna</a>
+                        <div>
+                            <ul class="grid ml-4">
+                                <li>
+                                    <a href="" class="hover:underline cursor-pointer hover:text-[#276B58]">Aves</a>
+                                </li>
+                                <li>
+                                    <a href="" class="hover:underline cursor-pointer hover:text-[#276B58]">Reptiles</a>
+                                </li>
+                                <li>
+                                    <a href="" class="hover:underline cursor-pointer hover:text-[#276B58]">Artrópodos</a>
+                                </li>
+                                <li>
+                                    <a href=""  class="hover:underline cursor-pointer">Mamíferos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
+        <section class="absolute flex items-center flex-col top-[86px] bg-[#F8F5F5] border-zinc-500 lg:w-[29rem] xl:w-[54rem] height-full ml-[16rem]">
+            <div class="bg-white p-4 rounded-lg border-2 border-gray-300 mt-7 w-5/6">
+                <div class="mt-2">
+                    <span>PepeGanga</span>
+                    <span>2024/01/15</span>
+                    <span>Campus Levi Sasso</span>
+                    <p>Me encontré un gato solo saliendo de la U. Se llama pansito</p>
+                </div>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class=" mt-5 mb-5 mx-[8.7rem]">
+                <div class="flex ">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true">
+                    <span>14 comentarios</span>
+                    <span>Nombre Científico: Nasua</span>
+                    <span>Animal: Gato Solo</span>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg border-2 border-gray-300 mt-7 w-5/6">
+                <div class="mt-2">
+                    <span>UsuarioPromedioDeSistemas</span>
+                    <span>2024/01/20</span>
+                    <span>Campus Levi Sasso</span>
+                    <p>Ñeque bonito UwU</p>
+                </div>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-6.png?raw=true"> 
+            </div>
+        </section>
+        <!--
+        <section class="fixed top-28 lg:block xl:block 2xl:block ml-4 right-7 w-64 h-[350px] border-[1.5px] border-slate-300 rounded-xl">
+            
+                <ul class="slider w-800 h-300">
+                    <li id="slide1" class="absolute">
+                        <div class="bg-[#F0FEF8] w-[15.9rem] h-12 rounded-t-xl">
+                            <h3 class="ml-8">Ñeque (Dasyprocta puctata)</h3>
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="w-48 h-[250px]"/>
+                    </li>
+                    <li id="slide2" class="absolute">
+                        <div class="bg-[#F0FEF8] w-[15.9rem] h-12 rounded-t-xl">
+                            <h3 class="ml-8">Ñeque prueba 2</h3>
+                            
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="w-48 h-[250px]"/>
+                    </li>
+                    <li id="slide3" class="absolute">
+                        <div class="bg-[#F0FEF8] w-[15.9rem] h-12 rounded-t-xl">
+                            <h3 class="ml-8">Ñeque prueba 3</h3>
+                            
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="w-48 h-[250px]"/>
+                    </li>
+                </ul>
+                
+                <ul class="menu text-center mt-[19rem]">
+                    <li class="inline-block">
+                    <a href="#slide1" class="inline-block text-white no-underline bg-gray-500 w-12 h-4 rounded-[50px]"></a>
+                    </li>
+                    <li class="inline-block">
+                    <a href="#slide2" class="inline-block text-white no-underline bg-gray-500 w-12 h-4 rounded-[50px]"></a>
+                    </li>
+                    <li class="inline-block">
+                    <a href="#slide3" class="inline-block text-white no-underline bg-gray-500 w-12 h-4 rounded-[50px]"></a>
+                    </li>
+                </ul>
+        </section>
+    -->
+
+    <section class="fixed top-28 lg:block xl:block 2xl:block ml-4 right-7 w-64 h-[350px] border-[1.5px] border-slate-300 rounded-xl">
+        <ul class="slider w-64 h-[250px] relative overflow-hidden">
+            <li id="slide1" class="absolute opacity-[1]">
+                <div class="bg-[#F0FEF8] h-12 rounded-t-xl">
+                    <h3 class="ml-4">Ñeque (Dasyprocta puctata)</h3>
+                </div>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="ml-5 mt-3 w-full h-[200px] " />
+            </li>
+            <li id="slide2" class="absolute">
+                <div class="bg-[#F0FEF8] w-full h-12 rounded-t-xl">
+                    <h3 class="ml-4">Ñeque prueba 2</h3>
+                </div>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-5 mt-3 w-full h-[200px]" />
+            </li>
+            <li id="slide3" class="absolute">
+                <div class="bg-[#F0FEF8] w-full h-12 rounded-t-xl">
+                    <h3 class="ml-4">Ñeque prueba 3</h3>
+                </div>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-5 mt-3 w-full h-[200px]" />
+            </li>
+        </ul>
+    
+        <ul class="menu text-center">
+            <li class="inline-block">
+                <a href="#slide1" class="inline-block text-white no-underline bg-gray-500 w-8 h-4 rounded-[50px]"></a>
+            </li>
+            <li class="inline-block">
+                <a href="#slide2" class="inline-block text-white no-underline bg-gray-500 w-8 h-4 rounded-[50px]"></a>
+            </li>
+            <li class="inline-block">
+                <a href="#slide3" class="inline-block text-white no-underline bg-gray-500 w-8 h-4 rounded-[50px]"></a>
+            </li>
+        </ul>
+    </section>
+    
+
     </div>
+    <footer></footer>
+    
 </body>
 </html>
