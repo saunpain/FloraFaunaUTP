@@ -10,6 +10,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
 
     h1, h2{
         font-family: "Roboto", sans-serif;
@@ -19,6 +21,9 @@
     }
     p, a{
         font-family: 'Raleway', sans-serif;
+    }
+    #pub .textito{
+        font-family: 'Open Sans', sans-serif;
     }
     aside ul li p{
         font-family: 'Montserrat', sans-serif;
@@ -36,12 +41,15 @@
         content: '✕'; /* Icono para cerrar el aside */
     }
     #contenido {
-    pointer-events: auto;
-    transition: background-color 0.3s ease;
+        pointer-events: auto;
+        transition: background-color 0.3s ease;
     }
     #toggleButton.opened + #contenido{
         pointer-events: none;
         background-color: rgba(0, 0, 0, 0.5);;
+    }
+    .menu li a.active {
+        background-color: #403d3d;
     }
     </style>
 </head>
@@ -115,111 +123,85 @@
                 </ul>
             </div>
         </section>
-        <section class="absolute flex items-center flex-col top-[86px] bg-[#F8F5F5] border-zinc-500 lg:w-[29rem] xl:w-[54rem] height-full ml-[16rem]">
+        <section id="pub" class="absolute flex items-center flex-col top-[86px] bg-[#F8F5F5] border-zinc-500 lg:w-[29rem] xl:w-[54rem] height-full ml-[17rem]"> <!--Publicaciones-->
             <div class="bg-white p-4 rounded-lg border-2 border-gray-300 mt-7 w-5/6">
                 <div class="mt-2">
-                    <span>PepeGanga</span>
-                    <span>2024/01/15</span>
-                    <span>Campus Levi Sasso</span>
-                    <p>Me encontré un gato solo saliendo de la U. Se llama pansito</p>
+                    <span class="textito font-bold text-[#241111] ml-16 text-sm">PepeGanga</span>
+                    <span class="textito text-gray-400 ml-4 text-sm">2024/01/15</span>
+                    <span class="textito text-gray-400 float-right text-sm">Campus Levi Sasso</span>
+                    <p class="textito font-bold text-[#241111] ml-16 mt-2 text-lg">Me encontré un gato solo saliendo de la U. Se llama pansito</p>
                 </div>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class=" mt-5 mb-5 mx-[8.7rem]">
-                <div class="flex ">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true">
-                    <span>14 comentarios</span>
-                    <span>Nombre Científico: Nasua</span>
-                    <span>Animal: Gato Solo</span>
+                <div class="flex justify-center mt-5 mb-5">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true">
+                </div>
+                <div class="flex">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="h-8 w-8 ml-8">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="h-6 w-6 ml-6">
+                    <span class="textito font-bold text-[#241111] text-sm">14 comentarios</span>
+                    <span class="textito font-bold text-[#241111] ml-8 text-sm">Nombre Científico: Nasua</span>
+                    <span class="textito font-bold text-[#241111] ml-8 text-sm">Animal: Gato Solo</span>
                 </div>
             </div>
-            <div class="bg-white p-4 rounded-lg border-2 border-gray-300 mt-7 w-5/6">
+            <div class="textito bg-white p-4 rounded-lg border-2 border-gray-300 mt-7 w-5/6">
                 <div class="mt-2">
-                    <span>UsuarioPromedioDeSistemas</span>
-                    <span>2024/01/20</span>
-                    <span>Campus Levi Sasso</span>
-                    <p>Ñeque bonito UwU</p>
+                    <span class="textito font-bold text-[#241111] ml-16 text-sm">UsuarioPromedioDeSistemas</span>
+                    <span class="textito text-gray-400 ml-4 text-sm">2024/01/20</span>
+                    <span class="textito text-gray-400 float-right text-sm">Campus Levi Sasso</span>
+                    <p class="textito font-bold text-[#241111] ml-16 mt-2 text-lg">Ñeque bonito UwU</p>
                 </div>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-6.png?raw=true"> 
+                <div class="flex justify-center mt-5 mb-5">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-6.png?raw=true"> 
+                </div>
             </div>
         </section>
-        <!--
-        <section class="fixed top-28 lg:block xl:block 2xl:block ml-4 right-7 w-64 h-[350px] border-[1.5px] border-slate-300 rounded-xl">
-            
-                <ul class="slider w-800 h-300">
-                    <li id="slide1" class="absolute">
-                        <div class="bg-[#F0FEF8] w-[15.9rem] h-12 rounded-t-xl">
-                            <h3 class="ml-8">Ñeque (Dasyprocta puctata)</h3>
-                        </div>
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="w-48 h-[250px]"/>
-                    </li>
-                    <li id="slide2" class="absolute">
-                        <div class="bg-[#F0FEF8] w-[15.9rem] h-12 rounded-t-xl">
-                            <h3 class="ml-8">Ñeque prueba 2</h3>
-                            
-                        </div>
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="w-48 h-[250px]"/>
-                    </li>
-                    <li id="slide3" class="absolute">
-                        <div class="bg-[#F0FEF8] w-[15.9rem] h-12 rounded-t-xl">
-                            <h3 class="ml-8">Ñeque prueba 3</h3>
-                            
-                        </div>
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="w-48 h-[250px]"/>
-                    </li>
-                </ul>
-                
-                <ul class="menu text-center mt-[19rem]">
-                    <li class="inline-block">
-                    <a href="#slide1" class="inline-block text-white no-underline bg-gray-500 w-12 h-4 rounded-[50px]"></a>
-                    </li>
-                    <li class="inline-block">
-                    <a href="#slide2" class="inline-block text-white no-underline bg-gray-500 w-12 h-4 rounded-[50px]"></a>
-                    </li>
-                    <li class="inline-block">
-                    <a href="#slide3" class="inline-block text-white no-underline bg-gray-500 w-12 h-4 rounded-[50px]"></a>
-                    </li>
-                </ul>
-        </section>
-    -->
 
-    <section class="fixed top-28 lg:block xl:block 2xl:block ml-4 right-7 w-64 h-[350px] border-[1.5px] border-slate-300 rounded-xl">
-        <ul class="slider w-64 h-[250px] relative overflow-hidden">
-            <li id="slide1" class="absolute opacity-[1]">
-                <div class="bg-[#F0FEF8] h-12 rounded-t-xl">
-                    <h3 class="ml-4">Ñeque (Dasyprocta puctata)</h3>
-                </div>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="ml-5 mt-3 w-full h-[200px] " />
-            </li>
-            <li id="slide2" class="absolute">
-                <div class="bg-[#F0FEF8] w-full h-12 rounded-t-xl">
-                    <h3 class="ml-4">Ñeque prueba 2</h3>
-                </div>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-5 mt-3 w-full h-[200px]" />
-            </li>
-            <li id="slide3" class="absolute">
-                <div class="bg-[#F0FEF8] w-full h-12 rounded-t-xl">
-                    <h3 class="ml-4">Ñeque prueba 3</h3>
-                </div>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-5 mt-3 w-full h-[200px]" />
-            </li>
-        </ul>
-    
-        <ul class="menu text-center">
-            <li class="inline-block">
-                <a href="#slide1" class="inline-block text-white no-underline bg-gray-500 w-8 h-4 rounded-[50px]"></a>
-            </li>
-            <li class="inline-block">
-                <a href="#slide2" class="inline-block text-white no-underline bg-gray-500 w-8 h-4 rounded-[50px]"></a>
-            </li>
-            <li class="inline-block">
-                <a href="#slide3" class="inline-block text-white no-underline bg-gray-500 w-8 h-4 rounded-[50px]"></a>
-            </li>
-        </ul>
-    </section>
+        <section class="fixed top-28 lg:block xl:block 2xl:block ml-4 right-7 w-64 h-[380px] border-[1.5px] border-slate-300 rounded-xl">
+            <ul class="slider w-64 h-[350px] relative overflow-hidden">
+                <li id="slide1" class="absolute">
+                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                        <h3 class="ml-7">Ñeque (Dasyprocta puctata)</h3>
+                    </div>
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-6 mt-3 w-52 mr-5 h-[300px] " />
+                </li>
+                <li id="slide2" class="absolute">
+                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                        <h3 class="ml-9">Oso perezoso (Bradypus)</h3>
+                    </div>
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/perezoso.png?raw=true" class="ml-6 mt-3 w-52 mr-5 h-[300px] rounded-md" />
+                </li>
+                <li id="slide3" class="absolute">
+                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                        <h3 class="ml-4">Astromelia (Alstroemeria aurea)</h3>
+                    </div>
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/astromelia.jpg?raw=true" class="ml-6 mt-3 w-52 mr-5 h-[300px] rounded-md" />
+                </li>
+                <li id="slide4" class="absolute">
+                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                        <h3 class="ml-4">Croton (Codiaeum variegatum)</h3>
+                    </div>
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/croton.png?raw=true" class="ml-6 mt-3 w-52 mr-5 h-[300px] rounded-md" />
+                </li>
+            </ul>
+        
+            <ul class="menu text-center">
+                <li class="inline-block">
+                    <a href="#slide1" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                </li>
+                <li class="inline-block">
+                    <a href="#slide2" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                </li>
+                <li class="inline-block">
+                    <a href="#slide3" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                </li>
+                <li class="inline-block">
+                    <a href="#slide4" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                </li>
+            </ul>
+        </section>
     
 
     </div>
     <footer></footer>
-    
+    <script src="index.js"></script>
 </body>
 </html>
