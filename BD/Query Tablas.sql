@@ -127,10 +127,28 @@ CALL FiltrarPublicaciones('Campus')
 
 
 
+DELIMITER //
+CREATE PROCEDURE AgregarComentario(IN p_comentario VARCHAR(255), p_id INT)
+BEGIN
+	INSERT INTO Comentario (comentario, id_publicacion)
+  VALUES (p_comentario, p_id);
+END
+
+DELIMITER ;
+
+CALL AgregarComentario ('Holaaaa', 1)
 
 
 
+/*Procedimientos Editar*/
+
+CALL ActualizarAdministrativo (1, 'Gustavo Pérez', 'gustavop@utp.ac.pa')
+CALL ActualizarBiologo (1, NULL , 'moisesbiologo@utp.ac.pa', NULL)
+CALL ActualizarComentario('Holaaaa', 'Jelou')
+CALL ActualizarEstudiante(5, 'Juan Arango', 'arangol@utp.ac.pa', NULL)
+CALL ActualizarFauna(5, 'Ave Fénix', 'Fenixisis', 'Surgió de las cenizas', 'Aves')
 
 
 
+SELECT * FROM Flora
 
