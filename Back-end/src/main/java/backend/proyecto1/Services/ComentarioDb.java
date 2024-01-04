@@ -27,6 +27,7 @@ public class ComentarioDb {
 
             while(rs.next()){
                 Comentario c = new Comentario(
+                    rs.getInt("id_comentario"),
                     rs.getString("comentario"),
                     rs.getInt("id_publicacion")
                 );

@@ -44,4 +44,58 @@ public class AdministrativoDb {
         }
         return administrativos;
     }
+
+    public int GuardarAdministrativo(Administrativo a){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarAdministrativo('"
+                + a.getNombre_admin() + "','"
+                + a.getCorreo_admin() + "','"
+                + a.getContraseña_admin() + "','"
+                + a.getPerfil_admin() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarAdministrativo(Administrativo a){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarAdministrativo('"
+                + a.getId_admin() + "','"
+                + a.getNombre_admin() + "','"
+                + a.getCorreo_admin() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarAdministrador(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call "; //Falta procedimiento en la BD
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }
