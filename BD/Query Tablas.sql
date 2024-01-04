@@ -159,11 +159,35 @@ SELECT * FROM Publicaciones
 
 CALL EliminarAdministrativo(4)
 CALL EliminarBiologo(5)
-CALL EliminarComentario(1, 'Jelou')
+CALL EliminarComentario(3)
 CALL EliminarEstudiante(5)
 CALL EliminarFauna(3)
 CALL EliminarFlora(3)
 CALL EliminarPublicaciones(3)
 
+SELECT * FROM Comentario
+
+/*Trigger FechaPublicacion*/
+DROP TRIGGER FechaPublicacion
+
+DELIMITER //
+
+CREATE TRIGGER FechaPublicacion
+BEFORE INSERT ON Publicaciones
+FOR EACH ROW
+SET NEW.fecha_publicacion = COALESCE(NEW.fecha_publicacion, NOW());
+
+//
+
+DELIMITER ;
+
+
+
+
+SELECT * FROM Fauna
 SELECT * FROM Publicaciones
+CALL AgregarPublicaciones('Impresionante Reptil le llame Renekton', 'Chiriqui', NULL, NULL, 2)
+
+
+
 
