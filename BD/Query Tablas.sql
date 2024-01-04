@@ -28,12 +28,11 @@ CREATE TABLE Publicaciones(
 	FOREIGN KEY (id_fauna) REFERENCES Fauna(id_fauna)
 );
 
-
+DROP TABLE Comentario
 CREATE TABLE Comentario(
-	
+	id_comentario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 	comentario VARCHAR(255),
 	id_publicacion INT NOT NULL,
-	PRIMARY KEY(comentario, id_publicacion),
 	FOREIGN KEY (id_publicacion) REFERENCES Publicaciones(id_publicacion)
 	
 );
@@ -127,10 +126,44 @@ CALL FiltrarPublicaciones('Campus')
 
 
 
+DELIMITER //
+CREATE PROCEDURE AgregarComentario(IN p_comentario VARCHAR(255), p_id INT)
+BEGIN
+	INSERT INTO Comentario (comentario, id_publicacion)
+  VALUES (p_comentario, p_id);
+END
+
+DELIMITER ;
+SELECT * FROM Comentario
+CALL AgregarComentario ('Ta serio io', 1)
 
 
+/*Procedimientos Filtrar*/
+CALL Filtrarcomentario('F')
 
 
+/*Procedimientos Editar*/
+CALL ActualizarAdministrativo (1, 'Gustavo Pérez', 'gustavop@utp.ac.pa')
+CALL ActualizarBiologo (1, NULL , 'moisesbiologo@utp.ac.pa', NULL)
+CALL ActualizarComentario('2', 'wou como diria el Feid')
+CALL ActualizarEstudiante(5, 'Juan Arango', 'arangol@utp.ac.pa', NULL)
+CALL ActualizarFauna(5, 'Ave Fénix', 'Fenixisis', 'Surgió de las cenizas', 'Aves')
+CALL ActualizarFlora(5, 'Enredadera', 'Enrediviris siemprus', 'Mas enredada que el cabello de Rapunzel', 'Plantas')
+CALL ActualizarPublicaciones(5, 'Vi un Ave Fénix', 'Campus Levi Sasso', NULL,  5)
 
 
+SELECT * FROM Fauna
+SELECT * FROM Publicaciones
+
+/*Procedimientos Eliminar*/
+
+CALL EliminarAdministrativo(4)
+CALL EliminarBiologo(5)
+CALL EliminarComentario(1, 'Jelou')
+CALL EliminarEstudiante(5)
+CALL EliminarFauna(3)
+CALL EliminarFlora(3)
+CALL EliminarPublicaciones(3)
+
+SELECT * FROM Publicaciones
 
