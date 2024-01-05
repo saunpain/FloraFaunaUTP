@@ -48,3 +48,15 @@ document.addEventListener("DOMContentLoaded", function () {
     mostrarSlide(slideActual);
   });
   
+  /* Función para desplegar aside en celulares */
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggleButton = document.getElementById('toggleButton');
+    var miAside = document.getElementById('aside');
+  
+    toggleButton.addEventListener('click', function () {
+        miAside.classList.toggle('hidden');
+  
+        toggleButton.classList.toggle('opened');
+        toggleButton.classList.toggle('closed');
+    });
+  });
