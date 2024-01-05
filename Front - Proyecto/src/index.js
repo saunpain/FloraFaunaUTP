@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     mostrarSlide(slideActual);
   });
   
-  /* Función para desplegar aside en celulares */
+  //Función para activar y desactivar aside en celulares
   document.addEventListener('DOMContentLoaded', function () {
     var toggleButton = document.getElementById('toggleButton');
     var miAside = document.getElementById('aside');
@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleButton.addEventListener('click', function () {
         miAside.classList.toggle('hidden');
   
+        // Cambia las clases del botón
         toggleButton.classList.toggle('opened');
         toggleButton.classList.toggle('closed');
     });

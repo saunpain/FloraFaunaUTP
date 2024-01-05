@@ -40,21 +40,15 @@
     #toggleButton.opened::before {
         content: '✕'; /* Icono para cerrar el aside */
     }
-    #contenido {
-        pointer-events: auto;
-        transition: background-color 0.3s ease;
-    }
-    #toggleButton.opened + #contenido{
-        pointer-events: none;
-        background-color: rgba(0, 0, 0, 0.5);;
-    }
+
+
     .menu li a.active {
         background-color: #403d3d;
     }
     /*sm=640px md=768px lg=1024px xl=1280px 2xl=1536px*/
     @media only screen and (min-width: 1280px) and (max-width: 1495.20px){
         #pub{
-            width: 47%;
+            width: 52%;
         }
     }
     @media only screen and (min-width: 1024px){
@@ -62,9 +56,11 @@
     }
     @media only screen and (min-width: 1495.20px) and (max-width: 1536px){
         #pub{
-            width: 55%;
+            width: 59%;
+            margin-left: 5rem;
         }
     }
+    
     </style>
 </head>
 <body class="bg-white w-full h-full box-border">
@@ -95,8 +91,8 @@
             </div>
         </div>
     </header>
-    <aside id="aside" class="absolute top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
-        <div class="mt-5 ml-4 mr-4">
+    <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
+        <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
                 <a href="#" class="ml-2 text-lg font-bold">Inicio</a>
@@ -226,7 +222,7 @@
                 </div>
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[7.5rem] mr-6"> <!--Publicaciones-->
+        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
             <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
                 <div class="mt-2">
                     <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
@@ -297,66 +293,68 @@
                 </div>
             </div>
         </section>
-        <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] 2xl:h-[380px] h-[360px] right-0 mr-10 mt-28 hidden lg:block xl:block 2xl:block">
-            <ul class="slider w-64 h-[350px] overflow-hidden">
-                <li id="slide1" class="absolute">
-                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
-                        <h3 class="ml-7">Ñeque (Dasyprocta puctata)</h3>
+        <div class="relative">
+            <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] 2xl:h-[380px] h-[360px] right-0 mr-10 mt-28 hidden lg:block xl:block 2xl:block">
+                <ul class="slider w-64 h-[350px] overflow-hidden">
+                    <li id="slide1" class="absolute">
+                        <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                            <h3 class="ml-7">Ñeque (Dasyprocta puctata)</h3>
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] h-[280px] " />
+                    </li>
+                    <li id="slide2" class="absolute">
+                        <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                            <h3 class="ml-9">Oso perezoso (Bradypus)</h3>
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/perezoso.png?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] h-[280px] rounded-md" />
+                    </li>
+                    <li id="slide3" class="absolute">
+                        <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                            <h3 class="ml-4">Astromelia (Alstroemeria aurea)</h3>
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/astromelia.jpg?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] h-[280px] rounded-md" />
+                    </li>
+                    <li id="slide4" class="absolute">
+                        <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
+                            <h3 class="ml-4">Croton (Codiaeum variegatum)</h3>
+                        </div>
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/croton.png?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] lg:h-[280px] rounded-md" />
+                    </li>
+                </ul>
+                <ul class="menu text-center xl:m-0 lg:-mt-6">
+                    <li class="inline-block">
+                        <a href="#slide1" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                    </li>
+                    <li class="inline-block">
+                        <a href="#slide2" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                    </li>
+                    <li class="inline-block">
+                        <a href="#slide3" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                    </li>
+                    <li class="inline-block">
+                        <a href="#slide4" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
+                    </li>
+                </ul>
+                <footer class="bg-[#276B58] rounded-lg text-white text-[10.8px] xl:mt-10 2xl:mt-10 lg:mt-5">
+                    <div class="p-4">
+                        <div>
+                            <a href="https://utp.ac.pa/mapas-de-ubicacion">Mapa de Ubicación</a>
+                            <a href="https://fisc.utp.ac.pa/contactenos" class="ml-6">Soporte</a>
+                            
+                        </div>
+                        <div class="mt-3 flex flex-row">
+                            <a href="https://aig.gob.pa/acercade/disclaimer/">Pólitica de privacidad</a>
+                            <p class="ml-4">Teléfono: 560-3000</p>
+                        </div>
+                        <hr class="mt-1">
+                        <div class="mt-1">
+                            <a href="https://utp.ac.pa">Universidad Tecnológica de Panamá © 2024.</a>
+                            <p class="mt-3">Todos los derechos reservados</p>
+                        </div>
                     </div>
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/rectangle-4235.png?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] h-[280px] " />
-                </li>
-                <li id="slide2" class="absolute">
-                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
-                        <h3 class="ml-9">Oso perezoso (Bradypus)</h3>
-                    </div>
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/perezoso.png?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] h-[280px] rounded-md" />
-                </li>
-                <li id="slide3" class="absolute">
-                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
-                        <h3 class="ml-4">Astromelia (Alstroemeria aurea)</h3>
-                    </div>
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/astromelia.jpg?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] h-[280px] rounded-md" />
-                </li>
-                <li id="slide4" class="absolute">
-                    <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">
-                        <h3 class="ml-4">Croton (Codiaeum variegatum)</h3>
-                    </div>
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/croton.png?raw=true" class="ml-6 mt-3 w-52 mr-5 xl:h-[300px] 2xl:h-[300px] lg:h-[280px] rounded-md" />
-                </li>
-            </ul>
-            <ul class="menu text-center xl:m-0 lg:-mt-6">
-                <li class="inline-block">
-                    <a href="#slide1" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
-                </li>
-                <li class="inline-block">
-                    <a href="#slide2" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
-                </li>
-                <li class="inline-block">
-                    <a href="#slide3" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
-                </li>
-                <li class="inline-block">
-                    <a href="#slide4" class="inline-block bg-gray-400 w-6 h-[10px] rounded-[50px]"></a>
-                </li>
-            </ul>
-            <footer class="bg-[#276B58] rounded-lg text-white text-[10.8px] xl:mt-10 2xl:mt-10 lg:mt-5">
-                <div class="p-4">
-                    <div>
-                        <a href="https://utp.ac.pa/mapas-de-ubicacion">Mapa de Ubicación</a>
-                        <a href="https://fisc.utp.ac.pa/contactenos" class="ml-6">Soporte</a>
-                        
-                    </div>
-                    <div class="mt-3 flex flex-row">
-                        <a href="https://aig.gob.pa/acercade/disclaimer/">Pólitica de privacidad</a>
-                        <p class="ml-4">Teléfono: 560-3000</p>
-                    </div>
-                    <hr class="mt-1">
-                    <div class="mt-1">
-                        <a href="https://utp.ac.pa">Universidad Tecnológica de Panamá © 2024.</a>
-                        <p class="mt-3">Todos los derechos reservados</p>
-                    </div>
-                </div>
-            </footer>
-        </section>                                                                     <!--xl:min-w-[54rem] para pantalla normal    lg:min-w-[20rem] lg:max-w-xl xl:min-w-[54rem] xl:max-w-[60rem] 2xl:min-w-[58rem]--> <!--lg:w-[25rem] xl:min-w-[42rem] 2xl:w-[60rem] md:w-[28rem]-->
+                </footer>
+            </section>
+        </div>                                                                    <!--xl:min-w-[54rem] para pantalla normal    lg:min-w-[20rem] lg:max-w-xl xl:min-w-[54rem] xl:max-w-[60rem] 2xl:min-w-[58rem]--> <!--lg:w-[25rem] xl:min-w-[42rem] 2xl:w-[60rem] md:w-[28rem]-->
     </div>
     <script src="index.js"></script>
 </body>
