@@ -66,31 +66,36 @@
 <body class="bg-white w-full h-full box-border">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2 ">
-            <div class="flex items-center ml-4">
-                <button id="toggleButton" class="p-2 text-[#FFFFFF] text-3xl lg:hidden xl:hidden fixed closed"></button>
+            <div class="flex items-center md:ml-4 ">
+                <button id="toggleButton" class="py-2 text-[#FFFFFF] text-3xl lg:hidden xl:hidden fixed closed"></button>
                 <img class="left-5 object-cover h-[68px] top-[14px] absolute hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-4.png?raw=true" />
                 <img class="h-[60px] mb-[10px] ml-[2px] object-cover hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/logo_utp.png?raw=true" />
                 <img class="object-cover h-[68px] top-[13.3px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
                 
-            <div class="flex items-center"> <!--Barra de busqueda-->
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[30rem] lg:ml-[30rem] md:ml-[20rem] lg:block md:block xl:block hidden h-5">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6" alt="">
-                <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[32rem] md:w-[22rem] hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
+            <div class="flex items-center" id="busqueda"> <!--Barra de busqueda-->
+            <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[30rem] lg:ml-[28rem] md:ml-[20rem] lg:block md:block xl:block ml-[9rem] hidden h-5">
+            <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
+            <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-5 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
             </div>
             <div class=""> <!--Iniciar sesion o perfil del usuario-->
                 <button class="xl:p-2 lg:p-2 p-[0.5] w-[8rem] xl:h-10 lg:h-10 h-8 bg-[#F0FEF8] rounded-[50px]"><a href="#" class="">Iniciar Sesión</a></button>
             </div>
             <div class="hidden">
-                <button class="flex">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" alt="">
-                    <p class="text-[#FFFFFF]">Crear</p>
-                </button>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
+                <div class="flex justify-around items-center ">
+                    <button class="flex ml-2 p-2 hover:bg-[#47917c]">
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" class="h-6 mt-1">
+                        <p class="text-[#FFFFFF] text-lg mt-[2px] ml-4 mr-4">Crear</p>
+                    </button>
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
+                </div>
             </div>
         </div>
     </header>
+    <nav>
+        
+    </nav>
     <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
@@ -153,8 +158,8 @@
             </div>
             <hr>
             <footer class="text-white text-[16px] mt-4">
-                <div class="mt-3 flex flex-row justify-around mr-5">
-                    <a href="https://utp.ac.pa/mapas-de-ubicacion">Mapa de Ubicación</a>
+                <div class="mt-3 flex flex-row justify-around mr-10">
+                    <a href="https://utp.ac.pa/mapas-de-ubicacion" class="mr-10">Mapa de Ubicación</a>
                     <a href="https://fisc.utp.ac.pa/contactenos" class="">Soporte</a>
                     
                 </div>
@@ -163,7 +168,7 @@
                     <p class="">Teléfono: 560-3000</p>
                 </div>
                 <hr class="mt-1">
-                <div class="mt-1">
+                <div class="flex flex-col mt-1 items-center">
                     <a href="https://utp.ac.pa">Universidad Tecnológica de Panamá © 2024.</a>
                     <p class="mt-3">Todos los derechos reservados</p>
                 </div>

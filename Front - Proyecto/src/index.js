@@ -47,7 +47,31 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar el primer slide al cargar la página
     mostrarSlide(slideActual);
   });
-  
+
+    //Funcion para desplegar barra de busqueda en celulares
+    var lupaNeg = document.getElementById('lupota');
+    var lupaBlanc = document.getElementById('lupita');
+    var buscar = document.querySelector('#busqueda input[type="search"]');
+    // Agregar el evento de clic a la imagen de la lupa
+    lupaBlanc.addEventListener('click', function() {
+      if(window.innerWidth <1024){
+          // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
+          buscar.style.display = 'block';
+          lupaBlanc.style.display = 'none';
+          lupaNeg.style.display = 'block';
+      }
+    });
+
+    // Agregar el evento de clic a la imagen de la otra
+    lupaNeg.addEventListener('click', function() {
+      if(window.innerWidth <1024){
+          // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
+          buscar.style.display = 'none';
+          lupaBlanc.style.display = 'block';
+          lupaNeg.style.display = 'none';
+      }
+    });
+
   //Función para activar y desactivar aside en celulares
   document.addEventListener('DOMContentLoaded', function () {
     var toggleButton = document.getElementById('toggleButton');
