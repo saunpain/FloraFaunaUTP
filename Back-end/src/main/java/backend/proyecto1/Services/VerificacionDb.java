@@ -42,4 +42,57 @@ public class VerificacionDb {
         }
         return verificaciones;
     }
+
+    public int GuardarVerificacion(Verificacion v){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarVerificacion('"
+                + v.getId_admin() + "','"
+                + v.getId_solicitud() + "','"
+                + v.getId_biologo() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarVerificacion(Verificacion v){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarVerificacion('"
+                + v.getId_admin() + "','"
+                + v.getId_solicitud() + "','"
+                + v.getId_biologo() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarVerificacion(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call EliminarVerificacion(" + id + ")";
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }

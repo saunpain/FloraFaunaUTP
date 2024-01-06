@@ -45,4 +45,61 @@ public class PublicacionesDb {
         }
         return publicaciones;
     }
+
+    public int GuardarPublicaciones(Publicaciones p){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarPublicaciones('"
+                + p.getTitulo() + "','"
+                + p.getLugar() + "','"
+                + p.getFecha_publicacion() + "','"
+                + p.getId_flora() + "','"
+                + p.getId_fauna() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarPublicaciones(Publicaciones p){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarPublicaciones('"
+                + p.getId_publicaciones() + "','"
+                + p.getTitulo() + "','"
+                + p.getLugar() + "','"
+                + p.getId_flora() + "','"
+                + p.getId_fauna() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarPublicaciones(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call EliminarPublicaciones(" + id + ")";
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }

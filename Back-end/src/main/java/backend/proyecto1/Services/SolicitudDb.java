@@ -42,4 +42,56 @@ public class SolicitudDb {
         }
         return solicitudes;
     }
+
+    public int GuardarSolicitud(Solicitud s){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarSolicitud('"
+                + s.getFormulario() + "','"
+                + s.getEstado() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarSolicitud(Solicitud s){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarSolicitud('"
+                + s.getId_solicitud() + "','"
+                + s.getFormulario() + "','"
+                + s.getEstado() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarSolicitud(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call EliminarSolicitud(" + id + ")";
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }

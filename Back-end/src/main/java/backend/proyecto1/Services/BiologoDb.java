@@ -44,4 +44,59 @@ public class BiologoDb {
         }
         return biologos;
     }
+
+    public int GuardarBiologo(Biologo b){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarBiologo('"
+                + b.getNombre_biologo() + "','"
+                + b.getCorreo_biologo() + "','"
+                + b.getContraseña_biologo() + "','"
+                + b.getPerfil_biologo() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarBiologo(Biologo b){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarBiologo('"
+                + b.getId_biologo() + "','"
+                + b.getNombre_biologo() + "','"
+                + b.getContraseña_biologo() + "','"
+                + b.getCorreo_biologo() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarBiologo(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call EliminarBiologo(" + id + ")";
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }
