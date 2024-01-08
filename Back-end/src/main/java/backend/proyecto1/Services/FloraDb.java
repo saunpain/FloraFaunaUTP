@@ -44,4 +44,60 @@ public class FloraDb {
         }
         return flora;
     }
+
+    public int GuardarFlora(Flora f){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarFlora('"
+                + f.getNombre_planta() + "','"
+                + f.getNombre_cientifico_flora() + "','"
+                + f.getDescripcion_cientifica_flora() + "','"
+                + f.getCategoria_flora() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarFlora(Flora f){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarFlora('"
+                + f.getId_flora() + "','"
+                + f.getNombre_planta() + "','"
+                + f.getNombre_cientifico_flora() + "','"
+                + f.getDescripcion_cientifica_flora() + "','"
+                + f.getCategoria_flora() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarFlora(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call EliminarFlora(" + id + ")";
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }

@@ -89,7 +89,7 @@ public class AdministrativoDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "Call "; //Falta procedimiento en la BD
+            String query = "Call EliminarAdministrativo(" + id + ")";
             resultado = stmt.executeUpdate(query);
 
             return resultado;

@@ -39,4 +39,55 @@ public class ComentarioDb {
         }
         return comentarios;
     }
+
+    public int GuardarComentario(Comentario c){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarComentario('"
+                + c.getComentario() + "','"
+                + c.getId_publicacion() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarComentario(Comentario c){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call ActualizarAdministrativo('"
+                + c.getComentario() + "','"
+                + c.getId_publicacion() + "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int EliminarComentario(int id){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call EliminarComentario(" + id + ")";
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch(Exception e){
+
+        }
+        return resultado;
+    }
 }

@@ -188,6 +188,10 @@ SELECT * FROM Fauna
 SELECT * FROM Publicaciones
 CALL AgregarPublicaciones('Impresionante Reptil le llame Renekton', 'Chiriqui', NULL, NULL, 2)
 
+SELECT * FROM Solicitud
 
-
+CALL AgregarSolicitud('link4', 'Verificado')
+CALL ActualizarSolicitud('4','link4','Sin Verificar')
+CALL EliminarSolicitud('4')
+CALL FiltrarSolicitud('V')
 

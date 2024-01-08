@@ -2,7 +2,9 @@ package backend.proyecto1.Controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,5 +29,10 @@ public class AdministrativoController {
     @PutMapping("/administrativo")
     public int ActualizarAdministrativo(@RequestBody Administrativo a){
         return new AdministrativoDb().ActualizarAdministrativo(a);
+    }
+
+    @DeleteMapping("/administrativo/{id}")
+    public int Delete(@PathVariable("id") int id){
+        return new AdministrativoDb().EliminarAdministrador(id);
     }
 }
