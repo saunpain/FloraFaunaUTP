@@ -79,31 +79,27 @@
             </div>
             
             <div class="flex justify-around items-center">
-                <a class="flex ml-2 p-2 hover:bg-[#47917c]" href="#">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" class="h-6 mt-1">
-                    <p class="text-[#FFFFFF] text-lg mt-[2px] ml-2 mr-4">Crear</p>
-                </a>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/administrador.png?raw=true" class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px]" alt="user icon">
             </div>
         </div>
     </header>
-    <nav class="fixed lg:top-[5.4rem] top-[4.7rem] md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
+    <nav class="fixed lg:top-[5.4rem] top-[3.6rem] md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
         <div class="flex md:text-[16px] text-[12.5px] justify-around mt-2 mb-2 h-[2.5rem] md:h-auto">
-            <a href="Flora y Fauna UTP - inicio.html" class="hover:bg-[#D7EFFF] md:p-1 md:px-4 rounded-[50px] lg:block hidden">
+            <a href="Admin - Inicio.html" class="hover:bg-[#D7EFFF] bg-[#D7EFFF] md:p-1 md:px-4 rounded-[50px] lg:block hidden">
                 <div class="flex items-center">
                     <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
                     <p class="lg:ml-2">Inicio</p>
                 </div>
             </a>
 
-            <a href="#" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">Vista General</a>
-            <a href="#" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">Mis publicaciones</a>
-            <a href="#" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">Mis comentarios</a>
+            <a href="VerificarBiologo.html" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-[5px] md:mt-0">Verificar biólogos</a>
+            <a href="#" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-[5px] md:mt-0">Ver reportes</a>
+            <a href="#" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-[5px] md:mt-0">Administrar página</a>
         </div>
         <hr class="">
     </nav>
     
-    <aside id="aside" class="fixed top-[4rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
+    <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
@@ -181,7 +177,7 @@
             </footer>
         </div>
     </aside>
-    <div class="bg-[#FFFFFF] flex flex-col lg:flex-row min-w-full"> <!--Contenido completo-->
+    <div class="bg-[#FFFFFF] flex flex-col lg:flex-row "> <!--Contenido completo-->
         <section class="lg:w-48 xl:w-48 2xl:w-48 lg:flex-shrink-0 xl:flex-shrink-0 2xl:flex-shrink-0">
             <div class="hidden lg:block xl:block 2xl:block fixed top-36 left-10 w-48">
                 <div class="bg-[#F0FEF8] grid mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
@@ -227,7 +223,7 @@
                 </div>
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-32 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-[108px] md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
             <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-0 w-screen sm:w-9/12 lg:w-5/6">
                 <div class="mt-2">
                     <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
@@ -277,6 +273,11 @@
                     </div>
                     <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Vermilinguos</span>
                     <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Oso hormiguero</span>
+                    <div>
+                        <button class="-mt-2">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" alt="" class="xl:mr-10">
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
@@ -300,6 +301,11 @@
                     </div>
                     <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Trochilidae</span>
                     <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 mr-10 xl:mr-10">Animal: Colibrí</span>
+                    <div>
+                        <button class="-mt-2">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" alt="" class="xl:mr-10">
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
