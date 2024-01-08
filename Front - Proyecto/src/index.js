@@ -36,15 +36,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   
-    // Cambia los Slides cada 4 segundos
+    // Cambia los Slides cada determinado tiempo
     function autocambiarSlide() {
       slideActual = (slideActual + 1) % slides.length;
       mostrarSlide(slideActual);
     }
+
+    var body = document.body;
+    if (body.classList.contains('inicio')) {
+      setInterval(autocambiarSlide, 4000);
+    } else {
+      setInterval(autocambiarSlide, 15000);
+    }
   
-    setInterval(autocambiarSlide, 4000);
-  
-    // Mostrar el primer slide al cargar la página
     mostrarSlide(slideActual);
   });
 
