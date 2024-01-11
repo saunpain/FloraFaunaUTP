@@ -89,3 +89,63 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleButton.classList.toggle('closed');
     });
   });
+
+document.getElementById('pub').addEventListener('mouseenter', function () {
+  this.querySelector('.absolute').classList.remove('hidden');
+});
+
+document.getElementById('pub').addEventListener('mouseleave', function () {
+  this.querySelector('.absolute').classList.add('hidden');
+});
+
+//Función para agregar like a las publicaciones
+function DarLike(id) {
+  var boton = document.getElementById(id);
+  var imagen = boton.getElementsByTagName('img')[0];
+
+  // Verifica la URL actual de la imagen
+  var Unlike = imagen.src;
+  
+  // Define la imagen que se mostrará
+  var Like = (Unlike.includes('favorite.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Like-Icon-03brf3.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true';
+
+  // Cambia la URL de la imagen al dar click
+  imagen.src = Like;
+}
+
+function mostrarPerfil() {
+  document.body.style.overflow = 'hidden';
+
+  var overlay = document.getElementById('perfil');
+  var perfilContainer = document.getElementById('contenedor-Perfil');
+  var perfilContent = document.getElementById('userProfile-contenido');
+
+  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
+  fetch('PerfilUsuario.html')
+    .then(response => response.text())
+    .then(data => {
+      perfilContent.innerHTML = data;
+      overlay.style.display = 'block'; // Mostrar la capa oscura
+      
+      perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
+    })
+    .catch(error => console.error('Error al cargar el perfil:', error));
+}
+
+// Función para cerrar el cuadro de perfil y quitar la capa oscura
+function cerrarPerfil() {
+  document.body.style.overflow = 'auto';
+
+  var overlay = document.getElementById('perfil');
+  var perfilContainer = document.getElementById('contenedor-Perfil');
+
+  overlay.style.display = 'none'; // Ocultar la capa oscura
+  perfilContainer.style.display = 'none'; // Ocultar el cuadro de perfil
+}
+
+// Asignar evento al clic en la imagen de perfil
+document.getElementById('mostrarPerfil').addEventListener('click', function(event) {
+  event.preventDefault(); // Evitar que la página se recargue
+
+  mostrarPerfil();
+});
