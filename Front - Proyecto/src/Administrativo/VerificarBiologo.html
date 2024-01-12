@@ -186,9 +186,9 @@
         </div>
     </aside>
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row"> <!--Contenido completo-->                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative top-[108px] md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] left-16 mr-5 justify-center"> <!--Publicaciones-->
+        <section id="pub" class="bg-[#F8F5F5] relative top-[108px] md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%]  lg:left-16 mr-5 h-screen lg:h-auto justify-center"> <!--Publicaciones-->
             <div class="flex justify-center">
-                <table class="w-[50%] lg:w-[90%] border border-gray-300 rounded-lg overflow-hidden">
+                <table class="w-[80%] lg:w-[90%] border border-gray-300 rounded-lg overflow-hidden">
                     <tbody>
                         <tr class="border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF]">
                             <td class="p-4">Charles Darwin</td>
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="1" onclick="toggleAprobado('1')" class="aprobar">
+                                    <button  onclick="toggleEstado(this, 1)" class="aprobar">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="2" onclick="toggleRechazado('2')" class="rechazar">
+                                    <button  onclick="toggleEstado(this, 0)" class="rechazar">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
@@ -233,15 +233,15 @@
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="3" onclick="toggleAprobado('3')" class="aprobar">
-                                        <img id="palomita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
+                                    <button  onclick="toggleEstado(this, 1)" class="aprobar">
+                                        <img  src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
                                         <span class="block w-15 px-2 py-1 text-xs font-semibold">Aprobar</span>
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="4" onclick="toggleRechazado('4')" class="rechazar">
+                                    <button  onclick="toggleEstado(this, 0)" class="rechazar">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
@@ -263,7 +263,7 @@
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="5" onclick="toggleAprobado('5')" class="aprobar">
+                                    <button onclick="toggleEstado(this, 1)" class="aprobar">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
@@ -271,10 +271,10 @@
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="6" onclick="toggleRechazado('6')" class="rechazar">
+                                    <button onclick="toggleEstado(this, 0)"  class="rechazar">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
                                     </button>
-                                    <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
+                                    <div class="absolute bg-white border rounded -ml-6 " x-show="open" @click.away="open = false">
                                         <span class="block w-[4rem] px-2 py-1 text-xs font-semibold">Rechazar</span>
                                     </div>
                                 </div>
@@ -288,21 +288,21 @@
                                     <button class="mt-2">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Ver.png?raw=true">
                                     </button>
-                                    <div class="absolute bg-white border rounded -ml-[6px]" x-show="open" @click.away="open = false">                  
-                                        <span class="block w-9 px-2 py-1 text-xs font-semibold">Ver</span>
+                                    <div class="absolute bg-white border rounded -ml-[6px]" x-show="open" @click.away="open = false">
+                                        <span class="block w-9 px-2 py-1 text-xs font-semibold z-50">Ver</span>
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="aprobarBT">
-                                        <img id="palomita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
+                                    <button onclick="toggleEstado(this, 1)" class="aprobar">
+                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
                                         <span class="block w-15 px-2 py-1 text-xs font-semibold">Aprobar</span>
                                     </div>
                                 </div>
                                 <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="rechazarBT">
-                                        <img id="equisd" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
+                                    <button onclick="toggleEstado(this, 0)" class="rechazar">
+                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
                                     </button>
                                     <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
                                         <span class="block w-[4rem] px-2 py-1 text-xs font-semibold">Rechazar</span>
@@ -313,30 +313,44 @@
                     </tbody>
                 </table>
             </div>
-            <div class="flex justify-center">
-                <div class=" w-[50%] lg:w-[90%] bg-[#FFFFFF] ">
-                    <div class="flex p-4">
-                        <button id="aprobarBT" class="flex bg-[#D7EFFF] p-2 rounded-md">
-                            <img id="palomita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true" class="mr-1">
+        </section>
+        <section class="">
+            <div class="flex items-center z-20 top-6 absolute">
+                <div class=" w-[50%] lg:w-[90%] bg-[#FFFFFF] rounded-lg">
+                    <div class="flex p-4 ml-3">
+                        <button onclick="toggleEstado(this, 1)" class="aprobar flex bg-[#D7EFFF] p-2 rounded-md">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true" class="mr-1">
                             Aprobar
                         </button>
-                        <button id="rechazarBT" class="flex bg-[#D7EFFF] ml-3 p-2 rounded-md">
-                            <img id="equisd" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true" class="h-5 w-5 mt-[3px] mr-1">
+                        <button onclick="toggleEstado(this, 0)" class="rechazar flex bg-[#D7EFFF] ml-3 p-2 rounded-md">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true" class="h-5 w-5 mt-[3px] mr-1">
                             Rechazar
                         </button>
                     </div>
-                    <hr>
-                    <div>
+                    <div class="flex justify-center">
+                        <hr class="w-11/12">
+                    </div>
+                    <div class="mt-2 ml-16 text-lg">
                         <h2> Solicitud para ser biologo verificado uwu </h2>
                     </div>
-                    <div class="">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles%20Darwin.png?raw=true"> 
-                        <p>Charles Darwin</p>
+                    <div class="flex mt-3 ml-6">
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles%20Darwin.png?raw=true">
+                        <div class="ml-3">
+                            <p class="text-sm">Charles Darwin</p>
+                            <p class="text-sm">charles.darwin@utp.ac.pa</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <hr class="w-11/12 mt-4">
+                    </div>
+                    <div class="flex mt-3 p-2 flex-col items-center">
+                        <p class="font-bold">Solicitud adjunta</p>
+                        <img src="" alt="Imagen aquí">
                     </div>
                 </div>
             </div>
         </section>
-        <section class="fixed top-40 w-64 right-36">
+        <section class="fixed top-40 w-64 right-36 hidden lg:block">
             <div class="bg-[#F0FEF8]  mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
                 <span class="text-lg flex justify-center"> Bandeja de entrada</span>
                 <div class="ml-2 mt-2">

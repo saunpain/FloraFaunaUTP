@@ -86,44 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-/*
-// Obtener referencias a los elementos HTML
-const aprobarBtn = document.getElementById('aprobarBT');
-const rechazarBtn = document.getElementById('rechazarBT');
-const aprobarImg = document.getElementById('palomita');
-const rechazarImg = document.getElementById('equisd');
-
-// Variable para controlar el estado
-let estado = ''; // Puede ser 'aprobar', 'rechazar' o ''
-
-// Agregar manejadores de eventos
-aprobarBtn.addEventListener('click', () => {
-    // Cambiar al estado Aprobar si no está activo actualmente
-    if (estado != 'aprobar') {
-        estado = 'aprobar';
-        aprobarImg.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true";
-        rechazarImg.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true";
-    } else {
-        // Deshacer el estado si ya está activo
-        estado = '';
-        aprobarImg.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true";
-    }
-});
-
-rechazarBtn.addEventListener('click', () => {
-    // Cambiar al estado Rechazar si no está activo actualmente
-    if (estado != 'rechazar') {
-        estado = 'rechazar';
-        rechazarImg.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true";
-        aprobarImg.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true";
-    } else {
-        // Deshacer el estado si ya está activo
-        estado = '';
-        rechazarImg.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true";
-    }
-});
-*/
-
 
 document.getElementById('pub').addEventListener('mouseenter', function () {
   this.querySelector('.absolute').classList.remove('hidden');
@@ -147,7 +109,7 @@ function DarLike(id) {
   // Cambia la URL de la imagen al dar click
   imagen.src = Like;
 }
-
+/*
 function toggleAprobado(id) {
   var botoncito = document.getElementById(id);
   var palomita = botoncito.getElementsByTagName('img')[0];
@@ -172,4 +134,26 @@ function toggleRechazado(id) {
 
   // Cambiar el estado del botón de rechazar
   equisd.src = (equisd.src.includes('%C3%91o_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true';
+}
+*/
+
+function toggleEstado(boton, estado) {
+  var fila = boton.closest('tr'); // Obtener la fila actual
+
+  // Obtener los botones opuestos en la misma fila
+  var botonAprobar = fila.querySelector('.aprobar img');
+  var botonRechazar = fila.querySelector('.rechazar img');
+
+  // Cambiar el estado del botón actual
+  var palomita = boton.querySelector('img');
+  palomita.src = (palomita.src.includes((estado === 1) ? 'Shi_Color.png' : '%C3%91o_Color.png')) ?
+      `https://github.com/saunpain/FloraFaunaUTP/blob/main/img/${(estado === 1) ? 'Shi' : '%C3%91o'}.png?raw=true` :
+      `https://github.com/saunpain/FloraFaunaUTP/blob/main/img/${(estado === 1) ? 'Shi_Color' : '%C3%91o_Color'}.png?raw=true`;
+
+  // Restaurar el botón opuesto al estado inicial
+  if (estado === 1) {
+      botonRechazar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true';
+  } else {
+      botonAprobar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
+  }
 }

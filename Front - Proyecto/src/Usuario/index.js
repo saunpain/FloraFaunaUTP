@@ -149,3 +149,33 @@ document.getElementById('mostrarPerfil').addEventListener('click', function(even
 
   mostrarPerfil();
 });
+
+
+function togglePasswordVisibility() {
+  var passwordDisplay = document.getElementById("passwordDisplay");
+  var passwordInput = document.getElementById("passwordInput");
+  var toggleIcon = document.getElementById("togglePassword");
+
+  if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/visible%20pass.png?raw=true";
+      toggleIcon.alt = "Ocultar contraseña";
+  } else {
+      passwordInput.type = "password";
+      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/hidden%20pass.png?raw=true";
+      toggleIcon.alt = "Mostrar contraseña";
+  }
+}
+
+function toggleEditMode() {
+  var passwordDisplay = document.getElementById("passwordDisplay");
+  var passwordInput = document.getElementById("passwordInput");
+
+  passwordDisplay.classList.toggle("hidden");
+  passwordInput.classList.toggle("hidden");
+
+  if (!passwordInput.classList.contains("hidden")) {
+      passwordInput.value = passwordDisplay.textContent;
+      passwordInput.focus();
+  }
+}
