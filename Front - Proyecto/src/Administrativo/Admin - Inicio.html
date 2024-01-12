@@ -75,12 +75,23 @@
             <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
             </div>
             
-            <div class="flex justify-around items-center">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/administrador.png?raw=true" class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px]" alt="user icon">
-            </div>
+            <button id="mostrarPerfil">
+                <a href="">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="admin_perfil">
+                </a>
+            </button>
         </div>
     </header>
-    <nav class="fixed lg:top-[5.4rem] top-[3.6rem] md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
+    <div id="perfilAdmin" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-PerfilAdmin" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="AdminProfile-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
+                
+            </div>
+            
+        </div>
+    </div>
+    <nav class="fixed lg:top-[5.4rem] top-[4.7rem]  md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
         <div class="flex md:text-[16px] text-[12.5px] justify-around mt-2 mb-2 h-[2.5rem] md:h-auto">
             <a href="Admin - Inicio.html" class="hover:bg-[#D7EFFF] bg-[#D7EFFF] md:p-1 md:px-4 rounded-[50px] lg:block hidden">
                 <div class="flex items-center">
@@ -96,7 +107,7 @@
         <hr class="">
     </nav>
     
-    <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
+    <aside id="aside" class="fixed top-[4rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
@@ -220,9 +231,9 @@
                 </div>
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-28 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-36 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
             <div id="nasua" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <a href="/src/Publicacion.html">
+                <a href="Publicacion.html">
                     <div class="mt-2">
                         <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
                         <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/15</span>
@@ -234,7 +245,7 @@
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex">
+                    <div class="flex items-center">
                         <div class="flex items-center">
                             <button id="1" onclick="DarLike('1')">
                                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
@@ -252,19 +263,20 @@
                         <button class="mt-2" @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" class="xl:mr-10">
                         </button>
-                        <div class="absolute bg-white border rounded -mt-3 -ml-36" x-show="open" @click.away="open = false">
-                            <button class="block w-[12rem]">
+                        <div class="absolute bg-white border rounded -mt-3 -ml-28" x-show="open" @click.away="open = false">
+                            <button class="block w-[8rem]">
                                 <a class="flex px-2 py-1 text-sm">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/delete-icon.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Eliminar publicación</p>
+                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
+                                    <p>Editar título</p>
                                 </a>
                             </button>
                         </div>
                     </div>
+                    
                 </div>
             </div>
-            <div id="nasua" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <a href="/src/Publicacion.html">
+            <div id="" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
+                <a href="Publicacion.html">
                     <div class="mt-2">
                         <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
                         <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/13</span>
@@ -276,7 +288,7 @@
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex">
+                    <div class="flex items-center">
                         <div class="flex items-center">
                             <button id="1" onclick="DarLike('1')">
                                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
@@ -285,7 +297,7 @@
                         </div>
                         <div class="flex">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
+                            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px]">11</span>
                         </div>
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Vermilinguos</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Oso hormiguero</span>
@@ -294,11 +306,11 @@
                         <button class="mt-2" @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" class="xl:mr-10">
                         </button>
-                        <div class="absolute bg-white border rounded -mt-3 -ml-36" x-show="open" @click.away="open = false">
-                            <button class="block w-[12rem]">
+                        <div class="absolute bg-white border rounded -mt-3 -ml-28" x-show="open" @click.away="open = false">
+                            <button class="block w-[8rem]">
                                 <a class="flex px-2 py-1 text-sm">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/delete-icon.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Eliminar publicación</p>
+                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
+                                    <p>Editar título</p>
                                 </a>
                             </button>
                         </div>
@@ -307,7 +319,7 @@
             </div>
             
             <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <a href="/src/Publicacion.html">
+                <a href="Publicacion.html">
                     <div class="mt-2">
                         <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
                         <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/15</span>
@@ -319,7 +331,7 @@
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex">
+                    <div class="flex items-center">
                         <div class="flex items-center">
                             <button id="3" onclick="DarLike('3')">
                                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:ml-8 xl:h-6 xl:ml-8 w-6 h-5 lg:ml-0">
@@ -337,11 +349,11 @@
                         <button class="mt-2" @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" class="xl:mr-10">
                         </button>
-                        <div class="absolute bg-white border rounded -mt-3 -ml-36" x-show="open" @click.away="open = false">
-                            <button class="block w-[12rem]">
+                        <div class="absolute bg-white border rounded -mt-3 -ml-28" x-show="open" @click.away="open = false">
+                            <button class="block w-[8rem]">
                                 <a class="flex px-2 py-1 text-sm">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/delete-icon.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Eliminar publicación</p>
+                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
+                                    <p>Editar título</p>
                                 </a>
                             </button>
                         </div>

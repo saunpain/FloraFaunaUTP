@@ -64,7 +64,7 @@
     @media only screen and (min-width: 1495.20px) and (max-width: 1536px){
         #pub{
             width: 59%;
-            margin-left: 5rem;
+            left: 8rem;
         }
     }
     </style>
@@ -186,8 +186,8 @@
         </div>
     </aside>
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row"> <!--Contenido completo-->                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative top-[108px] md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%]  lg:left-16 mr-5 h-screen lg:h-auto justify-center"> <!--Publicaciones-->
-            <div class="flex justify-center">
+        <section id="pub" class="bg-[#F8F5F5] relative top-28 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:left-32 h-screen lg:h-auto justify-center"> <!--Publicaciones-->
+            <div class="flex justify-center mt-20 lg:mt-0 ">
                 <table class="w-[80%] lg:w-[90%] border border-gray-300 rounded-lg overflow-hidden">
                     <tbody>
                         <tr class="border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF]">
@@ -313,10 +313,8 @@
                     </tbody>
                 </table>
             </div>
-        </section>
-        <section class="">
-            <div class="flex items-center z-20 top-6 absolute">
-                <div class=" w-[50%] lg:w-[90%] bg-[#FFFFFF] rounded-lg">
+            <div class="flex items-center ">
+                <div class=" w-[50%] lg:w-[90%] bg-[#FFFFFF] rounded-lg hidden">
                     <div class="flex p-4 ml-3">
                         <button onclick="toggleEstado(this, 1)" class="aprobar flex bg-[#D7EFFF] p-2 rounded-md">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true" class="mr-1">
@@ -350,31 +348,34 @@
                 </div>
             </div>
         </section>
-        <section class="fixed top-40 w-64 right-36 hidden lg:block">
-            <div class="bg-[#F0FEF8]  mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
-                <span class="text-lg flex justify-center"> Bandeja de entrada</span>
-                <div class="ml-2 mt-2">
+            
+        <section class="absolute lg:fixed lg:top-40 top-24 lg:w-64 w-full lg:right-36 lg:block">
+            <div class="bg-[#F0FEF8] mt-3 lg:rounded-[10px] p-2 lg:p-4 border-[1.5px] border-slate-300">
+                <div class="flex justify-center">
+                    <span class="text-lg hidden lg:block"> Bandeja de entrada</span>
+                </div>
+                <div class="ml-2 mt-2 w-full flex lg:block">
                     <a href="">
-                        <div class="flex rounded-[50px] hover:bg-[#7EBBAA] p-1 pl-3 w-[13rem]">
+                        <div class="flex rounded-[50px] hover:bg-[#7EBBAA] p-1 lg:pl-3 w-[6rem] lg:w-[13rem]">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Recibido.png?raw=true" alt="icono-recibido" class="w-[20px] h-[20px] mt-[2px]">
-                            <p class="ml-3">Recibido</p>
+                            <p class="ml-2 lg:ml-3 text-sm md:text-base  mt-1 md:mt-0">Recibido</p>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="flex rounded-[50px] hover:bg-[#7EBBAA] p-1 pl-3 w-[13rem]">
+                        <div class="flex rounded-[50px] hover:bg-[#7EBBAA] p-1 lg:pl-3 w-[6rem] lg:w-[13rem] ml-2 lg:ml-0">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Aprobado.png?raw=true" alt="icono-aprobado" class="w-[20px] h-[20px] mt-[2px]">
-                            <p class="ml-3">Aprobado</p>
+                            <p class="ml-2 lg:ml-3 text-sm md:text-base  mt-1 md:mt-0">Aprobado</p>
                         </div>
                     </a>
                     <a href="#">
-                        <div class="flex rounded-[50px] hover:bg-[#7EBBAA] p-1 pl-3 w-[13rem]">
+                        <div class="flex rounded-[50px] hover:bg-[#7EBBAA] p-1 lg:pl-3 w-[6rem] lg:w-[13rem] ml-4 lg:ml-0">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Desaprobado.png?raw=true" alt="icono-desaprobado" class="w-[20px] h-[20px] mt-[2px]">
-                            <p class="ml-3">Desaprobado</p>
+                            <p class="ml-2 lg:ml-3 text-sm md:text-base mt-1 md:mt-0">Desaprobado</p>
                         </div>
                     </a>
                 </div>
             </div>
-            <footer class="bg-[#276B58] rounded-lg text-white text-[10.8px] xl:mt-9 lg:mt-5">
+            <footer class="bg-[#276B58] rounded-lg text-white text-[10.8px] xl:mt-9 lg:mt-5 hidden lg:block">
                 <div class="p-4">
                     <div>
                         <a href="https://utp.ac.pa/mapas-de-ubicacion">Mapa de Ubicación</a>

@@ -157,3 +157,70 @@ function toggleEstado(boton, estado) {
       botonAprobar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
   }
 }
+
+function mostrarPerfil() {
+  document.body.style.overflow = 'hidden';
+
+  var overlay = document.getElementById('perfilAdmin');
+  var perfilContainer = document.getElementById('contenedor-PerfilAdmin');
+  var perfilContent = document.getElementById('AdminProfile-contenido');
+
+  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
+  fetch('Perfil_Admin.html')
+    .then(response => response.text())
+    .then(data => {
+      perfilContent.innerHTML = data;
+      overlay.style.display = 'block'; // Mostrar la capa oscura
+      
+      perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
+    })
+    .catch(error => console.error('Error al cargar el perfil:', error));
+}
+
+// Función para cerrar el cuadro de perfil y quitar la capa oscura
+function cerrarPerfil() {
+  document.body.style.overflow = 'auto';
+
+  var overlay = document.getElementById('perfilAdmin');
+  var perfilContainer = document.getElementById('contenedor-PerfilAdmin');
+
+  overlay.style.display = 'none'; // Ocultar la capa oscura
+  perfilContainer.style.display = 'none'; // Ocultar el cuadro de perfil
+}
+
+// Asignar evento al clic en la imagen de perfil
+document.getElementById('mostrarPerfil').addEventListener('click', function(event) {
+  event.preventDefault(); // Evitar que la página se recargue
+
+  mostrarPerfil();
+});
+
+
+function togglePasswordVisibility() {
+  var passwordDisplay = document.getElementById("passwordDisplay");
+  var passwordInput = document.getElementById("passwordInput");
+  var toggleIcon = document.getElementById("togglePassword");
+
+  if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/visible%20pass.png?raw=true";
+      toggleIcon.alt = "Ocultar contraseña";
+  } else {
+      passwordInput.type = "password";
+      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/hidden%20pass.png?raw=true";
+      toggleIcon.alt = "Mostrar contraseña";
+  }
+}
+
+function toggleEditMode() {
+  var passwordDisplay = document.getElementById("passwordDisplay");
+  var passwordInput = document.getElementById("passwordInput");
+
+  passwordDisplay.classList.toggle("hidden");
+  passwordInput.classList.toggle("hidden");
+
+  if (!passwordInput.classList.contains("hidden")) {
+      passwordInput.value = passwordDisplay.textContent;
+      passwordInput.focus();
+  }
+}

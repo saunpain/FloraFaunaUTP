@@ -208,16 +208,16 @@
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex">
+                    <div class="flex items-center">
                         <div class="flex items-center">
-                            <button id="1" onclick="DarLike('1')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
+                            <button id="1" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('1')">
+                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
                             </button>
-                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-2">35</span>
+                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
                         </div>
-                        <div class="flex">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
+                        <div class="flex items-center">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-2 ml-6">
+                            <span class="textito font-bold text-[#241111] ml-1 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
                         </div>
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Nasua</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Gato solo</span>
@@ -251,10 +251,10 @@
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex">
+                    <div class="flex items-center">
                         <div class="flex items-center">
-                            <button id="3" onclick="DarLike('3')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:ml-8 xl:h-6 xl:ml-8 w-6 h-5 lg:ml-0">
+                            <button id="3" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('3')">
+                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
                             </button>
                             <span class="textito font-bold text-[#241111]ml-2 xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-2">35</span>
                         </div>
@@ -284,7 +284,7 @@
                 <div class="mb-5 ml-2 mr-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px]">
                     <div class="">
                         <span class="textito font-semibold ml-0 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">Comentaste:</span>
-                        <span class="textito text-gray-400 md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/25</span>
+                        <span class="textito text-gray-400 ml-10 md:mr-6 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/25</span>
                         <div class="relative inline-block float-right" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false"> <!--Menú desplegable implementando lógica de Framework Alpine.js-->
                             <button class="-mt-3" @click="open = !open">
                                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" alt="">
@@ -303,14 +303,12 @@
                 </div>
                 <button class="ml-2 mr-2">
                     <div class="mt-2 mb-2 border-slate-300 border-[1.5px] rounded-md max-w-[40rem]">
-                        <a href="#oso" class="">
+                        <a href="#oso" class="text-left">
                             <div class="mt-2">
-                                <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
+                                <span class="textito font-bold text-[#241111] ml-2 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
                                 <span class="textito text-gray-400 ml-2 md:ml-4 lg:ml-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/13</span>
                                 <span class="textito text-gray-400 float-right xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1 xl:ml-10 xl:mr-10 lg:mr-0">Campus Levi Sasso</span>
-                                <article class="text-balance">
-                                    <p class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 mt-2 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[13px]"> Me encontré a este pequeño en los senderos de la UTP. ¿No es lindo?</p>
-                                </article>
+                                <p class="textito font-bold text-[#241111] xl:mr-10 ml-2 xl:text-sm lg:text-[12px] md:text-[14px] text-[13px]"> Me encontré a este pequeño en los senderos de la UTP. ¿No es lindo?</p>
                             </div>
                         </a>
                     </div>
