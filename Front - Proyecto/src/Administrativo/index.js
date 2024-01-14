@@ -136,7 +136,33 @@ function toggleRechazado(id) {
   equisd.src = (equisd.src.includes('%C3%91o_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true';
 }
 */
+function toggleEstado(id) {
+  var botoncito = document.getElementById(id);
+  var img = botoncito.getElementsByTagName('img')[0];
+  var fila = botoncito.closest('tr'); // Obtener la fila actual
 
+  // Obtener el número después del guion en el id
+  var numero = id.split('-')[1];
+
+  if (numero === '1') {
+    // Si el número es 1, es para aprobar
+    // Desactivar el botón de rechazar en la misma fila
+    var equisd = fila.querySelector('.rechazar img');
+    equisd.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true';
+
+    // Cambiar el estado del botón de aprobar
+    img.src = (img.src.includes('Shi_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true';
+  } else if (numero === '0') {
+    // Si el número es 0, es para rechazar
+    // Desactivar el botón de aprobar en la misma fila
+    var palomita = fila.querySelector('.aprobar img');
+    palomita.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
+
+    // Cambiar el estado del botón de rechazar
+    img.src = (img.src.includes('%C3%91o_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true';
+  }
+}
+/*
 function toggleEstado(boton, estado) {
   var fila = boton.closest('tr'); // Obtener la fila actual
 
@@ -156,6 +182,24 @@ function toggleEstado(boton, estado) {
   } else {
       botonAprobar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
   }
+}
+*/
+function showDetails() {
+  // Oculta la tabla
+  document.querySelector("#pub table").style.display = "none";
+
+  // Muestra el div con id "celu"
+  const celuDiv = document.querySelector("#celu div");
+  celuDiv.style.display = "block";
+}
+
+function Deshacer() {
+  // Muestra la tabla
+  document.querySelector("#pub table").style.display = "table"; // Restaura la propiedad "display" original de la tabla
+
+  // Oculta el div con id "celu"
+  const celuDiv = document.querySelector("#celu div");
+  celuDiv.style.display = "none";
 }
 
 function mostrarPerfil() {

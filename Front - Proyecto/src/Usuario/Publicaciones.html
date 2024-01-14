@@ -77,7 +77,7 @@
             </div>
             
             <div class="flex justify-around items-center">
-                <button>
+                <button id="crearPub">
                     <a class="flex ml-2 p-2 hover:bg-[#47917c]" href="#">
                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" class="h-6 mt-1">
                         <p class="text-[#FFFFFF] text-lg mt-[2px] ml-2 mr-4">Crear</p>
@@ -198,6 +198,76 @@
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row"> <!--Contenido completo-->
                                                                                                         <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
         <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-32 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5 min-h-[36rem]"> <!--Publicaciones-->
+
+            <div id="publicar" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6 md:text-[16px] text-[12.5px] hidden">
+                <div class="flex justify-center">
+                    <form class="m-4">
+                        <input type="file" id="imagen" name="imagen" accept="image/*" style="display:none" onchange="mostrarImagen()">
+                        <label for="imagen" style="cursor:pointer;">
+                            <img id="preview" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Subir%20imagen.png?raw=true" alt="Vista previa de la imagen" class="w-52 h-44">
+                        </label>
+                    </form>
+                    <img id="preview" alt="Vista previa de la imagen" class="hidden">
+                    <div class="w-96 m-5">
+                        <h3>Título</h3>
+                        <textarea class="w-full h-20 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Escribe un título o comentario..."></textarea>
+                        <h3>Nombre</h3>
+                        <input type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre común...">
+                        
+                    </div>
+                </div>
+                
+                <div class="justify-around items-center sm:flex md:flex lg:block xl:flex">
+                    <div class="ml-5 mr-2">
+                        <h3>Nombre científico</h3>
+                        <input type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre científico...">
+                        <h3>Lugar</h3>
+                        <select class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
+                            <option disabled selected>Seleccione un lugar</option>
+                            <option>Campus Levi Sasso</option>
+                            <option>Ext. Sede Tocumen</option>
+                        </select>
+                    </div>
+                    <div class="ml-5 mr-5">
+                        <h3>Categoría</h3>
+                        <select id="categoria" onchange="seleccionCategoria()" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
+                            <option disabled selected>Seleccione categoría</option>
+                            <option value="flora">Flora</option>
+                            <option value="fauna">Fauna</option>
+                        </select>
+                    
+                        <h3>Subcategoría</h3>
+                        <select id="subcategoria" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
+                            <option disabled selected>Seleccione subcategoría</option>
+                            <optgroup label="Flora" id="floraOp" class="hidden">
+                                <option>Hierbas</option>
+                                <option>Planta</option>
+                                <option>Árboles</option>
+                            </optgroup>
+                            <optgroup label="Fauna" id="faunaOp" class="hidden">
+                                <option>Aves</option>
+                                <option>Reptiles</option>
+                                <option>Artrópodos</option>
+                                <option>Mamíferos</option>
+                            </optgroup>
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="m-5">
+                    <h3>Descripción</h3>
+                    <textarea class="w-full h-28 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Agregue una descripción científica sobre su publicación."></textarea>
+                </div>
+                <div class="justify-center flex">
+                    <button class="bg-[#276B58] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#4b927e]">
+                        Publicar
+                    </button>
+                    <button id="cancelarPub" class="bg-[#4b927e] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#276B58]">
+                        Cancelar
+                    </button>
+                </div>
+                
+            </div>
 
             <div id="nasua" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
                 <a href="/src/Publicacion.html">
