@@ -680,10 +680,6 @@ video {
   z-index: 2;
 }
 
-.z-40 {
-  z-index: 40;
-}
-
 .float-right {
   float: right;
 }
@@ -1048,10 +1044,6 @@ video {
   height: 100vh;
 }
 
-.h-auto {
-  height: auto;
-}
-
 .max-h-\[220px\] {
   max-height: 220px;
 }
@@ -1369,10 +1361,6 @@ video {
 
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
-}
-
-.to-gray-50 {
-  --tw-gradient-to: #f9fafb var(--tw-gradient-to-position);
 }
 
 .object-cover {

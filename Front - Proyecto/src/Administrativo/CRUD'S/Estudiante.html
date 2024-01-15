@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes</title>
+    <link rel="stylesheet" href="/src/Administrativo/output.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+
+    h1, h2{
+        font-family: "Roboto", sans-serif;
+    }
+    header p{
+        font-family: 'Montserrat', sans-serif;
+    }
+    p, a{
+        font-family: 'Raleway', sans-serif;
+    }
+    #pub .textito{
+        font-family: 'Open Sans', sans-serif;
+    }
+    aside ul li p{
+        font-family: 'Montserrat', sans-serif;
+    }
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-clear-button {
+        -webkit-appearance: none;
+        appearance: none;
+        display: none;
+    }
+    #toggleButton.closed::before {
+    content: '☰'; /* Icono para desplegar el aside */
+    }
+    #toggleButton.opened::before {
+        content: '✕'; /* Icono para cerrar el aside */
+    }
+
+
+    .menu li a.active {
+        background-color: #403d3d;
+    }
+    /*sm=640px md=768px lg=1024px xl=1280px 2xl=1536px*/
+    @media only screen and (min-width: 1280px) and (max-width: 1495.20px){
+        #pub{
+            width: 52%;
+        }
+    }
+    @media only screen and (min-width: 1495.20px) and (max-width: 1536px){
+        #pub{
+            width: 59%;
+            margin-left: 5rem;
+        }
+    }
+    </style>
+</head>
+<body class="bg-white w-full h-screen box-border">
+    <header class="w-full bg-[#276B58] fixed z-[2]">
+        <div class="flex items-center justify-between px-4 py-2 ">
+            <div class="flex items-center md:ml-4 ">
+                <button id="toggleButton" class="py-2 text-[#FFFFFF] text-3xl lg:hidden xl:hidden fixed closed"></button>
+                <img class="left-5 object-cover h-[68px] top-[14px] absolute hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-4.png?raw=true" />
+                <img class="h-[60px] mb-[10px] ml-[2px] object-cover hidden lg:block xl:block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/logo_utp.png?raw=true" />
+                <img class="object-cover h-[68px] top-[13.3px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
+                <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
+            </div>
+             <!--
+            <div class="flex items-center" id="busqueda">
+            <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[30rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
+            <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
+            <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
+            </div>
+            
+            <div class="flex justify-around items-center">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/administrador.png?raw=true" class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px]" alt="user icon">
+            </div>
+            -->
+        </div>
+    </header>
+
+    <aside id="aside" class="h-screen w-64 bg-[#276B58] text-[#FFFFFF] z-[1] relative p-2 flex flex-col items-center justify-center">
+        <div class="absolute mx-auto">
+            <div class="flex flex-col items-center">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/perezoso.png?raw=true" class="w-32 h-32 rounded-full">
+                <h2 class="mt-2">Nombre Admin</h2>
+                <h4>Admin</h4>
+            </div>
+    
+            <div class="mt-10 ml-5 mr-5 grid gap-1">
+                <a href="/src/Administrativo/Admin - Inicio.html" class="">
+                    <div class="p-3 hover:bg-[#7EBBAA] flex items-center rounded-md">
+                        <img class="h-8 w-8" src="img/Estudiante.png" alt="icono-estudiante">
+                        <p class="ml-4">Inicio</p>
+                    </div>
+                </a>
+                <a href="Estudiante.html" class="">
+                    <div class="p-3 bg-[#7EBBAA] flex items-center rounded-md">
+                        <img class="h-8 w-8" src="img/Estudiante.png" alt="icono-estudiante">
+                        <p class="ml-4">Estudiantes</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </aside>
+    
+    
+    <div class="w-[80%] mx-auto relative ">
+           
+    </div>
+    
+
+        
+    <footer class="w-full bg-[#184136] text-[#FFFFFF] text-sm p-2 md:flex justify-around relative">
+        
+        <div class="flex flex-col items-center">
+            <a href="https://utp.ac.pa/mapas-de-ubicacion">Mapa de Ubicación</a>
+            <a href="https://fisc.utp.ac.pa/contactenos" class="mt-3">Soporte</a>
+            
+        </div>
+        <div class="flex flex-col items-center">
+            <a href="https://aig.gob.pa/acercade/disclaimer/">Pólitica de privacidad</a>
+            <p class="mt-3">Teléfono: 560-3000</p>
+        </div>
+
+        <div class="flex flex-col items-center">
+            <a href="https://utp.ac.pa">Universidad Tecnológica de Panamá © 2024.</a>
+            <p class="mt-3">Todos los derechos reservados</p>
+        </div>
+    </footer>
+    
+    <script src="/src/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+</body>
+</html>

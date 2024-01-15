@@ -1,99 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".slider li");
-  const menu = document.querySelectorAll(".menu li a");
-
-  let slideActual = 0;
-
-  //Muestra los Slides uno por uno
-  function mostrarSlide(index) {
-    slides.forEach((slide, i) => {
-      if (i === index) {
-        slide.style.opacity = 1;
-      } else {
-        slide.style.opacity = 0;
-      }
-    });
-
-    // Permite reconocer qué Slide está presentandose
-    menu.forEach((menuItem, i) => {
-      if (i === index) {
-        menuItem.classList.add("active");
-      } else {
-        menuItem.classList.remove("active");
-      }
-    });
-  }
-
-  // Cambia de Slide al tocar los botones
-  function cambiarSlide(index) {
-    slideActual = index;
-    mostrarSlide(slideActual);
-  }
-  menu.forEach((menuItem, index) => {
-    menuItem.addEventListener("click", function (event) {
-      event.preventDefault();
-      cambiarSlide(index);
-    });
-  });
-
-  // Cambia los Slides cada 4 segundos
-  function autocambiarSlide() {
-    slideActual = (slideActual + 1) % slides.length;
-    mostrarSlide(slideActual);
-  }
-
-  setInterval(autocambiarSlide, 4000);
-
-  // Mostrar el primer slide al cargar la página
-  mostrarSlide(slideActual);
-});
-
-  //Funcion para desplegar barra de busqueda en celulares
-  var lupaNeg = document.getElementById('lupota');
-  var lupaBlanc = document.getElementById('lupita');
-  var buscar = document.querySelector('#busqueda input[type="search"]');
-  // Agregar el evento de clic a la imagen de la lupa
-  lupaBlanc.addEventListener('click', function() {
-    if(window.innerWidth <1024){
-        // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.style.display = 'block';
-        lupaBlanc.style.display = 'none';
-        lupaNeg.style.display = 'block';
-    }
-  });
-
-  // Agregar el evento de clic a la imagen de la otra
-  lupaNeg.addEventListener('click', function() {
-    if(window.innerWidth <1024){
-        // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
-        buscar.style.display = 'none';
-        lupaBlanc.style.display = 'block';
-        lupaNeg.style.display = 'none';
-    }
-  });
-
-//Función para activar y desactivar aside en celulares
-document.addEventListener('DOMContentLoaded', function () {
-  var toggleButton = document.getElementById('toggleButton');
-  var miAside = document.getElementById('aside');
-
-  toggleButton.addEventListener('click', function () {
-      miAside.classList.toggle('hidden');
-
-      // Cambia las clases del botón
-      toggleButton.classList.toggle('opened');
-      toggleButton.classList.toggle('closed');
-  });
-});
-
-
-document.getElementById('pub').addEventListener('mouseenter', function () {
-  this.querySelector('.absolute').classList.remove('hidden');
-});
-
-document.getElementById('pub').addEventListener('mouseleave', function () {
-  this.querySelector('.absolute').classList.add('hidden');
-});
 
 //Función para agregar like a las publicaciones
 function DarLike(id) {
@@ -110,58 +14,132 @@ function DarLike(id) {
   imagen.src = Like;
 }
 /*
-function toggleAprobado(id) {
-  var botoncito = document.getElementById(id);
-  var palomita = botoncito.getElementsByTagName('img')[0];
-  var fila = botoncito.closest('tr'); // Obtener la fila actual
-
-  // Desactivar el botón de rechazar en la misma fila
-  var equisd = fila.querySelector('.rechazar img');
-  equisd.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true';
-
-  // Cambiar el estado del botón de aprobar
-  palomita.src = (palomita.src.includes('Shi_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true';
-}
-
-function toggleRechazado(id) {
-  var botoncito = document.getElementById(id);
-  var equisd = botoncito.getElementsByTagName('img')[0];
-  var fila = botoncito.closest('tr'); // Obtener la fila actual
-
-  // Desactivar el botón de aprobar en la misma fila
-  var palomita = fila.querySelector('.aprobar img');
-  palomita.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
-
-  // Cambiar el estado del botón de rechazar
-  equisd.src = (equisd.src.includes('%C3%91o_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true';
-}
-*/
 function toggleEstado(id) {
   var botoncito = document.getElementById(id);
   var img = botoncito.getElementsByTagName('img')[0];
-  var fila = botoncito.closest('tr'); // Obtener la fila actual
+  var fila = document.getElementById(id); // Utiliza el ID proporcionado directamente
 
-  // Obtener el número después del guion en el id
-  var numero = id.split('-')[1];
+  // Obtén la letra de acción del ID
+  var accion = id.slice(-1);
 
-  if (numero === '1') {
-    // Si el número es 1, es para aprobar
-    // Desactivar el botón de rechazar en la misma fila
-    var equisd = fila.querySelector('.rechazar img');
-    equisd.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true';
+  if (accion === 'A') {
+      // Si la acción es 'A' (Aprobar)
+      // Desactiva el botón de Rechazar en la misma fila
+      var equisd = document.getElementById(id.replace("A", "R")).getElementsByTagName('img')[0];
+      equisd.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true';
 
-    // Cambiar el estado del botón de aprobar
-    img.src = (img.src.includes('Shi_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true';
-  } else if (numero === '0') {
-    // Si el número es 0, es para rechazar
-    // Desactivar el botón de aprobar en la misma fila
-    var palomita = fila.querySelector('.aprobar img');
-    palomita.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
+      // Cambia el estado del botón de Aprobar
+      img.src = (img.src.includes('Shi_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true';
+  } else if (accion === 'R') {
+      // Si la acción es 'R' (Rechazar)
+      // Desactiva el botón de Aprobar en la misma fila
+      var palomita = document.getElementById(id.replace("R", "A")).getElementsByTagName('img')[0];
+      palomita.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
 
-    // Cambiar el estado del botón de rechazar
-    img.src = (img.src.includes('%C3%91o_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true';
+      // Cambia el estado del botón de Rechazar
+      img.src = (img.src.includes('%C3%91o_Color.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true';
   }
 }
+*/
+function toggleEstado(id, accion) {
+  var boton = document.getElementById(id);
+  var img = boton.querySelector('img');
+  var filaId = boton.dataset.filaId;
+
+  // Desactivar el otro botón cuando uno está activo
+  var otroBotonId = (accion === 'A') ? filaId + '-R' : filaId + '-A';
+  var otroBoton = document.getElementById(otroBotonId);
+  var imgOtroBoton = otroBoton.querySelector('img');
+
+  // Verifica si el otro botón está activo y lo desactiva
+  if (imgOtroBoton.src.includes('Color')) {
+    imgOtroBoton.src = (accion === 'A') ?
+      'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' :
+      'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
+  }
+
+  // Cambia el estado del botón de acuerdo con la acción
+  img.src = (accion === 'A') ?
+    (img.src.includes('Shi_Color.png') ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true') :
+    (img.src.includes('%C3%91o_Color.png') ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true');
+
+  // Si es en el div "celu", actualiza la imagen en la tabla
+  if (boton.closest('#celu')) {
+    var imgTabla = document.getElementById(filaId + '-' + accion).querySelector('img');
+    imgTabla.src = img.src;
+
+    // Verificar si es el botón de rechazar en el "celu" y actualizar la imagen del otro botón en la tabla
+    if (accion === 'R') {
+      var otroBotonTabla = document.getElementById(filaId + '-A').querySelector('img');
+      otroBotonTabla.src = (img.src.includes('%C3%91o_Color.png')) ?
+        'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true' :
+        'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true';
+
+      // Actualizar también la imagen en el div "celu" solo si es el botón de rechazar
+      if (otroBotonId.includes('-R')) {
+        var imgOtroBotonCelu = document.getElementById('celu-' + filaId + '-A').querySelector('img');
+        imgOtroBotonCelu.src = otroBotonTabla.src;
+      }
+    }
+  } else {
+    // Si es en la tabla, actualiza la imagen en el div "celu"
+    var imgCelu = document.getElementById('celu-' + filaId + '-' + accion);
+    imgCelu.querySelector('img').src = img.src;
+
+    // Desactivar el otro botón en el div "celu" cuando uno está activo
+    var otroBotonCeluId = (accion === 'A') ? 'celu-' + filaId + '-R' : 'celu-' + filaId + '-A';
+    var otroBotonCelu = document.getElementById(otroBotonCeluId);
+    var imgOtroBotonCelu = otroBotonCelu.querySelector('img');
+
+    // Verifica si el otro botón en el div "celu" está activo y lo desactiva
+    if (imgOtroBotonCelu.src.includes('Color')) {
+      imgOtroBotonCelu.src = (accion === 'A') ?
+        'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true' :
+        'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true';
+    }
+  }
+  // Agrega o quita la clase en la fila según la acción
+  var fila = document.getElementById(filaId);
+  fila.classList.remove('recibida', 'aprobada', 'desaprobada');
+  fila.classList.add(accion.toLowerCase());
+}
+
+function mostrarSolicitudes(estado) {
+  var todasLasFilas = document.querySelectorAll(".solicitud-row");
+  todasLasFilas.forEach(function (fila) {
+    var esRecibida = !fila.classList.contains("aprobada") && !fila.classList.contains("desaprobada");
+    
+    if ((estado === "recibida" && esRecibida) || (estado === "aprobada" && fila.classList.contains("aprobada")) || (estado === "desaprobada" && fila.classList.contains("desaprobada"))) {
+      fila.style.display = "table-row";
+    } else {
+      fila.style.display = "none";
+    }
+  });
+}
+
+// Llama a esta función cuando se haga clic en los botones de filtrado
+function filtrarSolicitudes(estado) {
+  // Restablecer la visualización de todas las filas antes de aplicar el filtro
+  var todasLasFilas = document.querySelectorAll(".solicitud-row");
+  todasLasFilas.forEach(function (fila) {
+    fila.style.display = "table-row";
+  });
+
+  mostrarSolicitudes(estado);
+}
+
+// Ejemplo de llamada al hacer clic en un botón de filtrado
+document.getElementById("botonAprobadas").addEventListener("click", function () {
+  filtrarSolicitudes("aprobada");
+});
+
+document.getElementById("botonDesaprobadas").addEventListener("click", function () {
+  filtrarSolicitudes("desaprobada");
+});
+
+document.getElementById("botonRecibidas").addEventListener("click", function () {
+  filtrarSolicitudes("recibida");
+});
 /*
 function toggleEstado(boton, estado) {
   var fila = boton.closest('tr'); // Obtener la fila actual
@@ -184,7 +162,7 @@ function toggleEstado(boton, estado) {
   }
 }
 */
-function showDetails() {
+function showDetails(id) {
   // Oculta la tabla
   document.querySelector("#pub table").style.display = "none";
 
