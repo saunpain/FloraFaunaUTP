@@ -91,28 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
               opcion.classList.toggle('visible');
           });
       });
-
-      boton.addEventListener('mouseover', function () {
-          if (!botonAbierto || botonAbierto !== this) {
-              var opciones = this.nextElementSibling.querySelectorAll('.opciones');
-
-              opciones.forEach(function (opcion) {
-                  opcion.classList.remove('invisible');
-                  opcion.classList.add('visible');
-              });
-          }
-      });
-
-      boton.addEventListener('mouseout', function () {
-          if (!botonAbierto || botonAbierto !== this) {
-              var opciones = this.nextElementSibling.querySelectorAll('.opciones');
-
-              opciones.forEach(function (opcion) {
-                  opcion.classList.remove('visible');
-                  opcion.classList.add('invisible');
-              });
-          }
-      });
   });
 
   // Cierra las opciones al hacer clic fuera de los botones
@@ -132,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /*Funciones para editar NombreCientífico*/
 
 function editarComentario() {
+  var contenedor = document.getElementById("contenedorEdicion")
   var comentarioTextoElemento = document.getElementById("comentarioTexto");
   var comentarioInput = document.getElementById("comentarioInput");
   var btnEnviar = document.getElementById("guardar");
@@ -140,15 +119,75 @@ function editarComentario() {
   // Guardar el valor original en el atributo data-original-value
   comentarioInput.setAttribute('data-original-value', comentarioTextoElemento.innerText);
 
+  contenedor.classList.remove('hidden');
   comentarioTextoElemento.style.display = "none";
-  comentarioInput.style.display = "inline-block";
+  comentarioInput.style.display = "block";
   comentarioInput.value = comentarioTextoElemento.innerText;
   comentarioInput.removeAttribute("disabled"); // Habilitar el input
-  btnEnviar.style.display = "inline-block";
-  btnCancel.style.display = "inline-block";
+  btnEnviar.style.display = "block";
+  btnCancel.style.display = "block";
 
   comentarioInput.focus();
 }
+
+/*Funcion que permite seleccionar el boton guardar al que se le esta haciendo hover*/ 
+/*GUARDAR*/
+  document.addEventListener('DOMContentLoaded', function() {
+    var botonesGuardar = document.querySelectorAll('.guardar');
+
+    botonesGuardar.forEach(function(boton) {
+        boton.addEventListener('mouseover', function() {
+            hoverGuardar();/*Una vez identificado el boton se llama la funcion para mostrar u ocultar el texto*/ 
+        });
+
+    });
+});
+
+/*Función para mostrar u ocultar el texto del boton*/ 
+function hoverGuardar() {
+  var botonGuardar = document.querySelector(".cambioG");
+
+  botonGuardar.classList.remove('hidden');
+
+  botonGuardar.addEventListener('mouseleave', function () {
+      botonGuardar.classList.add('hidden');
+  });
+
+  botonGuardar.addEventListener('click', function () {
+    botonGuardar.classList.add('hidden');
+});
+}
+
+
+/*Funcion que permite seleccionar el boton cancelar al que se le esta haciendo hover*/ 
+/*CANCELAR*/
+document.addEventListener('DOMContentLoaded', function() {
+  var botonesCancelar = document.querySelectorAll('.cancelar');
+
+  botonesCancelar.forEach(function(boton) {
+      boton.addEventListener('mouseover', function() {
+          hoverCancelar();/*Una vez identificado el boton se llama la funcion para mostrar u ocultar el texto*/ 
+      });
+
+  });
+});
+
+/*Función para mostrar u ocultar el texto del boton*/ 
+function hoverCancelar() {
+var botonCancelar = document.querySelector(".cambioC");
+
+botonCancelar.classList.remove('hidden');
+
+botonCancelar.addEventListener('mouseleave', function () {
+    botonCancelar.classList.add('hidden');
+});
+
+botonCancelar.addEventListener('click', function () {
+  botonCancelar.classList.add('hidden');
+});
+
+}
+
 
 function guardarCambios() {
   var comentarioTextoElemento = document.getElementById("comentarioTexto");

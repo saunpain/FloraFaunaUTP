@@ -229,16 +229,50 @@
                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
                         <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
                     </div>
-                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Nasua</span>
+
+
+                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: <span id="comentarioTexto">Nasua</span> <button> <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" class="pl"> </button> </span>
+                    <input type="text" id="comentarioInput" class="hidden h-6 w-80 mt-3 ml-2"/>
+
+                <!--contenedor de edicion-->
+
+                    <div id="contenedorEdicion" class="flex hidden absolute mt-10">
+                        <button id="guardar" class="guardar relative" onclick="guardarCambios()">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-12 h-12">
+                            <span class="cambioG hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
+                        </button>
+                        <button id="cancelar" class="cancelar relative ml-4" onclick="cancelarEdicion()" onmouseover="hoverCambios()">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-12 h-12">
+                            <span class="cambioC hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
+                        </button>
+                    </div>
+                <!--Fin contenedor de edicion-->
+        
                     <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Gato solo</span>
                 </div>
+
+
+
+                <!--Fin contenedor de edicion-->
+
                 <hr class="mt-2  ml-10 mr-10">
                 <div class="mt-2 mb-2">
                     <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
                     <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Nasua, llamados coatíes o pizotes, ​ es un género con dos especies de pequeños mamíferos omnívoros americanos de la familia de los prociónidos.​ Habita desde el sur de Estados Unidos hasta el norte de Argentina, Paraguay y Uruguay. Es un animal social y puede congregarse en grupos de más de 50 individuos. </p>
+                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> Nasua, llamados coatíes o pizotes, ​ es un género con dos especies de pequeños mamíferos omnívoros americanos de la familia de los prociónidos.​ Habita desde el sur de Estados Unidos hasta el norte de Argentina, Paraguay y Uruguay. Es un animal social y puede congregarse en grupos de más de 50 individuos.</p>
+                    <button class="flex items-center hover:bg-[#205748] ml-6 rounded px-4 py-2">
+                        <span class="textito text-justify text-gray-100 md:ml-2 lg:ml-0 ml-2 xl:ml-2 xl:mr-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-1">
+                            Editar
+                        </span>
+                    
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" class="ml-2 mt-1">
+                    </button>
+                    
+                    
+                    
+                    
                 </div>
-    
+                
                 <hr class="mt-2 ml-10 mr-10">
                 <div class="mt-2 mb-2">
                     <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
