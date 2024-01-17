@@ -97,3 +97,4 @@ this.querySelector('.absolute').classList.remove('hidden');
 document.getElementById('pub').addEventListener('mouseleave', function () {
 this.querySelector('.absolute').classList.add('hidden');
 });
+

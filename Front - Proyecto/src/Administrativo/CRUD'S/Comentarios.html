@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar Estudiantes</title>
+    <title>Administrar-Comentario</title>
     <link rel="stylesheet" href="output.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -104,7 +104,7 @@
                 <div class="">
                     <button onclick="añadirRegistro()" class="hover:bg-[#7EBBAA] bg-[#276B58] text-white rounded px-2 py-0.5 md:px-4 items-center flex">
                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" class="w-5 m-1">
-                        <p class="hidden md:block">Añadir Estudiante</p>
+                        <p class="hidden md:block">Añadir Comentario</p>
                         <p class="block md:hidden text-sm">Añadir</p>
                     </button>
                 </div>
@@ -128,7 +128,7 @@
                         </div>
                     </a>
                     <a href="Estudiante.html" class="">
-                        <div class="p-2 bg-[#7EBBAA] flex items-center rounded-md">
+                        <div class="p-2 hover:bg-[#7EBBAA] flex items-center rounded-md">
                             <img class="w-4 ml-1" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/estudiantes_cruds.png?raw=true" alt="icono-estudiante">
                             <p class="ml-5">Estudiantes</p>
                         </div>
@@ -164,7 +164,7 @@
                         </div>
                     </a>
                     <a href="Comentarios.html" class="">
-                        <div class="p-2 hover:bg-[#7EBBAA] flex items-center rounded-md">
+                        <div class="p-2 bg-[#7EBBAA] flex items-center rounded-md">
                             <img class="w-6" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/comentarios_cruds.png?raw=true" alt="icono-estudiante">
                             <p class="ml-4">Comentarios</p>
                         </div>
@@ -180,7 +180,7 @@
             <div class="lg:block hidden"> <!--Contendor de filtro y botones de acciones-->
                 <div class="flex pl-7 xl:pl-5 lg:pl-5 w-full mt-[7rem] justify-around items-center">
                     <h2 class="font-roboto text-[#302f2f] text-lg xl:text-[1.7rem] lg:text-[1.6rem]">
-                        Estudiantes
+                        Comentarios
                     </h2>
                     <div class="flex items-center" id="busqueda">
                         <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[18rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
@@ -190,7 +190,7 @@
                     <div class="ml-10 mr-10">
                         <button onclick="añadirRegistro()" class="hover:bg-[#7EBBAA] bg-[#276B58] text-white rounded px-2 py-2 md:px-4 lg:px-4 xl:px-4 2xl:px-5 items-center flex">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" class="w-5 m-1 mr-2">
-                            <p class="">Añadir Estudiante</p>
+                            <p class="">Añadir Comentario</p>
                         </button>
                     </div>
                 </div>
@@ -202,21 +202,17 @@
                     <thead>
                         <tr class="h-12">
                             <!-- Encabezados de la tabla -->
-                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Foto de perfil</th>
-                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Código de usuario</th>
-                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Nombre de usuario</th>
-                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Correo de usuario</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Código de Comentario</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Comentario</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Código de Publicacion</th>
                             <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700"></th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">33333</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-52 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">99999</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="botoncitos flex items-center">
                                     <button onclick="hacerEditable('00001')">
@@ -229,12 +225,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00002">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">55555</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">88888</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="botoncitos flex items-center">
                                     <button onclick="hacerEditable('00002')">
@@ -247,12 +240,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00003">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-sm justify-center mx-auto">
-                            </td>
                             <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">56789</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="flex items-center">
                                     <button onclick="hacerEditable('00003')">
@@ -265,12 +255,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00004">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
                             <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">56789</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="flex items-center">
                                     <button onclick="hacerEditable('00004')">
@@ -283,12 +270,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00005">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
                             <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">56789</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="flex items-center">
                                     <button onclick="hacerEditable('00005')">
@@ -301,12 +285,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00006">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
                             <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">56789</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="flex items-center">
                                     <button onclick="hacerEditable('00006')">
@@ -319,12 +300,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00007">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-sm justify-center mx-auto">
-                            </td>
                             <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">56789</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="flex items-center">
                                     <button onclick="hacerEditable('00007')">
@@ -337,12 +315,9 @@
                             </td>
                         </tr>
                         <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00008">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
                             <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
+                            <td class="text-justify text-balance xl:px-8 lg:px-4 py-2 text-gray-700 max-w-54 break-words">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
+                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">56789</td>
                             <td class="xl:px-8 lg:px-4">
                                 <div class="flex items-center">
                                     <button onclick="hacerEditable('00008')">
@@ -376,7 +351,7 @@
             <p class="mt-3">Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="Estudiante.js"></script>
+    <script src="Comentario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </body>
 </html>

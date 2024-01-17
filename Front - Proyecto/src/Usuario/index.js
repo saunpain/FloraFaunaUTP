@@ -235,3 +235,4 @@ function cancelarEdicion() {
   // Eliminar el atributo data-original-value
   comentarioInput.removeAttribute('data-original-value');
 }
+
