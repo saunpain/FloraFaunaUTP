@@ -70,17 +70,29 @@
             </div>
                 
             <div class="flex items-center" id="busqueda"> <!--Barra de busqueda-->
-            <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[30rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
-            <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
-            <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
+                <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[30rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
+                <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
+                <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
             </div>
             
-            <div class="flex justify-around items-center">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/administrador.png?raw=true" class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px]" alt="user icon">
-            </div>
+            <button id="mostrarPerfil">
+                <a href="">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
+                </a>
+            </button>
+        
         </div>
     </header>
-    <nav class="fixed lg:top-[5.4rem] top-[3.6rem] md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
+    <div id="perfil" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-Perfil" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="userProfile-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
+                
+            </div>
+            
+        </div>
+    </div>
+    <nav class="fixed lg:top-[5.4rem] top-[4.7rem] md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
         <div class="flex md:text-[16px] text-[12.5px] justify-around mt-2 mb-2 h-[2.5rem] md:h-auto">
             <a href="/src/Administrativo/Admin - Inicio.html" class="hover:bg-[#D7EFFF] md:p-1 md:px-4 rounded-[50px] lg:block hidden">
                 <div class="flex items-center">
@@ -96,54 +108,71 @@
         <hr class="">
     </nav>
     
-    <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
+    <aside id="aside" class="fixed top-[4rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
-                <a href="#" class="ml-2 text-lg font-bold">Inicio</a>
+                <a href="Admin - Inicio.html" class="ml-2 text-lg font-bold">Inicio</a>
             </div>
-            <div class="flex items-center">
-                <a href="#">Editar Perfil</a>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit_fill.png?raw=true" alt="edit" class="ml-3">
-            </div>
+            
             <div class="grid rounded-[10px] p-1">
                 <h3 class="font-bold">Categorias</h3>
                 <ul class="ml-2">
-                    <li class="mb-3">
-                        <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Flora</a>
+                    <li>
+                        <button onclick="menuCategoria('flora')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                            Flora
+                        </button>
                         <div>
                             <ul class="grid ml-4">
                                 <li>
-                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#defdfb]">Hierbas</a>
+                                    <button onclick="menuCategoria('hierbas')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                        Hierbas
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#defdfb]">Planta</a>
+                                    <button onclick="menuCategoria('planta')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                        Planta
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#defdfb]">Árboles</a>
+                                    <button onclick="menuCategoria('arboles')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                        Árboles
+                                    </button>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <hr>
                     <li class="mt-3 mb-3">
-                        <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Fauna</a>
-                        <div>
-                            <ul class="grid ml-4">
-                                <li>
-                                    <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Aves</a>
-                                </li>
-                                <li>
-                                    <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Reptiles</a>
-                                </li>
-                                <li>
-                                    <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Artrópodos</a>
-                                </li>
-                                <li>
-                                    <a href=""  class="hover:underline cursor-pointer hover:text-[#defdfb]">Mamíferos</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <li>
+                            <button onclick="menuCategoria('fauna')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                Fauna
+                            </button>
+                            <div>
+                                <ul class="grid ml-4">
+                                    <li>
+                                        <button onclick="menuCategoria('aves')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Aves
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onclick="menuCategoria('reptiles')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Reptiles
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onclick="menuCategoria('artropodos')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Artrópodos
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onclick="menuCategoria('mamiferos')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Mamíferos
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </li>
                 </ul>
             </div>

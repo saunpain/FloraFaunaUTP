@@ -121,48 +121,65 @@
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
                 <a href="Usuario - Inicio.html" class="ml-2 text-lg font-bold">Inicio</a>
             </div>
-            <div class="flex items-center">
-                <a href="#">Editar Perfil</a>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit_fill.png?raw=true" alt="edit" class="ml-3">
-            </div>
+            
             <div class="grid rounded-[10px] p-1">
                 <h3 class="font-bold">Categorias</h3>
                 <ul class="ml-2">
-                    <li class="mb-3">
-                        <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Flora</a>
+                    <li>
+                        <button onclick="menuCategoria('flora')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                            Flora
+                        </button>
                         <div>
                             <ul class="grid ml-4">
                                 <li>
-                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#defdfb]">Hierbas</a>
+                                    <button onclick="menuCategoria('hierbas')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                        Hierbas
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#defdfb]">Planta</a>
+                                    <button onclick="menuCategoria('planta')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                        Planta
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline cursor-pointer hover:text-[#defdfb]">Árboles</a>
+                                    <button onclick="menuCategoria('arboles')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                        Árboles
+                                    </button>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <hr>
                     <li class="mt-3 mb-3">
-                        <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Fauna</a>
-                        <div>
-                            <ul class="grid ml-4">
-                                <li>
-                                    <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Aves</a>
-                                </li>
-                                <li>
-                                    <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Reptiles</a>
-                                </li>
-                                <li>
-                                    <a href="" class="hover:underline cursor-pointer hover:text-[#defdfb]">Artrópodos</a>
-                                </li>
-                                <li>
-                                    <a href=""  class="hover:underline cursor-pointer hover:text-[#defdfb]">Mamíferos</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <li>
+                            <button onclick="menuCategoria('fauna')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                Fauna
+                            </button>
+                            <div>
+                                <ul class="grid ml-4">
+                                    <li>
+                                        <button onclick="menuCategoria('aves')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Aves
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onclick="menuCategoria('reptiles')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Reptiles
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onclick="menuCategoria('artropodos')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Artrópodos
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button onclick="menuCategoria('mamiferos')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
+                                            Mamíferos
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </li>
                 </ul>
             </div>
@@ -206,7 +223,7 @@
                                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" alt="">
                             </button>
                             <div class="absolute bg-white border rounded -mt-3 -ml-36" x-show="open" @click.away="open = false">
-                                <button class="block w-[11rem]">
+                                <button class="block w-[11rem]" onclick="editarComentario('1')">
                                     <a class="flex px-2 py-1 text-sm">
                                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
                                         <p>Editar comentario</p>
@@ -215,7 +232,24 @@
                             </div>
                         </div>
                     </div>
-                    <p class="mt-2">Yo los he visto cerca del estacionamiento, generalmente salen en la mañana.</p>
+                    <span id="comentario-1" class="mt-2">Yo los he visto cerca del estacionamiento, generalmente salen en la mañana.</span>
+                    <input type="text" id="input-1" class="hidden w-full mb-2" disabled/>
+                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button id="guardar-1" class="hidden focus:outline-none" onclick="guardarCambios('1')">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar">
+                        </button>
+                        <div class="absolute bg-white border rounded -ml-5 w-[8rem] p-1" x-show="open" @click.away="open = false">
+                            <p>Guardar cambios</p>
+                        </div>
+                    </div>
+                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button id="cancelar-1" class="hidden focus:outline-none" onclick="cancelarEdicion('1')">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar">
+                        </button>
+                        <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
+                            <p>Cancelar</p>
+                        </div>
+                    </div>
                 </div>
                 <button class="ml-2 mr-2">
                     <div class="mt-2 mb-2 border-slate-300 border-[1.5px] rounded-md max-w-[40rem]">

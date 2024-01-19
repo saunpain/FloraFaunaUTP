@@ -26,7 +26,7 @@ function mostrarPerfil() {
     .then(response => response.text())
     .then(data => {
       perfilContent.innerHTML = data;
-      overlay.style.display = 'block'; // Mostrar la capa oscura
+      overlay.style.display = 'block';
       
       perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
     })
@@ -40,7 +40,7 @@ function cerrarPerfil() {
   var overlay = document.getElementById('perfil');
   var perfilContainer = document.getElementById('contenedor-Perfil');
 
-  overlay.style.display = 'none'; // Ocultar la capa oscura
+  overlay.style.display = 'none';
   perfilContainer.style.display = 'none'; // Ocultar el cuadro de perfil
 }
 
@@ -51,35 +51,6 @@ document.getElementById('mostrarPerfil').addEventListener('click', function(even
   mostrarPerfil();
 });
 
-
-function togglePasswordVisibility() {
-  var passwordDisplay = document.getElementById("passwordDisplay");
-  var passwordInput = document.getElementById("passwordInput");
-  var toggleIcon = document.getElementById("togglePassword");
-
-  if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/visible%20pass.png?raw=true";
-      toggleIcon.alt = "Ocultar contraseña";
-  } else {
-      passwordInput.type = "password";
-      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/hidden%20pass.png?raw=true";
-      toggleIcon.alt = "Mostrar contraseña";
-  }
-}
-
-function toggleEditMode() {
-  var passwordDisplay = document.getElementById("passwordDisplay");
-  var passwordInput = document.getElementById("passwordInput");
-
-  passwordDisplay.classList.toggle("hidden");
-  passwordInput.classList.toggle("hidden");
-
-  if (!passwordInput.classList.contains("hidden")) {
-      passwordInput.value = passwordDisplay.textContent;
-      passwordInput.focus();
-  }
-}
 
 function mostrarImagen() {
   var input = document.getElementById('imagen');
@@ -178,11 +149,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function editarComentario() {
-  var comentarioTextoElemento = document.getElementById("comentarioTexto");
-  var comentarioInput = document.getElementById("comentarioInput");
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
+function editarComentario(id) {
+  var comentarioTextoElemento = document.getElementById("comentario-" + id);
+  var comentarioInput = document.getElementById("input-" + id);
+  var btnEnviar = document.getElementById("guardar-" + id);
+  var btnCancel = document.getElementById("cancelar-" + id);
 
   // Guardar el valor original en el atributo data-original-value
   comentarioInput.setAttribute('data-original-value', comentarioTextoElemento.innerText);
@@ -197,11 +168,11 @@ function editarComentario() {
   comentarioInput.focus();
 }
 
-function guardarCambios() {
-  var comentarioTextoElemento = document.getElementById("comentarioTexto");
-  var comentarioInput = document.getElementById("comentarioInput");
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
+function guardarCambios(id) {
+  var comentarioTextoElemento = document.getElementById("comentario-" + id);
+  var comentarioInput = document.getElementById("input-" + id);
+  var btnEnviar = document.getElementById("guardar-" + id);
+  var btnCancel = document.getElementById("cancelar-" + id);
 
   comentarioTextoElemento.innerText = comentarioInput.value;
   comentarioTextoElemento.style.display = "inline-block";
@@ -214,11 +185,11 @@ function guardarCambios() {
   comentarioInput.removeAttribute('data-original-value');
 }
 
-function cancelarEdicion() {
-  var comentarioTextoElemento = document.getElementById("comentarioTexto");
-  var comentarioInput = document.getElementById("comentarioInput");
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
+function cancelarEdicion(id) {
+  var comentarioTextoElemento = document.getElementById("comentario-" + id);
+  var comentarioInput = document.getElementById("input-" + id);
+  var btnEnviar = document.getElementById("guardar-" + id);
+  var btnCancel = document.getElementById("cancelar-" + id);
 
   // Obtener el valor original del atributo data-original-value
   var originalValue = comentarioInput.getAttribute('data-original-value');
@@ -236,3 +207,56 @@ function cancelarEdicion() {
   comentarioInput.removeAttribute('data-original-value');
 }
 
+function editarUsuario(id) {
+  var usuario = document.getElementById(id);
+  var nuevoNombre = document.getElementById('input');
+  var btnEnviar = document.getElementById("guardar");
+  var btnCancel = document.getElementById("cancelar");
+  
+  nuevoNombre.setAttribute('data-original-value',usuario.innerText);
+  usuario.style.display = "none";
+  nuevoNombre.style.display = "inline-block";
+  nuevoNombre.value = usuario.innerText;
+  nuevoNombre.removeAttribute("disabled");
+  btnEnviar.style.display = "inline-block";
+  btnCancel.style.display = "inline-block";
+
+  nuevoNombre.focus();
+}
+
+function guardarNuevoNombre(id) {
+  var usuario = document.getElementById(id);
+  var nuevoNombre = document.getElementById('input');
+  var btnEnviar = document.getElementById("guardar");
+  var btnCancel = document.getElementById("cancelar");
+  
+  usuario.innerText = nuevoNombre.value;
+  usuario.style.display = "inline-block";
+  usuario.style = "text-center";
+  nuevoNombre.style.display = "none";
+  nuevoNombre.setAttribute("disabled", true);
+
+  btnEnviar.style.display = "none";
+  btnCancel.style.display = "none";
+  
+  nuevoNombre.removeAttribute('data-original-value');
+}
+
+function cancelarNuevoNombre(id){
+  var usuario = document.getElementById(id);
+  var nuevoNombre = document.getElementById('input');
+  var btnEnviar = document.getElementById("guardar");
+  var btnCancel = document.getElementById("cancelar");
+  
+  var valorInicial = nuevoNombre.getAttribute('data-original-value');
+  nuevoNombre.value = valorInicial;
+
+  usuario.style.display = "inline-block";
+  usuario.style = "text-center";
+  nuevoNombre.style.display = "none";
+  nuevoNombre.setAttribute("disabled", true); // Deshabilitar el input
+  btnEnviar.style.display = "none";
+  btnCancel.style.display = "none";
+
+  nuevoNombre.removeAttribute('data-original-value');
+}
