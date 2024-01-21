@@ -75,7 +75,7 @@
 
     </style>
 </head>
-<body class="bg-white m-0 p-0 w-full h-full box-border">
+<body class="bg-white m-0 p-0 w-full h-full box-border" onload="ObtenerPublicaciones()">
     <header class="flex items-center justify-between px-4 py-2 w-full lg:bg-[#276B58] bg-white fixed z-[10]">
         <div class="w-full">
             <div class="flex items-center md:ml-4">
@@ -192,34 +192,18 @@
                     <thead>
                         <tr class="h-12">
                             <!-- Encabezados de la tabla -->
-                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Foto</th>
                             <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">ID de publicación</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">ID flora</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">ID fauna</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">ID estudiante</th>
                             <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Título de publicación</th>
                             <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Lugar</th>
-                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Fecha</th>
+                            <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700">Fecha de publicación</th>
                             <th class="text-center px-8 py-2 whitespace-nowrap text-gray-700"></th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-break-spaces text-gray-700 max-w-40">Titulo de publicacion random</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Campus LV</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">12/02/2024</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>

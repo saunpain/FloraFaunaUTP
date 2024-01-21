@@ -57,10 +57,10 @@ public class EstudianteDb {
                 + e.getPerfil_estudiante() + "')";
 
             resultado = stmt.executeUpdate(query);
-
+            stmt.close();
             return resultado;
         } catch (Exception ex){
-
+            System.out.println(ex);
         }
         return resultado;
     }
@@ -77,7 +77,7 @@ public class EstudianteDb {
                 + e.getPerfil_estudiante() + "')";
 
             resultado = stmt.executeUpdate(query);
-
+            stmt.close();
             return resultado;
         } catch (Exception ex){
 

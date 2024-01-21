@@ -1,3 +1,201 @@
+let baseUrl = "http://localhost:8080"
+let admin = []
+
+function ObtenerAdministrativos(){
+    fetch(baseUrl + "/administrativo/all").then( res => {
+        res.json().then(json => {
+            admin = json
+            console.log(admin)
+            ImprimirAdministrativos(admin)
+        })
+    })
+}
+
+function GuardarAdministrativo() {
+    let data = {
+        nombre_admin: document.getElementById("input2").value,
+        correo_admin: document.getElementById("input3").value,
+    }
+
+    console.log(data)
+
+    fetch(baseUrl + "/administrativo", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(res => {
+        console.log(res)
+        ObtenerAdministrativos()
+    })
+}
+
+// Función para actualizar estudiantes
+function ActualizarAdministrativo(id) {
+    let data = {
+        id_admin:id,
+        nombre_admin: document.getElementById('input2').value,
+        correo_admin: document.getElementById('input3').value,
+    };
+
+    console.log('Datos a enviar:', data); // Imprimir datos en la consola
+
+    fetch(baseUrl + "/administrativo", {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    }).then(res => {
+        console.log(res)
+        ObtenerAdministrativos();
+    })
+}
+
+function EliminarAdministrativo(id){
+    fetch(baseUrl + "/administrativo/" + id, {method: "Delete"}).then(res =>{
+        console.log(res)
+        ObtenerAdministrativos()
+    })
+}
+
+function ImprimirAdministrativos(admin){
+    let contenedor = document.getElementById("cuerpo-tabla")
+    contenedor.innerHTML = ""
+
+    admin.forEach(a => {
+        contenedor.innerHTML += MapearAdministrativos(a)
+    })
+}
+
+function MapearAdministrativos(a){
+    return `<tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="${a.id_admin}">
+    <td class="py-2 xl:px-8 lg:px-4">
+        <img src="${a.perfil_admin}" class="w-14 h-16 rounded-md justify-center mx-auto">
+    </td>
+    <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${a.id_admin}</td>
+    <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${a.nombre_admin}</td>
+    <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${a.correo_admin}</td>
+    <td class="xl:px-8 lg:px-4">
+        <div class="botoncitos flex items-center">
+            <button onclick="hacerEditable('${a.id_admin}')">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
+            </button>
+            <button onclick= "EliminarAdministrativo('${a.id_admin}')" class="xl:ml-3 lg:ml-2">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
+            </button>
+        </div>
+    </td>
+</tr>`
+}
+
+function añadirRegistro() {
+    var tabla = document.getElementById("añadir_datos");
+    var nuevaCelda = tabla.insertRow(1);
+    var ultimaColumna = tabla.rows[0].cells.length - 1; // Índice de la última columna
+
+    for (var i = 0; i < tabla.rows[0].cells.length; i++) {
+        var nueva = nuevaCelda.insertCell(i);
+
+        if (i === 0 || i === 1) {
+            var registro = document.createElement('input');
+            registro.setAttribute("disabled", true);
+            registro.className = "text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700"; 
+            nueva.appendChild(registro);
+
+        } else if (i === ultimaColumna) {
+            var btnEnviar = document.createElement('button');
+            var iconEnviar = document.createElement('img');
+            iconEnviar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true';
+            iconEnviar.className = "w-[25px] h-[23px] ml-[6px] mt-[4px]";
+
+            var btnEliminar = document.createElement('button');
+            var iconEliminar = document.createElement('img');
+            iconEliminar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cancelar.png?raw=true';
+            iconEliminar.className = "w-[25px] h-[23px] lg:ml-[1.5rem] ml-[2px] mt-[4px]";
+
+            btnEnviar.appendChild(iconEnviar);
+            btnEnviar.addEventListener('click', function () {
+                GuardarAdministrativo();
+            });
+
+            btnEliminar.appendChild(iconEliminar);
+            btnEliminar.addEventListener('click', function () {
+                tabla.deleteRow(nuevaCelda.rowIndex);
+            });
+            nueva.appendChild(btnEliminar);
+            nueva.appendChild(btnEnviar);
+        } else {
+            
+            var registro = document.createElement('input');
+            registro.type = "text";
+            registro.className = "text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700";
+            registro.id = 'input' + i;
+            nueva.appendChild(registro);
+        }
+    }
+    nuevaCelda.cells[0].querySelector('input').focus();
+}
+
+function hacerEditable(id) {
+    // Obtiene el id de la fila donde se realizarán cambios
+    const fila = document.getElementById(id);
+
+    // Crear celdas de entrada para las celdas deseadas en la fila
+    const celdas = fila.getElementsByTagName('td');
+
+    for (let i = 2; i < celdas.length - 1; i++) { // a partir de la tecrcera celda, las priemras dos no son editables
+        var cell = celdas[i];
+        
+        const input = document.createElement('input');
+        const valorOriginal = cell.textContent;
+        cell.setAttribute('data-original-value', valorOriginal);
+        input.type = 'text';
+        input.value = valorOriginal;
+
+        input.id = 'input' + i;
+        cell.innerHTML = '';
+        cell.appendChild(input);
+
+    }
+
+    // Reemplazar el botón de editar por botones de enviar y deshacer
+    const botones = celdas[celdas.length - 1];
+    const enviar = document.createElement('button');
+    enviar.innerHTML = '<img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true" class="w-[18px] h-[18px] mt-[2px]">';
+    enviar.onclick = function () {
+        const botones = celdas[celdas.length - 1];
+        botones.innerHTML = '<div class="flex items-center"><button onclick="hacerEditable(\'' + id + '\')"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none"></button><button class="xl:ml-3 lg:ml-2"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none"></button></div>';
+        ActualizarAdministrativo(id); // Pasa el id como parámetro
+    };
+
+    const deshacer = document.createElement('button');
+    deshacer.innerHTML = '<img src= "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cancelar.png?raw=true" class="w-[18px] h-[18px] ml-[2px]">';
+    deshacer.onclick = function () {
+        //Realiza la función de deshacer cambios al tocar el boton deshacer
+        DeshacerCambios(id, celdas);
+    };
+    botones.innerHTML = '';
+    botones.appendChild(enviar);
+    botones.appendChild(deshacer);
+}
+
+// Función para quitar el modo edición y deshacer los cambios realizados
+function DeshacerCambios(id, celdas) {
+    // Restaurar los valores originales en las celdas
+    for (let i = 2; i < celdas.length - 1; i++) {
+        var cell = celdas[i];
+        var valorOriginal = cell.getAttribute('data-original-value');
+        cell.innerHTML = valorOriginal;
+        cell.removeAttribute('data-original-value');
+    }
+
+    // Reemplazar los botones de enviar y deshacer por el botón de editar original
+    const botones = celdas[celdas.length - 1];
+    botones.innerHTML = '<div class="flex items-center"><button onclick="hacerEditable(\'' + id + '\')"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none"></button><button class="xl:ml-3 lg:ml-2"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none"></button></div>';
+}
+
 function mostrarAside() {
     var body = document.body;
     var overlay = document.getElementById('aside-active');
@@ -38,113 +236,3 @@ window.addEventListener('resize', function () {
     }
 });
 
-/* Función para añadir celdas a las tablas */
-function añadirRegistro() {
-    var tabla = document.getElementById("añadir_datos");
-    var nuevaCelda = tabla.insertRow(1);
-    var ultimaColumna = tabla.rows[0].cells.length - 1; // Índice de la última columna
-
-    for (var i = 0; i <= ultimaColumna; i++) {
-        var nueva = nuevaCelda.insertCell(i);
-
-        if (i === 0) {
-            var registro = document.createElement('input');
-            registro.setAttribute("disabled", true);
-            registro.className = "text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700";  /* Le da estilo a las celdas agregadas formato texto*/
-            nueva.appendChild(registro);
-
-        } else if (i === ultimaColumna) {
-            var btnEnviar = document.createElement('button');
-            var iconEnviar = document.createElement('img');
-            iconEnviar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true';
-            iconEnviar.className = "w-[25px] h-[23px] ml-[6px] mt-[4px]";
-
-            var btnEliminar = document.createElement('button');
-            var iconEliminar = document.createElement('img');
-            iconEliminar.src = 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cancelar.png?raw=true';
-            iconEliminar.className = "w-[25px] h-[23px] lg:ml-[1.5rem] ml-[2px] mt-[4px]";
-
-            btnEnviar.appendChild(iconEnviar);
-            btnEnviar.addEventListener('click', function () {});
-
-            btnEliminar.appendChild(iconEliminar);
-            btnEliminar.addEventListener('click', function () {
-                tabla.deleteRow(nuevaCelda.rowIndex); /* Elimina la celda creada */
-            });
-            nueva.appendChild(btnEliminar);
-            nueva.appendChild(btnEnviar);
-        } else {
-            var registro = document.createElement('input');
-            registro.type = "text";
-            registro.className = "text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700";  /* Le da estilo a las celdas agregadas formato texto*/
-            nueva.appendChild(registro);
-        }
-    }
-    nuevaCelda.cells[0].querySelector('input').focus();
-  }
-
-
-// Función para hacer editable una fila
-function hacerEditable(id) {
-    // Obtener la fila actual
-    const fila = document.getElementById(id);
-    
-    // Crear celdas de entrada para cada celda en la fila
-    const celdas = fila.getElementsByTagName('td');
-    for (let i = 1; i < celdas.length - 1; i++) {
-        const valorOriginal = celdas[i].textContent;
-        celdas[i].setAttribute('data-original-value', valorOriginal);
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = valorOriginal;
-
-        input.addEventListener('blur', function () {
-            guardarCambios(i, this.value, celdas);
-        });
-
-        celdas[i].innerHTML = '';
-        celdas[i].appendChild(input);
-    }
-
-    // Reemplazar el botón de editar por botones de enviar y deshacer
-    const botones = celdas[celdas.length - 1];
-    const enviar = document.createElement('button');
-    enviar.innerHTML = '<img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true" class="w-[18px] h-[18px] mt-[2px]">';
-    enviar.onclick = function () {
-        // Lógica para guardar los cambios y actualizar la interfaz
-        alert('Cambios enviados');
-        DeshacerCambios(id, celdas);
-    };
-
-    const deshacer = document.createElement('button');
-    deshacer.innerHTML = '<img src= "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cancelar.png?raw=true" class="w-[18px] h-[18px] ml-[2px]">';
-    deshacer.onclick = function () {
-        // Lógica para deshacer los cambios y actualizar la interfaz
-        DeshacerCambios(id, celdas);
-    };
-
-    botones.innerHTML = '';
-    botones.appendChild(enviar);
-    botones.appendChild(deshacer);
-}
-
-function guardarCambios(cellIndex, newValue, celdas) {
-    // Actualiza el contenido de la celda con el nuevo valor
-    celdas[cellIndex].textContent = newValue;
-}
-
-// Función para hacer no editable una fila y restaurar los valores originales
-function DeshacerCambios(id, celdas) {
-    // Restaurar los valores originales en las celdas de entrada
-    for (let i = 1; i < celdas.length - 1; i++) {
-        var cell = celdas[i];
-        var valorOriginal = cell.getAttribute('data-original-value');
-        cell.textContent = valorOriginal;
-        cell.removeAttribute('data-original-value');
-    }
-
-    // Reemplazar los botones de enviar y deshacer por el botón de editar original
-    const botones = celdas[celdas.length - 1];
-    botones.innerHTML = '<div class="flex items-center"><button onclick="hacerEditable(\'' + id + '\')"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none"></button><button class="xl:ml-3 lg:ml-2"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none"></button></div>';
-}

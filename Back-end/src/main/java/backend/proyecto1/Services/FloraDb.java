@@ -31,12 +31,12 @@ public class FloraDb {
                     rs.getString("nombre_planta"),
                     rs.getString("nombre_cientifico_flora"),
                     rs.getString("descripcion_cientifica_flora"),
-                    rs.getString("categoria_fauna")
+                    rs.getString("categoria_flora"),
+                    rs.getString("foto_flora")
                 );
 
                 flora.add(f);
             }
-
             stmt.close();
             rs.close();
         } catch(Exception e){
@@ -53,11 +53,12 @@ public class FloraDb {
             String query = "Call AgregarFlora('"
                 + f.getNombre_planta() + "','"
                 + f.getNombre_cientifico_flora() + "','"
+                + f.getCategoria_flora() + "','"
                 + f.getDescripcion_cientifica_flora() + "','"
-                + f.getCategoria_flora() + "')";
+                + f.getFoto_flora() +"')";
 
             resultado = stmt.executeUpdate(query);
-
+            stmt.close();
             return resultado;
         } catch (Exception e){
 
@@ -78,7 +79,7 @@ public class FloraDb {
                 + f.getCategoria_flora() + "')";
 
             resultado = stmt.executeUpdate(query);
-
+            stmt.close();
             return resultado;
         } catch (Exception e){
 

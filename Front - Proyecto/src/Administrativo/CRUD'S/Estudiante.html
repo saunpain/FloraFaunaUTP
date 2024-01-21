@@ -75,7 +75,7 @@
 
     </style>
 </head>
-<body class="bg-white m-0 p-0 w-full h-full box-border">
+<body class="bg-white m-0 p-0 w-full h-full box-border" onload="ObtenerEstudiantes()">
     <header class="flex items-center justify-between px-4 py-2 w-full lg:bg-[#276B58] bg-white fixed z-[10]">
         <div class="w-full">
             <div class="flex items-center md:ml-4">
@@ -85,21 +85,11 @@
                 <img class="object-cover h-[68px] top-[13.3px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
-            <!--
-            <div class="flex items-center" id="busqueda">
-            <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[30rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
-            <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
-            <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
-            </div>
             
-            <div class="flex justify-around items-center">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/administrador.png?raw=true" class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px]" alt="user icon">
-            </div>
-            -->
             <div class="pl-7 lg:pl-5 w-full flex justify-around items-center lg:hidden"> <!--Contendor de filtro y botones de acciones-->
                 <div class="flex items-center" id="busqueda">
                     <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="absolute md:ml-[22rem] block ml-[10rem] h-5">
-                    <input type="search" class="bg-[#7EBBAA] h-8 rounded-[30px] md:w-[22rem] w-[10rem] ml-8 block border-none object-cover text-white p-3 hover:bg-[#7ebbaacc] focus:outline-none placeholder:text-white" placeholder="Buscar">
+                    <input id="barraB" type="search" class="bg-[#7EBBAA] h-8 rounded-[30px] md:w-[22rem] w-[10rem] ml-8 block border-none object-cover text-white p-3 hover:bg-[#7ebbaacc] focus:outline-none placeholder:text-white" placeholder="Buscar">
                 </div>
                 <div class="">
                     <button onclick="añadirRegistro()" class="hover:bg-[#7EBBAA] bg-[#276B58] text-white rounded px-2 py-0.5 md:px-4 items-center flex">
@@ -121,7 +111,7 @@
                 </div>
         
                 <div class="mt-10 ml-5 mr-5 grid gap-1">
-                    <a href="/src/Administrativo/Admin - Inicio.html" class="">
+                    <a href="/Front - Proyecto/src/Administrativo/Admin - Inicio.html" class="">
                         <div class="p-2 hover:bg-[#7EBBAA] flex items-center rounded-md">
                             <img class="w-6" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true" alt="icono-estudiante">
                             <p class="ml-4">Inicio</p>
@@ -210,150 +200,7 @@
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00002">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00002')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00003">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-sm justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="flex items-center">
-                                    <button onclick="hacerEditable('00003')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00004">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="flex items-center">
-                                    <button onclick="hacerEditable('00004')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00005">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="flex items-center">
-                                    <button onclick="hacerEditable('00005')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00006">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="flex items-center">
-                                    <button onclick="hacerEditable('00006')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00007">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-sm justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="flex items-center">
-                                    <button onclick="hacerEditable('00007')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00008">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreUsuario</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">CorreoUsuario@utp.ac.pa</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="flex items-center">
-                                    <button onclick="hacerEditable('00008')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div> 
-                            </td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>

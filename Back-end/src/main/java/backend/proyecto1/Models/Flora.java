@@ -7,19 +7,22 @@ public class Flora {
     private String nombre_cientifico_flora;
     private String descripcion_cientifica_flora;
     private String categoria_flora;
+    private String foto_flora;
+
 
     public Flora(){
     }
 
     public Flora(
         int id_flora, String nombre_planta, String nombre_cientifico_planta,
-        String descripcion_cientifica_flora, String categoria_flora
+        String descripcion_cientifica_flora, String categoria_flora, String foto_flora
     ){
         this.id_flora = id_flora;
         this.nombre_planta = nombre_planta;
         this.nombre_cientifico_flora = nombre_cientifico_planta;
         this.descripcion_cientifica_flora = descripcion_cientifica_flora;
         this.categoria_flora = categoria_flora;
+        this.foto_flora = foto_flora;
     }
 
     public int getId_flora() {
@@ -60,6 +63,14 @@ public class Flora {
 
     public void setCategoria_flora(String categoria_flora) {
         this.categoria_flora = categoria_flora;
+    }
+
+    public String getFoto_flora() {
+        return foto_flora;
+    }
+
+    public void setFoto_flora(String foto_flora){
+        this.foto_flora = foto_flora;
     }
     
 }

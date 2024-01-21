@@ -22,7 +22,9 @@ public class PublicacionesDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "SELECT * FROM Publicaciones";
+            String query = "SELECT p.id_publicacion, p.titulo, p.lugar, e.fecha_estudiante, p.id_flora, p.id_fauna, e.id_estudiante " +
+                    "FROM Publicaciones p " +
+                    "INNER JOIN Estudiante_Publicacion e ON p.id_publicacion = e.id_publicacion";
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()){
@@ -30,9 +32,10 @@ public class PublicacionesDb {
                     rs.getInt("id_publicacion"),
                     rs.getString("titulo"),
                     rs.getString("lugar"),
-                    rs.getString("fecha_publicacion"),
+                    rs.getString("fecha_estudiante"),
                     rs.getInt("id_flora"),
-                    rs.getInt("id_fauna")
+                    rs.getInt("id_fauna"),
+                    rs.getInt("id_estudiante")
                 );
 
                 publicaciones.add(p);
@@ -54,11 +57,12 @@ public class PublicacionesDb {
             String query = "Call AgregarPublicaciones('"
                 + p.getTitulo() + "','"
                 + p.getLugar() + "','"
-                + p.getFecha_publicacion() + "','"
+                + p.getfecha_estudiante() + "','"
                 + p.getId_flora() + "','"
-                + p.getId_fauna() + "')";
-
-            resultado = stmt.executeUpdate(query);
+                + p.getId_fauna() + "','"
+                + p.getId_estudiante() + "')";
+                
+                resultado = stmt.executeUpdate(query);
 
             return resultado;
         } catch (Exception e){
@@ -73,12 +77,12 @@ public class PublicacionesDb {
         try{
             Statement stmt = cn.createStatement();
             String query = "Call ActualizarPublicaciones('"
-                + p.getId_publicaciones() + "','"
+                + p.getId_publicacion() + "','"
                 + p.getTitulo() + "','"
                 + p.getLugar() + "','"
                 + p.getId_flora() + "','"
-                + p.getId_fauna() + "')";
-
+                + p.getId_fauna() + "','"
+                + p.getId_estudiante() + "')";
             resultado = stmt.executeUpdate(query);
 
             return resultado;

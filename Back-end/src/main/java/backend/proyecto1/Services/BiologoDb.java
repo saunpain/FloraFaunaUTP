@@ -73,11 +73,11 @@ public class BiologoDb {
             String query = "Call ActualizarBiologo('"
                 + b.getId_biologo() + "','"
                 + b.getNombre_biologo() + "','"
-                + b.getContraseña_biologo() + "','"
-                + b.getCorreo_biologo() + "')";
+                + b.getCorreo_biologo() + "','"
+                + b.getPerfil_biologo()+ "')";
 
             resultado = stmt.executeUpdate(query);
-
+            stmt.close();
             return resultado;
         } catch (Exception e){
 

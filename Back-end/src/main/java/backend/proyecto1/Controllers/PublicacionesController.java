@@ -21,8 +21,8 @@ public class PublicacionesController {
     }
 
     @PutMapping("/publicaciones")
-    public int ActualizarPublicaciones(@RequestBody Publicaciones f){
-        return new PublicacionesDb().ActualizarPublicaciones(f);
+    public int ActualizarPublicaciones(@RequestBody Publicaciones p){
+        return new PublicacionesDb().ActualizarPublicaciones(p);
     }
 
     @DeleteMapping("/publicaciones/{id}")

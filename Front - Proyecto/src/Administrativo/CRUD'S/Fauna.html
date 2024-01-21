@@ -72,10 +72,9 @@
     .contenedor_datos:hover {
         scrollbar-color: #555;
     }
-
     </style>
 </head>
-<body class="bg-white m-0 p-0 w-full h-full box-border">
+<body class="bg-white m-0 p-0 w-full h-full box-border" onload="ObtenerFauna()">
     <header class="flex items-center justify-between px-4 py-2 w-full lg:bg-[#276B58] bg-white fixed z-[10]">
         <div class="w-full">
             <div class="flex items-center md:ml-4">
@@ -111,7 +110,7 @@
                 </div>
         
                 <div class="mt-10 ml-5 mr-5 grid gap-1">
-                    <a href="/src/Administrativo/Admin - Inicio.html" class="">
+                    <a href="/Front - Proyecto/src/Administrativo/Admin - Inicio.html" class="">
                         <div class="p-2 hover:bg-[#7EBBAA] flex items-center rounded-md">
                             <img class="w-6" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true" alt="icono-estudiante">
                             <p class="ml-4">Inicio</p>
@@ -202,186 +201,7 @@
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Nombreanimal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico animal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden truncate">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00002">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreAnimal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico animal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la animal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden truncate">Los rizomas presentan una zona meristemática sub-apical, de donde se originan los tubérculos mediante un engrosamiento radial, producto del alargamiento de las células parenquimáticas y la pérdida de la polaridad de las mismas. Durante la formación del tubérculo, el crecimiento longitudinal del estolón se detiene y las células parenquimáticas de la corteza, de la médula y de regiones perimedulares sufren divisiones y alargamiento.</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00002')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00003">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreAnimal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico animal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la animal</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00003')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombrePlanta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombrePlanta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombrePlanta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombrePlanta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombrePlanta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700 max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b-[15px] border-[#F0F9FF]" id="00001">
-                            <td class="py-2 xl:px-8 lg:px-4">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%B1eque.png?raw=true" class="w-14 rounded-md justify-center mx-auto">
-                            </td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">1234</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombrePlanta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">NombreCietifico planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">Categoría de la planta</td>
-                            <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700  max-w-64 overflow-hidden">DEscripcion ceintifica owo ............ ----- ...........</td>
-                            <td class="xl:px-8 lg:px-4">
-                                <div class="botoncitos flex items-center">
-                                    <button onclick="hacerEditable('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                    <button class="xl:ml-3 lg:ml-2">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none">
-                                    </button>
-                                </div>  
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>

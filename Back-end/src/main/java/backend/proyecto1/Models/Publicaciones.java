@@ -2,34 +2,30 @@ package backend.proyecto1.Models;
 
 public class Publicaciones {
     
-    private int id_publicaciones;
+    private int id_publicacion;
     private String titulo;
     private String lugar;
-    private String fecha_publicacion;
+    private String fecha_estudiante;
     private int id_flora;
     private int id_fauna;
-
-    public Publicaciones(){
-    }
-
-    public Publicaciones(
-        int id_publicaciones, String titulo, String lugar,
-        String fecha_publicacion, int id_flora, int id_fauna
-    ){
-        this.id_publicaciones = id_publicaciones;
+    private int id_estudiante;
+    
+    public Publicaciones(int id_publicacion, String titulo, String lugar, String fecha_estudiante, int id_flora, int id_fauna, int id_estudiante) {
+        this.id_publicacion = id_publicacion;
         this.titulo = titulo;
         this.lugar = lugar;
-        this.fecha_publicacion = fecha_publicacion;
+        this.fecha_estudiante = fecha_estudiante;
         this.id_flora = id_flora;
         this.id_fauna = id_fauna;
+        this.id_estudiante = id_estudiante;
     }
 
-    public int getId_publicaciones() {
-        return id_publicaciones;
+    public int getId_publicacion() {
+        return id_publicacion;
     }
 
-    public void setId_publicaciones(int id_publicaciones) {
-        this.id_publicaciones = id_publicaciones;
+    public void setId_publicacion(int id_publicacion) {
+        this.id_publicacion = id_publicacion;
     }
 
     public String getTitulo() {
@@ -48,12 +44,12 @@ public class Publicaciones {
         this.lugar = lugar;
     }
 
-    public String getFecha_publicacion() {
-        return fecha_publicacion;
+    public String getfecha_estudiante() {
+        return fecha_estudiante;
     }
 
-    public void setFecha_publicacion(String fecha_publicacion) {
-        this.fecha_publicacion = fecha_publicacion;
+    public void setfecha_estudiante(String fecha_estudiante) {
+        this.fecha_estudiante = fecha_estudiante;
     }
 
     public int getId_flora() {
@@ -71,4 +67,17 @@ public class Publicaciones {
     public void setId_fauna(int id_fauna) {
         this.id_fauna = id_fauna;
     }
+
+    public int getId_estudiante() {
+        return id_estudiante;
+    }
+
+    public void setId_estudiante(int id_estudiante) {
+        this.id_estudiante = id_estudiante;
+    }
+
+    public Publicaciones() {
+    }
+    
+
 }

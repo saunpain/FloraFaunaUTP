@@ -73,8 +73,9 @@ public class AdministrativoDb {
             String query = "Call ActualizarAdministrativo('"
                 + a.getId_admin() + "','"
                 + a.getNombre_admin() + "','"
-                + a.getCorreo_admin() + "')";
-
+                + a.getCorreo_admin() + "','" 
+                + a.getPerfil_admin() + "')";
+                
             resultado = stmt.executeUpdate(query);
 
             return resultado;
