@@ -107,56 +107,72 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/*Funciones para editar NombreCientífico*/
+/***************Funciones para editar NombreCientífico*******************/
 
-function editarComentario() {
-  var contenedor = document.getElementById("contenedorEdicion")
-  var comentarioTextoElemento = document.getElementById("comentarioTexto");
-  var comentarioInput = document.getElementById("comentarioInput");
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
+function detectarEdicion(boton) {
+  // Obtener el elemento padre con la clase 'pub'
+  var divPub = boton.closest('.pub');
+
+  // Verificar si se encontró un elemento con la clase 'pub'
+  if (divPub) {
+      // Ejecutar la función editarNombreC con el div pub como argumento
+      editarNombreC(divPub);
+  } else {
+      console.log("No se encontró el elemento 'pub' asociado al botón.");
+  }
+}
+
+
+
+function editarNombreC(divPub) {
+  var contenedor = divPub.querySelector('.contenedorEdicion');
+  var nombreCElemento = divPub.querySelector('.nombreC');
+  var nombreCinput = divPub.querySelector('.nombreCinput');
+  var btnEnviar = divPub.querySelector('.guardar');
+  var btnCancel = divPub.querySelector('.cancelar');
 
   // Guardar el valor original en el atributo data-original-value
-  comentarioInput.setAttribute('data-original-value', comentarioTextoElemento.innerText);
+  nombreCinput.setAttribute('data-original-value', nombreCElemento.innerText);
 
   contenedor.classList.remove('hidden');
-  comentarioTextoElemento.style.display = "none";
-  comentarioInput.style.display = "block";
-  comentarioInput.value = comentarioTextoElemento.innerText;
-  comentarioInput.removeAttribute("disabled"); // Habilitar el input
+  divPub.classList.remove('hidden');
+  nombreCElemento.style.display = "none";
+  nombreCinput.style.display = "block";
+  nombreCinput.value = nombreCElemento.innerText;
+  nombreCinput.removeAttribute("disabled"); // Habilitar el input
   btnEnviar.style.display = "block";
   btnCancel.style.display = "block";
 
-  comentarioInput.focus();
+  nombreCinput.focus();
 }
+
+
 
 /*Funcion que permite seleccionar el boton guardar al que se le esta haciendo hover*/ 
 /*GUARDAR*/
-  document.addEventListener('DOMContentLoaded', function() {
-    var botonesGuardar = document.querySelectorAll('.guardar');
+document.addEventListener('DOMContentLoaded', function() {
+  var botonesGuardar = document.querySelectorAll('.guardar');
 
-    botonesGuardar.forEach(function(boton) {
-        boton.addEventListener('mouseover', function() {
-            hoverGuardar();/*Una vez identificado el boton se llama la funcion para mostrar u ocultar el texto*/ 
-        });
+  botonesGuardar.forEach(function(boton) {//Selecciona cual fue el boton de guardar al que se le hizo hover
+      boton.addEventListener('mouseover', function() {//Hace que aparezca el texto cuando se hace hover
+        var guardar = boton.querySelector('.cambioG');
+          guardar.classList.remove('hidden');
+        
+      });
 
-    });
-});
+      boton.addEventListener('mouseleave', function() {//Hace que desaparezca el texto cuando se deja de hacer hover
+        var guardar = boton.querySelector('.cambioG');
+          guardar.classList.add('hidden');
+        
+      });
 
-/*Función para mostrar u ocultar el texto del boton*/ 
-function hoverGuardar() {
-  var botonGuardar = document.querySelector(".cambioG");
+      boton.addEventListener('click', function () {//Hace que desaparezca el texto cuando se hace click en guardar
+        var guardar = boton.querySelector('.cambioG');
+        guardar.classList.add('hidden');
+      });
 
-  botonGuardar.classList.remove('hidden');
-
-  botonGuardar.addEventListener('mouseleave', function () {
-      botonGuardar.classList.add('hidden');
   });
-
-  botonGuardar.addEventListener('click', function () {
-    botonGuardar.classList.add('hidden');
 });
-}
 
 
 /*Funcion que permite seleccionar el boton cancelar al que se le esta haciendo hover*/ 
@@ -164,70 +180,92 @@ function hoverGuardar() {
 document.addEventListener('DOMContentLoaded', function() {
   var botonesCancelar = document.querySelectorAll('.cancelar');
 
-  botonesCancelar.forEach(function(boton) {
-      boton.addEventListener('mouseover', function() {
-          hoverCancelar();/*Una vez identificado el boton se llama la funcion para mostrar u ocultar el texto*/ 
+  botonesCancelar.forEach(function(boton) {//Selecciona cual fue el boton de guardar al que se le hizo hover
+      boton.addEventListener('mouseover', function() {//Hace que aparezca el texto cuando se hace hover
+        var cancelar = boton.querySelector('.cambioC');
+          cancelar.classList.remove('hidden');
+        
+      });
+
+      boton.addEventListener('mouseleave', function() {//Hace que desaparezca el texto cuando se deja de hacer hover
+        var cancelar = boton.querySelector('.cambioC');
+          cancelar.classList.add('hidden');
+        
+      });
+
+      boton.addEventListener('click', function () {//Hace que desaparezca el texto cuando se hace click en cancelar
+        var guardar = boton.querySelector('.cambioC');
+        guardar.classList.add('hidden');
       });
 
   });
 });
 
-/*Función para mostrar u ocultar el texto del boton*/ 
-function hoverCancelar() {
-var botonCancelar = document.querySelector(".cambioC");
 
-botonCancelar.classList.remove('hidden');
+function detectarGuardar(boton) {
+  // Obtener el elemento padre con la clase 'pub'
+  var divPub = boton.closest('.pub');
 
-botonCancelar.addEventListener('mouseleave', function () {
-    botonCancelar.classList.add('hidden');
-});
-
-botonCancelar.addEventListener('click', function () {
-  botonCancelar.classList.add('hidden');
-});
-
+  // Verificar si se encontró un elemento con la clase 'pub'
+  if (divPub) {
+      // Ejecutar la función editarNombreC con el div pub como argumento
+      guardarCambios(divPub);
+  } else {
+      console.log("No se encontró el elemento 'pub' asociado al botón.");
+  }
 }
 
+function guardarCambios(divPub) {
+  var nombreCElemento = divPub.querySelector(".nombreC");
+  var nombreCinput = divPub.querySelector(".nombreCinput");
+  var btnEnviar = divPub.querySelector(".guardar");
+  var btnCancel = divPub.querySelector(".cancelar");
 
-function guardarCambios() {
-  var comentarioTextoElemento = document.getElementById("comentarioTexto");
-  var comentarioInput = document.getElementById("comentarioInput");
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
-
-  comentarioTextoElemento.innerText = comentarioInput.value;
-  comentarioTextoElemento.style.display = "inline-block";
-  comentarioInput.style.display = "none";
-  comentarioInput.setAttribute("disabled", true); // Deshabilitar el input
+  nombreCElemento.innerText = nombreCinput.value;
+  nombreCElemento.style.display = "inline-block";
+  nombreCinput.style.display = "none";
+  nombreCinput.setAttribute("disabled", true); // Deshabilitar el input
   btnEnviar.style.display = "none";
   btnCancel.style.display = "none";
 
   // Eliminar el atributo data-original-value
-  comentarioInput.removeAttribute('data-original-value');
+  nombreCinput.removeAttribute('data-original-value');
 }
 
-function cancelarEdicion() {
-  var comentarioTextoElemento = document.getElementById("comentarioTexto");
-  var comentarioInput = document.getElementById("comentarioInput");
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
+function detectarCancelar(boton) {
+  // Obtener el elemento padre con la clase 'pub'
+  var divPub = boton.closest('.pub');
+
+  // Verificar si se encontró un elemento con la clase 'pub'
+  if (divPub) {
+      // Ejecutar la función editarNombreC con el div pub como argumento
+      cancelarEdicion(divPub);
+  } else {
+      console.log("No se encontró el elemento 'pub' asociado al botón.");
+  }
+}
+
+function cancelarEdicion(divPub) {
+  var nombreCElemento = divPub.querySelector(".nombreC");
+  var nombreCinput = divPub.querySelector(".nombreCinput");
+  var btnEnviar = divPub.querySelector(".guardar");
+  var btnCancel = divPub.querySelector(".cancelar");
 
   // Obtener el valor original del atributo data-original-value
-  var originalValue = comentarioInput.getAttribute('data-original-value');
+  var originalValue = nombreCinput.getAttribute('data-original-value');
 
   // Restaurar el valor original
-  comentarioInput.value = originalValue;
+  nombreCinput.value = originalValue;
 
-  comentarioTextoElemento.style.display = "inline-block";
-  comentarioInput.style.display = "none";
-  comentarioInput.setAttribute("disabled", true); // Deshabilitar el input
+  nombreCElemento.style.display = "inline-block";
+  nombreCinput.style.display = "none";
+  nombreCinput.setAttribute("disabled", true); // Deshabilitar el input
   btnEnviar.style.display = "none";
   btnCancel.style.display = "none";
 
   // Eliminar el atributo data-original-value
-  comentarioInput.removeAttribute('data-original-value');
+  nombreCinput.removeAttribute('data-original-value');
 }
-
 
 
 function mostrarPerfil() {
@@ -238,7 +276,132 @@ function mostrarPerfil() {
   var perfilContent = document.getElementById('userProfile-contenido');
 
   // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
-  fetch('http://localhost:5500/src/Biologo/PerfilBiologo.html')
+  fetch('http://localhost:5500/Front - Proyecto/src/Biologo/PerfilBiologo.html')
+    .then(response => response.text())
+    .then(data => {
+      perfilContent.innerHTML = data;
+      overlay.style.display = 'block'; // Mostrar la capa oscura
+      
+      perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
+    })
+    .catch(error => console.error('Error al cargar el perfil:', error));
+}
+
+//************INICIO DE LAS FUNCIONES PARA EDITAR DESCRIPCION*******************
+
+function detectarEditarDescripcion(boton){
+    // Obtener el elemento padre con la clase 'pub'
+    var divPub = boton.closest('.pub');
+
+    // Verificar si se encontró un elemento con la clase 'pub'
+    if (divPub) {
+        // Ejecutar la función editarNombreC con el div pub como argumento
+        editarDescripcion(divPub);
+    } else {
+        console.log("No se encontró el elemento 'pub' asociado al botón.");
+    }
+}
+
+function editarDescripcion(divPub){
+
+    var contenedor = divPub.querySelector('.contenedorEdicion');
+    var descripcion = divPub.querySelector('.descripcion');
+    var descripcionInput = divPub.querySelector('.descripcionInput');
+    var btnEnviar = divPub.querySelector('.guardar');
+    var btnCancel = divPub.querySelector('.cancelar');
+  
+    // Guardar el valor original en el atributo data-original-value
+    descripcionInput.setAttribute('data-original-value', descripcion.innerText);
+  
+    contenedor.classList.remove('hidden');
+    divPub.classList.remove('hidden');
+    descripcion.style.display = "none";
+    descripcionInput.style.display = "block";
+    descripcionInput.value = descripcion.innerText;
+    descripcionInput.removeAttribute("disabled"); // Habilitar el input
+    btnEnviar.style.display = "inline-block";
+    btnCancel.style.display = "inline-block";
+  
+    descripcionInput.focus();
+  
+}
+
+function detectarGuardarDescripcion(boton) {
+  // Obtener el elemento padre con la clase 'pub'
+  var divPub = boton.closest('.pub');
+
+  // Verificar si se encontró un elemento con la clase 'pub'
+  if (divPub) {
+      // Ejecutar la función editarNombreC con el div pub como argumento
+      guardarDescripcion(divPub);
+  } else {
+      console.log("No se encontró el elemento 'pub' asociado al botón.");
+  }
+}
+
+function guardarDescripcion(divPub) {
+  var descripcion = divPub.querySelector(".descripcion");
+  var descripcionInput = divPub.querySelector(".descripcionInput");
+  var btnEnviar = divPub.querySelector(".guardar");
+  var btnCancel = divPub.querySelector(".cancelar");
+
+  descripcion.innerText = descripcionInput.value;
+  descripcion.style.display = "inline-block";
+  descripcionInput.style.display = "none";
+  descripcionInput.setAttribute("disabled", true); // Deshabilitar el input
+  btnEnviar.style.display = "none";
+  btnCancel.style.display = "none";
+
+  // Eliminar el atributo data-original-value
+  descripcionInput.removeAttribute('data-original-value');
+}
+
+function detectarCancelarDescripcion(boton) {
+  // Obtener el elemento padre con la clase 'pub'
+  var divPub = boton.closest('.pub');
+
+  // Verificar si se encontró un elemento con la clase 'pub'
+  if (divPub) {
+      // Ejecutar la función editarNombreC con el div pub como argumento
+      cancelarDescripcion(divPub);
+  } else {
+      console.log("No se encontró el elemento 'pub' asociado al botón.");
+  }
+}
+
+function cancelarDescripcion(divPub) {
+  var descripcion = divPub.querySelector(".descripcion");
+  var descripcionInput = divPub.querySelector(".descripcionInput");
+  var btnEnviar = divPub.querySelector(".guardar");
+  var btnCancel = divPub.querySelector(".cancelar");
+
+  // Obtener el valor original del atributo data-original-value
+  var originalValue = descripcionInput.getAttribute('data-original-value');
+
+  // Restaurar el valor original
+  descripcionInput.value = originalValue;
+
+  descripcion.style.display = "inline-block";
+  descripcionInput.style.display = "none";
+  descripcionInput.setAttribute("disabled", true); // Deshabilitar el input
+  btnEnviar.style.display = "none";
+  btnCancel.style.display = "none";
+
+  // Eliminar el atributo data-original-value
+  descripcionInput.removeAttribute('data-original-value');
+}
+
+/****************FUNCIONES PARA MOSTRAR EL PERFIL DEL BIOLOGO*************************/
+
+function mostrarPerfil() {
+  document.body.style.overflow = 'hidden';
+
+  var overlay = document.getElementById('perfil');
+  var perfilContainer = document.getElementById('contenedor-Perfil');
+  var perfilContent = document.getElementById('userProfile-contenido');
+
+  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
+  fetch('http://localhost:5500/Front - Proyecto/src/Biologo/PerfilBiologo.html')
     .then(response => response.text())
     .then(data => {
       perfilContent.innerHTML = data;
@@ -267,6 +430,93 @@ document.getElementById('mostrarPerfil').addEventListener('click', function(even
   mostrarPerfil();
 });
 
+/***************FUNCIONES PARA LA SOLICITUD DE VERIFICACION*******************************/ 
+
+function mostrarVerificacion() {
+  document.body.style.overflow = 'hidden';
+
+  var overlay = document.getElementById('verificacion');
+  var verificacionContainer = document.getElementById('contenedor-verificacion');
+  var verificacionContent = document.getElementById('verificacion-contenido');
+
+  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
+  fetch('http://localhost:5500/Front - Proyecto/src/Biologo/Solicitud.html')
+    .then(response => response.text())
+    .then(data => {
+      verificacionContent.innerHTML = data;
+      overlay.style.display = 'block'; // Mostrar la capa oscura
+      
+      verificacionContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
+    })
+    .catch(error => console.error('Error al cargar el perfil:', error));
+}
+
+// Función para cerrar el cuadro de perfil y quitar la capa oscura
+function cerrarVerificacion() {
+  document.body.style.overflow = 'auto';
+
+  var overlay = document.getElementById('verificacion');
+  var verificacionContainer = document.getElementById('contenedor-verificacion');
+
+  overlay.style.display = 'none'; // Ocultar la capa oscura
+  verificacionContainer.style.display = 'none'; // Ocultar el cuadro de perfil
+}
+
+// Asignar evento al clic en la imagen de perfil
+document.getElementById('mostrarVerificacion').addEventListener('click', function(event) {
+  event.preventDefault(); // Evitar que la página se recargue
+
+  mostrarVerificacion();
+});
+
+function subirArchivo() {
+  var inputElement = document.getElementById("archivoInput");
+  var file = inputElement.files[0];
+
+  if (file) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          var contenidoBase64 = e.target.result.split(",")[1];
+          subirArchivoGitHub(file.name, contenidoBase64);
+      };
+      reader.readAsDataURL(file);
+  } else {
+      alert("Selecciona un archivo PDF antes de subirlo.");
+  }
+}
+
+function subirArchivoGitHub(nombreArchivo, contenidoBase64) {
+  var owner = "saunpain";
+  var repo = "FloraFaunaUTP";
+  var filePath = "Solicitudes/" + nombreArchivo; // Ruta en el repositorio (por ejemplo, uploads/nombreArchivo)
+  var token = "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"; // Reemplaza con tu token de acceso personal
+
+  var apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+  var content = JSON.stringify({
+      message: "Upload file",
+      content: contenidoBase64
+  });
+
+  fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+      },
+      body: content
+  })
+  .then(response => {
+      if (response.ok) {
+          alert("Archivo subido exitosamente a GitHub.");
+      } else {
+          alert("Error al subir el archivo.");
+          alert("Código de respuesta: " + response.status);
+      }
+  })
+  .catch(error => {
+      console.error("Error:", error);
+  });
+}
 
 
 

@@ -69,11 +69,17 @@
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
 
-            <button id="mostrarPerfil">
-                <a href="">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="user icon">
-                </a>
-            </button>
+            <div class="flex items-center">
+
+                <button id="mostrarVerificacion" class="text-[#FFFFFF] text-sm text-lg mr-6 xl:text-lg hover:text-[#99E0FF] font-semibold">Enviar Solicitud de Verificación</button>
+    
+                <button id="mostrarPerfil">
+                    <a href="">
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="user icon">
+                    </a>
+                </button>
+    
+                </div>
 
         </div>
     </header>
@@ -82,6 +88,16 @@
     <div id="contenedor-Perfil" class="hidden">
         <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
             <div id="userProfile-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="verificacion" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-verificacion" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="verificacion-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
                 
             </div>
             
