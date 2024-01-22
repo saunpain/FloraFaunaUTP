@@ -40,12 +40,8 @@ function GuardarPublicaciones() {
 function ActualizarPublicaciones(id) {
     let data = {
         id_publicacion: id,
-        id_flora: document.getElementById("input1").value,
-        id_fauna: document.getElementById("input2").value,
-        id_estudiante: document.getElementById("input3").value,
         titulo: document.getElementById("input4").value,
         lugar: document.getElementById("input5").value,
-        fecha_estudiante: document.getElementById("input6").value,
     };
 
     fetch(baseUrl + "/publicaciones", {
@@ -197,7 +193,7 @@ function hacerEditable(id) {
     // Crear celdas de entrada para las celdas deseadas en la fila
     const celdas = fila.getElementsByTagName('td');
 
-    for (let i = 4; i < celdas.length - 1; i++) { // a partir de la tecrcera celda, las priemras dos no son editables
+    for (let i = 4; i < celdas.length - 2; i++) { // a partir de la tecrcera celda, las priemras dos no son editables
         var cell = celdas[i];
         
         const input = document.createElement('input');
@@ -230,13 +226,14 @@ function hacerEditable(id) {
     };
     botones.innerHTML = '';
     botones.appendChild(enviar);
+    botones.classList = "p-2";
     botones.appendChild(deshacer);
 }
 
 // Función para quitar el modo edición y deshacer los cambios realizados
 function DeshacerCambios(id, celdas) {
     // Restaurar los valores originales en las celdas
-    for (let i = 4; i < celdas.length - 1; i++) {
+    for (let i = 4; i < celdas.length - 2; i++) {
         var cell = celdas[i];
         var valorOriginal = cell.getAttribute('data-original-value');
         cell.innerHTML = valorOriginal;

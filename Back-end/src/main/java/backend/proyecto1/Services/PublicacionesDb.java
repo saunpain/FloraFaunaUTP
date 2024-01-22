@@ -79,10 +79,7 @@ public class PublicacionesDb {
             String query = "Call ActualizarPublicaciones('"
                 + p.getId_publicacion() + "','"
                 + p.getTitulo() + "','"
-                + p.getLugar() + "','"
-                + p.getId_flora() + "','"
-                + p.getId_fauna() + "','"
-                + p.getId_estudiante() + "')";
+                + p.getLugar() + "')";
             resultado = stmt.executeUpdate(query);
 
             return resultado;

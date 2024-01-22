@@ -75,7 +75,7 @@ function mostrarPerfil() {
   var perfilContent = document.getElementById('userProfile-contenido');
 
 
-  fetch('/src/Administrativo/PerfilAdmin.html')
+  fetch('/Front - Proyecto/src/Administrativo/PerfilAdmin.html')
     .then(response => response.text())
     .then(data => {
       perfilContent.innerHTML = data;
