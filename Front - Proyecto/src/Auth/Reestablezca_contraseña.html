@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restablecer Contraseña</title>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex flex-col justify-center items-center">
+    <div class="w-full max-w-md p-6 shadow-lg bg-[#276B58] rounded-lg">
+      <div class="flex justify-between">
+        <h1 class="md:text-2xl text-xl text-white font-semibold">Reestablece tu contraseña</h1>
+        <button onclick="cerrarR3()" class="-mt-3">
+          <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_square_duotone.png?raw=true" alt="cerrar" class="h-10 w-10">
+        </button>
+      </div>
+      <div class="mt-6 mb-10">
+        <input type="password" id="nuevaContraseña" class="mb-2 p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold leading-6 tracking-normal text-left text-white placeholder-white placeholder-text-sm" placeholder="Nueva contraseña">
+        <input type="passConfirm" id="confirmarContraseña" class="mb-2 p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold leading-6 tracking-normal text-left text-white placeholder-white placeholder-text-sm" placeholder="Confirmar nueva contraseña">
+      </div>
+      <div class="mt-6 text-justified mb-8 ml-4 mr-4">
+        <p class="text-white text-xs md:text-sm lg:text-base">
+          Al restablecer tu contraseña, tendrás que volver a iniciar sesión.
+        </p>
+      </div>
+      <div class="mt-6 text-center">
+        <button id="reestabecida" onclick="cerrarR3(event)" class="mt-2 bg-white bg-opacity-15 text-white py-2 px-4 rounded-full hover:bg-transparent hover:text-ind font-bold opacity-70 text-xs md:text-sm lg:text-base">
+          Reestablecer contraseña
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="/Front - Proyecto/src/index.js"></script>
+</body>
+</html>

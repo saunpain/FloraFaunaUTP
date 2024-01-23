@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Revisa tu Bandeja de Entrada</title>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex flex-col justify-center items-center">
+    <div class="w-full max-w-md p-6 shadow-lg bg-[#276B58] rounded-lg">
+      <div class="flex justify-between">
+        <h1 class="md:text-2xl text-xl text-white font-semibold mb-5">Revisa tu bandeja de entrada</h1>
+        <button onclick="cerrarR2()" class="-mt-5">
+          <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_square_duotone.png?raw=true" alt="cerrar" class="h-10 w-10">
+        </button>
+      </div>
+      <div class="text-left mb-4 ml-4">
+        <p class="text-white text-xxs md:text-xs lg:text-sm">
+          Te hemos enviado un correo electrónico con un enlace para restablecer la contraseña a la dirección de correo electrónico que has proporcionado.
+        </p>
+      </div>
+      <div class="flex justify-around items-center mt-6 mb-5">
+          <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Iguana.png?raw=true" alt="iguana" class="w-[10rem]">
+          <div>
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/tortuga.png?raw=true" alt="tortuguita" class="w-[9rem] h-[9rem] mt-12">
+          </div>
+          
+      </div>
+      <div class="flex justify-center text-left ml-4 mb-5">
+        <p class="text-white text-xxs md:text-xs lg:text-sm">
+          ¿No te ha llegado el correo? <button class="text-white text-[10px] md:text-xs lg:text-sm hover:underline cursor-pointer hover:text-[#c6d7d2]">Reenviar</button>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="/Front - Proyecto/src/index.js"></script>
+</body>
+</html>
