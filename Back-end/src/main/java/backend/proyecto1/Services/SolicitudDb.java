@@ -28,8 +28,10 @@ public class SolicitudDb {
             while(rs.next()){
                 Solicitud s =  new Solicitud(
                     rs.getInt("id_solicitud"),
-                    rs.getString("formulario"),
-                    rs.getString("estado")
+                    rs.getString("archivo"),
+                    rs.getString("usuario"),
+                    rs.getString("correo"),
+                    rs.getString("titulo")
                 );
 
                 solicitudes.add(s);
@@ -49,8 +51,10 @@ public class SolicitudDb {
         try{
             Statement stmt = cn.createStatement();
             String query = "Call AgregarSolicitud('"
-                + s.getFormulario() + "','"
-                + s.getEstado() + "')";
+                + s.getArchivo() + "','"
+                + s.getUsuario() + "','"
+                + s.getCorreo() + "','"
+                + s.getTitulo() + "')";
 
             resultado = stmt.executeUpdate(query);
 
@@ -68,8 +72,10 @@ public class SolicitudDb {
             Statement stmt = cn.createStatement();
             String query = "Call ActualizarSolicitud('"
                 + s.getId_solicitud() + "','"
-                + s.getFormulario() + "','"
-                + s.getEstado() + "')";
+                + s.getArchivo() + "','"
+                + s.getUsuario() + "','"
+                + s.getCorreo() + "','"
+                + s.getTitulo() + "')";
 
             resultado = stmt.executeUpdate(query);
 

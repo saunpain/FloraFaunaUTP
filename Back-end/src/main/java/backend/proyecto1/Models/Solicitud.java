@@ -3,16 +3,20 @@ package backend.proyecto1.Models;
 public class Solicitud {
     
     private int id_solicitud;
-    private String formulario;
-    private String estado;
+    private String archivo;
+    private String usuario;
+    private String correo;
+    private String titulo;
 
-    public Solicitud(){
+    public Solicitud(int id_solicitud, String archivo, String usuario, String correo, String titulo) {
+        this.id_solicitud = id_solicitud;
+        this.archivo = archivo;
+        this.usuario = usuario;
+        this.correo = correo;
+        this.titulo = titulo;
     }
 
-    public Solicitud(int id_solicitud, String formulario, String estado){
-        this.id_solicitud = id_solicitud;
-        this.formulario = formulario;
-        this.estado = estado;
+    public Solicitud(){
     }
 
     public int getId_solicitud() {
@@ -23,19 +27,38 @@ public class Solicitud {
         this.id_solicitud = id_solicitud;
     }
 
-    public String getFormulario() {
-        return formulario;
+    public String getArchivo() {
+        return archivo;
     }
 
-    public void setFormulario(String formulario) {
-        this.formulario = formulario;
+    public void setArchivo(String archivo) {
+        this.archivo = archivo;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+
+
 }

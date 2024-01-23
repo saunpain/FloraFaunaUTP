@@ -493,7 +493,7 @@ function subirArchivoGitHub(nombreArchivo, contenidoBase64) {
 
   var apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
   var content = JSON.stringify({
-      message: "Upload file",
+      message: "Solicitud subida",
       content: contenidoBase64
   });
 
@@ -507,10 +507,10 @@ function subirArchivoGitHub(nombreArchivo, contenidoBase64) {
   })
   .then(response => {
       if (response.ok) {
-          alert("Archivo subido exitosamente a GitHub.");
+          alert("Archivo subido exitosamente.");
       } else {
           alert("Error al subir el archivo.");
-          alert("Código de respuesta: " + response.status);
+          console.log("Código de respuesta: " + response.status);
       }
   })
   .catch(error => {
@@ -518,5 +518,63 @@ function subirArchivoGitHub(nombreArchivo, contenidoBase64) {
   });
 }
 
+let baseUrl = "http://localhost:8080";
+let solicitudes = [];
 
+function ObtenerSolicitudes() {
+  fetch(baseUrl + '/solicitud/all').then(res => {
+    res.json().then(json => {
+      solicitudes = json;
+      ImprimirSolicitudes();
+    });
+  });
+}
+
+function ImprimirSolicitudes() {
+  let contenedor = document.getElementById("cuerpoTabla");
+  contenedor.innerHTML = "";
+
+  solicitudes.forEach(solicitud => {
+    contenedor.innerHTML += MapearSolicitud(solicitud);
+  });
+}
+
+/*
+function MapearSolicitud(solicitud) {
+  return `<tr>
+  <td>
+    <button class='btn btn-danger btn-sm' onclick="Eliminarsolicitud(${solicitud.id})">Eliminar</button>
+    <button class='btn btn-warning btn-sm' onclick="PopularDatosCampos(${solicitud.id})">Actualizar</button>
+    </td>
+  <td>${solicitud.id}</td>
+  <td>${solicitud.nombre}</td>
+  <td>${solicitud.precio}</td>
+  <td>${solicitud.categoriaId}</td>
+  <td>${solicitud.foto}</td>
+  <td>${solicitud.fechaProduccion}</td>
+  <td>${solicitud.fechaCaducidad}</td>
+</tr>`;
+}
+
+function GuardarSolicitud() {
+  let data = {
+    nombre: document.getElementById("nombre").value,
+    precio: document.getElementById("precio").value,
+    categoriaId: document.getElementById("categoriaId").value,
+    foto: document.getElementById("foto").value,
+    fechaProduccion: document.getElementById("fechaProduccion").value,
+    fechaCaducidad: document.getElementById("fechaCaducidad").value
+  };
+
+  fetch(baseUrl + "/producto", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": 'application/json; charset=UTF-8'
+    }
+  }).then(res => {
+    ObtenerProductos();
+  });
+}
+*/
 

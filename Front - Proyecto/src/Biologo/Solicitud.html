@@ -13,6 +13,7 @@
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_profile.png?raw=true" alt="">
             </button>
             <h2 class="text-2xl text-center">Solicitud de Verificación</h2>
+        <form action="">
             <div class="flex mt-5 items-center justify-around">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="foto de perfil" class="rounded-full w-16 h-16">
                 <p>Charles Darwin</p>
@@ -20,10 +21,11 @@
             
             <p class="mt-6">Correo</p>
             <p class="mt-2 underline">charles.darwin@utp.ac.pa</p>
-            
+           
+        
             <p class="mt-2">Ingrese el título</p>
             <div class="flex mt-2 items-center">
-                <input class="w-full mr-2 h-6 password-display inline-block border rounded border-gray-400 p-4">
+                <input required class="w-full mr-2 h-6 password-display inline-block border rounded border-gray-400 p-4">
                 
             </div>
 
@@ -31,6 +33,7 @@
             <input id="archivoInput" class="w-80 mt-4 block" type="file" accept=".pdf">
             <button onclick="subirArchivo()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
         </div>
+        </form>
         
     </div>
     <script src="index.js"></script>
