@@ -186,6 +186,9 @@ DELIMITER ;
 
 SELECT * FROM Fauna
 SELECT * FROM Publicaciones
+SELECT * FROM Estudiante
+SELECT * FROM Estudiante_Publicacion
+CALL AgregarEstudiante('PepeGanga', 'pepe.ganga@utp.ac.pa', 'pepeganga45', 'https://github.com/saunpain/FloraFaunaUTP/blob/main/FotoPrueba/PerfilNasua.png?raw=true')
 CALL AgregarPublicaciones('Impresionante Reptil le llame Renekton', 'Chiriqui', NULL, NULL, 2)
 
 SELECT * FROM Solicitud
@@ -195,3 +198,14 @@ CALL ActualizarSolicitud('4','link4','Sin Verificar')
 CALL EliminarSolicitud('4')
 CALL FiltrarSolicitud('V')
 
+DELIMITER //
+CREATE TRIGGER TriggerFechaEstudiante
+BEFORE INSERT ON Estudiante_Publicacion
+FOR EACH ROW
+SET NEW.fecha_estudiante = IFNULL(NEW.fecha_estudiante, NOW());
+//
+DELIMITER ;
+CALL EliminarPublicaciones('1011')
+CALL EliminarFauna('1009')
+CALL AgregarFauna('Gato Solo', 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true', 'Nasua', 'Nasua, llamados coatíes o pizotes, ​ es un género con dos especies de pequeños mamíferos omnívoros americanos de la familia de los prociónidos.​ Habita desde el sur de Estados Unidos hasta el norte de Argentina, Paraguay y Uruguay.','Mamífero')
+CALL AgregarPublicaciones('Me encontré un gato solo saliendo de la U. Se llama pansito', 'Campus Levi Sasso',NULL, 1014, 1013, 1012, NULL)
