@@ -99,4 +99,32 @@ public class AdministrativoDb {
         }
         return resultado;
     }
+
+    public Administrativo ObtenerAdmin(String nomb) {
+        Administrativo admin = null;
+    
+        try {
+            String query = "SELECT * FROM Administrativo WHERE nombre_admin = '"+ nomb + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                admin = new Administrativo(
+                    rs.getInt("id_admin"),
+                    rs.getString("nombre_admin"),
+                    rs.getString("correo_admin"),
+                    rs.getString("contraseña_admin"),
+                    rs.getString("perfil_admin")
+                );
+            }
+    
+            stmt.close();
+            rs.close();
+            return admin;
+        } catch (Exception ex) {
+            
+        }
+    
+        return admin;
+    }
 }

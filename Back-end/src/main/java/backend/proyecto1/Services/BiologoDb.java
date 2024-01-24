@@ -15,7 +15,7 @@ public class BiologoDb {
 
     public BiologoDb(){
         this.cn = new Conexion().openDb();
-    }   
+    }
 
     public List<Biologo> ObtenerTodosLosBiologos(){
         List<Biologo> biologos = new ArrayList<>();
@@ -98,5 +98,33 @@ public class BiologoDb {
 
         }
         return resultado;
+    }
+
+    public Biologo ObtenerBiologo(String nomb) {
+        Biologo b = null;
+    
+        try {
+            String query = "SELECT * FROM Biologo WHERE nombre_biologo = '" + nomb + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                b= new Biologo(
+                    rs.getInt("id_biologo"),
+                    rs.getString("nombre_biologo"),
+                    rs.getString("correo_biologo"),
+                    rs.getString("contraseña_biologo"),
+                    rs.getString("perfil_biologo")
+                );
+            }
+    
+            stmt.close();
+            rs.close();
+            return b;
+        } catch (Exception ex) {
+            
+        }
+    
+        return b;
     }
 }

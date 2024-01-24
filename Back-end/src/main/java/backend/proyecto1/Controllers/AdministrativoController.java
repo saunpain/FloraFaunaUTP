@@ -35,4 +35,9 @@ public class AdministrativoController {
     public int Delete(@PathVariable("id") int id){
         return new AdministrativoDb().EliminarAdministrador(id);
     }
+
+    @GetMapping("/administrativo/{nombre_admin}")
+    public Administrativo ObtenerAdmin(@PathVariable("nombre_admin") String nomb){
+        return new AdministrativoDb().ObtenerAdmin(nomb);
+    }
 }
