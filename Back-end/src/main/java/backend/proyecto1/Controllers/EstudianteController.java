@@ -35,4 +35,10 @@ public class EstudianteController {
     public int Delete(@PathVariable("id") int id){
         return new EstudianteDb().EliminarEstudiante(id);
     }
+
+    @GetMapping("/estudiante/{nombre_estudiante}")
+    public Estudiante ObtenerEstudiante(@PathVariable("nombre_estudiante") String nomb){
+        return new EstudianteDb().ObtenerEstudiante(nomb);
+    }
+    
 }

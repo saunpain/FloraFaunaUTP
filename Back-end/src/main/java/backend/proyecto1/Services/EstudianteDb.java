@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import backend.proyecto1.Helpers.Conexion;
 import backend.proyecto1.Models.Estudiante;
 
@@ -78,13 +79,42 @@ public class EstudianteDb {
 
             resultado = stmt.executeUpdate(query);
             stmt.close();
-            return resultado;
+
         } catch (Exception ex){
 
         }
         return resultado;
     }
 
+
+    public Estudiante ObtenerEstudiante(String nomb) {
+        Estudiante estudiante = null;
+    
+        try {
+            String query = "SELECT * FROM Estudiante WHERE nombre_estudiante = '"+ nomb + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                estudiante = new Estudiante(
+                    rs.getInt("id_estudiante"),
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("correo_estudiante"),
+                    rs.getString("contraseña_estudiante"),
+                    rs.getString("perfil_estudiante")
+                );
+            }
+    
+            stmt.close();
+            rs.close();
+            return estudiante;
+        } catch (Exception ex) {
+            
+        }
+    
+        return estudiante;
+    }
+    
     public int EliminarEstudiante(int id){
         int resultado = 0;
 
@@ -99,4 +129,5 @@ public class EstudianteDb {
         }
         return resultado;
     }
+
 }

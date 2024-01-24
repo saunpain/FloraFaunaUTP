@@ -74,36 +74,62 @@
                 <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6" alt="">
                 <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[32rem] md:w-[22rem] hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
             </div>
-            <div class=""> <!--Iniciar sesion o perfil del usuario-->
-                <button class="xl:p-2 lg:p-2 p-[0.5] w-[8rem] xl:h-10 lg:h-10 h-8 bg-[#F0FEF8] rounded-[50px]"><a href="#" class="">Iniciar Sesión</a></button>
-            </div>
-            <div class="hidden">
-                <button class="flex">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" alt="">
-                    <p class="text-[#FFFFFF]">Crear</p>
-                </button>
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
-                <div class="flex justify-around items-center ">
-                    <button class="flex ml-2 p-2 hover:bg-[#47917c]">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/crear.png?raw=true" class="h-6 mt-1">
-                        <p class="text-[#FFFFFF] text-lg mt-[2px] ml-4 mr-4">Crear</p>
-                    </button>
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
-                </div>
-            </div>
+            <!--Iniciar sesion-->
+            <button onclick="mostrarInicioS()" class="xl:p-2 lg:p-2 p-[0.5] w-[8rem] xl:h-10 lg:h-10 h-8 bg-[#F0FEF8] rounded-[50px]"><a href="#" class="">Iniciar Sesión</a></button>
         </div>
     </header>
+
+    <div id="login" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-login" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="login-contenido">
+                
+            </div>
+            
+        </div>
+    </div>
+    <div id="registro" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-registro" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="registro-contenido">
+                
+            </div>
+            
+        </div>
+    </div>
+    <div id="reestablecer1" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-reestablecer1" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="reestablecer1-contenido">
+                
+            </div>
+            
+        </div>
+    </div>
+    <div id="reestablecer2" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-reestablecer2" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="reestablecer2-contenido">
+                
+            </div>
+            
+        </div>
+    </div>
+    <div id="reestablecer3" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-reestablecer3" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="reestablecer3-contenido">
+                
+            </div>
+            
+        </div>
+    </div>
+
     <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
-                <a href="Flora y Fauna UTP - inicio.html" class="ml-2 text-lg font-bold">Inicio</a>
-            </div>
-            <div class="hidden">
-                <div class="flex items-center">
-                    <a href="#">Editar Perfil</a>
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit_fill.png?raw=true" alt="edit" class="ml-3">
-                </div>
+                <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="ml-2 text-lg font-bold">Inicio</a>
             </div>
             <div class="grid rounded-[10px] p-1">
                 <h3 class="font-bold">Categorias</h3>
@@ -181,7 +207,7 @@
             <div class="hidden lg:block xl:block 2xl:block fixed top-28 left-10 w-48">
                 <div class="flex items-center mb-3">
                     <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
-                    <a href="Flora y Fauna UTP - inicio.html" class="ml-2 text-lg">Inicio</a>
+                    <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="ml-2 text-lg">Inicio</a>
                 </div>
                 <hr>
                 <div class="bg-[#F0FEF8] grid mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
@@ -239,16 +265,15 @@
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
                 </div>
                 <div class="flex justify-around">
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
-                        <span class="textito font-bold text-[#241111]ml-2 xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">35</span>
-                    </div>
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                        <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
+                    <div class="flex items-center">
+                        <button id="" class="w-6 lg:w-6 lg:h-6" onclick="">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
+                        </button>
+                        <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
                     </div>
                     <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Nasua</span>
                     <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Gato solo</span>
+                    
                 </div>
                 <hr class="mt-2  ml-10 mr-10">
                 <div class="mt-2 mb-2">
@@ -342,8 +367,7 @@
                     </div>
                 </footer>
             </section>
-        </div>  
-                                                                           <!--xl:min-w-[54rem] para pantalla normal    lg:min-w-[20rem] lg:max-w-xl xl:min-w-[54rem] xl:max-w-[60rem] 2xl:min-w-[58rem]--> <!--lg:w-[25rem] xl:min-w-[42rem] 2xl:w-[60rem] md:w-[28rem]-->
+        </div>
     </div>
     
     <script src="index.js"></script>

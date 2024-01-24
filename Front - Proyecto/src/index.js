@@ -1,3 +1,7 @@
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".slider li");
   const menu = document.querySelectorAll(".menu li a");
