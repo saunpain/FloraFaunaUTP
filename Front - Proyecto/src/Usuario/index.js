@@ -14,6 +14,7 @@ function DarLike(id) {
   imagen.src = Like;
 }
 
+const user = localStorage.getItem('nombreusuario');
 function mostrarPerfil() {
   document.body.style.overflow = 'hidden';
 
