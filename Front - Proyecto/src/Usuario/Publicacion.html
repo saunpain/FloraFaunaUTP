@@ -59,7 +59,7 @@
     
     </style>
 </head>
-<body class="bg-white w-full h-full box-border">
+<body class="bg-white w-full h-full box-border" onload="ObtenerEstudiante()">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2 ">
             <div class="flex items-center md:ml-4 ">
@@ -85,7 +85,7 @@
                 </button>
                 <button id="mostrarPerfil">
                     <a href="">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/User_cicrle_light.png?raw=true" alt="user icon">
+                        <img id="imgPerfil" alt="user" class="w-12 h-12 rounded-full ml-2">
                     </a>
                 </button>
             </div>
@@ -345,6 +345,7 @@
     </div>
     
     <script src="index.js"></script>
+    <script src="perfil.js"></script>
     <script src="/Front - Proyecto/src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </body>

@@ -49,7 +49,7 @@ function GuardarBiologo() {
             }
         })
         .catch(error => {
-            
+            mostrarMensajeRegistro("No se ha podido completar su registro.");
         });
     }
 }
@@ -57,7 +57,6 @@ function GuardarBiologo() {
 function loginUser() {
     var nombreUsuario = document.getElementById("nombreusuario").value;
     var contrasena = document.getElementById("password").value;
-    var tipo_usuario = "";
 
     if (nombreUsuario === "" || contrasena === "") {
         mostrarMensaje("Por favor complete ambos campos.");
@@ -70,7 +69,6 @@ function loginUser() {
                     if (contrasena === user.contraseña_estudiante) {
                         localStorage.setItem('nombreusuario', nombreUsuario);
                         window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
-                        tipo_usuario = "estudiante";
                         return;
                     } else {
                         mostrarMensaje("El usuario o contraseña ingresadas no son correctas.");
@@ -84,7 +82,6 @@ function loginUser() {
                         if (user && contrasena === user.contraseña_admin) {
                             localStorage.setItem('nombreusuario', nombreUsuario);
                             window.location.href = "/Front - Proyecto/src/Administrativo/Admin - Inicio.html";
-                            tipo_usuario = "admin";
                             return;
                         } else {
                             mostrarMensaje("El usuario o contraseña ingresadas no son correctas.");
@@ -97,7 +94,6 @@ function loginUser() {
                     .then(user => {
                         if (user && contrasena === user.contraseña_biologo) {
                             window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html";
-                            tipo_usuario = "biologo";
                             return;
                         } else {
                             mostrarMensaje("El usuario o contraseña ingresadas no son correctas.");
@@ -110,8 +106,6 @@ function loginUser() {
     }
 }
 
-
-
 function mostrarMensajeRegistro(msj) {
     var mensajeElemento = document.getElementById("mensaje2");
     mensajeElemento.innerHTML = msj;
@@ -120,7 +114,6 @@ function mostrarMensaje(mensaje) {
     var mensajeElemento = document.getElementById("mensaje");
     mensajeElemento.innerHTML = mensaje;
 }
-
 
 function perfilUser() {
     const selectedProfile = document.querySelector('input[name="perfil"]:checked');
