@@ -209,3 +209,27 @@ CALL EliminarPublicaciones('1011')
 CALL EliminarFauna('1009')
 CALL AgregarFauna('Gato Solo', 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true', 'Nasua', 'Nasua, llamados coatíes o pizotes, ​ es un género con dos especies de pequeños mamíferos omnívoros americanos de la familia de los prociónidos.​ Habita desde el sur de Estados Unidos hasta el norte de Argentina, Paraguay y Uruguay.','Mamífero')
 CALL AgregarPublicaciones('Me encontré un gato solo saliendo de la U. Se llama pansito', 'Campus Levi Sasso',NULL, 1014, 1013, 1012, NULL)
+
+SELECT * FROM Administrativo
+
+SELECT * FROM Estudiante
+SELECT * FROM Estudiante_Publicacion
+SELECT * FROM Publicaciones
+SELECT * FROM Fauna
+
+CREATE VIEW VistaPublicacionesFauna AS 
+SELECT e.nombre_estudiante, ep.fecha_estudiante, p.lugar, p.titulo, f.foto_fauna, f.nombre_cientifico_fauna, f.nombre_animal
+FROM Estudiante e JOIN Estudiante_Publicacion ep
+ON e.id_estudiante = ep.id_estudiante JOIN Publicaciones p
+ON ep.id_publicacion = p.id_publicacion JOIN Fauna f
+ON p.id_fauna = f.id_fauna;
+
+SELECT * FROM Biologo
+
+CALL AgregarEstudiante('Sapoberto', 'juanillo@utp.ac.pa', 'xd123', NULL)
+CALL AgregarAdministrativo('Juanillo', 'drake.castillo@utp.ac.pa', 'asd', NULL)
+CALL AgregarBiologo('Moisins', 'gustavo.perez@gmail.com', 'xd', NULL)
+
+SELECT * FROM VistaPublicacionesFauna
+
+
