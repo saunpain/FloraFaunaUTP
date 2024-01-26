@@ -39,7 +39,7 @@ function GuardarFauna() {
 
 function ActualizarFauna(id) {
     let data = {
-        id_fauna:id,
+        id_fauna: id,
         nombre_animal: document.getElementById("input2").value,
         nombre_cientifico_fauna: document.getElementById("input3").value,
         categoria_fauna: document.getElementById("input4").value,
