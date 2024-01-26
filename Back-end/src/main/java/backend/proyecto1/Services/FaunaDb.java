@@ -77,8 +77,8 @@ public class FaunaDb {
         try{
             Statement stmt = cn.createStatement();
             String query = "Call ActualizarFauna('"
+            + f.getId_fauna() + "','"
             + f.getNombre_animal() + "','"
-            + f.getFoto_fauna() + "','"
             + f.getNombre_cientifico_fauna() + "','"
             + f.getDescripcion_cientifica_fauna() + "','"
             + f.getCategoria_fauna() + "')";

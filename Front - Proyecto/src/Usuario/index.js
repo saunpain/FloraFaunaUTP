@@ -15,19 +15,6 @@ function DarLike(id) {
   imagen.src = Like;
 }
 
-function ObtenerEstudiante(){
-  const user = usuario_name;
-  fetch(baseUrl + "/estudiante/" + user)
-        .then(res => res.json())
-        .then(data => {
-            const fotoPerfil = data.perfil_estudiante;
-            var img = document.getElementById("imgPerfil");
-            img.src = fotoPerfil;
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
 
 function mostrarImagen() {
   var input = document.getElementById('imagen');
