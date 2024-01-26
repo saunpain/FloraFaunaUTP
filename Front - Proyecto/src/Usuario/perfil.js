@@ -48,19 +48,7 @@ function ImprimirPerfil(usuario) {
     perfilContainer.style.display = "flex";
     perfilContent.innerHTML = MapearPerfil(usuario);
 }
-/*
-<form class="m-4">
-            <input type="file" id="fotoEstudiante" name="imagen" accept="image/*" style="display:none" onchange="editarFotoPerfil()">
-            <label for="fotoEstudiante" style="cursor:pointer;">
-                <img id="preview" src="${usuario.perfil_estudiante}" alt="Vista previa de la imagen" class="w-16 h-16">
-            </label>
-        </form>
-            <img id="preview" alt="Vista previa de la imagen" class="hidden">
-            <img src="${usuario.perfil_estudiante}" alt="foto de perfil" class="rounded-full w-16 h-16">
-            <p>Editar foto</p>
-            <button onclick="editarFotoPerfil()">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/editar-perfil.png?raw=true" class="h-6 w-6">
-            </button> */
+
 function MapearPerfil(usuario) {
     return `<div class="w-80 h-[24rem] text-lg">
     <div class="ml-6 mr-6">
@@ -70,23 +58,18 @@ function MapearPerfil(usuario) {
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_profile.png?raw=true" alt="cerrar" class="h-10 w-10">
             </button>
         </div>
-        <div class="mt-5">
-            <form class="m-4 flex items-center justify-around" action="" method="post" enctype="multipart/form-data">
-                <input type="file" id="fotoEstudiante" name="imagen" accept="image/*" class="hidden" onchange="editarFotoPerfil()">
-                <label>
-                    <img id="preview" src="${usuario.perfil_estudiante}" alt="Vista previa de la imagen" class="w-16 h-16 rounded-full">
-                </label>
-                <p>Editar foto</p>
-                <label for="fotoEstudiante" style="cursor:pointer;">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/editar-perfil.png?raw=true" class="h-6 w-6">
-                </label>
-            </form>
+        <div class="flex mt-5 items-center justify-around">
+            <img src="${usuario.perfil_estudiante}" alt="foto de perfil" class="rounded-full w-16 h-16">
+            <p>Editar foto</p>
+            <button>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/editar-perfil.png?raw=true" class="h-6 w-6">
+            </button>
         </div>
         <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_estudiante}">${usuario.nombre_estudiante}</p>
         <input type="text" id="input" class="hidden mt-6 w-full text-center" disabled/>
         <hr class="h-px border-0 dark:bg-gray-600">
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-            <button id="guardar" class="hidden focus:outline-none" onclick="guarda('${usuario.id_estudiante}')">
+            <button id="guardar" class="hidden focus:outline-none" onclick="guardarNuevoNombre('${usuario.id_estudiante}')">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar">
             </button>
             <div class="absolute bg-white border rounded -ml-5 w-[8rem] p-1" x-show="open" @click.away="open = false">
@@ -198,7 +181,7 @@ function cancelarNuevoNombre(id) {
     nuevoNombre.removeAttribute("data-original-value");
 }
 
-
+/*
 function editarFotoPerfil() {
     // Aquí debes implementar la lógica para procesar la imagen seleccionada y actualizar la vista previa.
     var inputFile = document.getElementById('fotoEstudiante');
@@ -215,3 +198,4 @@ function editarFotoPerfil() {
     reader.readAsDataURL(inputFile.files[0]);
 }
 
+*/
