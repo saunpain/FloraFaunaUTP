@@ -8,17 +8,30 @@ function GuardarEstudiante(){
         contraseña_estudiante: document.getElementById("contrasena").value,
         correo_estudiante : document.getElementById("correoUsuario").value,
     }
-
-    console.log(data)
-    fetch(baseUrl + "/estudiante", {
-        method: "POST",
-        body:JSON.stringify(data),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
+    if(data.nombre_estudiante === "" || data.contraseña_estudiante=== "" || data.correo_estudiante === ""){
+        mostrarMensajeRegistro("Debe completar todos los campos para registrarse.");
+    }
+    else{
+        console.log(data)
+        fetch(baseUrl + "/estudiante", {
+            method: "POST",
+            body:JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
         }
-    }).then(res => {
-        console.log(res)
-    })
+        }).then(res => {
+            if(res.ok){
+                console.log("Registro exitoso");
+                localStorage.setItem('nombreusuario', data.nombre_estudiante);
+                window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
+            } else {
+                throw new Error("Error en la solicitud");
+            }
+        })
+        .catch(error => {
+            mostrarMensajeRegistro("No se ha podido completar su registro.");
+        });
+    }
 }
 
 
@@ -44,6 +57,7 @@ function GuardarBiologo() {
         }).then(res => {
             if(res.ok){
                 console.log("Registro exitoso");
+                localStorage.setItem('nombreusuario', data.nombre_biologo);
             } else {
                 throw new Error("Error en la solicitud");
             }

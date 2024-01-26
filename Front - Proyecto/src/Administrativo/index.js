@@ -1,3 +1,20 @@
+let baseUrl = "http://localhost:8080"
+
+function ObtenerAdmin(){
+  const user = usuario_name;
+  fetch(baseUrl + "/administrativo/" + user)
+        .then(res => res.json())
+        .then(data => {
+            const fotoPerfil = data.perfil_admin;
+            var img = document.getElementById("imgPerfil");
+            img.src = fotoPerfil;
+
+            localStorage.setItem("perfil_Admin",fotoPerfil);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
 
 //Función para agregar like a las publicaciones
 function DarLike(id) {
@@ -13,99 +30,6 @@ function DarLike(id) {
   // Cambia la URL de la imagen al dar click
   imagen.src = Like;
 }
-
-
-function mostrarPerfil() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('perfil');
-  var perfilContainer = document.getElementById('contenedor-Perfil');
-  var perfilContent = document.getElementById('userProfile-contenido');
-
-
-  fetch('PerfilAdmin.html')
-    .then(response => response.text())
-    .then(data => {
-      perfilContent.innerHTML = data;
-      overlay.style.display = 'block';
-      
-      perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
-    })
-    .catch(error => console.error('Error al cargar el perfil:', error));
-}
-
-// Función para cerrar el cuadro de perfil y quitar la capa oscura
-function cerrarPerfil() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('perfil');
-  var perfilContainer = document.getElementById('contenedor-Perfil');
-
-  overlay.style.display = 'none';
-  perfilContainer.style.display = 'none'; // Ocultar el cuadro de perfil
-}
-
-// Asignar evento al clic en la imagen de perfil
-document.getElementById('mostrarPerfil').addEventListener('click', function(event) {
-  event.preventDefault(); // Evitar que la página se recargue
-
-  mostrarPerfil();
-});
-
-function editarUsuario(id) {
-  var usuario = document.getElementById(id);
-  var nuevoNombre = document.getElementById('input');
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
-  
-  nuevoNombre.setAttribute('data-original-value',usuario.innerText);
-  usuario.style.display = "none";
-  nuevoNombre.style.display = "inline-block";
-  nuevoNombre.value = usuario.innerText;
-  nuevoNombre.removeAttribute("disabled");
-  btnEnviar.style.display = "inline-block";
-  btnCancel.style.display = "inline-block";
-
-  nuevoNombre.focus();
-}
-
-function guardarNuevoNombre(id) {
-  var usuario = document.getElementById(id);
-  var nuevoNombre = document.getElementById('input');
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
-  
-  usuario.innerText = nuevoNombre.value;
-  usuario.style.display = "inline-block";
-  usuario.style = "text-center";
-  nuevoNombre.style.display = "none";
-  nuevoNombre.setAttribute("disabled", true);
-
-  btnEnviar.style.display = "none";
-  btnCancel.style.display = "none";
-  
-  nuevoNombre.removeAttribute('data-original-value');
-}
-
-function cancelarNuevoNombre(id){
-  var usuario = document.getElementById(id);
-  var nuevoNombre = document.getElementById('input');
-  var btnEnviar = document.getElementById("guardar");
-  var btnCancel = document.getElementById("cancelar");
-  
-  var valorInicial = nuevoNombre.getAttribute('data-original-value');
-  nuevoNombre.value = valorInicial;
-
-  usuario.style.display = "inline-block";
-  usuario.style = "text-center";
-  nuevoNombre.style.display = "none";
-  nuevoNombre.setAttribute("disabled", true); // Deshabilitar el input
-  btnEnviar.style.display = "none";
-  btnCancel.style.display = "none";
-
-  nuevoNombre.removeAttribute('data-original-value');
-}
-
 
 
 function togglePasswordVisibility() {

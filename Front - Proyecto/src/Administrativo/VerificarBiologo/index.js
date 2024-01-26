@@ -1,4 +1,21 @@
+let baseUrl = "http://localhost:8080"
 
+
+function ObtenerAdmin(){
+  const user = usuario_name;
+  fetch(baseUrl + "/administrativo/" + user)
+        .then(res => res.json())
+        .then(data => {
+            const fotoPerfil = data.perfil_admin;
+            var img = document.getElementById("imgPerfil");
+            img.src = fotoPerfil;
+
+            localStorage.setItem("perfil_Admin",fotoPerfil);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
 
 //Funcion para controlar los botones de aprobar y rechazar, tanto en la tabla como en el div "solicitud"
 function toggleEstado(id, accion) {

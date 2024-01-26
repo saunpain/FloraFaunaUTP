@@ -29,11 +29,10 @@ public class FaunaDb {
                 Fauna f = new Fauna(
                     rs.getInt("id_fauna"),
                     rs.getString("nombre_animal"),
-                    rs.getString("foto_fauna"),
                     rs.getString("nombre_cientifico_fauna"),
                     rs.getString("descripcion_cientifica_fauna"),
-                    rs.getString("categoria_fauna")
-                    
+                    rs.getString("categoria_fauna"),
+                    rs.getString("foto_fauna")
                 );
 
                 fauna.add(f);
@@ -52,10 +51,10 @@ public class FaunaDb {
             Statement stmt = cn.createStatement();
             String query = "Call AgregarFauna('"
                 + f.getNombre_animal() + "','"
-                + f.getFoto_fauna() + "','"
                 + f.getNombre_cientifico_fauna() + "','"
+                + f.getCategoria_fauna() + "','"
                 + f.getDescripcion_cientifica_fauna() + "','"
-                + f.getCategoria_fauna() + "')";
+                + f.getFoto_fauna() + "')";
 
             resultado = stmt.executeUpdate(query);
             stmt.close();
@@ -71,8 +70,8 @@ public class FaunaDb {
         try{
             Statement stmt = cn.createStatement();
             String query = "Call ActualizarFauna('"
+            + f.getId_fauna() + "','"
             + f.getNombre_animal() + "','"
-            + f.getFoto_fauna() + "','"
             + f.getNombre_cientifico_fauna() + "','"
             + f.getDescripcion_cientifica_fauna() + "','"
             + f.getCategoria_fauna() + "')";

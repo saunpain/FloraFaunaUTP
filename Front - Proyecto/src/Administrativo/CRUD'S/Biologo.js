@@ -1,6 +1,10 @@
-let baseUrl = "http://localhost:8080"
-let biologos = []
 
+let biologos = []
+let usuario_name = localStorage.getItem("nombreusuario");
+document.getElementById('nombreAdmin').textContent = usuario_name;
+let foto = localStorage.getItem("perfil_Admin");
+let img = document.getElementById("imgPerfil");
+img.src = foto;
 
 function ObtenerBiologos(){
     fetch(baseUrl + "/biologo/all").then( res => {

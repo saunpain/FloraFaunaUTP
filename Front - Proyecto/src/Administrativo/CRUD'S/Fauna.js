@@ -1,6 +1,9 @@
-let baseUrl = "http://localhost:8080"
 let fauna = []
-
+let usuario_name = localStorage.getItem("nombreusuario");
+document.getElementById('nombreAdmin').textContent = usuario_name;
+let foto = localStorage.getItem("perfil_Admin");
+let img = document.getElementById("imgPerfil");
+img.src = foto;
 
 function ObtenerFauna(){
     fetch(baseUrl + "/fauna/all").then( res => {
@@ -50,9 +53,19 @@ function ActualizarFauna(id) {
             'Content-type': 'application/json; charset=UTF-8',
         },
     }).then(res => {
-        console.log(res);
-        ObtenerFauna();
+        if(res.ok){
+            console.log("Solicitud exitosa");
+            console.log(res);
+            
+            ObtenerFauna();
+        } else {
+            throw new Error("Error en la solicitud");
+        }
     })
+    .catch(error => {
+        console.log(error);
+    });
+
 }
 
 function EliminarFauna(id){

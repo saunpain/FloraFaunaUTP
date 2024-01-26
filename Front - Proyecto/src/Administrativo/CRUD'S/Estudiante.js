@@ -1,6 +1,9 @@
-let baseUrl = "http://localhost:8080"
 let estudiantes = []
-
+let usuario_name = localStorage.getItem("nombreusuario");
+document.getElementById('nombreAdmin').textContent = usuario_name;
+let foto = localStorage.getItem("perfil_Admin");
+let img = document.getElementById("imgPerfil");
+img.src = foto;
 
 function ObtenerEstudiantes(){
     fetch(baseUrl + "/estudiante/all").then( res => {

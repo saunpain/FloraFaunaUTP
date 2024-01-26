@@ -1,6 +1,10 @@
-let baseUrl = "http://localhost:8080"
-let flora = []
 
+let flora = []
+let usuario_name = localStorage.getItem("nombreusuario");
+document.getElementById('nombreAdmin').textContent = usuario_name;
+let foto = localStorage.getItem("perfil_Admin");
+let img = document.getElementById("imgPerfil");
+img.src = foto;
 
 function ObtenerFlora(){
     fetch(baseUrl + "/flora/all").then( res => {
