@@ -67,6 +67,13 @@ public class FaunaDb {
 
     public int ActualizarFauna(Fauna f){
         int resultado = 0;
+
+        System.out.println(f.getId_fauna());
+        System.out.println(f.getNombre_animal());
+        System.out.println(f.getNombre_cientifico_fauna());
+        System.out.println(f.getDescripcion_cientifica_fauna());
+        System.out.println(f.getCategoria_fauna());
+
         try{
             Statement stmt = cn.createStatement();
             String query = "Call ActualizarFauna('"
