@@ -59,7 +59,7 @@
         }
         </style>
     </head>
-<body class="bg-white w-full h-full box-border inicio">
+<body onload="ObtenerPublicaciones()" class="bg-white w-full h-full box-border inicio">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2">
             <div class="flex items-center md:ml-4 ">
@@ -70,12 +70,17 @@
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
 
+            <div class="flex items-center">
+
+            <button id="mostrarVerificacion" class="text-[#FFFFFF] text-sm text-lg mr-6 xl:text-lg hover:text-[#99E0FF] font-semibold">Enviar Solicitud de Verificación</button>
+
             <button id="mostrarPerfil">
                 <a href="">
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="user icon">
                 </a>
             </button>
 
+            </div>
         </div>
     </header>
     
@@ -83,6 +88,16 @@
     <div id="contenedor-Perfil" class="hidden">
         <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
             <div id="userProfile-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="verificacion" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-verificacion" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="verificacion-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
                 
             </div>
             
@@ -233,138 +248,9 @@
                 </div>
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-32 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+        <section id="pub" class="mapeo bg-[#F8F5F5] relative flex flex-col items-center top-32 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+     
             
-            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-0 w-screen sm:w-9/12 lg:w-5/6">
-                <a href="./Publicacion.html">
-                    <div class="mt-2">
-                        <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
-                        <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/15</span>
-                        <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">Campus Levi Sasso</span>
-                        <p class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Me encontré un gato solo saliendo de la U. Se llama pansito</p>
-                    </div>
-                    <div class="flex justify-center mt-5 mb-5">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
-                    </div>
-                </a>
-                    <div class="flex justify-around">
-                        <div class="flex">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
-                            <span class="textito font-bold text-[#241111]ml-2 xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">35</span>
-                        </div>
-                        <div class="flex">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
-                        </div>
-                        <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Nasua</span>
-                        <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Gato solo</span>
-                        <div class="relative inline-block">
-                            <button class="boton-principal top-1 right-3 relative ">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
-                            </button>
-                            <div class="absolute -mt-3 -ml-44">
-                                <button class="opciones invisible block w-[13rem]">
-                                    <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                        <p>Editar Nombre Científico</p>
-                                    </a>
-                                </button>
-                                <button class="opciones invisible block w-[13rem]">
-                                    <a class="flex bg-white px-2 py-1 text-sm border border-black border-t-0 text-left hover:bg-gray-200">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Chat_search_light.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                        <p>Editar Descripción</p>
-                                    </a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            
-            
-            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <div class="mt-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
-                    <span class="textito text-gray-400 ml-2 md:ml-4 lg:ml-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/13</span>
-                    <span class="textito text-gray-400 float-right xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1 xl:ml-10 xl:mr-10 lg:mr-0">Campus Levi Sasso</span>
-                    <p class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 mt-2 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[13px]">Me encontré a este pequeño en los senderos de la UTP. ¿No es lindo?</p>
-                </div>
-                <div class="flex justify-center mt-5 mb-5">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Oso-Hormiguero.png?raw=true" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
-                </div>
-                <div class="flex justify-around">
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
-                        <span class="textito font-bold text-[#241111]ml-2 xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">15</span>
-                    </div>
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                        <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
-                    </div>
-                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Vermilinguos</span>
-                    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Oso hormiguero</span>
-                    <div class="relative inline-block">
-                        <button class="boton-principal top-1 right-3 relative ">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
-                        </button>
-                        <div class="absolute -mt-3 -ml-44">
-                            <button class="opciones invisible block w-[13rem]">
-                                <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Editar Nombre Científico</p>
-                                </a>
-                            </button>
-                            <button class="opciones invisible block w-[13rem]">
-                                <a class="flex bg-white px-2 py-1 text-sm border border-black border-t-0 text-left hover:bg-gray-200">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Chat_search_light.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Editar Descripción</p>
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <div class="mt-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
-                    <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/15</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 md:mr-6 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1 lg:mr-0 xl:ml-10 xl:mr-10">Campus Levi Sasso</span>
-                    <p class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[13px] mt-2">Esta magnífica ave se encuentra en los aldedores de la bilibioteca central de la UTP.</p>
-                </div>
-                <div class="flex justify-center mt-5 mb-5">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Colibri.png?raw=true" class="xl:max-h-[330px] xl:max-w-[420px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
-                </div>
-                <div class="flex justify-around">
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 lg:ml-0 xl:w-6 xl:ml-8 h-5">
-                        <span class="textito font-bold text-[#241111]ml-2 xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">35</span>
-                    </div>
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                        <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
-                    </div>
-                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Trochilidae</span>
-                    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 mr-10 xl:mr-10">Animal: Colibrí</span>
-                    <div class="relative inline-block">
-                        <button class="boton-principal top-1 right-3 relative ">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
-                        </button>
-                        <div class="absolute -mt-3 -ml-44">
-                            <button class="opciones invisible block w-[13rem]">
-                                <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Editar Nombre Científico</p>
-                                </a>
-                            </button>
-                            <button class="opciones invisible block w-[13rem]">
-                                <a class="flex bg-white px-2 py-1 text-sm border border-black border-t-0 text-left hover:bg-gray-200">
-                                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Chat_search_light.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Editar Descripción</p>
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
         <div class="relative">
             <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] h-[300px] right-0 mr-10 mt-[9.6rem] hidden lg:block xl:block 2xl:block">
@@ -430,6 +316,6 @@
         </div>                             <!--xl:min-w-[54rem] para pantalla normal    lg:min-w-[20rem] lg:max-w-xl xl:min-w-[54rem] xl:max-w-[60rem] 2xl:min-w-[58rem]--> <!--lg:w-[25rem] xl:min-w-[42rem] 2xl:w-[60rem] md:w-[28rem]-->
     </div>
     <script src="index.js"></script>
-        <script src="/src/index.js"></script>
+        <script src="../index.js"></script>
 </body>
 </html>

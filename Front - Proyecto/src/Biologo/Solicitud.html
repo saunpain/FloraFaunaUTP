@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud Biologo</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="">
+    <div class="w-80 h-[28rem] text-lg">
+        <div class="ml-6 mr-6">
+            <button onclick="cerrarVerificacion()" class="px-4 py-2 absolute mt right-[25rem] mr-[10rem] top-[6.5rem]">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_profile.png?raw=true" alt="">
+            </button>
+            <h2 class="text-2xl text-center">Solicitud de Verificación</h2>
+        <form action="">
+            <div class="flex mt-5 items-center justify-around">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="foto de perfil" class="rounded-full w-16 h-16">
+                <p>Charles Darwin</p>
+            </div>
+            
+            <p class="mt-6">Correo</p>
+            <p class="mt-2 underline">charles.darwin@utp.ac.pa</p>
+           
+        
+            <p class="mt-2">Ingrese el título</p>
+            <div class="flex mt-2 items-center">
+                <input required class="w-full mr-2 h-6 password-display inline-block border rounded border-gray-400 p-4">
+                
+            </div>
+
+            <p class="mt-2">Adjunte su archivo pdf</p>
+            <input id="archivoInput" class="w-80 mt-4 block" type="file" accept=".pdf">
+            <button onclick="subirArchivo()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
+        </div>
+        </form>
+        
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

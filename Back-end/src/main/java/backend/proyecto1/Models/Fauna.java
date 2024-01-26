@@ -4,10 +4,21 @@ public class Fauna {
     
     private int id_fauna;
     private String nombre_animal;
+    private String foto_fauna;
     private String nombre_cientifico_fauna;
     private String descripcion_cientifica_fauna;
     private String categoria_fauna;
-    private String foto_fauna;
+
+
+    public Fauna(int id_fauna, String nombre_animal, String foto_fauna, String nombre_cientifico_fauna,
+            String descripcion_cientifica_fauna, String categoria_fauna) {
+        this.id_fauna = id_fauna;
+        this.nombre_animal = nombre_animal;
+        this.foto_fauna = foto_fauna;
+        this.nombre_cientifico_fauna = nombre_cientifico_fauna;
+        this.descripcion_cientifica_fauna = descripcion_cientifica_fauna;
+        this.categoria_fauna = categoria_fauna;
+    }
 
     public Fauna(){
     }
@@ -77,18 +88,6 @@ public class Fauna {
 
 
     public void setFoto_fauna(String foto_fauna) {
-        this.foto_fauna = foto_fauna;
-    }
-
-
-
-    public Fauna(int id_fauna, String nombre_animal, String nombre_cientifico_fauna,
-            String descripcion_cientifica_fauna, String categoria_fauna, String foto_fauna) {
-        this.id_fauna = id_fauna;
-        this.nombre_animal = nombre_animal;
-        this.nombre_cientifico_fauna = nombre_cientifico_fauna;
-        this.descripcion_cientifica_fauna = descripcion_cientifica_fauna;
-        this.categoria_fauna = categoria_fauna;
         this.foto_fauna = foto_fauna;
     }
 }
