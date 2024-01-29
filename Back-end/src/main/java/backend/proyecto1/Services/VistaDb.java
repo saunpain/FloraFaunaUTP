@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import backend.proyecto1.Helpers.Conexion;
-import backend.proyecto1.Models.Vista;
-import backend.proyecto1.Models.Vista_Fl;
 import backend.proyecto1.Models.VistaPubGlobal;
 
 
@@ -87,7 +85,7 @@ public class VistaDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "SELECT * FROM VistaPubGlobal";
+            String query = "SELECT id_publicacion, nombre_estudiante, fecha_estudiante, lugar, titulo, foto_flora, nombre_cientifico_flora, nombre_planta, foto_fauna, nombre_cientifico_fauna, nombre_animal FROM VistaPubGlobal";
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()){
@@ -115,4 +113,39 @@ public class VistaDb {
         }
         return vistaG;
     }
+
+    public VistaPubGlobal ObtenerPublicacion(int id) { //Tuve que crear un constructor con las variables que se iban a utilizar en esta funcion, parece que estaba jodiendo por eso
+        VistaPubGlobal pub = null;
+    
+        try {
+            String query = "SELECT * FROM VistaPubGlobal WHERE id_publicacion = '"+ id + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                pub = new VistaPubGlobal(
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getString("lugar"),
+                    rs.getString("titulo"),
+                    rs.getString("foto_flora"),
+                    rs.getString("nombre_cientifico_flora"),
+                    rs.getString("nombre_planta"),
+                    rs.getString("descripcion_cientifica_flora"),
+                    rs.getInt("id_publicacion"),
+                    rs.getString("foto_fauna"),
+                    rs.getString("nombre_cientifico_fauna"),
+                    rs.getString("nombre_animal"),
+                    rs.getString("descripcion_cientifica_fauna")
+                );
+            }
+            stmt.close();
+            rs.close();
+            return pub;
+        } catch (Exception ex) {
+            
+        }
+    
+        return pub;
+    } 
 }

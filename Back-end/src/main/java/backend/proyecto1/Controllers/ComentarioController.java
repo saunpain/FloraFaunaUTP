@@ -16,9 +16,14 @@ import backend.proyecto1.Services.ComentarioDb;
 @RestController
 public class ComentarioController {
     
-    @GetMapping("/comentario/all")
-    public List<Comentario> TodosLosComentarios(){
-        return new ComentarioDb().ObtenerTodosLosComentarios();
+    @GetMapping("/comentario/{id_estudiante}")
+    public List<Comentario> TodosLosComentarios(@PathVariable("id_estudiante") int id){
+        return new ComentarioDb().ObtenerTodosLosComentarios(id);
+    }
+
+    @GetMapping("/comentarios/{id_publicacion}")
+    public List<Comentario> ComentariosPub(@PathVariable("id_publicacion") int id){
+        return new ComentarioDb().ObtenerComentariosPub(id);
     }
 
     @PostMapping("/comentario")

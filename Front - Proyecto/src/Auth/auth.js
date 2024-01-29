@@ -58,6 +58,7 @@ function GuardarBiologo() {
             if(res.ok){
                 console.log("Registro exitoso");
                 localStorage.setItem('nombreusuario', data.nombre_biologo);
+                window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html"
             } else {
                 throw new Error("Error en la solicitud");
             }

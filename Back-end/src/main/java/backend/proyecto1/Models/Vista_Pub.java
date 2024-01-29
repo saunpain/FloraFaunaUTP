@@ -1,6 +1,6 @@
 package backend.proyecto1.Models;
 
-public class VistaPubGlobal {
+public class Vista_Pub {
     private String nombre_estudiante;
     private String fecha_estudiante;
     private String lugar;
@@ -14,26 +14,15 @@ public class VistaPubGlobal {
     private String nombre_cientifico_fauna;
     private String nombre_animal;
     private String descripcion_cientifica_fauna;
-    public VistaPubGlobal() {
-    }
-    public VistaPubGlobal(String nombre_estudiante, String fecha_estudiante, String lugar, String titulo,
-            String foto_flora, String nombre_cientifico_flora, String nombre_planta, int id_publicacion,
-            String foto_fauna, String nombre_cientifico_fauna, String nombre_animal) {
-        this.nombre_estudiante = nombre_estudiante;
-        this.fecha_estudiante = fecha_estudiante;
-        this.lugar = lugar;
-        this.titulo = titulo;
-        this.foto_flora = foto_flora;
-        this.nombre_cientifico_flora = nombre_cientifico_flora;
-        this.nombre_planta = nombre_planta;
-        this.id_publicacion = id_publicacion;
-        this.foto_fauna = foto_fauna;
-        this.nombre_cientifico_fauna = nombre_cientifico_fauna;
-        this.nombre_animal = nombre_animal;
-    }
-    public VistaPubGlobal(String nombre_estudiante, String fecha_estudiante, String lugar, String titulo,
-            String foto_flora, String nombre_cientifico_flora, String nombre_planta, String descripcion_cientifica_flora, int id_publicacion,
-            String foto_fauna, String nombre_cientifico_fauna, String nombre_animal, String descripcion_cientifica_fauna) {
+    private int id_comentario;
+    private String comentario;
+    private String fecha_comentario;
+
+    public Vista_Pub(String nombre_estudiante, String fecha_estudiante, String lugar, String titulo, String foto_flora,
+            String nombre_cientifico_flora, String nombre_planta, String descripcion_cientifica_flora,
+            int id_publicacion, String foto_fauna, String nombre_cientifico_fauna, String nombre_animal,
+            String descripcion_cientifica_fauna, int id_comentario, String comentario, String fecha_comentario) {
+
         this.nombre_estudiante = nombre_estudiante;
         this.fecha_estudiante = fecha_estudiante;
         this.lugar = lugar;
@@ -47,7 +36,15 @@ public class VistaPubGlobal {
         this.nombre_cientifico_fauna = nombre_cientifico_fauna;
         this.nombre_animal = nombre_animal;
         this.descripcion_cientifica_fauna = descripcion_cientifica_fauna;
+        this.id_comentario = id_comentario;
+        this.comentario = comentario;
+        this.fecha_comentario = fecha_comentario;
     }
+    
+    public Vista_Pub() {
+        
+    }
+
     public String getNombre_estudiante() {
         return nombre_estudiante;
     }
@@ -126,4 +123,26 @@ public class VistaPubGlobal {
     public void setDescripcion_cientifica_fauna(String descripcion_cientifica_fauna) {
         this.descripcion_cientifica_fauna = descripcion_cientifica_fauna;
     }
+    public int getId_comentario() {
+        return id_comentario;
+    }
+    public void setId_comentario(int id_comentario) {
+        this.id_comentario = id_comentario;
+    }
+    public String getComentario() {
+        return comentario;
+    }
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+    public String getFecha_comentario() {
+        return fecha_comentario;
+    }
+    public void setFecha_comentario(String fecha_comentario) {
+        this.fecha_comentario = fecha_comentario;
+    }
+    
+    
+    
+    
 }

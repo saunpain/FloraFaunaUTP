@@ -17,21 +17,22 @@ public class ComentarioDb {
         this.cn = new Conexion().openDb();
     }
 
-    public List<Comentario> ObtenerTodosLosComentarios(){
+    public List<Comentario> ObtenerTodosLosComentarios(int id){
         List<Comentario> comentarios = new ArrayList<>();
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "SELECT * FROM Comentario";
+            String query = "SELECT * FROM VistaComentario where id_estudiante = '" + id + "'";
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()){
                 Comentario c = new Comentario(
                     rs.getInt("id_comentario"),
                     rs.getString("comentario"),
-                    rs.getInt("id_publicacion")
+                    rs.getInt("id_publicacion"),
+                    rs.getInt("id_estudiante"),
+                    rs.getString("fecha_comentario")
                 );
-
                 comentarios.add(c);
             }
         } catch (Exception e){
@@ -47,7 +48,9 @@ public class ComentarioDb {
             Statement stmt = cn.createStatement();
             String query = "Call AgregarComentario('"
                 + c.getComentario() + "','"
-                + c.getId_publicacion() + "')";
+                + c.getId_publicacion() + "','"
+                + c.getId_estudiante() + "','"
+                + c.getFecha_comentario() +"')";
 
             resultado = stmt.executeUpdate(query);
 
@@ -63,9 +66,9 @@ public class ComentarioDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "Call ActualizarAdministrativo('"
-                + c.getComentario() + "','"
-                + c.getId_publicacion() + "')";
+            String query = "Call ActualizarComentario('"
+            + c.getId_comentario() + "','"
+            + c.getComentario() +"')";
 
             resultado = stmt.executeUpdate(query);
 
@@ -89,5 +92,30 @@ public class ComentarioDb {
 
         }
         return resultado;
+    }
+
+    public List<Comentario> ObtenerComentariosPub(int id){
+        List<Comentario> comentarios = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM VistaComentario where id_publicacion = '" + id + "'";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                Comentario c = new Comentario(
+                    rs.getInt("id_comentario"),
+                    rs.getString("comentario"),
+                    rs.getInt("id_publicacion"),
+                    rs.getInt("id_estudiante"),
+                    rs.getString("fecha_comentario"),
+                    rs.getString("nombre_estudiante")
+                );
+                comentarios.add(c);
+            }
+        } catch (Exception e){
+
+        }
+        return comentarios;
     }
 }

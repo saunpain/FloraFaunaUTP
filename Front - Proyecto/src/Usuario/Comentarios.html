@@ -213,60 +213,7 @@
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row"> <!--Contenido completo-->
                                                                                                         <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
         <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-32 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5 min-h-[36rem]"> <!--Publicaciones-->
-            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <div class="mb-5 ml-2 mr-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px]">
-                    <div class="">
-                        <span class="textito font-semibold ml-0 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">Comentaste:</span>
-                        <span class="textito text-gray-400 ml-10 md:mr-6 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/25</span>
-                        <div class="relative inline-block float-right" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false"> <!--Menú desplegable implementando lógica de Framework Alpine.js-->
-                            <button class="-mt-3" @click="open = !open">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" alt="">
-                            </button>
-                            <div class="absolute bg-white border rounded -mt-3 -ml-36" x-show="open" @click.away="open = false">
-                                <button class="block w-[11rem]" onclick="editarComentario('1')">
-                                    <a class="flex px-2 py-1 text-sm">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                        <p>Editar comentario</p>
-                                    </a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <span id="comentario-1" class="mt-2">Yo los he visto cerca del estacionamiento, generalmente salen en la mañana.</span>
-                    <input type="text" id="input-1" class="hidden w-full mb-2" disabled/>
-                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button id="guardar-1" class="hidden focus:outline-none" onclick="guardarCambios('1')">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar">
-                        </button>
-                        <div class="absolute bg-white border rounded -ml-5 w-[8rem] p-1" x-show="open" @click.away="open = false">
-                            <p>Guardar cambios</p>
-                        </div>
-                    </div>
-                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button id="cancelar-1" class="hidden focus:outline-none" onclick="cancelarEdicion('1')">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar">
-                        </button>
-                        <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
-                            <p>Cancelar</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="ml-2 mr-2">
-                    <div class="mt-2 mb-2 border-slate-300 border-[1.5px] rounded-md max-w-[40rem]">
-                        <a href="#oso" class="text-left">
-                            <div class="mt-2">
-                                <span class="textito font-bold text-[#241111] ml-2 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
-                                <span class="textito text-gray-400 ml-2 md:ml-4 lg:ml-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/13</span>
-                                <span class="textito text-gray-400 float-right xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1 xl:ml-10 xl:mr-10 lg:mr-0">Campus Levi Sasso</span>
-                                <p class="textito font-bold text-[#241111] xl:mr-10 ml-2 xl:text-sm lg:text-[12px] md:text-[14px] text-[13px]"> Me encontré a este pequeño en los senderos de la UTP. ¿No es lindo?</p>
-                            </div>
-                        </a>
-                    </div>
-                </button>
-            </div>
-            <div class="hidden"> <!--En caso de no haber publicado nada-->
-                <h3 class="font-bold">Nombre usuario no ha comentado nada.</h3>
-            </div>
+
         </section>
 
         <div class="relative">
@@ -328,6 +275,7 @@
         </div>                                                                    <!--xl:min-w-[54rem] para pantalla normal    lg:min-w-[20rem] lg:max-w-xl xl:min-w-[54rem] xl:max-w-[60rem] 2xl:min-w-[58rem]--> <!--lg:w-[25rem] xl:min-w-[42rem] 2xl:w-[60rem] md:w-[28rem]-->
     </div>
     <script src="index.js"></script>
+    <script src="Comentarios.js"></script>
     <script src="perfil.js"></script>
     <script src="/Front - Proyecto/src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
