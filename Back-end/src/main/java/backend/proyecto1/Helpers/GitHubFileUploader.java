@@ -12,23 +12,7 @@ import java.util.Base64;
 
 public class GitHubFileUploader {
 
-    public void subirArchivoGitHub() {
-        // Pega aquí el contenido de la función uploadFileToGitHub
-        // Asegúrate de ajustar las variables según sea necesario
-        String owner = "saunpain";
-        String repo = "FloraFaunaUTP";
-        String filePath = "Solicitudes/archivo.pdf";
-        String token = "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";
-
-        try {
-            File file = new File("archivo.pdf");
-            uploadFileToGitHub(owner, repo, filePath, file, token);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void uploadFileToGitHub(String owner, String repo, String filePath, File file, String token) throws Exception {
+    public static void uploadFileToGitHub(String owner, String repo, String filePath, File file, String token) throws Exception {
         String apiUrl = String.format("https://api.github.com/repos/%s/%s/contents/%s", owner, repo, filePath);
 
         URI uri = new URI(apiUrl);
