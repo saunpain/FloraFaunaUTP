@@ -13,7 +13,7 @@
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_profile.png?raw=true" alt="">
             </button>
             <h2 class="text-2xl text-center">Solicitud de Verificación</h2>
-        <form action="">
+        <form enctype="multipart/form-data" method="POST">
             <div class="flex mt-5 items-center justify-around">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="foto de perfil" class="rounded-full w-16 h-16">
                 <p>Charles Darwin</p>
@@ -25,13 +25,13 @@
         
             <p class="mt-2">Ingrese el título</p>
             <div class="flex mt-2 items-center">
-                <input required class="w-full mr-2 h-6 password-display inline-block border rounded border-gray-400 p-4">
+                <input id="tituloInput" name="titulo" required class="w-full mr-2 h-6 password-display inline-block border rounded border-gray-400 p-4">
                 
             </div>
 
             <p class="mt-2">Adjunte su archivo pdf</p>
-            <input id="archivoInput" class="w-80 mt-4 block" type="file" accept=".pdf">
-            <button onclick="subirArchivo()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
+            <input id="archivoInput" name="file" class="w-80 mt-4 block" type="file" accept=".pdf">
+            <button id="botonSubir" onclick="subirArchivo()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
         </div>
         </form>
         

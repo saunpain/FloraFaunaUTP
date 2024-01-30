@@ -454,30 +454,39 @@ document.getElementById('mostrarVerificacion').addEventListener('click', functio
 
 /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
 
-function subirArchivo(){
-    const archivoInput = document.getElementById("archivoInput");
-    const archivo = archivoInput.files[0];
+function subirArchivo() {
+  const tituloInput = document.getElementById('tituloInput');
+  const archivoInput = document.getElementById('archivoInput');
+  const botonSubir = document.getElementById('botonSubir'); // Agrega un id al botón
 
-    if (archivo) {
-        const formData = new FormData();
-        formData.append("archivo", archivo);
+  botonSubir.disabled = true; // Deshabilitar el botón después de hacer clic
 
-        fetch("http://localhost:5501/api/archivos/subir", {
-            method: "POST",
-            cache: "no-cache",
-            body: formData,
-        })
-        .then(response => response.text())
-        .then(message => {
-            alert("El archivo ha sido subido exitosamente.");
-        })
-        .catch(error => {
-            alert("Error al realizar la solicitud:", error);
-        });
-    } else {
-        alert("Por favor, selecciona un archivo antes de hacer clic en 'Subir Archivo'.");
-    }
+  const formData = new FormData();
+  formData.append('file', archivoInput.files[0]);
+  formData.append('titulo', tituloInput.value);
+
+  const backendURL = 'http://localhost:8080/upload';
+
+  fetch(backendURL, {
+      method: 'POST',
+      body: formData,
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+  })
+  .then(message => {
+      console.log(message);
+      alert("La solicitud fue enviada.")
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert("Error, no se pudo enviar la solicitud.");
+  })
+  .finally(() => {
+      botonSubir.disabled = false; // Habilitar el botón después de completar la operación
+  });
 }
-
-
 
