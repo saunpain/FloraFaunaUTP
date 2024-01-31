@@ -30,6 +30,7 @@ function ImprimirPublicacionesUsuario(publicaciones) {
     if (publicacionesEstudiante.length === 0) {
         contenedor.innerHTML = usuario_name + " no ha realizado publicaciones.";
         contenedor.style.fontWeight = 'bold';
+        contenedor.style.margin = '15px'
         return;
     }
 
@@ -177,17 +178,16 @@ function MapearPublicacionUsusarioFauna(publicacion) {
                 </div>`;
     }
     
-
+/*
 function CrearPublicacion(){
     return `<div id="publicar" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6 md:text-[16px] text-[12.5px] hidden">
     <div class="flex justify-center">
-        <form action="/procesarFormulario" method="post" enctype="multipart/form-data" class="m-4">
-            <input type="file" id="imagen" name="imagen" accept="image/*" style="display:none" onchange="mostrarImagen()">
+        <form  id="formularioPublicacion" action="/fauna" method="post" enctype="multipart/form-data" class="m-4">
+            <input type="file" id="imagen" name="foto" accept="image/*" style="display:none" onchange="mostrarImagen()">
             <label for="imagen" style="cursor:pointer;">
                 <img id="preview" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Subir%20imagen.png?raw=true" alt="Vista previa de la imagen" class="w-52 h-44">
             </label>
         </form>
-        <img id="preview" alt="Vista previa de la imagen" class="hidden">
         <div class="w-96 m-5">
             <h3>Título</h3>
             <textarea class="w-full h-20 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Escribe un título o comentario..."></textarea>
@@ -239,7 +239,7 @@ function CrearPublicacion(){
         <textarea class="w-full h-28 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Agregue una descripción científica sobre su publicación."></textarea>
     </div>
     <div class="justify-center flex">
-        <button class="bg-[#276B58] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#4b927e]">
+        <button type="submit" onclick="subirArchivo()" class="bg-[#276B58] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#4b927e]">
             Publicar
         </button>
         <button id="cancelarPub" class="bg-[#4b927e] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#276B58]">
@@ -248,6 +248,45 @@ function CrearPublicacion(){
     </div>
 </div>`
 }
+*/
+
+function AñadirPub(apiUrl) {
+    var foto_url = apiUrl;
+    let data = {
+        foto_fauna: foto_url,
+    };
+    console.log('Datos a enviar:', data);
+
+    fetch(baseUrl + "/fauna", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+    },
+    }).then(res => {
+        console.log(res)
+        ObtenerComentarios();
+    }).catch(error => {
+    console.log("No se ha podido completar su solicitud.", error);
+    });
+}
+
+function mostrarImagen() {
+    var input = document.getElementById('imagen');
+    var imagenSubida = document.getElementById('preview');
+  
+    //Primero se verifica si se subió una imagen
+    if (input.files && input.files[0]) {
+        var imagen = new FileReader();
+  
+        imagen.onload = function (e) {
+            // Mostrar la nueva imagen seleccionada
+            imagenSubida.src = e.target.result;
+        };
+  
+        imagen.readAsDataURL(input.files[0]); // Convertir la imagen a base64
+    }
+  }
 
 function ActualizarPub(id) {
     let data = {

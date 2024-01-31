@@ -59,7 +59,7 @@
     
     </style>
 </head>
-<body class="bg-white w-full h-full box-border">
+<body class="bg-white w-full h-full box-border" onload="ObtenerPublicaciones()">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2 ">
             <div class="flex items-center md:ml-4 ">
@@ -254,57 +254,19 @@
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
         <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
-            <div id="nasua" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <div class="mt-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
-                    <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/15</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">Campus Levi Sasso</span>
-                    <p class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Me encontré un gato solo saliendo de la U. Se llama pansito</p>
+            
+            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
+                
+                <div id="publicacion" class="w-full relative flex flex-col items-center">
+
                 </div>
-                <div class="flex justify-center mt-5 mb-5">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
-                </div>
-                <div class="flex justify-around">
-                    <div class="flex items-center">
-                        <button id="" class="w-6 lg:w-6 lg:h-6" onclick="">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                        </button>
-                        <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                    </div>
-                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: Nasua</span>
-                    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Gato solo</span>
-                    
-                </div>
-                <hr class="mt-2  ml-10 mr-10">
-                <div class="mt-2 mb-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Nasua, llamados coatíes o pizotes, ​ es un género con dos especies de pequeños mamíferos omnívoros americanos de la familia de los prociónidos.​ Habita desde el sur de Estados Unidos hasta el norte de Argentina, Paraguay y Uruguay. Es un animal social y puede congregarse en grupos de más de 50 individuos. </p>
-                </div>
+                <div id="comentarios" class="w-full relative flex flex-col items-center">
     
-                <hr class="mt-2 ml-10 mr-10">
-                <div class="mt-2 mb-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Yo los he visto cerca del estacionamiento, generalmente salen en la mañana.</p>
                 </div>
+                <div id="AgregarComent" class="w-full relative flex flex-col items-center">
     
-                <hr class="mt-2 ml-10 mr-10">
-                <div class="mt-2 mb-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">RandomUser</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">También se les puede ver en los árboles alrededor de la UTP.</p>
-                </div>
-                <hr class="mt-2 ml-10 mr-10">
-                <!--Para realizar comentarios-->
-                <div class="mt-2 mb-2 rounded w-auto ml-10 mr-10">
-                    <textarea class="w-full h-28 shadow-md p-2 border rounded mb-4 focus:outline-none" placeholder="Escribe tu comentario..."></textarea>
-                    <button class="bg-[#276B58] text-white py-2 px-4 rounded hover:bg-[#2e5c5c] focus:outline-none focus:shadow-outline-blue active:bg-[#4b927e]">
-                        Publicar comentario
-                    </button>
                 </div>
             </div>
-            
         </section>
         <div class="relative">
             <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] h-[300px] right-0 mr-10 mt-[8rem] hidden lg:block xl:block 2xl:block">
@@ -371,5 +333,7 @@
     </div>
     
     <script src="index.js"></script>
+    <script src="/Front - Proyecto/src/Auth/auth.js"></script>
+    <script src="Publicacion_inicioGeneral.js"></script>
 </body>
 </html>

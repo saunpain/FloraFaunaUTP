@@ -38,6 +38,7 @@ function ImprimirComentarios(comentarios) {
         
         contenedor.innerHTML = usuario_name + " no ha comentado en ninguna publicación.";
         contenedor.style.fontWeight = 'bold';
+        contenedor.style.margin = '15px'
     }
 }
 

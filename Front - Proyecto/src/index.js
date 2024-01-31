@@ -91,10 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.getElementById('pub').addEventListener('mouseenter', function () {
-this.querySelector('.absolute').classList.remove('hidden');
-});
-
 document.getElementById('pub').addEventListener('mouseleave', function () {
 this.querySelector('.absolute').classList.add('hidden');
 });
@@ -251,3 +247,18 @@ function cerrarR3() {
   rp3Container.style.display = 'none';
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Guardar la posición de desplazamiento antes de cambiar de página
+    window.addEventListener('beforeunload', function () {
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    // Restaurar la posición de desplazamiento al cargar la página
+    window.addEventListener('load', function () {
+        var savedScrollPosition = sessionStorage.getItem('scrollPosition');
+        if (savedScrollPosition !== null) {
+            window.scrollTo(0, savedScrollPosition);
+            sessionStorage.removeItem('scrollPosition');
+        }
+    });
+});

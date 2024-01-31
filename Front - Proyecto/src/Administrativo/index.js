@@ -14,6 +14,8 @@ function ObtenerAdmin(){
         .catch(error => {
             console.error(error);
         });
+    ObtenerPublicaciones();
+    ObtenerComentarios();
 }
 
 //Función para agregar like a las publicaciones

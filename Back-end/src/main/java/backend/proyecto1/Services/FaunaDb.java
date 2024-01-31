@@ -6,6 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import backend.proyecto1.Helpers.Conexion;
 import backend.proyecto1.Models.Fauna;
 
@@ -45,6 +47,22 @@ public class FaunaDb {
         return fauna;
     }
 
+    public int guardarFotoFauna(byte[] foto) {
+        int resultado = 0;
+        try{
+
+            Statement stmt = cn.createStatement();
+            String query = "Insert into Fauna(foto_fauna) Values('"
+                + foto + "')";
+            resultado = stmt.executeUpdate(query);
+            stmt.close();
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
     public int GuardarFauna(Fauna f){
         int resultado = 0;
         try{
@@ -64,7 +82,7 @@ public class FaunaDb {
         }
         return resultado;
     }
-
+ 
     public int ActualizarFauna(Fauna f){
         int resultado = 0;
 
@@ -102,6 +120,28 @@ public class FaunaDb {
 
             return resultado;
         } catch(Exception e){
+
+        }
+        return resultado;
+    }
+
+
+    
+    public int GuardarFaunaP(Fauna f){
+        int resultado = 0;
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarFauna('"
+                + f.getNombre_animal() + "','"
+                + f.getFoto_fauna() + "','"
+                + f.getNombre_cientifico_fauna() + "','"
+                + f.getDescripcion_cientifica_fauna() + "','"
+                + f.getCategoria_fauna() + "')";
+
+            resultado = stmt.executeUpdate(query);
+            stmt.close();
+            return resultado;
+        } catch (Exception e){
 
         }
         return resultado;

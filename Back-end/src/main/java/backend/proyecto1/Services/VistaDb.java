@@ -85,7 +85,7 @@ public class VistaDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "SELECT id_publicacion, nombre_estudiante, fecha_estudiante, lugar, titulo, foto_flora, nombre_cientifico_flora, nombre_planta, foto_fauna, nombre_cientifico_fauna, nombre_animal FROM VistaPubGlobal";
+            String query = "SELECT id_publicacion, nombre_estudiante, fecha_estudiante, lugar, titulo, foto_flora, nombre_cientifico_flora, nombre_planta, foto_fauna, nombre_cientifico_fauna, nombre_animal FROM VistaPubGlobal order by fecha_estudiante DESC";
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()){
@@ -141,11 +141,30 @@ public class VistaDb {
             }
             stmt.close();
             rs.close();
-            return pub;
         } catch (Exception ex) {
             
         }
     
         return pub;
     } 
+    /*
+    public int GuardarPublicacion(VistaPubGlobal p){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarPublicaciones('"
+                + p.+ "','"
+                + + "','"
+                + + "','"
+                + s+ "')";
+
+            resultado = stmt.executeUpdate(query);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    } */
 }

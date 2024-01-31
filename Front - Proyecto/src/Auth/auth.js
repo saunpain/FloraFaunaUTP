@@ -2,35 +2,74 @@ let baseUrl = "http://localhost:8080"
 const user = "";
 
 
-function GuardarEstudiante(){
+function GuardarEstudiante() {
     let data = {
         nombre_estudiante: document.getElementById("nombreUsuario").value,
         contraseña_estudiante: document.getElementById("contrasena").value,
-        correo_estudiante : document.getElementById("correoUsuario").value,
+        correo_estudiante: document.getElementById("correoUsuario").value,
     }
-    if(data.nombre_estudiante === "" || data.contraseña_estudiante=== "" || data.correo_estudiante === ""){
+
+    if (data.nombre_estudiante === "" || data.contraseña_estudiante === "" || data.correo_estudiante === "") {
         mostrarMensajeRegistro("Debe completar todos los campos para registrarse.");
-    }
-    else{
-        console.log(data)
-        fetch(baseUrl + "/estudiante", {
-            method: "POST",
-            body:JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-        }
-        }).then(res => {
-            if(res.ok){
-                console.log("Registro exitoso");
-                localStorage.setItem('nombreusuario', data.nombre_estudiante);
-                window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
-            } else {
-                throw new Error("Error en la solicitud");
-            }
-        })
-        .catch(error => {
-            mostrarMensajeRegistro("No se ha podido completar su registro.");
-        });
+    } else {
+        // Hacer una petición para obtener la lista de estudiantes y verificar si ya existe el nombre de usuario y correo
+        fetch(baseUrl + '/estudiante/all')
+            .then(res => res.json())
+            .then(estudiantes => {
+                // Verificar si el nombre de usuario ya existe
+                const usuarioExistente = estudiantes.find(estudiante => estudiante.nombre_estudiante === data.nombre_estudiante);
+                const correoExiste = estudiantes.find(estudiante => estudiante.correo_estudiante === data.correo_estudiante);
+
+                // Si el nombre de usuario ya existe, mostrar mensaje y salir
+                if (usuarioExistente) {
+                    mostrarMensajeRegistro("El nombre de usuario ya está siendo usado. Ingrese otro nombre de usuario.");
+                } else if (correoExiste) {
+                    mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
+                } else {
+                    // Si el nombre de usuario y correo no existen para estudiantes, hacer la misma verificación para biólogos
+                    fetch(baseUrl + '/biologo/all')
+                        .then(res => res.json())
+                        .then(biologos => {
+                            // Verificar si el nombre de usuario ya existe para biólogos
+                            const biologoUsuarioExistente = biologos.find(biologo => biologo.nombre_biologo === data.nombre_estudiante);
+                            const biologoCorreoExiste = biologos.find(biologo => biologo.correo_biologo === data.correo_estudiante);
+
+                            // Si el nombre de usuario ya existe para biólogos, mostrar mensaje y salir
+                            if (biologoUsuarioExistente) {
+                                mostrarMensajeRegistro("El nombre de usuario ya está siendo usado. Ingrese otro nombre de usuario.");
+                            } else if (biologoCorreoExiste) {
+                                mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
+                            } else {
+                                // Si el nombre de usuario y correo no existen para biólogos, continuar con el registro
+                                fetch(baseUrl + "/estudiante", {
+                                    method: "POST",
+                                    body: JSON.stringify(data),
+                                    headers: {
+                                        "Content-type": "application/json; charset=UTF-8"
+                                    }
+                                })
+                                    .then(res => {
+                                        if (res.ok) {
+                                            console.log("Registro exitoso");
+                                            localStorage.setItem('nombreusuario', data.nombre_estudiante);
+                                            window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
+                                        } else {
+                                            throw new Error("Error en la solicitud");
+                                        }
+                                    })
+                                    .catch(error => {
+                                        mostrarMensajeRegistro("No se ha podido completar su registro.");
+                                    });
+                            }
+                        })
+                        .catch(error => {
+                            mostrarMensajeRegistro("Error al obtener la lista de biólogos.");
+                        });
+                }
+            })
+            .catch(error => {
+                mostrarMensajeRegistro("Error al obtener la lista de estudiantes.");
+            });
     }
 }
 
@@ -47,24 +86,59 @@ function GuardarBiologo() {
     }
     
     else{
-        console.log(data);
-        fetch(baseUrl + "/biologo", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(res => {
-            if(res.ok){
-                console.log("Registro exitoso");
-                localStorage.setItem('nombreusuario', data.nombre_biologo);
-                window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html"
-            } else {
-                throw new Error("Error en la solicitud");
-            }
+        fetch(baseUrl + '/estudiante/all')
+            .then(res => res.json())
+            .then(estudiantes => {
+
+                // Verificar si el nombre de usuario ya existe en estudiante
+                const usuarioExistente = estudiantes.find(estudiante => estudiante.nombre_estudiante === data.nombre_biologo);
+                const correoExiste = estudiantes.find(estudiante => estudiante.correo_estudiante === data.correo_biologo);
+
+                if (usuarioExistente) {
+                    mostrarMensajeRegistro("El nombre de usuario ya está siendo usado. Ingrese otro nombre de usuario.");
+                } else if (correoExiste) {
+                    mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
+                } else {
+                    // Si el nombre de usuario y correo no existen para estudiantes, verificar biologo
+                    fetch(baseUrl + '/biologo/all')
+                        .then(res => res.json())
+                        .then(biologos => {
+                            const biologoUsuarioExistente = biologos.find(biologo => biologo.nombre_biologo === data.nombre_biologo);
+                            const biologoCorreoExiste = biologos.find(biologo => biologo.correo_biologo === data.correo_biologo);
+
+                            if (biologoUsuarioExistente) {
+                                mostrarMensajeRegistro("El nombre de usuario ya está siendo usado. Ingrese otro nombre de usuario.");
+                            } else if (biologoCorreoExiste) {
+                                mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
+                            } else {
+                                console.log(data);
+                                fetch(baseUrl + "/biologo", {
+                                    method: "POST",
+                                    body: JSON.stringify(data),
+                                    headers: {
+                                        "Content-type": "application/json; charset=UTF-8"
+                                    }
+                                }).then(res => {
+                                    if(res.ok){
+                                        console.log("Registro exitoso");
+                                        localStorage.setItem('nombreusuario', data.nombre_biologo);
+                                        window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html"
+                                    } else {
+                                        throw new Error("Error en la solicitud");
+                                    }
+                                })
+                                .catch(error => {
+                                    mostrarMensajeRegistro("No se ha podido completar su registro.");
+                                });
+                            }
+                    })
+                    .catch(error => {
+                        mostrarMensajeRegistro("Algo ha salido mal. No se ha podido completar su registro");
+                    });
+                }
         })
         .catch(error => {
-            mostrarMensajeRegistro("No se ha podido completar su registro.");
+            mostrarMensajeRegistro("Algo ha salido mal. No se ha podido completar su registro");
         });
     }
 }

@@ -34,22 +34,7 @@ function DarLike(id) {
 }
 
 
-function mostrarImagen() {
-  var input = document.getElementById('imagen');
-  var imagenSubida = document.getElementById('preview');
 
-  //Primero se verifica si se subió una imagen
-  if (input.files && input.files[0]) {
-      var imagen = new FileReader();
-
-      imagen.onload = function (e) {
-          // Mostrar la nueva imagen seleccionada
-          imagenSubida.src = e.target.result;
-      };
-
-      imagen.readAsDataURL(input.files[0]); // Convertir la imagen a base64
-  }
-}
 
 //Funcion para la seeccion de cateegorías y subcategorías a la hora de hacer una publicación
 function seleccionCategoria() {

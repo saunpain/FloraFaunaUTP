@@ -46,11 +46,8 @@ public class ComentarioDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "Call AgregarComentario('"
-                + c.getComentario() + "','"
-                + c.getId_publicacion() + "','"
-                + c.getId_estudiante() + "','"
-                + c.getFecha_comentario() +"')";
+            String query = "INSERT INTO Comentario (comentario, id_publicacion, fecha_comentario, id_estudiante) " +
+                            "VALUES ('" + c.getComentario() + "', '" + c.getId_publicacion() + "', curdate(), '" + c.getId_estudiante() + "')";
 
             resultado = stmt.executeUpdate(query);
 
@@ -99,7 +96,7 @@ public class ComentarioDb {
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "SELECT * FROM VistaComentario where id_publicacion = '" + id + "'";
+            String query = "SELECT * FROM VistaComentario where id_publicacion = '" + id + "' order by fecha_comentario DESC";
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()){
@@ -118,4 +115,5 @@ public class ComentarioDb {
         }
         return comentarios;
     }
+    
 }

@@ -61,7 +61,7 @@ function MapearPerfil(usuario) {
             </button>
         </div>
         <div class="flex mt-5 items-center">
-            <img src="${usuario.perfil_estudiante}" alt="foto de perfil" class="rounded-full w-16 h-16">
+            <img src="${usuario.perfil_estudiante}" alt="foto de perfil" class="w-16 h-16">
             <p class="ml-5">Avatar de perfil</p>
         </div>
         <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_estudiante}">${usuario.nombre_estudiante}</p>

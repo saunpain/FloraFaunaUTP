@@ -109,7 +109,7 @@ public class PublicacionesDb {
         Vista_Pub pub = null;
     
         try {
-            String query = "SELECT * FROM VistaPublicacion WHERE id_publicacion = '"+ id + "'";
+            String query = "SELECT * FROM VistaPublicacion WHERE id_publicacion = '"+ id + "' order by fecha_estudiante DESC";
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 

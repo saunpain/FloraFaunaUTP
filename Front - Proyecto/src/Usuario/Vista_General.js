@@ -114,6 +114,7 @@ function ImprimirPublicacionesUsuario(publicaciones) {
         const contenedor = document.getElementById("publicaciones");
         contenedor.innerHTML = usuario_name + " no ha realizado publicaciones.";
         contenedor.style.fontWeight = 'bold';
+        contenedor.style.margin = '15px'
     }
 
     publicacionesEstudiante.forEach(publicacion => {
