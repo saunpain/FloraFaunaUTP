@@ -454,12 +454,12 @@ document.getElementById('mostrarVerificacion').addEventListener('click', functio
 
 /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
 
-function subirArchivo() {
+async function subirArchivo() {
   const tituloInput = document.getElementById('tituloInput');
   const archivoInput = document.getElementById('archivoInput');
-  const botonSubir = document.getElementById('botonSubir'); // Agrega un id al botón
+  const botonSubir = document.getElementById('botonSubir');
 
-  botonSubir.disabled = true; // Deshabilitar el botón después de hacer clic
+  botonSubir.disabled = true;
 
   const formData = new FormData();
   formData.append('file', archivoInput.files[0]);
@@ -467,26 +467,24 @@ function subirArchivo() {
 
   const backendURL = 'http://localhost:8080/upload';
 
-  fetch(backendURL, {
+  try {
+    const response = await fetch(backendURL, {
       method: 'POST',
       body: formData,
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.text();
-  })
-  .then(message => {
-      console.log(message);
-      alert("La solicitud fue enviada.")
-  })
-  .catch(error => {
-      console.error('Error:', error);
-      alert("Error, no se pudo enviar la solicitud.");
-  })
-  .finally(() => {
-      botonSubir.disabled = false; // Habilitar el botón después de completar la operación
-  });
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const message = await response.text();
+    console.log(message);
+    alert("La solicitud fue enviada.");
+  } catch (error) {
+    console.error('Error:', error);
+    alert("Error, no se pudo enviar la solicitud.");
+  } finally {
+    botonSubir.disabled = false;
+  }
 }
 
