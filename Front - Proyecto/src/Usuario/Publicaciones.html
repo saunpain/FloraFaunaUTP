@@ -216,7 +216,7 @@
         <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-28 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5 min-h-[36rem]"> <!--Publicaciones-->
             <div id="publicar" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6 md:text-[16px] text-[12.5px] hidden">
                 <div class="flex justify-center">
-                    <form class="m-4">
+                    <form class="m-4" enctype="multipart/form-data">
                         <input type="file" id="imagen" name="imagen" accept="image/*" style="display:none" onchange="mostrarImagen()">
                         <label for="imagen" style="cursor:pointer;">
                             <img id="preview" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Subir%20imagen.png?raw=true" alt="Vista previa de la imagen" class="w-52 h-44">
@@ -225,19 +225,17 @@
                     <img id="preview" alt="Vista previa de la imagen" class="hidden">
                     <div class="w-96 m-5">
                         <h3>Título</h3>
-                        <textarea class="w-full h-20 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Escribe un título o comentario..."></textarea>
+                        <textarea id="titulo_pub" class="w-full h-20 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Escribe un título o comentario..."></textarea>
                         <h3>Nombre</h3>
-                        <input type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre común...">
-                        
+                        <input id="nombre" type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre común...">
                     </div>
                 </div>
-                
                 <div class="justify-around items-center sm:flex md:flex lg:block xl:flex">
                     <div class="ml-5 mr-2">
                         <h3>Nombre científico</h3>
-                        <input type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre científico...">
+                        <input type="text" id="n_cientifico" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre científico...">
                         <h3>Lugar</h3>
-                        <select class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
+                        <select  id="lugar" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
                             <option disabled selected>Seleccione un lugar</option>
                             <option>Campus Levi Sasso</option>
                             <option>Ext. Sede Tocumen</option>
@@ -271,10 +269,10 @@
                 </div>
                 <div class="m-5">
                     <h3>Descripción</h3>
-                    <textarea class="w-full h-28 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Agregue una descripción científica sobre su publicación."></textarea>
+                    <textarea id="descrip_cientifica" class="w-full h-28 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Agregue una descripción científica sobre su publicación."></textarea>
                 </div>
                 <div class="justify-center flex">
-                    <button onclick="subirArchivo()" class="bg-[#276B58] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#4b927e]">
+                    <button onclick="guardarPublicacion()" class="bg-[#276B58] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#4b927e]">
                         Publicar
                     </button>
                     <button id="cancelarPub" class="bg-[#4b927e] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#276B58]">

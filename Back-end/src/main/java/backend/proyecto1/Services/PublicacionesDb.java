@@ -49,21 +49,47 @@ public class PublicacionesDb {
         return publicaciones;
     }
 
-    public int GuardarPublicaciones(Publicaciones p){
+    public int GuardarPubFlora(Publicaciones p){
         int resultado = 0;
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "Call AgregarPublicaciones('"
+            String query = "Call AgregarPubFlora('"
                 + p.getTitulo() + "','"
                 + p.getLugar() + "','"
-                + p.getfecha_estudiante() + "','"
-                + p.getId_flora() + "','"
-                + p.getId_fauna() + "','"
-                + p.getId_estudiante() + "')";
-                
+                + p.getId_flora() + "')";
                 resultado = stmt.executeUpdate(query);
+            return resultado;
+        } catch (Exception e){
 
+        }
+        return resultado;
+    }
+    public int GuardarPubEstudiante(Publicaciones e){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "INSERT INTO Estudiante_Publicacion(id_publicacion, id_estudiante, fecha_estudiante)" +
+                "VALUES ('" + e.getId_publicacion() + "', '" + e.getId_estudiante() + "', curdate())";
+                resultado = stmt.executeUpdate(query);
+            return resultado;
+        } catch (Exception ex){
+
+        }
+        return resultado;
+    }
+
+        public int GuardarPubFauna(Publicaciones p){
+        int resultado = 0;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "Call AgregarPubFlora('"
+                + p.getTitulo() + "','"
+                + p.getLugar() + "','"
+                + p.getId_flora() + "')";
+                resultado = stmt.executeUpdate(query);
             return resultado;
         } catch (Exception e){
 
@@ -142,5 +168,32 @@ public class PublicacionesDb {
     
         return pub;
     }
+
+    public Publicaciones ObtenerPubFlora(int id) {
+        Publicaciones pub = null;
+    
+        try {
+            String query = "SELECT * FROM Publicaciones WHERE id_flora = '"+ id + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                pub = new Publicaciones(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("titulo"),
+                    rs.getString("lugar"),
+                    rs.getInt("id_flora")
+                );
+            }
+            stmt.close();
+            rs.close();
+            return pub;
+        } catch (Exception ex) {
+            
+        }
+    
+        return pub;
+    }
+    
 
 }

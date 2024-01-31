@@ -23,9 +23,13 @@ public class PublicacionesController {
         return new PublicacionesDb().ObtenerPublicacion(id);
     }
     
-    @PostMapping("/publicaciones")
-    public int InsertarPublicaciones(@RequestBody Publicaciones p){
-        return new PublicacionesDb().GuardarPublicaciones(p);
+    @PostMapping("/publicacion/flora")
+    public int InsertarPublicacionesFlora(@RequestBody Publicaciones p){
+        return new PublicacionesDb().GuardarPubFlora(p);
+    }
+    @PostMapping("/publicacion_estudiante")
+    public int InsertarPublicacionesEstudiante(@RequestBody Publicaciones e){
+        return new PublicacionesDb().GuardarPubEstudiante(e);
     }
 
     @PutMapping("/publicaciones")
@@ -36,6 +40,10 @@ public class PublicacionesController {
     @DeleteMapping("/publicaciones/{id}")
     public int Delete(@PathVariable("id") int id){
         return new PublicacionesDb().EliminarPublicaciones(id);
+    }
+    @GetMapping("/publicacion_flora/{id_flora}")
+    public Publicaciones ObtenerPubFlora(@PathVariable ("id_flora") int id) {
+        return new PublicacionesDb().ObtenerPubFlora(id);
     }
 
 }

@@ -45,6 +45,32 @@ public class FloraDb {
         return flora;
     }
 
+    public Flora ObtenerFlora(String nomb){
+        Flora f = null;
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM Flora WHERE nombre_planta = '"+ nomb + "'";
+            ResultSet rs = stmt.executeQuery(query);
+
+            if(rs.next()){
+                f = new Flora(
+                    rs.getInt("id_flora"),
+                    rs.getString("nombre_planta"),
+                    rs.getString("nombre_cientifico_flora"),
+                    rs.getString("descripcion_cientifica_flora"),
+                    rs.getString("categoria_flora"),
+                    rs.getString("foto_flora")
+                );
+            }
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+
+        return f;
+    }
+
     public int GuardarFlora(Flora f){
         int resultado = 0;
 
@@ -101,4 +127,5 @@ public class FloraDb {
         }
         return resultado;
     }
+
 }

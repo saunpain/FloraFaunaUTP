@@ -48,18 +48,18 @@ function GuardarEstudiante() {
                                         "Content-type": "application/json; charset=UTF-8"
                                     }
                                 })
-                                    .then(res => {
-                                        if (res.ok) {
-                                            console.log("Registro exitoso");
-                                            localStorage.setItem('nombreusuario', data.nombre_estudiante);
-                                            window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
-                                        } else {
-                                            throw new Error("Error en la solicitud");
-                                        }
-                                    })
-                                    .catch(error => {
-                                        mostrarMensajeRegistro("No se ha podido completar su registro.");
-                                    });
+                                .then(res => {
+                                    if (res.ok) {
+                                        console.log("Registro exitoso");
+                                        localStorage.setItem('nombreusuario', data.nombre_estudiante);
+                                        window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
+                                    } else {
+                                        throw new Error("Error en la solicitud");
+                                    }
+                                })
+                                .catch(error => {
+                                    mostrarMensajeRegistro("No se ha podido completar su registro.");
+                                });
                             }
                         })
                         .catch(error => {

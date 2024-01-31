@@ -141,8 +141,5 @@ public class Vista_Pub {
     public void setFecha_comentario(String fecha_comentario) {
         this.fecha_comentario = fecha_comentario;
     }
-    
-    
-    
-    
+
 }

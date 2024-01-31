@@ -33,7 +33,7 @@ public class FaunaDb {
                     rs.getString("foto_fauna"),
                     rs.getString("nombre_cientifico_fauna"),
                     rs.getString("descripcion_cientifica_fauna"),
-                    rs.getString("categoria_fauna")   
+                    rs.getString("categoria_fauna")
                 );
 
                 fauna.add(f);
@@ -46,20 +46,29 @@ public class FaunaDb {
         return fauna;
     }
 
-    public int guardarFotoFauna(byte[] foto) {
-        int resultado = 0;
-        try{
-
+    public Fauna ObtenerFauna(String nomb){
+        Fauna f = null;
+        try {
+            String query = "SELECT * FROM Fauna WHERE nombre_animal = '"+ nomb + "'";
             Statement stmt = cn.createStatement();
-            String query = "Insert into Fauna(foto_fauna) Values('"
-                + foto + "')";
-            resultado = stmt.executeUpdate(query);
-            stmt.close();
-            return resultado;
-        } catch (Exception e){
-
+            ResultSet rs = stmt.executeQuery(query);
+            if(rs.next()){
+                f = new Fauna(
+                    rs.getInt("id_fauna"),
+                    rs.getString("nombre_animal"),
+                    rs.getString("foto_fauna"),
+                    rs.getString("nombre_cientifico_fauna"),
+                    rs.getString("descripcion_cientifica_fauna"),
+                    rs.getString("categoria_fauna")
+                );
         }
-        return resultado;
+        stmt.close();
+        rs.close();
+        return f;
+        } catch (Exception e) {
+            
+        }
+        return f;
     }
 
     public int GuardarFauna(Fauna f){
@@ -81,7 +90,7 @@ public class FaunaDb {
         }
         return resultado;
     }
- 
+
     public int ActualizarFauna(Fauna f){
         int resultado = 0;
 
@@ -124,25 +133,4 @@ public class FaunaDb {
         return resultado;
     }
 
-
-    
-    public int GuardarFaunaP(Fauna f){
-        int resultado = 0;
-        try{
-            Statement stmt = cn.createStatement();
-            String query = "Call AgregarFauna('"
-                + f.getNombre_animal() + "','"
-                + f.getFoto_fauna() + "','"
-                + f.getNombre_cientifico_fauna() + "','"
-                + f.getDescripcion_cientifica_fauna() + "','"
-                + f.getCategoria_fauna() + "')";
-
-            resultado = stmt.executeUpdate(query);
-            stmt.close();
-            return resultado;
-        } catch (Exception e){
-
-        }
-        return resultado;
-    }
 }

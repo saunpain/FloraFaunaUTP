@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import backend.proyecto1.Models.Fauna;
 import backend.proyecto1.Services.FaunaDb;
 
@@ -36,53 +37,9 @@ public class FaunaController {
         return new FaunaDb().GuardarFauna(f);
     }
 
-    @PostMapping("/procesarFormulario")
-    public int procesarFormulario(@RequestBody Fauna f){
-        return new FaunaDb().GuardarFaunaP(f);
+    @GetMapping("/fauna/{nombre_animal}")
+    public Fauna ObtenerFauna(@PathVariable("nombre_animal")String nomb){
+        return new FaunaDb().ObtenerFauna(nomb);
     }
-/* 
-    @PostMapping("/fauna")
-    public int insertarFauna(@RequestPart("imagen") MultipartFile imagen,
-                             @RequestPart("titulo") String titulo,
-                             @RequestPart("nombreComun") String nombreComun,
-                             @RequestPart("nombreCientifico") String nombreCientifico,
-                             @RequestPart("lugar") String lugar,
-                             @RequestPart("categoria") String categoria,
-                             @RequestPart("subcategoria") String subcategoria,
-                             @RequestPart("descripcion") String descripcion) {
 
-        try {
-            
-            String imagenBase64 = Base64.encodeBase64String(imagen.getBytes());
-
-            // Crear la entidad Fauna
-            Fauna nuevaFauna = new Fauna();
-            nuevaFauna.setNombreAnimal(nombreComun);
-            nuevaFauna.setFotoFaunaBase64(imagenBase64); // Almacenar la imagen como una cadena en base64
-            nuevaFauna.setNombreCientificoFauna(nombreCientifico);
-            nuevaFauna.setDescripcionCientificaFauna(descripcion);
-            nuevaFauna.setCategoriaFauna(categoria);
-
-            // Guardar la entidad Fauna en la base de datos
-            faunaRepository.save(nuevaFauna);
-
-            return 1; // Puedes ajustar el valor de retorno según tus necesidades
-        } catch (Exception e) {
-            e.printStackTrace(); // Maneja la excepción adecuadamente según tus necesidades
-            return 0; // Indica un fallo en la operación
-        }
-    }
-    */
-        /*  
-
-    @PostMapping("/fauna")
-    public int subirFotoFauna(@RequestParam("foto") String foto) {
-        try {
-            byte[] bytesImagen = Base64.getDecoder().decode(foto);
-            return new FaunaDb().guardarFotoFauna(bytesImagen);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
-    } */
 }

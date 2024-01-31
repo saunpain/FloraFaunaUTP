@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import backend.proyecto1.Services.VistaDb;
 import backend.proyecto1.Models.VistaPubGlobal;
 
-@CrossOrigin(origins = "http://127.0.0.1:5501")
 @RestController
 public class VistaController {
 
@@ -15,4 +14,8 @@ public class VistaController {
         return new VistaDb().VistaPublicacionesGlobal();
     }
 
+    @GetMapping("/vista/{id_publicacion}")
+    public VistaPubGlobal ObtenerPublicacion(@PathVariable ("id_publicacion") int id){
+        return new VistaDb().ObtenerPublicacion(id);
+    }
 }

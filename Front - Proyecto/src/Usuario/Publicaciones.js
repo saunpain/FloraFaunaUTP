@@ -6,6 +6,7 @@ let flora = [];
 let publicaciones = [];
 let comentarios = [];
 
+
 function ObtenerPublicaciones() {
     fetch(baseUrl + '/vista/all').then(res => {
         res.json().then(json => {
@@ -178,115 +179,166 @@ function MapearPublicacionUsusarioFauna(publicacion) {
                 </div>`;
     }
     
-/*
-function CrearPublicacion(){
-    return `<div id="publicar" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6 md:text-[16px] text-[12.5px] hidden">
-    <div class="flex justify-center">
-        <form  id="formularioPublicacion" action="/fauna" method="post" enctype="multipart/form-data" class="m-4">
-            <input type="file" id="imagen" name="foto" accept="image/*" style="display:none" onchange="mostrarImagen()">
-            <label for="imagen" style="cursor:pointer;">
-                <img id="preview" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Subir%20imagen.png?raw=true" alt="Vista previa de la imagen" class="w-52 h-44">
-            </label>
-        </form>
-        <div class="w-96 m-5">
-            <h3>Título</h3>
-            <textarea class="w-full h-20 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Escribe un título o comentario..."></textarea>
-            <h3>Nombre</h3>
-            <input type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre común...">
-            
-        </div>
-    </div>
-    
-    <div class="justify-around items-center sm:flex md:flex lg:block xl:flex">
-        <div class="ml-5 mr-2">
-            <h3>Nombre científico</h3>
-            <input type="text" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none h-10 w-full" placeholder="Ingrese el nombre científico...">
-            <h3>Lugar</h3>
-            <select class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
-                <option disabled selected>Seleccione un lugar</option>
-                <option>Campus Levi Sasso</option>
-                <option>Ext. Sede Tocumen</option>
-            </select>
-        </div>
-        <div class="ml-5 mr-5">
-            <h3>Categoría</h3>
-            <select id="categoria" onchange="seleccionCategoria()" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
-                <option disabled selected>Seleccione categoría</option>
-                <option value="flora">Flora</option>
-                <option value="fauna">Fauna</option>
-            </select>
-        
-            <h3>Subcategoría</h3>
-            <select id="subcategoria" class="shadow-md p-2 border rounded-lg mb-2 focus:outline-none w-full text-gray-400">
-                <option disabled selected>Seleccione subcategoría</option>
-                <optgroup label="Flora" id="floraOp" class="hidden">
-                    <option>Hierbas</option>
-                    <option>Planta</option>
-                    <option>Árboles</option>
-                </optgroup>
-                <optgroup label="Fauna" id="faunaOp" class="hidden">
-                    <option>Aves</option>
-                    <option>Reptiles</option>
-                    <option>Artrópodos</option>
-                    <option>Mamíferos</option>
-                </optgroup>
-            </select>
-            
-        </div>
-    </div>
-    <div class="m-5">
-        <h3>Descripción</h3>
-        <textarea class="w-full h-28 shadow-md p-2 border rounded-lg focus:outline-none" placeholder="Agregue una descripción científica sobre su publicación."></textarea>
-    </div>
-    <div class="justify-center flex">
-        <button type="submit" onclick="subirArchivo()" class="bg-[#276B58] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#4b927e]">
-            Publicar
-        </button>
-        <button id="cancelarPub" class="bg-[#4b927e] w-36 text-white py-2 px-4 m-5 rounded-lg hover:bg-[#2e5c5c] focus:outline-none active:bg-[#276B58]">
-            Cancelar
-        </button>
-    </div>
-</div>`
-}
-*/
-
-function AñadirPub(apiUrl) {
-    var foto_url = apiUrl;
-    let data = {
-        foto_fauna: foto_url,
-    };
-    console.log('Datos a enviar:', data);
-
-    fetch(baseUrl + "/fauna", {
-    method: 'PUT',
-    body: JSON.stringify(data),
-    headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-    },
-    }).then(res => {
-        console.log(res)
-        ObtenerComentarios();
-    }).catch(error => {
-    console.log("No se ha podido completar su solicitud.", error);
-    });
-}
 
 function mostrarImagen() {
     var input = document.getElementById('imagen');
     var imagenSubida = document.getElementById('preview');
-  
     //Primero se verifica si se subió una imagen
     if (input.files && input.files[0]) {
         var imagen = new FileReader();
-  
         imagen.onload = function (e) {
             // Mostrar la nueva imagen seleccionada
             imagenSubida.src = e.target.result;
         };
-  
         imagen.readAsDataURL(input.files[0]); // Convertir la imagen a base64
     }
-  }
+}
+
+
+function guardarPublicacion() {
+    let id_usuario = localStorage.getItem('id_usuario');
+    const apiKey = "a8d6381e4d2a45ac047ad919c1de17a2";
+    const fileInput = document.getElementById('imagen');
+    const file = fileInput.files[0];
+
+    const formData = new FormData();
+    formData.append('key', apiKey);
+    formData.append('image', file);
+
+    const apiUrl = 'https://api.imgbb.com/1/upload';
+
+    fetch(apiUrl, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Respuesta de ImgBB:', data);
+        alert('Imagen subida con éxito. Enlace directo: ' + data.data.url);
+
+        const img_pub = data.data.url;
+
+        const titulo = document.getElementById("titulo_pub").value;
+        const nombre = document.getElementById("nombre").value;
+        const nombre_cientifico = document.getElementById("n_cientifico").value;
+        const lugar = document.getElementById("lugar").value;
+        const categoria = document.getElementById("categoria").value;
+        const sub_cat = document.getElementById("subcategoria").value;
+        const descripcion = document.getElementById("descrip_cientifica").value;
+        console.log("Datos a enviar al servidor:", { img_pub, titulo, nombre, nombre_cientifico, lugar, categoria, sub_cat, descripcion });
+
+        if (categoria === "flora") {
+            fetch(baseUrl + '/flora/' + nombre)
+            .then(res => {
+                if (!res.ok) {
+                    if (res.status === 404) {
+                        throw new Error('La flora no existe en el servidor.');
+                    } else {
+                        throw new Error('Error en la solicitud al servidor. Código de estado: ' + res.status);
+                    }
+                }
+            })
+            .then(flora => {
+                console.log("Respuesta de la API de flora:", flora);
+                if (flora) {
+                    window.alert("La flora que intenta publicar ya ha sido registrada.");
+                } else {
+                    const data_flora = {
+                        nombre_planta: nombre,
+                        nombre_cientifico_flora: nombre_cientifico,
+                        categoria_flora: sub_cat,
+                        descripcion_cientifica_flora: descripcion,
+                        foto_flora: img_pub,
+                    };
+                    console.log("Datos pa flora ", data_flora)
+                    
+                    fetch(baseUrl + "/flora", {
+                        method: "POST",
+                        body: JSON.stringify(data_flora),
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        },
+                    })
+                    .then(res => {
+                        console.log(data_flora);
+                        if (res.ok) {
+                            fetch(baseUrl + '/flora/' + nombre)
+                            .then(res => res.json())
+                            .then(buscar_Flora => {
+                                const id_flora = buscar_Flora.id_flora;
+                                const data_pub_flora = {
+                                    titulo: titulo,
+                                    lugar: lugar,
+                                    id_flora: id_flora,
+                                };
+                                console.log(data_pub_flora);
+                                fetch(baseUrl + "/publicacion/flora", {
+                                    method: "POST",
+                                    body: JSON.stringify(data_pub_flora),
+                                    headers: {
+                                        "Content-type": "application/json; charset=UTF-8"
+                                    },
+                                })
+                                .then(res => {
+                                    console.log(res);
+                                    if(res.ok){
+                                        fetch(baseUrl + '/publicacion_flora/' + data_pub_flora.id_flora)
+                                        .then(res => res.json())
+                                        .then(publicacion_insertada => {
+                                            const id_pubFlora = publicacion_insertada.id_publicacion;
+                                            console.log(id_pubFlora);
+
+                                            const data_pub_estudiante = {
+                                                id_publicacion: id_pubFlora,
+                                                id_estudiante: id_usuario,
+                                            }
+                                            console.log(data_pub_estudiante);
+                                            console.log("Entrando a insertar estudiante");
+                                            if(res.ok){
+                                                fetch(baseUrl + "/publicacion_estudiante", {
+                                                    method: "POST",
+                                                    body: JSON.stringify(data_pub_estudiante),
+                                                    headers: {
+                                                        "Content-type": "application/json; charset=UTF-8"
+                                                    }
+                                                }).then(res => res.json())
+                                                    console.log(res)
+                                                    ObtenerPublicaciones();
+                                                
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error al obtener las publicaciones:', error);
+                                        })
+                                    }
+                                    console.log("ni modos");
+                                })
+                                .catch(error => {
+                                    console.error('Error al registrar publicación', error);
+                                    alert('Error al subir publicación.');
+                                });
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al registrar flora', error);
+                        alert('Error al subir publicación.');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener información de flora', error);
+                alert('Error al subir publicación.');
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error al subir la imagen:', error);
+        alert('Error al subir publicación.');
+    });
+}
+
+
 
 function ActualizarPub(id) {
     let data = {

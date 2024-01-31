@@ -35,4 +35,9 @@ public class FloraController {
     public int Delete(@PathVariable("id") int id){
         return new FloraDb().EliminarFlora(id);
     }
+
+    @GetMapping("/flora/{nombre_planta}")
+    public Flora ObtenerFlora(@PathVariable("nombre_planta")String nomb){
+        return new FloraDb().ObtenerFlora(nomb);
+    }
 }

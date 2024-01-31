@@ -10,6 +10,12 @@ public class Publicaciones {
     private int id_fauna;
     private int id_estudiante;
     
+    public Publicaciones (int id_publicacion, String titulo, String lugar,int id_flora){
+        this.id_publicacion = id_publicacion;
+        this.titulo = titulo;
+        this.lugar = lugar;
+        this.id_flora = id_flora;
+    }
     public Publicaciones(int id_publicacion, String titulo, String lugar, String fecha_estudiante, int id_flora, int id_fauna, int id_estudiante) {
         this.id_publicacion = id_publicacion;
         this.titulo = titulo;
@@ -78,6 +84,5 @@ public class Publicaciones {
 
     public Publicaciones() {
     }
-    
 
 }

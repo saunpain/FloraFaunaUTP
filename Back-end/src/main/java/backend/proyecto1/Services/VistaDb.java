@@ -17,70 +17,8 @@ public class VistaDb {
     public VistaDb(){
         this.cn = new Conexion().openDb();
     }
-    /*
-    public List<Vista> VistaPublicacionesFauna(){
-        List<Vista> vista = new ArrayList<>();
 
-        try{
-            Statement stmt = cn.createStatement();
-            String query = "SELECT * FROM VistaPublicacionesFauna";
-            ResultSet rs = stmt.executeQuery(query);
-
-            while(rs.next()){
-                Vista p = new Vista(
-                    rs.getString("nombre_estudiante"),
-                    rs.getString("fecha_estudiante"),
-                    rs.getString("lugar"),
-                    rs.getString("titulo"),
-                    rs.getString("foto_fauna"),
-                    rs.getString("nombre_cientifico_fauna"),
-                    rs.getString("nombre_animal"),
-                    rs.getInt("id_publicacion")
-                );
-
-                vista.add(p);
-            }
-
-            stmt.close();
-            rs.close();
-        } catch(Exception e){
-
-        }
-        return vista;
-    }
-
-    public List<Vista_Fl> VistaPublicacionesFlora(){
-        List<Vista_Fl> vistafl = new ArrayList<>();
-
-        try{
-            Statement stmt = cn.createStatement();
-            String query = "SELECT * FROM VistaPublicacionesFlora";
-            ResultSet rs = stmt.executeQuery(query);
-
-            while(rs.next()){
-                Vista_Fl p = new Vista_Fl(
-                    rs.getString("nombre_estudiante"),
-                    rs.getString("fecha_estudiante"),
-                    rs.getString("lugar"),
-                    rs.getString("titulo"),
-                    rs.getString("foto_flora"),
-                    rs.getString("nombre_cientifico_flora"),
-                    rs.getString("nombre_planta"),
-                    rs.getInt("id_publicacion")
-                );
-
-                vistafl.add(p);
-            }
-
-            stmt.close();
-            rs.close();
-        } catch(Exception e){
-
-        }
-        return vistafl;
-    }
-    */
-   public List<VistaPubGlobal> VistaPublicacionesGlobal(){
+    public List<VistaPubGlobal> VistaPublicacionesGlobal(){
         List<VistaPubGlobal> vistaG = new ArrayList<>();
 
         try{
@@ -146,25 +84,6 @@ public class VistaDb {
         }
     
         return pub;
-    } 
-    /*
-    public int GuardarPublicacion(VistaPubGlobal p){
-        int resultado = 0;
+    }
 
-        try{
-            Statement stmt = cn.createStatement();
-            String query = "Call AgregarPublicaciones('"
-                + p.+ "','"
-                + + "','"
-                + + "','"
-                + s+ "')";
-
-            resultado = stmt.executeUpdate(query);
-
-            return resultado;
-        } catch (Exception e){
-
-        }
-        return resultado;
-    } */
 }

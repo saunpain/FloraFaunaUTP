@@ -48,6 +48,7 @@ public class VistaPubGlobal {
         this.nombre_animal = nombre_animal;
         this.descripcion_cientifica_fauna = descripcion_cientifica_fauna;
     }
+
     public String getNombre_estudiante() {
         return nombre_estudiante;
     }

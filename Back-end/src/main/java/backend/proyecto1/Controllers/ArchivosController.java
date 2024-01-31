@@ -1,7 +1,6 @@
 package backend.proyecto1.Controllers;
-
+/* 
 import org.kohsuke.github.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +10,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@CrossOrigin(origins = "http://127.0.0.1:5501")
 @RestController
 public class ArchivosController{
 
@@ -19,7 +17,7 @@ public class ArchivosController{
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         try {
             // Autenticación con tu token de acceso personal de GitHub
-            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
+            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
     
             // Obtener el repositorio existente (debes conocer su nombre y propietario)
             GHRepository repository = github.getRepository("saunpain/FloraFaunaUTP");
@@ -50,3 +48,4 @@ public class ArchivosController{
     }
     
 }
+*/
