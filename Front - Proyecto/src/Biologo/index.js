@@ -142,79 +142,38 @@ function editarNombreC(id) {
 /*Funcion que permite seleccionar el boton guardar al que se le esta haciendo hover*/ 
 /*GUARDAR*/
 
+function mouseenterGuardar(id){
+    boton = document.getElementById("cambioG-"+ id);
+    boton.classList.remove("hidden");
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-  const contenedor = document.getElementById('pub');
-
-  window.gestionarEventosBoton = function(event){
-    const id = event.target.id.split('-')[1];
-     
-    if (event.type === 'mouseover') {
-      const guardar = document.getElementById('cambioG-' + id);
-      guardar.classList.remove('hidden');
-    } else if (event.type === 'mouseout' || event.type === 'click') {
-      const guardar = document.getElementById('cambioG-' + id);
-      guardar.classList.add('hidden');
-    }
-  }
-
-
-
-/*
-  contenedor.addEventListener('DOMContentLoaded', function(event){
-
-    gestionarEventosBoton(event);
-  })
-
-  contenedor.addEventListener('mouseover', function(event) {
-    gestionarEventosBoton(event);
-  });
-
-  contenedor.addEventListener('mouseout', function(event) {
-    gestionarEventosBoton(event);
-  });
-
-  contenedor.addEventListener('click', function(event) {
-    gestionarEventosBoton(event);
-  });*/
-});
-
-
-
-
+function mouseleaveGuardar(id) {
+  boton = document.getElementById('cambioG-' + id);
+  boton.classList.add('hidden');
+}
 
 
 /*Funcion que permite seleccionar el boton cancelar al que se le esta haciendo hover*/ 
 /*CANCELAR*/
-document.addEventListener('DOMContentLoaded', function() {
-  var botonesCancelar = document.getElementById('cancelar-'+ id);
 
-  botonesCancelar.forEach(function(boton) {//Selecciona cual fue el boton de guardar al que se le hizo hover
-      boton.addEventListener('mouseover', function() {//Hace que aparezca el texto cuando se hace hover
-        var cancelar = boton.getElementById('cambioC-'+ id);
-          cancelar.classList.remove('hidden');
-        
-      });
+function mouseenterCancelar(id){
+  boton = document.getElementById("cambioC-"+ id);
+  boton.classList.remove("hidden");
+}
 
-      boton.addEventListener('mouseleave', function() {//Hace que desaparezca el texto cuando se deja de hacer hover
-        var cancelar = boton.getElementById('cambioC-'+ id);
-          cancelar.classList.add('hidden');
-        
-      });
+function mouseleaveCancelar(id) {
+boton = document.getElementById('cambioC-' + id);
+boton.classList.add('hidden');
+}
 
-      boton.addEventListener('click', function () {//Hace que desaparezca el texto cuando se hace click en cancelar
-        var cancelar = boton.getElementById('cambioC-'+ id);
-        cancelar.classList.add('hidden');
-      });
-
-  });
-});
+/*Funciones para guardar y cancelar los cambios de nombre cientifico*/
 
 function guardarCambios(id) {
   var nombreCElemento = document.getElementById("nombreC-" + id);
-  var nombreCinput = divPub.querySelector("input-" + id);
-  var btnEnviar = divPub.querySelector("guardar-" + id);
-  var btnCancel = divPub.querySelector("cancelar-" + id);
+  var nombreCinput = document.getElementById("input-" + id);
+  var btnEnviar = document.getElementById("guardar-" + id);
+  var btnCancel = document.getElementById("cancelar-" + id);
+  var botonVisto = document.getElementById("cambioG-" + id);
 
   nombreCElemento.innerText = nombreCinput.value;
   nombreCElemento.style.display = "inline-block";
@@ -222,6 +181,7 @@ function guardarCambios(id) {
   nombreCinput.setAttribute("disabled", true); // Deshabilitar el input
   btnEnviar.style.display = "none";
   btnCancel.style.display = "none";
+  botonVisto.classList.add("hidden");
 
   // Eliminar el atributo data-original-value
   nombreCinput.removeAttribute('data-original-value');
@@ -232,6 +192,7 @@ function cancelarEdicion(id) {
   var nombreCinput = document.getElementById("input-" + id);
   var btnEnviar = document.getElementById("guardar-" + id);
   var btnCancel = document.getElementById("cancelar-" + id);
+  var botonEquis = document.getElementById("cambioC-" + id);
 
   // Obtener el valor original del atributo data-original-value
   var originalValue = nombreCinput.getAttribute('data-original-value');
@@ -244,6 +205,7 @@ function cancelarEdicion(id) {
   nombreCinput.setAttribute("disabled", true); // Deshabilitar el input
   btnEnviar.style.display = "none";
   btnCancel.style.display = "none";
+  botonEquis.classList.add("hidden");
 
   // Eliminar el atributo data-original-value
   nombreCinput.removeAttribute('data-original-value');
@@ -487,4 +449,3 @@ async function subirArchivo() {
     botonSubir.disabled = false;
   }
 }
-

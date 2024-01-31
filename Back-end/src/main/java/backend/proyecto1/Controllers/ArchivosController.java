@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "http://127.0.0.1:5501")
 @RestController
 public class ArchivosController{
 
@@ -19,7 +19,7 @@ public class ArchivosController{
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         try {
             // Autenticación con tu token de acceso personal de GitHub
-            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
+            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
     
             // Obtener el repositorio existente (debes conocer su nombre y propietario)
             GHRepository repository = github.getRepository("saunpain/FloraFaunaUTP");
