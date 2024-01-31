@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import backend.proyecto1.Helpers.Conexion;
 import backend.proyecto1.Models.Fauna;
