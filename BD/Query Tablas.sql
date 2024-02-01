@@ -211,11 +211,12 @@ CALL AgregarFauna('Gato Solo', 'https://github.com/saunpain/FloraFaunaUTP/blob/m
 CALL AgregarPublicaciones('Me encontré un gato solo saliendo de la U. Se llama pansito', 'Campus Levi Sasso',NULL, 1014, 1013, 1012, NULL)
 
 SELECT * FROM Administrativo
-
+SELECT * FROM Biologo
 SELECT * FROM Estudiante
 SELECT * FROM Estudiante_Publicacion
 SELECT * FROM Publicaciones
 SELECT * FROM Fauna
+SELECT * FROM Solicitud
 
 CREATE VIEW VistaPublicacionesFauna AS 
 SELECT e.nombre_estudiante, ep.fecha_estudiante, p.lugar, p.titulo, f.foto_fauna, f.nombre_cientifico_fauna, f.nombre_animal
@@ -230,6 +231,35 @@ CALL AgregarEstudiante('Sapoberto', 'juanillo@utp.ac.pa', 'xd123', NULL)
 CALL AgregarAdministrativo('Juanillo', 'drake.castillo@utp.ac.pa', 'asd', NULL)
 CALL AgregarBiologo('Moisins', 'gustavo.perez@gmail.com', 'xd', NULL)
 
-SELECT * FROM VistaPublicacionesFauna
+SELECT * FROM VistaPubGlobal
+
+DELIMITER //
+
+CREATE PROCEDURE VerificarAprobacion(IN id INT, OUT resultado INT)
+BEGIN
+    DECLARE estado_biologo VARCHAR(255);
+
+    -- Obtener el estado del biólogo
+    SELECT estado INTO estado_biologo
+    FROM Biologo
+    WHERE id_biologo = id;
+
+    -- Asignar el resultado según el estado
+    CASE estado_biologo
+        WHEN 'Aprobado' THEN
+            SET resultado = 1;
+        WHEN 'En Espera' THEN
+            SET resultado = 2;
+        ELSE
+            SET resultado = 0;
+    END CASE;
+END //
+
+DELIMITER ;
+
+CALL VerificarAprobacion(1002, @resultado);
+SELECT @resultado AS 'Resultado';
+
+
 
 
