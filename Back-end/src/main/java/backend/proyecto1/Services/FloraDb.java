@@ -79,10 +79,10 @@ public class FloraDb {
             String query = "Call AgregarFlora('"
                 + f.getNombre_planta() + "','"
                 + f.getNombre_cientifico_flora() + "','"
-                + f.getCategoria_flora() + "','"
                 + f.getDescripcion_cientifica_flora() + "','"
+                + f.getCategoria_flora() + "','"
                 + f.getFoto_flora() +"')";
-
+                
             resultado = stmt.executeUpdate(query);
             stmt.close();
             return resultado;

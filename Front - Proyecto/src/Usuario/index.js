@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
   botonCancelarPub.addEventListener('click', function () {
       // Oculta el elemento 'publicar'
       crearPub.style.display = 'none';
+      location.reload();
   });
 });
 

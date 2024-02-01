@@ -27,6 +27,10 @@ public class PublicacionesController {
     public int InsertarPublicacionesFlora(@RequestBody Publicaciones p){
         return new PublicacionesDb().GuardarPubFlora(p);
     }
+    @PostMapping("/publicacion/fauna")
+    public int InsertarPublicacionesFauna(@RequestBody Publicaciones p){
+        return new PublicacionesDb().GuardarPubFauna(p);
+    }
     @PostMapping("/publicacion_estudiante")
     public int InsertarPublicacionesEstudiante(@RequestBody Publicaciones e){
         return new PublicacionesDb().GuardarPubEstudiante(e);
@@ -44,6 +48,10 @@ public class PublicacionesController {
     @GetMapping("/publicacion_flora/{id_flora}")
     public Publicaciones ObtenerPubFlora(@PathVariable ("id_flora") int id) {
         return new PublicacionesDb().ObtenerPubFlora(id);
+    }
+    @GetMapping("/publicacion_fauna/{id_fauna}")
+    public Publicaciones ObtenerPubFauna(@PathVariable ("id_fauna") int id) {
+        return new PublicacionesDb().ObtenerPubFauna(id);
     }
 
 }

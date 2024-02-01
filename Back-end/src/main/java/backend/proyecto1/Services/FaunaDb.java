@@ -77,10 +77,10 @@ public class FaunaDb {
             Statement stmt = cn.createStatement();
             String query = "Call AgregarFauna('"
                 + f.getNombre_animal() + "','"
-                + f.getFoto_fauna() + "','"
                 + f.getNombre_cientifico_fauna() + "','"
                 + f.getDescripcion_cientifica_fauna() + "','"
-                + f.getCategoria_fauna() + "')";
+                + f.getCategoria_fauna() + "','"
+                + f.getFoto_fauna() + "')";
 
             resultado = stmt.executeUpdate(query);
             stmt.close();

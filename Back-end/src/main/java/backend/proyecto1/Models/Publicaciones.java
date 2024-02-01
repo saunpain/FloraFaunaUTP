@@ -16,6 +16,7 @@ public class Publicaciones {
         this.lugar = lugar;
         this.id_flora = id_flora;
     }
+
     public Publicaciones(int id_publicacion, String titulo, String lugar, String fecha_estudiante, int id_flora, int id_fauna, int id_estudiante) {
         this.id_publicacion = id_publicacion;
         this.titulo = titulo;

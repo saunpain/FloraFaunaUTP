@@ -65,13 +65,31 @@ public class PublicacionesDb {
         }
         return resultado;
     }
-    public int GuardarPubEstudiante(Publicaciones e){
+
+    public int GuardarPubFauna(Publicaciones p){
         int resultado = 0;
 
         try{
             Statement stmt = cn.createStatement();
-            String query = "INSERT INTO Estudiante_Publicacion(id_publicacion, id_estudiante, fecha_estudiante)" +
-                "VALUES ('" + e.getId_publicacion() + "', '" + e.getId_estudiante() + "', curdate())";
+            String query = "Call AgregarPubFauna('"
+                + p.getTitulo() + "','"
+                + p.getLugar() + "','"
+                + p.getId_fauna() + "')";
+                resultado = stmt.executeUpdate(query);
+            return resultado;
+        } catch (Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int GuardarPubEstudiante(Publicaciones e){
+        int resultado = 10;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "INSERT INTO Estudiante_Publicacion(id_publicacion, id_estudiante)" +
+                "VALUES ('" + e.getId_publicacion() + "', '" + e.getId_estudiante() + "')";
                 resultado = stmt.executeUpdate(query);
             return resultado;
         } catch (Exception ex){
@@ -80,22 +98,6 @@ public class PublicacionesDb {
         return resultado;
     }
 
-        public int GuardarPubFauna(Publicaciones p){
-        int resultado = 0;
-
-        try{
-            Statement stmt = cn.createStatement();
-            String query = "Call AgregarPubFlora('"
-                + p.getTitulo() + "','"
-                + p.getLugar() + "','"
-                + p.getId_flora() + "')";
-                resultado = stmt.executeUpdate(query);
-            return resultado;
-        } catch (Exception e){
-
-        }
-        return resultado;
-    }
 
     public int ActualizarPublicaciones(Publicaciones p){
         int resultado = 0;
@@ -173,8 +175,8 @@ public class PublicacionesDb {
         Publicaciones pub = null;
     
         try {
-            String query = "SELECT * FROM Publicaciones WHERE id_flora = '"+ id + "'";
             Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM Publicaciones WHERE id_flora = '"+ id + "'";
             ResultSet rs = stmt.executeQuery(query);
     
             if (rs.next()) {
@@ -183,6 +185,32 @@ public class PublicacionesDb {
                     rs.getString("titulo"),
                     rs.getString("lugar"),
                     rs.getInt("id_flora")
+                );
+            }
+            stmt.close();
+            rs.close();
+            return pub;
+        } catch (Exception ex) {
+            
+        }
+    
+        return pub;
+    }
+
+    public Publicaciones ObtenerPubFauna(int id) {
+        Publicaciones pub = null;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM Publicaciones WHERE id_fauna = '"+ id + "'";
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                pub = new Publicaciones(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("titulo"),
+                    rs.getString("lugar"),
+                    rs.getInt("id_fauna")
                 );
             }
             stmt.close();
