@@ -31,7 +31,8 @@ public class BiologoDb {
                     rs.getString("nombre_biologo"),
                     rs.getString("correo_biologo"),
                     rs.getString("contraseña_biologo"),
-                    rs.getString("perfil_biologo")
+                    rs.getString("perfil_biologo"),
+                    rs.getString("estado")
                 );
 
                 biologos.add(b);
@@ -54,7 +55,8 @@ public class BiologoDb {
                 + b.getNombre_biologo() + "','"
                 + b.getCorreo_biologo() + "','"
                 + b.getContraseña_biologo() + "','"
-                + b.getPerfil_biologo() + "')";
+                + b.getPerfil_biologo() + "','"
+                + b.getEstado() + "')";
 
             resultado = stmt.executeUpdate(query);
 
@@ -74,7 +76,8 @@ public class BiologoDb {
                 + b.getId_biologo() + "','"
                 + b.getNombre_biologo() + "','"
                 + b.getCorreo_biologo() + "','"
-                + b.getPerfil_biologo()+ "')";
+                + b.getPerfil_biologo() + "','"
+                + b.getEstado()+ "')";
 
             resultado = stmt.executeUpdate(query);
             stmt.close();
@@ -114,7 +117,8 @@ public class BiologoDb {
                     rs.getString("nombre_biologo"),
                     rs.getString("correo_biologo"),
                     rs.getString("contraseña_biologo"),
-                    rs.getString("perfil_biologo")
+                    rs.getString("perfil_biologo"),
+                    rs.getString("estado")
                 );
             }
     

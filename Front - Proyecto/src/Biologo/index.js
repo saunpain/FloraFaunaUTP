@@ -111,9 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-
 /***************Funciones para editar NombreCientífico*******************/
 
 function editarNombreC(id) {
@@ -138,7 +135,6 @@ function editarNombreC(id) {
 }
 
 
-/*CHEEEEEEEEEEEEEEEECKPPPPOOOOOOOOOOOOOOOOOOOOOOOOOOOOIIIIIIIIIINTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT*/
 /*Funcion que permite seleccionar el boton guardar al que se le esta haciendo hover*/ 
 /*GUARDAR*/
 
@@ -209,27 +205,6 @@ function cancelarEdicion(id) {
 
   // Eliminar el atributo data-original-value
   nombreCinput.removeAttribute('data-original-value');
-}
-
-/************************************************ */
-
-function mostrarPerfil() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('perfil');
-  var perfilContainer = document.getElementById('contenedor-Perfil');
-  var perfilContent = document.getElementById('userProfile-contenido');
-
-  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
-  fetch('http://localhost:5501/Front - Proyecto/src/Biologo/PerfilBiologo.html')
-    .then(response => response.text())
-    .then(data => {
-      perfilContent.innerHTML = data;
-      overlay.style.display = 'block'; // Mostrar la capa oscura
-      
-      perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
-    })
-    .catch(error => console.error('Error al cargar el perfil:', error));
 }
 
 //************INICIO DE LAS FUNCIONES PARA EDITAR DESCRIPCION*******************

@@ -5,11 +5,11 @@ let perfil = "";
 
 function mostrarPerfil() {
     const user = usuario_name;
-    fetch(baseUrl + "/estudiante/" + user).then((res) => {
+    fetch(baseUrl + "/biologo/" + user).then((res) => {
         res.json().then((json) => {
         usuario = json;
 
-        let fotoPerfil = usuario.perfil_estudiante;
+        let fotoPerfil = usuario.perfil_biologo;
         perfil = fotoPerfil;
         ImprimirPerfil(usuario);
         });
@@ -19,13 +19,13 @@ function mostrarPerfil() {
 function ActualizarNombreUsuario(usuario) {
 
     let data = {
-        id_estudiante: usuario.id,
-        perfil_estudiante: perfil,
-        correo_estudiante: document.getElementById("correo").textContent,
-        nombre_estudiante: document.getElementById("input").value,
+        id_biologo: usuario.id,
+        perfil_biologo: perfil,
+        correo_biologo: document.getElementById("correo").textContent,
+        nombre_biologo: document.getElementById("input").value,
     };
     console.log('Datos a enviar:', data);
-    fetch(baseUrl + "/estudiante", {
+    fetch(baseUrl + "/biologo", {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {
@@ -33,7 +33,7 @@ function ActualizarNombreUsuario(usuario) {
         },
     }).then(res => {
         console.log(res);
-        usuario_name = data.nombre_estudiante;
+        usuario_name = data.nombre_biologo;
         localStorage.setItem("nombreusuario", usuario_name);
         mostrarPerfil();
     });
@@ -61,14 +61,14 @@ function MapearPerfil(usuario) {
             </button>
         </div>
         <div class="flex mt-5 items-center">
-            <img src="${usuario.perfil_estudiante}" alt="foto de perfil" class="rounded-full w-16 h-16">
+            <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="rounded-full w-16 h-16">
             <p class="ml-5">Avatar de perfil</p>
         </div>
-        <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_estudiante}">${usuario.nombre_estudiante}</p>
+        <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_biologo}">${usuario.nombre_biologo}</p>
         <input type="text" id="input" class="hidden mt-6 w-full text-center" disabled/>
         <hr class="h-px border-0 dark:bg-gray-600">
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-            <button id="guardar" class="hidden focus:outline-none" onclick="guardarNuevoNombre('${usuario.id_estudiante}')">
+            <button id="guardar" class="hidden focus:outline-none" onclick="guardarNuevoNombre('${usuario.id_biologo}')">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar">
             </button>
             <div class="absolute bg-white border rounded -ml-5 w-[8rem] p-1" x-show="open" @click.away="open = false">
@@ -76,7 +76,7 @@ function MapearPerfil(usuario) {
             </div>
         </div>
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-            <button id="cancelar" class="hidden focus:outline-none" onclick="cancelarNuevoNombre('${usuario.id_estudiante}')">
+            <button id="cancelar" class="hidden focus:outline-none" onclick="cancelarNuevoNombre('${usuario.id_biologo}')">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar">
             </button>
             <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
@@ -85,13 +85,13 @@ function MapearPerfil(usuario) {
         </div>
         <div class="flex justify-center">
             <p>Editar</p>
-            <button onclick="editarUsuario('${usuario.id_estudiante}')">
+            <button onclick="editarUsuario('${usuario.id_biologo}')">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/editar-perfil.png?raw=true" class="h-6 w-6 ml-5">
             </button>
         </div>
         
         <p class="mt-6">Correo</p>
-        <p class="mt-2 underline" id="correo">${usuario.correo_estudiante}</p>
+        <p class="mt-2 underline" id="correo">${usuario.correo_biologo}</p>
         <button class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>

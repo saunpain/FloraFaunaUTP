@@ -6,19 +6,21 @@ public class Biologo {
     private String correo_biologo;
     private String contraseña_biologo;
     private String perfil_biologo;
+    private String estado;
 
     public Biologo(){
     }
 
     public Biologo(
         int id_biologo, String nombre_biologo, String correo_biologo,
-        String contraseña_biologo, String perfil_biologo
+        String contraseña_biologo, String perfil_biologo, String estado
     ){
         this.id_biologo = id_biologo;
         this.nombre_biologo = nombre_biologo;
         this.correo_biologo = correo_biologo;
         this.contraseña_biologo = contraseña_biologo;
         this.perfil_biologo = perfil_biologo;
+        this.estado = estado;
     }
 
     public int getId_biologo() {
@@ -59,6 +61,14 @@ public class Biologo {
 
     public void setPerfil_biologo(String perfil_biologo) {
         this.perfil_biologo = perfil_biologo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     
