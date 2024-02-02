@@ -5,6 +5,26 @@ let fauna = [];
 let flora = [];
 let publicaciones = [];
 
+let id_usuario = localStorage.getItem('id_usuario');
+
+function ObtenerBiologo(){
+    const user = usuario_name;
+    fetch(baseUrl + "/biologo/" + user)
+          .then(res => res.json())
+          .then(data => {
+              const fotoPerfil = data.perfil_biologo;
+              var img = document.getElementById("imgPerfil");
+              img.src = fotoPerfil;
+              localStorage.setItem('id_usuario', data.id_biologo)
+          })
+          .catch(error => {
+              console.error(error);
+          });
+    ObtenerPublicaciones();
+    ObtenerComentarios();
+    ImprimirCrearComentario();
+  }
+
 function ObtenerPublicaciones() {
     fetch(baseUrl + '/vista/all').then(res => {
       res.json().then(json => {
@@ -13,6 +33,24 @@ function ObtenerPublicaciones() {
       });
     });
   }
+
+  function ObtenerComentarios() {
+    return fetch(baseUrl + '/comentario/' + id_usuario)
+        .then(res => res.json())
+        .then(json => {
+            comentarios = json;
+            ImprimirComentarios(comentarios);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            throw error;
+        });
+}
+
+function ImprimirCrearComentario() {
+    const contenedor = document.getElementById("AgregarComent");
+    contenedor.innerHTML = MapAgregarComentario();
+}
   
 
 function ImprimirPublicaciones(publicaciones) {
@@ -152,79 +190,22 @@ function MapearPublicacionesFlora(publicacion) {
   </div>`;
   }
 
-/*
-function GuardarSolicitud() {
-  let data = {
-    nombre: document.getElementById("nombre").value,
-    precio: document.getElementById("precio").value,
-    categoriaId: document.getElementById("categoriaId").value,
-    foto: document.getElementById("foto").value,
-    fechaProduccion: document.getElementById("fechaProduccion").value,
-    fechaCaducidad: document.getElementById("fechaCaducidad").value
-  };
-
-  fetch(baseUrl + "/producto", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-type": 'application/json; charset=UTF-8'
-    }
-  }).then(res => {
-    ObtenerProductos();
-  });
+  function MapAgregarComentario() {
+    return `<div class="mt-2 mb-2 w-full">
+        <hr class="mt-2 ml-10 mr-10 mb-4">
+        <textarea id="text-coment" class="w-full h-28 shadow-md p-2 border rounded mb-4 focus:outline-none" placeholder="Escribe tu comentario..."></textarea>
+        <button onclick="AgregarComentario()" class="bg-[#276B58] text-white py-2 px-4 rounded hover:bg-[#2e5c5c] focus:outline-none focus:shadow-outline-blue active:bg-[#4b927e]">
+            Publicar comentario
+        </button>
+    </div>`;
 }
 
-*/
-
-/*
-function ObtenerPublicacionesFauna() {
-  // Array para almacenar las promesas de fetch
-  const promesasFetch = [];
-
-  // Primer fetch para obtener datos de fauna
-  const fetchFauna = fetch(baseUrl + '/fauna/all').then(res => {
-    if (!res.ok) {
-      throw new Error('Error al obtener datos de fauna');
-    }
-    return res.json();
-  });
-
-  // Segundo fetch para obtener datos de publicaciones
-  const fetchPublicaciones = fetch(baseUrl + '/publicaciones/all').then(res => {
-    if (!res.ok) {
-      throw new Error('Error al obtener datos de publicaciones');
-    }
-    return res.json();
-  });
-
-    // Tercer fetch para obtener datos de estudiantes
-    const fetchEstudiante = fetch(baseUrl + '/estudiante/all').then(res => {
-      if (!res.ok) {
-        throw new Error('Error al obtener datos de estudiante');
-      }
-      return res.json();
-    });
-
-  // Agregar las promesas al array
-  promesasFetch.push(fetchFauna, fetchPublicaciones, fetchEstudiante);
-
-  // Ejecutar Promise.all cuando ambas promesas estén resueltas
-  Promise.all(promesasFetch)
-    .then(resultados => {
-      // resultados[0] contendrá los datos de fauna
-      // resultados[1] contendrá los datos de publicaciones
-      // resultados[2] contendrá los datos de estudiante
-      const fauna = resultados[0];
-      const publicaciones = resultados[1];
-      const estudiante = resultados[2];
-
-      // Aquí puedes combinar ambos conjuntos de datos o realizar otras acciones según tus necesidades
-      const datosCombinados = { fauna, publicaciones, estudiante };
-
-      // Llamar a tu método ImprimirPublicacionesFauna con los datos combinados
-      ImprimirPublicacionesFauna(datosCombinados);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-} */
+function Subir(){
+    return `<div class="mt-10 flex justify-center">
+                  <div class="mt-10 flex justify-center">
+                      <a href="#pub" class="bg-[#276B58] w-full h-7 text-center text-white absolute bottom-0">
+                          Ir arriba
+                      </a>
+                  </div>
+              </div>`
+  }

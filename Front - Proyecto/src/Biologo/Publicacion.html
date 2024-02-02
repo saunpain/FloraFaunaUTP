@@ -70,11 +70,30 @@
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
 
-            <div class="flex justify-around items-center xl:mr-10">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles_Darwin_1.png?raw=true" alt="user icon">
-            </div>
+            <div class="flex items-center">
+
+                <button onclick="mostrarVerificacion()" id="mostrarVerificacion" class="text-[#FFFFFF] text-sm text-lg mr-6 xl:text-lg hover:text-[#99E0FF] font-semibold">Enviar Solicitud de Verificación</button>
+    
+                <button id="mostrarPerfil">
+                    <a href="">
+                        <img id="imgPerfil" alt="user" class="w-12 h-12 ml-2">
+                    </a>
+                </button>
+    
+                </div>
         </div>
     </header>
+
+    <div id="perfil" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-10"></div>
+    <div id="contenedor-Perfil" class="hidden">
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-20">
+            <div id="userProfile-contenido" class="bg-[#F0FEF8] p-10 rounded border-[1.5px] border-slate-500">
+                
+            </div>
+            
+        </div>
+    </div>
+    
     <aside id="aside" class="fixed top-[3rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
@@ -210,101 +229,15 @@
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
         <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
-            <div id="nasua" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
-                <div class="mt-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
-                    <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">2024/01/15</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">Campus Levi Sasso</span>
-                    <p class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Me encontré un gato solo saliendo de la U. Se llama pansito</p>
-                </div>
-                <div class="flex justify-center mt-5 mb-5">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-7.png?raw=true" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
-                </div>
-                <div class="flex justify-around">
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="md:h-6 md:w-6 md:ml-8 xl:h-6 xl:w-6 xl:ml-8 h-5 lg:ml-0">
-                        <span class="textito font-bold text-[#241111]ml-2 xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">35</span>
-                    </div>
-                    <div class="flex">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 md:ml-8 lg:ml-6 ml-6">
-                        <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">11</span>
-                    </div>
-                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico: <span id="comentarioTexto">Nasua</span> <button> <img  class="pl"> </button> </span>
-
-        
-                    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: Gato solo</span>
-                </div>
-
-
-<!--                    <div id="contenedorEdicion" class="flex absolute mt-10 w-full">
-                        <div class="w-full">
-                        <input type="text" id="comentarioInput" class="h-28 w-full ml-2"/>
-                        <button id="guardar" class="guardar relative" onclick="guardarCambios()">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-12 h-12">
-                            <span class="cambioG hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
-                        </button>
-                        <button id="cancelar" class="cancelar relative ml-4" onclick="cancelarEdicion()" onmouseover="hoverCambios()">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-12 h-12">
-                            <span class="cambioC hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
-                        </button>
-                    </div>
-                    </div>-->
-
-                <div class="pub mt-2 mb-2">
-                    <div>
-
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">PepeGanga</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                        <p class="descripcion textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Nasua, llamados coatíes o pizotes, ​ es un género con dos especies de pequeños mamíferos omnívoros americanos de la familia de los prociónidos.​ Habita desde el sur de Estados Unidos hasta el norte de Argentina, Paraguay y Uruguay. Es un animal social y puede congregarse en grupos de más de 50 individuos.
-                        </p>
-                        <div>
-                            <div class="contenedorEdicion hidden flex-row items-end w-full">
-                                <textarea class="descripcionInput h-28 w-full border border-gray-300 rounded-md p-2 mt-2 md:ml-10 lg:ml-0 xl:mr-10 xl:text-sm md:text-[14px]"></textarea>
-                                <div class="mt-1 md:ml-[30rem] lg:ml-[15rem] sm:[5rem]  xl:ml-[30rem]">
-                                    <button class="guardar z-5" onclick="detectarGuardarDescripcion(this)">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
-                                        <span class="cambioG absolute hidden bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
-                                    </button>
-                                    <button class="cancelar z-5" onclick="detectarCancelarDescripcion(this)">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
-                                        <span class="cambioC absolute hidden bg-white border rounded p-1 text-sm">Cancelar</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-
-                        <!--Fin contenedor de edicion-->
-                        <button onclick="detectarEditarDescripcion(this)" class="flex items-center hover:bg-[#205748] hover: ml-5 md:ml-10 rounded px-4 py-2">
-                        <span class="textito text-justify  md:ml-2 lg:ml-0 ml-2 xl:ml-2 xl:mr-2 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-1">
-                            Editar
-                        </span>
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" class="ml-2 mt-1">
-                        </button>
-                    </div>
+            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
+                <div id="publicacion" class="w-full relative flex flex-col items-center">
 
                 </div>
-                
-                <hr class="mt-2 ml-10 mr-10">
-                <div class="mt-2 mb-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">UsuarioPromedioFisc</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">Yo los he visto cerca del estacionamiento, generalmente salen en la mañana.</p>
-                </div>
+                <div id="comentarios" class="w-full relative flex flex-col items-center">
     
-                <hr class="mt-2 ml-10 mr-10">
-                <div class="mt-2 mb-2">
-                    <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">RandomUser</span>
-                    <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">2024/01/15</span>
-                    <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">También se les puede ver en los árboles alrededor de la UTP.</p>
                 </div>
-                <hr class="mt-2 ml-10 mr-10">
-                <!--Para realizar comentarios-->
-                <div class="mt-2 mb-2 rounded w-auto ml-10 mr-10">
-                    <textarea class="w-full h-28 shadow-md p-2 border rounded mb-4 focus:outline-none" placeholder="Escribe tu comentario..."></textarea>
-                    <button class="bg-[#276B58] text-white py-2 px-4 rounded hover:bg-[#2e5c5c] focus:outline-none focus:shadow-outline-blue active:bg-[#4b927e]">
-                        Publicar comentario
-                    </button>
+                <div id="AgregarComent" class="w-full relative flex flex-col items-center">
+    
                 </div>
             </div>
             
