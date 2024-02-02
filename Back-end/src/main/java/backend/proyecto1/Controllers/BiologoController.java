@@ -35,6 +35,7 @@ public class BiologoController {
     public int Delete(@PathVariable("id") int id){
         return new BiologoDb().EliminarBiologo(id);
     }
+
     @GetMapping("/biologo/{nombre_biologo}")
     public Biologo ObtenerBiologo(@PathVariable("nombre_biologo") String nomb){
         return new BiologoDb().ObtenerBiologo(nomb);

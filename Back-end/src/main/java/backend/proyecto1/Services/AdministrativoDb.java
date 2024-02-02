@@ -1,5 +1,6 @@
 package backend.proyecto1.Services;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -126,5 +127,25 @@ public class AdministrativoDb {
         }
     
         return admin;
+    }
+
+    public int EstadoDeBiologo(int id){
+        int resultado = 3;  //si el proceso no tuvo exito regresará 3, si fue exitoso regresara 0, 1 o 2
+
+        try{
+            CallableStatement cs = cn.prepareCall("CALL VerificarAprobacion(?, ?)");
+            
+            cs.setInt(1, id);
+            cs.registerOutParameter(2, java.sql.Types.INTEGER);
+            cs.execute();
+
+            resultado = cs.getInt(2);
+
+            return resultado;
+        } catch (Exception e){
+
+        }
+        
+        return resultado;
     }
 }
