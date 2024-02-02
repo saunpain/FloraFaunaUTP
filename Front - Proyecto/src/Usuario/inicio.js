@@ -4,6 +4,7 @@
 let fauna = [];
 let flora = [];
 let publicaciones = [];
+let categoria = "";
 
 function ObtenerPublicaciones() {
   fetch(baseUrl + '/vista/all').then(res => {
@@ -15,33 +16,102 @@ function ObtenerPublicaciones() {
 }
 
 
+function ObtenerFlora(){
+    fetch(baseUrl + "/vista_flora").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFauna(){
+    fetch(baseUrl + "/vista_fauna").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFloraCategoria(categoria){
+    fetch(baseUrl + "/vista_flora/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFaunaCategoria(categoria){
+    fetch(baseUrl + "/vista_fauna/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+
+
+
+function menuCategoria(categoria){
+    let contenedor = document.getElementById("pub");
+    contenedor.innerHTML = "";
+
+    if(categoria === "flora"){
+        ObtenerFlora()
+    }
+    if(categoria === "fauna"){
+        ObtenerFauna()
+    }
+    if(categoria === "planta"){
+        ObtenerFloraCategoria("Planta")
+    }
+    if(categoria === "hierbas"){
+        ObtenerFloraCategoria("Hierba")
+    }
+    if(categoria === "arboles"){
+        ObtenerFloraCategoria("Arboles")
+    }
+    if(categoria === "aves"){
+        ObtenerFaunaCategoria("Aves")
+    }
+    if(categoria === "reptiles"){
+        ObtenerFaunaCategoria("Reptiles")
+    }
+    if(categoria === "artropodos"){
+        ObtenerFaunaCategoria("Artrópodos")
+    }
+    if(categoria === "mamiferos"){
+        ObtenerFaunaCategoria("Mamíferos")
+    }
+}
+
+
 function ImprimirPublicaciones(publicaciones) {
     let contenedor = document.getElementById("pub");
     contenedor.innerHTML = "";
-  
+
     publicaciones.forEach((publicacion, index) => {
-      if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-        if (usuario_name === publicacion.nombre_estudiante) {
-          contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion);
-        } else {
-          contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
+        if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
+            if (usuario_name === publicacion.nombre_estudiante) {
+            contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion);
+            } else {
+            contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
+            }
         }
-      }
-  
-      if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
-        if (usuario_name === publicacion.nombre_estudiante) {
-          contenedor.innerHTML += MapearPublicacionUsusarioFauna(publicacion);
-        } else {
-          contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
+    
+        if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
+            if (usuario_name === publicacion.nombre_estudiante) {
+            contenedor.innerHTML += MapearPublicacionUsusarioFauna(publicacion);
+            } else {
+            contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
+            }
         }
-      }
-  
-      if (index === publicaciones.length - 1) {
-        contenedor.innerHTML += Subir();
-      }
+    
+        if (index === publicaciones.length - 1) {
+            contenedor.innerHTML += Subir();
+        }
     });
-  }
-  
+}
+
 
 function MapearPublicacionUsusarioFlora(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
@@ -337,3 +407,6 @@ function MostrarPub(id) {
     // Redirige a la página de destino
     window.location.href = url;
 }
+
+
+

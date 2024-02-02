@@ -12,6 +12,7 @@ function ObtenerPublicaciones() {
         });
     });
 }
+
 function ObtenerComentarios() {
     return fetch(baseUrl + '/comentario/' + id_usuario)
         .then(res => res.json())
@@ -180,6 +181,10 @@ function MostrarPub(id) {
     // Construye la URL con el parámetro
     let url = "Publicacion.html?id=" + id;
 
-    // Redirige a la página de destino
+    // Redirige a la página con la publicacion indicada
     window.location.href = url;
+}
+
+function menuCategoria() {
+    window.location.href = "Usuario - Inicio.html";
 }

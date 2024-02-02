@@ -7,7 +7,7 @@ let publicaciones = [];
 let comentarios = [];
 
 function ObtenerPublicaciones(){
-    fetch(baseUrl + '/publicacion/' + id_pub).then(res => {
+    fetch(baseUrl + '/vista/' + id_pub).then(res => {
         res.json().then(json => {
             publicaciones = json;
             ImprimirPublicacion(publicaciones);
@@ -483,7 +483,11 @@ function ActualizarComentario(id) {
 function AgregarComentario() {
     var elemento = document.getElementById("text-coment").value;
     if (elemento === "" || elemento === null) {
-        window.alert('Usted no ha comentado nada.');
+        Swal.fire({
+            title: "La fauna que intenta publicar ya ha sido registrada.",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#276B58",
+        });
     } else {
         GuardarComentario();
     }

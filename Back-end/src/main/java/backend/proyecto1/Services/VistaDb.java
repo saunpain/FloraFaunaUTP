@@ -85,5 +85,128 @@ public class VistaDb {
     
         return pub;
     }
+    
+    public List<VistaPubGlobal> VistaPublicacionesFlora(){
+        List<VistaPubGlobal> vistaPFlora = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM VistaPublicacionesFlora order by fecha_estudiante DESC";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                VistaPubGlobal flora = new VistaPubGlobal(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getString("lugar"),
+                    rs.getString("titulo"),
+                    rs.getString("foto_flora"),
+                    rs.getString("nombre_cientifico_flora"),
+                    rs.getString("nombre_planta")
+                    
+                );
+
+                vistaPFlora.add(flora);
+            }
+
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return vistaPFlora;
+    }
+    
+    public List<VistaPubGlobal> VistaPublicacionesFauna(){
+        List<VistaPubGlobal> vistaPFauna = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM VistaPublicacionesFauna order by fecha_estudiante DESC";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                VistaPubGlobal p = new VistaPubGlobal(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getString("lugar"),
+                    rs.getString("titulo"),
+                    rs.getString("foto_fauna"),
+                    rs.getString("nombre_cientifico_fauna"),
+                    rs.getString("nombre_animal")
+                );
+
+                vistaPFauna.add(p);
+            }
+
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return vistaPFauna;
+    }
+
+    public List<VistaPubGlobal> VistaFloraCat(String cat) { //Tuve que crear un constructor con las variables que se iban a utilizar en esta funcion, parece que estaba jodiendo por eso
+        List<VistaPubGlobal> FloraCat = new ArrayList<>();
+    
+        try {
+            String query = "SELECT * FROM VistaPublicacionesFlora WHERE categoria_flora = '" + cat + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            while (rs.next()) {
+                VistaPubGlobal fl = new VistaPubGlobal(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getString("lugar"),
+                    rs.getString("titulo"),
+                    rs.getString("foto_flora"),
+                    rs.getString("nombre_cientifico_flora"),
+                    rs.getString("nombre_planta")
+                );
+                FloraCat.add(fl);
+            }
+            stmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            
+        }
+    
+        return FloraCat;
+    }
+
+    public List<VistaPubGlobal> VistaFaunaCat(String cat) { //Tuve que crear un constructor con las variables que se iban a utilizar en esta funcion, parece que estaba jodiendo por eso
+        List<VistaPubGlobal> FaunaCat = new ArrayList<>();
+    
+        try {
+            String query = "SELECT * FROM VistaPublicacionesFauna WHERE categoria_fauna = '" + cat + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            while (rs.next()) {
+                VistaPubGlobal fa = new VistaPubGlobal(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getString("lugar"),
+                    rs.getString("titulo"),
+                    rs.getString("foto_fauna"),
+                    rs.getString("nombre_cientifico_fauna"),
+                    rs.getString("nombre_animal")
+                );
+                FaunaCat.add(fa);
+            }
+            stmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            
+        }
+    
+        return FaunaCat;
+    }
 
 }

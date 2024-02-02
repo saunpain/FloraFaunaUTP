@@ -8,7 +8,6 @@ import java.util.List;
 
 import backend.proyecto1.Helpers.Conexion;
 import backend.proyecto1.Models.Publicaciones;
-import backend.proyecto1.Models.Vista_Pub;
 
 public class PublicacionesDb {
     
@@ -133,43 +132,6 @@ public class PublicacionesDb {
         return resultado;
     }
 
-      public Vista_Pub ObtenerPublicacion(int id) { 
-        Vista_Pub pub = null;
-    
-        try {
-            String query = "SELECT * FROM VistaPublicacion WHERE id_publicacion = '"+ id + "' order by fecha_estudiante DESC";
-            Statement stmt = cn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            if (rs.next()) {
-                pub = new Vista_Pub(
-                    rs.getString("nombre_estudiante"),
-                    rs.getString("fecha_estudiante"),
-                    rs.getString("lugar"),
-                    rs.getString("titulo"),
-                    rs.getString("foto_flora"),
-                    rs.getString("nombre_cientifico_flora"),
-                    rs.getString("nombre_planta"),
-                    rs.getString("descripcion_cientifica_flora"),
-                    rs.getInt("id_publicacion"),
-                    rs.getString("foto_fauna"),
-                    rs.getString("nombre_cientifico_fauna"),
-                    rs.getString("nombre_animal"),
-                    rs.getString("descripcion_cientifica_fauna"),
-                    rs.getInt("id_comentario"),
-                    rs.getString("comentario"),
-                    rs.getString("fecha_comentario")
-                );
-            }
-            stmt.close();
-            rs.close();
-            return pub;
-        } catch (Exception ex) {
-            
-        }
-    
-        return pub;
-    }
 
     public Publicaciones ObtenerPubFlora(int id) {
         Publicaciones pub = null;

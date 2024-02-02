@@ -15,7 +15,73 @@ function ObtenerPublicaciones() {
         });
     });
 }
+function ObtenerFlora(){
+    fetch(baseUrl + "/vista_flora").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicacionesUsuario(publicaciones);
+        })
+    })
+}
+function ObtenerFauna(){
+    fetch(baseUrl + "/vista_fauna").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicacionesUsuario(publicaciones);
+        })
+    })
+}
 
+function ObtenerFloraCategoria(categoria){
+    fetch(baseUrl + "/vista_flora/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicacionesUsuario(publicaciones);
+        })
+    })
+}
+
+function ObtenerFaunaCategoria(categoria){
+    fetch(baseUrl + "/vista_fauna/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicacionesUsuario(publicaciones);
+        })
+    })
+}
+
+function menuCategoria(categoria){
+    let contenedor = document.getElementById("publicacion");
+    contenedor.innerHTML = "";
+
+    if(categoria === "flora"){
+        ObtenerFlora()
+    }
+    if(categoria === "fauna"){
+        ObtenerFauna()
+    }
+    if(categoria === "planta"){
+        ObtenerFloraCategoria("Planta")
+    }
+    if(categoria === "hierbas"){
+        ObtenerFloraCategoria("Hierba")
+    }
+    if(categoria === "arboles"){
+        ObtenerFloraCategoria("Arboles")
+    }
+    if(categoria === "aves"){
+        ObtenerFaunaCategoria("Aves")
+    }
+    if(categoria === "reptiles"){
+        ObtenerFaunaCategoria("Reptiles")
+    }
+    if(categoria === "artropodos"){
+        ObtenerFaunaCategoria("Artrópodos")
+    }
+    if(categoria === "mamiferos"){
+        ObtenerFaunaCategoria("Mamíferos")
+    }
+}
 function ImprimirPublicacionesUsuario(publicaciones) {
     let contenedor = document.getElementById("publicacion");
     contenedor.innerHTML = "";
@@ -224,7 +290,7 @@ function guardarPublicacion() {
         const descripcion = document.getElementById("descrip_cientifica").value;
         console.log("Datos a enviar al servidor:", { img_pub, titulo, nombre, nombre_cientifico, lugar, categoria, sub_cat, descripcion });
 
-        if(titulo === "" || nombre === "" || nombre_cientifico === "" || lugar === "" || categoria === "" || sub_cat === "" || descripcion === ""){
+        if(titulo === "" || nombre === "" || nombre_cientifico === "" || lugar !== "Seleccione un lugar" || categoria !== "Seleccione categoría" || sub_cat !== "Seleccione subcategoría" || descripcion === ""){
             Swal.fire({
                 title: "Debe completar todos los campos para proceder con el registro.",
                 confirmButtonText: "OK",
@@ -274,7 +340,7 @@ function guardarPublicacion() {
         }
     }).catch(error =>{
         Swal.fire({
-            title: "Para proceder con el registro debe subir una foto.",
+            title: "Para proceder con el registro debe subir una foto y llenar todos los campos.",
             confirmButtonText: "OK",
             confirmButtonColor: "#276B58",
         });

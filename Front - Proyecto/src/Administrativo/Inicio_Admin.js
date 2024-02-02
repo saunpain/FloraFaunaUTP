@@ -14,6 +14,71 @@ function ObtenerPublicaciones() {
     });
 }
 
+function ObtenerFlora(){
+    fetch(baseUrl + "/vista_flora").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFauna(){
+    fetch(baseUrl + "/vista_fauna").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFloraCategoria(categoria){
+    fetch(baseUrl + "/vista_flora/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFaunaCategoria(categoria){
+    fetch(baseUrl + "/vista_fauna/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+
+function menuCategoria(categoria){
+    let contenedor = document.getElementById("pub");
+    contenedor.innerHTML = "";
+
+    if(categoria === "flora"){
+        ObtenerFlora()
+    }
+    if(categoria === "fauna"){
+        ObtenerFauna()
+    }
+    if(categoria === "planta"){
+        ObtenerFloraCategoria("Planta")
+    }
+    if(categoria === "hierbas"){
+        ObtenerFloraCategoria("Hierba")
+    }
+    if(categoria === "arboles"){
+        ObtenerFloraCategoria("Arboles")
+    }
+    if(categoria === "aves"){
+        ObtenerFaunaCategoria("Aves")
+    }
+    if(categoria === "reptiles"){
+        ObtenerFaunaCategoria("Reptiles")
+    }
+    if(categoria === "artropodos"){
+        ObtenerFaunaCategoria("Artrópodos")
+    }
+    if(categoria === "mamiferos"){
+        ObtenerFaunaCategoria("Mamíferos")
+    }
+}
 
 function ImprimirPublicaciones(publicaciones) {
     let contenedor = document.getElementById("pub");
@@ -40,6 +105,7 @@ function EliminarPublicaciones(id){
         ObtenerPublicaciones()
     })
 }
+
 function MapearPublicacionFlora(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
             <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">
@@ -198,6 +264,7 @@ return `<div class="mt-10 flex justify-center">
                 </div>
             </div>`
 }
+
 function ActualizarPub(id) {
     let data = {
         id_publicacion: id,

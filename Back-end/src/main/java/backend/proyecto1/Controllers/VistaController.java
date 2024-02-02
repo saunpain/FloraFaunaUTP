@@ -18,4 +18,20 @@ public class VistaController {
     public VistaPubGlobal ObtenerPublicacion(@PathVariable ("id_publicacion") int id){
         return new VistaDb().ObtenerPublicacion(id);
     }
+    @GetMapping("vista_flora")
+    public List<VistaPubGlobal> VistaPublicacionesFlora(){
+        return new VistaDb().VistaPublicacionesFlora();
+    }
+    @GetMapping("vista_fauna")
+    public List<VistaPubGlobal> VistaPublicacionesFauna(){
+        return new VistaDb().VistaPublicacionesFauna();
+    }
+    @GetMapping("/vista_flora/{categoria_flora}")
+    public List<VistaPubGlobal> ObtenerFloraCategoria(@PathVariable ("categoria_flora") String cat){
+        return new VistaDb().VistaFloraCat(cat);
+    }
+    @GetMapping("/vista_fauna/{categoria_fauna}")
+    public List<VistaPubGlobal> ObtenerFaunaCategoria(@PathVariable ("categoria_fauna") String cat){
+        return new VistaDb().VistaFaunaCat(cat);
+    }
 }

@@ -92,7 +92,7 @@ function MapearPerfil(usuario) {
         
         <p class="mt-6">Correo</p>
         <p class="mt-2 underline" id="correo">${usuario.correo_estudiante}</p>
-        <button class="mt-10">
+        <button id="cerrar_S" class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cerrar%20sesi%C3%B3n%20perfil.png?raw=true" alt="" class="ml-4 h-6 w-6">
@@ -101,6 +101,12 @@ function MapearPerfil(usuario) {
     </div>
 </div>`;
 }
+document.addEventListener('DOMContentLoaded', function() {
+    let bton_cerrarSesion = document.getElementById('cerrar_S');
+    bton_cerrarSesion.addEventListener('click', function () {
+        localStorage.removeItem("nombreusuario");
+    })
+})
 
 // Función para cerrar el cuadro de perfil y quitar la capa oscura
 function cerrarPerfil() {

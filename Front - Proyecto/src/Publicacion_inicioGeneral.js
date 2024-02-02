@@ -7,7 +7,7 @@ let publicaciones = [];
 let comentarios = [];
 
 function ObtenerPublicaciones(){
-    fetch(baseUrl + '/publicacion/' + id_pub).then(res => {
+    fetch(baseUrl + '/vista/' + id_pub).then(res => {
         res.json().then(json => {
             publicaciones = json;
             ImprimirPublicacion(publicaciones);
