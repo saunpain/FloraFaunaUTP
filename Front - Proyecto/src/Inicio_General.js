@@ -17,6 +17,73 @@ function ObtenerPublicaciones() {
     });
 }
 
+function ObtenerFlora(){
+    fetch(baseUrl + "/vista_flora").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFauna(){
+    fetch(baseUrl + "/vista_fauna").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFloraCategoria(categoria){
+    fetch(baseUrl + "/vista_flora/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFaunaCategoria(categoria){
+    fetch(baseUrl + "/vista_fauna/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+
+
+
+function menuCategoria(categoria){
+    let contenedor = document.getElementById("pub");
+    contenedor.innerHTML = "";
+
+    if(categoria === "flora"){
+        ObtenerFlora()
+    }
+    if(categoria === "fauna"){
+        ObtenerFauna()
+    }
+    if(categoria === "planta"){
+        ObtenerFloraCategoria("Planta")
+    }
+    if(categoria === "hierbas"){
+        ObtenerFloraCategoria("Hierbas")
+    }
+    if(categoria === "arboles"){
+        ObtenerFloraCategoria("Arboles")
+    }
+    if(categoria === "aves"){
+        ObtenerFaunaCategoria("Aves")
+    }
+    if(categoria === "reptiles"){
+        ObtenerFaunaCategoria("Reptiles")
+    }
+    if(categoria === "artropodos"){
+        ObtenerFaunaCategoria("Artrópodos")
+    }
+    if(categoria === "mamiferos"){
+        ObtenerFaunaCategoria("Mamíferos")
+    }
+}
 
 function ImprimirPublicaciones(publicaciones) {
         let contenedor = document.getElementById("pub");

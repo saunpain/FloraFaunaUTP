@@ -83,6 +83,7 @@ function MapearComentarios(comentario){
     </button>
 </div>`
 }
+
 function ObtenerFlora(){
     fetch(baseUrl + "/vista_flora").then( res => {
         res.json().then(json => {
@@ -131,7 +132,7 @@ function menuCategoria(categoria){
         ObtenerFloraCategoria("Planta")
     }
     if(categoria === "hierbas"){
-        ObtenerFloraCategoria("Hierba")
+        ObtenerFloraCategoria("Hierbas")
     }
     if(categoria === "arboles"){
         ObtenerFloraCategoria("Arboles")
@@ -230,15 +231,8 @@ return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-l
         </a>
         <div class="flex justify-around items-center mb-2">
             <div class="flex items-center">
-                <div class="flex items-center">
-                    <button id="${publicacion.id_publicacion}" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('${publicacion.id_publicacion}')">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                    </button>
-                    <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                </div>
                 <button button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                    <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
                 </button>
                 <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
                 <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
@@ -300,15 +294,8 @@ function MapearPublicacionUsusarioFauna(publicacion) {
                 </a>
                 <div class="flex justify-around items-center mb-2">
                     <div class="flex items-center">
-                        <div class="flex items-center">
-                            <button id="${publicacion.id_publicacion}" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('${publicacion.id_publicacion}')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                            </button>
-                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                        </div>
                         <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
                         </button>
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>

@@ -1,6 +1,8 @@
 let usuario = []
 
 let usuario_name = localStorage.getItem("nombreusuario");
+let id_usuario = localStorage.getItem('id_usuario');
+
 let perfil = "";
 
 function mostrarPerfil() {
@@ -61,7 +63,7 @@ function MapearPerfil(usuario) {
             </button>
         </div>
         <div class="flex mt-5 items-center">
-            <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="rounded-full w-16 h-16">
+            <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="w-16 h-16">
             <p class="ml-5">Avatar de perfil</p>
         </div>
         <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_biologo}">${usuario.nombre_biologo}</p>
@@ -77,7 +79,7 @@ function MapearPerfil(usuario) {
         </div>
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
             <button id="cancelar" class="hidden focus:outline-none" onclick="cancelarNuevoNombre('${usuario.id_biologo}')">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="¡">
             </button>
             <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
                 <p class="text-sm">Cancelar</p>

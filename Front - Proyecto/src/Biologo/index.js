@@ -1,56 +1,23 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".slider li");
-  const menu = document.querySelectorAll(".menu li a");
+let baseUrl = "http://localhost:8080";
 
-  let slideActual = 0;
-
-  //Muestra los Slides uno por uno
-  function mostrarSlide(index) {
-    slides.forEach((slide, i) => {
-      if (i === index) {
-        slide.style.opacity = 1;
-      } else {
-        slide.style.opacity = 0;
-      }
-    });
-
-    // Permite reconocer qué Slide está presentandose
-    menu.forEach((menuItem, i) => {
-      if (i === index) {
-        menuItem.classList.add("active");
-      } else {
-        menuItem.classList.remove("active");
-      }
-    });
-  }
-
-  // Cambia de Slide al tocar los botones
-  function cambiarSlide(index) {
-    slideActual = index;
-    mostrarSlide(slideActual);
-  }
-  menu.forEach((menuItem, index) => {
-    menuItem.addEventListener("click", function (event) {
-      event.preventDefault();
-      cambiarSlide(index);
-    });
-  });
-
-  // Cambia los Slides cada determinado tiempo
-  function autocambiarSlide() {
-    slideActual = (slideActual + 1) % slides.length;
-    mostrarSlide(slideActual);
-  }
-
-  var body = document.body;
-  if (body.classList.contains('inicio')) {
-    setInterval(autocambiarSlide, 4000);
-  } else {
-    setInterval(autocambiarSlide, 15000);
-  }
-
-  mostrarSlide(slideActual);
-});
+function ObtenerBiologo(){
+  const user = usuario_name;
+  console.log(user)
+  fetch(baseUrl + "/biologo/" + user)
+        .then(res => res.json())
+        .then(data => {
+            const fotoPerfil = data.perfil_biologo;
+            var img = document.getElementById("imgPerfil");
+            img.src = fotoPerfil;
+            localStorage.setItem('id_usuario', data.id_biologo)
+        })
+        .catch(error => {
+            console.error(error);
+        });
+  ObtenerPublicaciones();
+  ObtenerComentarios();
+  ImprimirCrearComentario();
+}
 
 //Función para activar y desactivar aside en celulares
 document.addEventListener('DOMContentLoaded', function () {
@@ -423,4 +390,12 @@ async function subirArchivo() {
   } finally {
     botonSubir.disabled = false;
   }
+}
+
+function MostrarPub(id) {
+  // Construye la URL con el parámetro
+  let url = "Publicacion.html?id=" + id;
+
+  // Redirige a la página de destino
+  window.location.href = url;
 }

@@ -1,5 +1,4 @@
 let usuario = []
-
 let usuario_name = localStorage.getItem("nombreusuario");
 let perfil = "";
 

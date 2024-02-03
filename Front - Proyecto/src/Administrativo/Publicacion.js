@@ -7,7 +7,7 @@ let publicaciones = [];
 let comentarios = [];
 
 function ObtenerPublicaciones(){
-    fetch(baseUrl + '/publicacion/' + id_pub).then(res => {
+    fetch(baseUrl + '/vista/' + id_pub).then(res => {
         res.json().then(json => {
             publicaciones = json;
             ImprimirPublicacion(publicaciones);
@@ -85,17 +85,9 @@ function MapearPublicacionFlora(publicacion){
                 <div class="flex justify-center mt-5 mb-5">
                     <img src="${publicacion.foto_flora}" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
                 </div>
-                <div class="flex justify-around items-center mb-2">
-                    <div class="flex items-center">
-                        <div class="flex items-center">
-                            <button id="${publicacion.id_publicacion}" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('${publicacion.id_publicacion}')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                            </button>
-                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                        </div>
+                <div class="flex items-center justify-between ml-2 mb-2">
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
-                    </div>
                     <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
                         <button class="top-1 right-3 relative " @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
@@ -104,7 +96,7 @@ function MapearPublicacionFlora(publicacion){
                             <button class="block w-[11rem]" onclick="editarTitulo('${publicacion.id_publicacion}')">
                                 <a class="flex px-2 py-1 text-sm">
                                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                    <p>Editar comentario</p>
+                                    <p>Editar título</p>
                                 </a>
                             </button>
                             <hr class="w-full">
@@ -177,17 +169,11 @@ function MapearPublicacionFauna(publicacion){
                 <div class="flex justify-center mt-5 mb-5">
                     <img src="${publicacion.foto_fauna}" class="xl:max-h-[370px] xl:max-w-[490px] lg:max-h-[370px] lg:max-w-[300px] md:max-h-[350px] md:max-w-[420px] max-h-[220px] max-w-[280px] md:min-h-[72] md:min-w-[72] rounded-lg">
                 </div>
-                <div class="flex justify-around items-center mb-2">
-                    <div class="flex items-center">
-                        <div class="flex items-center">
-                            <button id="${publicacion.id_publicacion}" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('${publicacion.id_publicacion}')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                            </button>
-                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                        </div>
+                <div class="flex items-center justify-between ml-2 mb-2">
+        
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
-                    </div>
+                    
                     <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
                         <button class="top-1 right-3 relative " @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">

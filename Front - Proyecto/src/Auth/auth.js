@@ -208,6 +208,7 @@ function loginUser() {
                     .then(res => res.json())
                     .then(user => {
                         if (user && contrasena === user.contraseña_biologo) {
+                            localStorage.setItem('nombreusuario', nombreUsuario);
                             window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html";
                             return;
                         } else {
