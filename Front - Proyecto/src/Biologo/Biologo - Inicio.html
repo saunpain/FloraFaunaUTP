@@ -103,24 +103,6 @@
         </div>
     </div>
 
-    <nav class="fixed lg:top-[5.4rem] top-[4rem] md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
-        <div class="flex md:text-[16px] text-[12.5px] justify-around mt-2 mb-2 h-[2.5rem] md:h-auto">
-            <!-- Enlace "Inicio" -->
-            <a href="Biologo - Inicio.html" class="bg-[#D7EFFF] md:p-1 md:px-4 rounded-[50px] lg:block hidden">
-                <div class="flex items-center">
-                    <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
-                    <p class="lg:ml-2 ml-4 mr-4">Inicio</p>
-                </div>
-            </a>
-            <!-- Enlace "Publicaciones Editadas" con margen derecho -->
-            <a href="PublicacionesEditadas.html" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0 ml-4">Publicaciones Editadas</a>
-            <!-- Enlace "Mis comentarios" con margen derecho -->
-            <a href="Comentarios.html" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0 mr-4">Mis comentarios</a>
-        </div>
-        <hr class="">
-    </nav>
-
-
     <aside id="aside" class="fixed top-[4rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
@@ -218,8 +200,13 @@
 
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row min-w-full"> <!--Contenido completo-->
         
-        <section class="lg:w-48 xl:w-48 2xl:w-48 lg:flex-shrink-0 xl:flex-shrink-0 2xl:flex-shrink-0">
-            <div class="hidden lg:block xl:block 2xl:block fixed top-36 left-10 w-48">
+        <section id="" class="lg:w-48 xl:w-48 2xl:w-48 lg:flex-shrink-0 xl:flex-shrink-0 2xl:flex-shrink-0">
+            <div class="hidden lg:block xl:block 2xl:block fixed top-28 left-10 w-48">
+                <div class="flex items-center mb-3">
+                    <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
+                    <a href="Biologo - Inicio.html" class="ml-2 text-lg">Inicio</a>
+                </div>
+                <hr>
                 <div class="bg-[#F0FEF8] grid mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
                     <h3 class="text-lg">Categorias</h3>
                     <ul class="ml-2">
@@ -280,13 +267,13 @@
                     </ul>
                 </div>
             </div>
-        </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-28 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+        </section>                                                                                                                <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
+        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
             
             
         </section>
         <div class="relative">
-            <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] h-[300px] right-0 mr-10 mt-[9.6rem] hidden lg:block xl:block 2xl:block">
+            <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] h-[300px] right-0 mr-10 mt-32 hidden lg:block xl:block 2xl:block">
                 <ul class="slider w-64 h-[290px] overflow-hidden">
                     <li id="slide1" class="absolute">
                         <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">

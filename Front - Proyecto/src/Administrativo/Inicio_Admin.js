@@ -241,14 +241,14 @@ function MapearPublicacionFauna(publicacion) {
 }
 
 function Subir(){
-return `<div class="mt-10 flex justify-center">
-                <div class="mt-10 flex justify-center">
-                    <a href="#pub" class="bg-[#276B58] w-full h-7 text-center text-white absolute bottom-0">
-                        Ir arriba
-                    </a>
-                </div>
-            </div>`
-}
+    return `<div class="mt-10 flex justify-center">
+              <div class="mt-10 flex justify-center">
+              <a href="javascript:void(0);" onclick="subirBoton('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center text-white absolute bottom-0">
+                Ir arriba
+              </a>
+              </div>
+            </div>`    
+  }
 
 function ActualizarPub(id) {
     let data = {
@@ -340,3 +340,10 @@ function MostrarPub(id) {
     // Redirige a la página de destino
     window.location.href = url;
 }
+
+function subirBoton(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }

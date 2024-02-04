@@ -117,8 +117,8 @@ function ImprimirPublicaciones(publicaciones) {
       }
     });
   }
-  
 
+ 
 function MapearPublicacionesFauna(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
   <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">
@@ -290,12 +290,12 @@ function MapAgregarComentario() {
 
 function Subir(){
   return `<div class="mt-10 flex justify-center">
-                <div class="mt-10 flex justify-center">
-                    <a href="#pub" class="bg-[#276B58] w-full h-7 text-center text-white absolute bottom-0">
-                        Ir arriba
-                    </a>
-                </div>
-            </div>`
+            <div class="mt-10 flex justify-center">
+            <a href="javascript:void(0);" onclick="subirBoton('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center text-white absolute bottom-0">
+              Ir arriba
+            </a>
+            </div>
+          </div>`    
 }
 
 function MostrarPub(id) {
@@ -382,3 +382,10 @@ function ObtenerPublicacionesFauna() {
       console.error(error);
     });
 } */
+
+function subirBoton(sectionId) {
+  var section = document.getElementById(sectionId);
+  if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+  }
+}

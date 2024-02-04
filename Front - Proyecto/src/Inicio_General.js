@@ -160,6 +160,7 @@ function Subir(){
                 </div>
             </div>`
 }
+
 function regresarInicioS(sectionId) {
     var section = document.getElementById(sectionId);
     if (section) {

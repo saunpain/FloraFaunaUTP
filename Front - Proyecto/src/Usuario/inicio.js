@@ -86,6 +86,7 @@ function menuCategoria(categoria){
 
 
 function ImprimirPublicaciones(publicaciones) {
+
     let contenedor = document.getElementById("pub");
     contenedor.innerHTML = "";
 
@@ -112,6 +113,15 @@ function ImprimirPublicaciones(publicaciones) {
     });
 }
 
+function Subir(){
+    return `<div id="subir" class="mt-10 flex justify-center">
+                  <div class="mt-10 flex justify-center">
+                  <a href="javascript:void(0);" onclick="regresarInicioS('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center absolute text-white bottom-0">
+                      Ir arriba
+                  </a>
+                  </div>
+              </div>`
+}
 
 function MapearPublicacionUsusarioFlora(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
@@ -276,16 +286,6 @@ function MapearPublicacionUsusarioFauna(publicacion) {
   </div>`;
   }
 
-
-function Subir(){
-  return `<div class="mt-10 flex justify-center">
-                <div class="mt-10 flex justify-center">
-                    <a href="#pub" class="bg-[#276B58] w-full h-7 text-center text-white absolute bottom-0">
-                        Ir arriba
-                    </a>
-                </div>
-            </div>`
-}
 function ActualizarPub(id) {
     let data = {
       id_publicacion: id,
@@ -378,4 +378,9 @@ function MostrarPub(id) {
 }
 
 
-
+function regresarInicioS(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}

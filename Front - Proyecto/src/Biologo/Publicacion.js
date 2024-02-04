@@ -31,6 +31,10 @@ function ObtenerComentarios() {
 
 
 function ImprimirPublicacion(publicacion) {
+    let cont = document.getElementById("regresar");
+    cont.innerHTML += MapRegresar();
+
+
     let contenedor = document.getElementById("publicacion");
     contenedor.innerHTML = "";
 
@@ -51,6 +55,14 @@ function ImprimirPublicacion(publicacion) {
 
 }
 
+function MapRegresar(){
+    return `<a href="Biologo - Inicio.html">
+                <button class="flex p-2 rounded-md ml-10 hover:bg-[#D7EFFF]">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Regresar.png?raw=true" class="mr-1">
+                    Volver a Inicio
+                </button>
+            </a>`
+}
 function ImprimirComentarios(comentarios) {
     const contenedor = document.getElementById("comentarios");
     contenedor.innerHTML = '';
@@ -85,34 +97,34 @@ function MapearPublicacionFlora(publicacion){
     </div>
     <div class="flex items-center justify-between ml-2 mr-8">
 
-    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_flora}</span></span>
-    <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
-    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-5">Planta: ${publicacion.nombre_planta}</span>
+        <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_flora}</span></span>
+        <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
+        <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-5">Planta: ${publicacion.nombre_planta}</span>
 
-    <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
-        <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
-            <span id="cambioG-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
-        </button>
-        <button onmouseenter="mouseenterCancelar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelar('${publicacion.id_publicacion}')" onclick="cancelarEdicion('${publicacion.id_publicacion}')" id="cancelar-${publicacion.id_publicacion}" class="relative ml-4">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
-            <span id="cambioC-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
-        </button>
-    </div>
-
-    <div class="relative inline-block ml-2">
-        <button id="boton-principal" class="top-1 right-3 relative ">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
-        </button>
-        <div class="absolute -mt-3 -ml-44">
-            <button onclick="editarNombreC('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
-                <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                    <p>Editar Nombre Científico</p>
-                </a>
+        <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
+            <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
+                <span id="cambioG-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
+            </button>
+            <button onmouseenter="mouseenterCancelar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelar('${publicacion.id_publicacion}')" onclick="cancelarEdicion('${publicacion.id_publicacion}')" id="cancelar-${publicacion.id_publicacion}" class="relative ml-4">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
+                <span id="cambioC-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
             </button>
         </div>
-    </div>
+
+        <div class="relative inline-block ml-2">
+            <button id="boton-principal" class="top-1 right-3 relative ">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
+            </button>
+            <div class="absolute -mt-3 -ml-44">
+                <button onclick="editarNombreC('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
+                    <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
+                        <p>Editar Nombre Científico</p>
+                    </a>
+                </button>
+            </div>
+        </div>
         
     </div>
     

@@ -112,6 +112,7 @@ function ImprimirPublicacionesUsuario(publicaciones) {
 }
 
 
+
 function MapearPublicacionUsusarioFlora(publicacion) {
 return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
         <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">

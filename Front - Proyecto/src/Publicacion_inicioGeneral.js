@@ -32,7 +32,9 @@ function ObtenerComentarios() {
 
 
 function ImprimirPublicacion(publicacion) {
-
+    let cont = document.getElementById("regresar");
+    cont.innerHTML += MapRegresar();
+    
     let contenedor = document.getElementById("publicacion");
     contenedor.innerHTML = "";
 
@@ -44,6 +46,15 @@ function ImprimirPublicacion(publicacion) {
             contenedor.innerHTML += MapearPublicacionFauna(publicacion);
         }
 
+}
+
+function MapRegresar(){
+    return `<a href="Flora y Fauna UTP - inicio.html">
+                <button class="flex p-2 rounded-md ml-4 sm:ml-16 mt-2 md:mt-0 hover:bg-[#D7EFFF]">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Regresar.png?raw=true" class="mr-1">
+                    Volver a Inicio
+                </button>
+            </a>`
 }
 
 
