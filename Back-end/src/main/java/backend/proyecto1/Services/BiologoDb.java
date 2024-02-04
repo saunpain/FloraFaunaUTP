@@ -76,7 +76,6 @@ public class BiologoDb {
                 + b.getId_biologo() + "','"
                 + b.getNombre_biologo() + "','"
                 + b.getCorreo_biologo() + "','"
-                + b.getPerfil_biologo() + "','"
                 + b.getEstado()+ "')";
 
             resultado = stmt.executeUpdate(query);

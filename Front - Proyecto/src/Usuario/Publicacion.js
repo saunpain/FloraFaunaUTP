@@ -34,24 +34,23 @@ function ObtenerComentarios() {
 function ImprimirPublicacion(publicacion) {
     let contenedor = document.getElementById("publicacion");
     contenedor.innerHTML = "";
-   
 
-        if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-          if (usuario_name === publicacion.nombre_estudiante) {
-            contenedor.innerHTML +=  MapearPublicacionUsuarioFlora(publicacion);
-          } else {
-            contenedor.innerHTML += MapearPublicacionFlora(publicacion);
-          }
+
+    if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
+        if (usuario_name === publicacion.nombre_estudiante) {
+        contenedor.innerHTML +=  MapearPublicacionUsuarioFlora(publicacion);
+        } else {
+        contenedor.innerHTML += MapearPublicacionFlora(publicacion);
         }
-    
-        if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
-          if (usuario_name === publicacion.nombre_estudiante) {
+    }
+
+    if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
+        if (usuario_name === publicacion.nombre_estudiante) {
             contenedor.innerHTML += MapearPublicacionUsuarioFauna(publicacion);
-          } else {
+        } else {
             contenedor.innerHTML += MapearPublicacionFauna(publicacion);
-          }
         }
-
+    }
 }
 
 
@@ -235,8 +234,7 @@ function MapAgregarComentario() {
         </button>
     </div>`;
 }
-/*  
-*/
+
 
 function MapearPublicacionUsuarioFauna(publicacion){
     return `<div id="${publicacion.id_publicacion}" class="w-full">
@@ -294,27 +292,26 @@ function MapearPublicacionUsuarioFauna(publicacion){
 
 function ActualizarPub(id) {
     let data = {
-      id_publicacion: id,
-      titulo: document.getElementById("input-" + id).value,
-      lugar: document.getElementById("lugar-" + id).textContent,
+        id_publicacion: id,
+        titulo: document.getElementById("input-" + id).value,
+        lugar: document.getElementById("lugar-" + id).textContent,
     };
-  
+
     console.log('Datos a enviar:', data);
-  
+
     fetch(baseUrl + "/publicaciones", {
-      method: 'PUT',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then(res => {
-        ObtenerPublicaciones();
-    }).catch(error => {
-      console.log("No se ha podido completar su solicitud.", error);
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        }).then(res => {
+            ObtenerPublicaciones();
+        }).catch(error => {
+        console.log("No se ha podido completar su solicitud.", error);
     });
-  }
-  
-  
+}
+
 
 function editarTitulo(id) {
     var comentarioTextoElemento = document.getElementById("comentario-" + id);

@@ -1,23 +1,49 @@
 let baseUrl = "http://localhost:8080";
 
-function ObtenerBiologo(){
+function ObtenerBiologo() {
   const user = usuario_name;
-  console.log(user)
+  let estado;
+
   fetch(baseUrl + "/biologo/" + user)
-        .then(res => res.json())
-        .then(data => {
-            const fotoPerfil = data.perfil_biologo;
-            var img = document.getElementById("imgPerfil");
-            img.src = fotoPerfil;
-            localStorage.setItem('id_usuario', data.id_biologo)
-        })
-        .catch(error => {
-            console.error(error);
-        });
-  ObtenerPublicaciones();
-  ObtenerComentarios();
-  ImprimirCrearComentario();
+    .then(res => res.json())
+    .then(data => {
+      const fotoPerfil = data.perfil_biologo;
+      estado = data.estado;
+      var img = document.getElementById("imgPerfil");
+      img.src = fotoPerfil;
+      localStorage.setItem('id_usuario', data.id_biologo)
+      localStorage.setItem('estado_biologo', estado)
+    })
+    .catch(error => {
+      console.error(error);
+    })
+    .finally(() => {
+      ObtenerPublicaciones();
+      ObtenerComentarios();
+      mapearEstado(estado);
+    });
 }
+
+function mapearEstado(estado) {
+  var estadoB = document.getElementById("estado");
+  estadoB.innerHTML = "";
+
+  if (estado !== "Aprobado") {
+    estadoB.insertAdjacentHTML('beforeend', `<button onclick="mostrarVerificacion()" id="mostrarVerificacion" class="text-[#FFFFFF] mr-6 text-sm md:text-lg lg:text-lg xl:text-lg hover:text-[#99E0FF] font-semibold">
+                Enviar Solicitud de Verificación
+            </button>`);
+  }
+  else if(estado === "Aprobado") {
+    estadoB.insertAdjacentHTML('beforeend', `<div class="flex mr-5">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/plantaAprobado.png?raw=true" alt="" class="w-8 h-8 mr-2">
+            <p class="text-[#FFFFFF] text-sm md:text-lg lg:text-lg xl:text-lg mt-2">Biólogo verificado</p>
+        </div>`);
+
+  }
+
+}
+
+
 
 //Función para activar y desactivar aside en celulares
 document.addEventListener('DOMContentLoaded', function () {
@@ -392,10 +418,3 @@ async function subirArchivo() {
   }
 }
 
-function MostrarPub(id) {
-  // Construye la URL con el parámetro
-  let url = "Publicacion.html?id=" + id;
-
-  // Redirige a la página de destino
-  window.location.href = url;
-}

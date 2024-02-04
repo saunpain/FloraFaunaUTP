@@ -414,6 +414,7 @@ function BuscarPublicacionFlora(id_flora) {
                         "Content-type": "application/json; charset=UTF-8"
                     },
                 }).then(res => {
+                    location.reload()
                     ObtenerPublicaciones();
                 }).catch(error => {
                     console.log("Error en la solicitud unu", error);
@@ -503,6 +504,7 @@ function BuscarPublicacionFauna(id_fauna) {
                         "Content-type": "application/json; charset=UTF-8"
                     },
                 }).then(res => {
+                    location.reload()
                     ObtenerPublicaciones();
                 }).catch(error => {
                     console.log("Error en la solicitud unu", error);

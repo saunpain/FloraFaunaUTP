@@ -40,6 +40,7 @@ function ActualizarBiologo(id) {
         id_biologo:id,
         nombre_biologo: document.getElementById('input2').value,
         correo_biologo: document.getElementById('input3').value,
+        estado: document.getElementById('input4').value,
     };
 
     console.log('Datos a enviar:', data); // Imprimir datos en la consola
@@ -80,6 +81,7 @@ function MapearBiologos(b){
     <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${b.id_biologo}</td>
     <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${b.nombre_biologo}</td>
     <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${b.correo_biologo}</td>
+    <td class="text-center xl:px-8 lg:px-4 py-2 whitespace-nowrap text-gray-700">${b.estado}</td>
     <td class="xl:px-8 lg:px-4">
         <div class="botoncitos flex items-center">
             <button onclick="hacerEditable('${b.id_biologo}')">
@@ -209,7 +211,7 @@ function hacerEditable(id) {
     // Reemplazar el botón de editar por botones de enviar y deshacer
     const botones = celdas[celdas.length - 1];
     const enviar = document.createElement('button');
-    enviar.innerHTML = '<img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true" class="w-[18px] h-[18px] mt-[2px]">';
+    enviar.innerHTML = '<img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true" class="w-5 max-w-none mt-[2px]">';
     enviar.onclick = function () {
         const botones = celdas[celdas.length - 1];
         botones.innerHTML = '<div class="flex items-center"><button onclick="hacerEditable(\'' + id + '\')"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none"></button><button class="xl:ml-3 lg:ml-2"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none"></button></div>';
@@ -217,7 +219,7 @@ function hacerEditable(id) {
     };
 
     const deshacer = document.createElement('button');
-    deshacer.innerHTML = '<img src= "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cancelar.png?raw=true" class="w-[18px] h-[18px] ml-[2px]">';
+    deshacer.innerHTML = '<img src= "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cancelar.png?raw=true" class="w-5 max-w-none ml-[2px]">';
     deshacer.onclick = function () {
         //Realiza la función de deshacer cambios al tocar el boton deshacer
         DeshacerCambios(id, celdas);

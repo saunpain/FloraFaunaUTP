@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:8080"
+
 let admin = []
 let usuario_name = localStorage.getItem("nombreusuario");
 document.getElementById('nombreAdmin').textContent = usuario_name;
