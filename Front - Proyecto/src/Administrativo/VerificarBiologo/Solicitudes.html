@@ -95,7 +95,7 @@
     }
     </style>
 </head>
-<body class="bg-white w-full h-full box-border" onload="ObtenerAdmin()">
+<body class="bg-white w-full h-full box-border" onload="ObtenerAdmin(), ObtenerBiologos()">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2 ">
             <div class="flex items-center md:ml-4 ">
@@ -243,127 +243,8 @@
         <section id="pub" class="bg-[#F8F5F5] relative w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:left-32 h-screen justify-center"> <!--Publicaciones-->
             <div class="relative flex justify-center top-48 md:top-52 lg:top-40 xl:top-44">
                 <table class="w-[80%] lg:w-[90%] border border-gray-300 rounded-lg overflow-hidden">
-                    <tbody>
-                        <tr id="00001" class="solicitud-row border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF]">
-                            <td class="p-4">Charles Darwin</td>
-                            <td> Solicitud para ser biologo verificado uwu</td>
-                            <td>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button class="mt-2" onclick="showDetails('00001')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Ver.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-[6px]" x-show="open" @click.away="open = false">                  
-                                        <span class="block w-9 px-2 py-1 text-xs font-semibold">Ver</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00001-A" onclick="toggleEstado('00001-A', 'A')" data-fila-id="00001">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
-                                        <span class="block w-15 px-2 py-1 text-xs font-semibold">Aprobar</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00001-R" onclick="toggleEstado('00001-R', 'R')" data-fila-id="00001">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
-                                        <span class="block w-[4rem] px-2 py-1 text-xs font-semibold">Rechazar</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id="00002" class="solicitud-row border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF]">
-                            <td class="p-4">Gregor Mendel</td>
-                            <td>Solicitud para ser biologo verificado chi</td>
-                            <td>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button class="mt-2" onclick="showDetails('00002')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Ver.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-[6px]" x-show="open" @click.away="open = false">                  
-                                        <span class="block w-9 px-2 py-1 text-xs font-semibold">Ver</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00002-A" onclick="toggleEstado('00002-A','A')" data-fila-id="00002">
-                                        <img  src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
-                                        <span class="block w-15 px-2 py-1 text-xs font-semibold">Aprobar</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00002-R" onclick="toggleEstado('00002-R','R')" data-fila-id="00002">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
-                                        <span class="block w-[4rem] px-2 py-1 text-xs font-semibold">Rechazar</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id="00003" class="solicitud-row border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF]">
-                            <td class="p-4">Galeno de Pergamo</td>
-                            <td>Solicitud para ser biologo verificado chi</td>
-                            <td>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button class="mt-2" onclick="showDetails('00003')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Ver.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-[6px]" x-show="open" @click.away="open = false">                  
-                                        <span class="block w-9 px-2 py-1 text-xs font-semibold">Ver</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00003-A" onclick="toggleEstado('00003-A','A')" data-fila-id="00003">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
-                                        <span class="block w-15 px-2 py-1 text-xs font-semibold">Aprobar</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00003-R" onclick="toggleEstado('00003-R','R')" data-fila-id="00003">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-6 " x-show="open" @click.away="open = false">
-                                        <span class="block w-[4rem] px-2 py-1 text-xs font-semibold">Rechazar</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id="00004" class="solicitud-row border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF]">
-                            <td class="p-4">Hipocrates de Cos</td>
-                            <td>Solicitud para ser biologo verificado chi</td>
-                            <td>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button class="mt-2" onclick="showDetails('00004')">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Ver.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-[6px]" x-show="open" @click.away="open = false">
-                                        <span class="block w-9 px-2 py-1 text-xs font-semibold">Ver</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00004-A" onclick="toggleEstado('00004-A','A')" data-fila-id="00004">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
-                                        <span class="block w-15 px-2 py-1 text-xs font-semibold">Aprobar</span>
-                                    </div>
-                                </div>
-                                <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                                    <button id="00004-R" onclick="toggleEstado('00004-R','R')" data-fila-id="00004">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
-                                    </button>
-                                    <div class="absolute bg-white border rounded -ml-6 overflow-visible z-50" x-show="open" @click.away="open = false">
-                                        <span class="block w-[4rem] px-2 py-1 text-xs font-semibold">Rechazar</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="cuerpo-tabla">
+                        
                     </tbody>
                 </table>  
             </div>
@@ -464,5 +345,6 @@
     <script src="/Front - Proyecto/src/Administrativo/perfil_admin.js"></script>
     <script src="/Front - Proyecto/src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="Solicitudes.js"></script>
 </body>
 </html>
