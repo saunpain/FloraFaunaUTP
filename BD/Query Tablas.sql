@@ -245,34 +245,40 @@ CALL AgregarAdministrativo('Juanillo', 'drake.castillo@utp.ac.pa', 'asd', NULL)
 CALL AgregarBiologo('Moisins', 'gustavo.perez@gmail.com', 'xd', NULL)
 
 SELECT * FROM VistaPubGlobal
-
-DELIMITER //
-
-CREATE PROCEDURE VerificarAprobacion(IN id INT, OUT resultado INT)
-BEGIN
-    DECLARE estado_biologo VARCHAR(255);
-
-    -- Obtener el estado del biólogo
-    SELECT estado INTO estado_biologo
-    FROM Biologo
-    WHERE id_biologo = id;
-
-    -- Asignar el resultado según el estado
-    CASE estado_biologo
-        WHEN 'Aprobado' THEN
-            SET resultado = 1;
-        WHEN 'En Espera' THEN
-            SET resultado = 2;
-        ELSE
-            SET resultado = 0;
-    END CASE;
-END //
-
-DELIMITER ;
+SELECT * FROM Publicaciones
 
 CALL VerificarAprobacion(1002, @resultado);
 SELECT @resultado AS 'Resultado';
 
 
 
+DELIMITER //
 
+CREATE PROCEDURE CambiarEstadoBiologo(IN p_id_biologo INT, IN p_estado INT)
+BEGIN
+    IF p_estado = 0 THEN
+        UPDATE Biologo
+        SET estado = 'Rechazado'
+        WHERE id_biologo = p_id_biologo;
+    ELSEIF p_estado = 1 THEN
+        UPDATE Biologo
+        SET estado = 'Aprobado'
+        WHERE id_biologo = p_id_biologo;
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Valor de estado no válido';
+    END IF;
+END //
+
+DELIMITER ;
+
+CALL CambiarEstadoBiologo(8001, 0)
+
+SELECT * FROM Flora
+
+CALL ActualizarFauna(1018, 'Tángara Palmera', 'Thraupis palmarum', 'Es una especie de ave paseriforme de la familia Thraupidae, perteneciente al género Thraupis. Es nativa del este de América Central y del norte y centro de América del Sur.', 'Aves')
+
+UPDATE Flora SET nombre_cientifico_flora = 'Guayacán'
+WHERE nombre_planta = 'Guayacán'
+
+SELECT * FROM Biologo
+SELECT * FROM Solicitud
