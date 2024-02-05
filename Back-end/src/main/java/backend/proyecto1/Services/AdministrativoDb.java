@@ -127,4 +127,21 @@ public class AdministrativoDb {
     
         return admin;
     }
+
+    public int CambiarEstadoBiologo(int id, int estado) {
+        int resultado = 0;
+
+        try {
+            String query = "CALL CambiarEstadoBiologo(" + id + ", " + estado + ")";
+            Statement stmt = cn.createStatement();
+            stmt.execute(query);
+            resultado = estado;
+
+            return resultado;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
+    }
+    
 }

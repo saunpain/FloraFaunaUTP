@@ -3,7 +3,7 @@ let biologosEnEspera = []
 function ObtenerBiologos() {
     fetch(baseUrl + "/biologo/all").then(res => {
         res.json().then(json => {
-            biologosEnEspera = json.filter(biologo => biologo.estado === "En Espera");
+            biologosEnEspera = json.filter(biologo => biologo.estado == "En espera");
 
             console.log(biologosEnEspera);
             ImprimirBiologos(biologosEnEspera);
@@ -34,7 +34,7 @@ function MapearBiologos(b){
             </div>
         </div>
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-            <button id="00001-A" onclick="toggleEstado('00001-A', 'A')" data-fila-id="00001">
+            <button id="00001-A" onmouseover="toggleEstado('00001-A', 'A')" data-fila-id="00001"  onclick="AprobarBiologo(${b.id_biologo})">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true">
             </button>
             <div class="absolute bg-white border rounded -ml-4" x-show="open" @click.away="open = false">
@@ -42,7 +42,7 @@ function MapearBiologos(b){
             </div>
         </div>
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-            <button id="00001-R" onclick="toggleEstado('00001-R', 'R')" data-fila-id="00001">
+            <button id="00001-R" onmouseover="toggleEstado('00001-R', 'R')" data-fila-id="00001"  onclick="RechazarBiologo(${b.id_biologo})">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true">
             </button>
             <div class="absolute bg-white border rounded -ml-6" x-show="open" @click.away="open = false">
@@ -51,4 +51,18 @@ function MapearBiologos(b){
         </div>
     </td>
 </tr>`
+}
+
+function RechazarBiologo(id){
+    fetch(baseUrl + "/administrativo/cambiarEstado/" + id + "/" + 0, {method: "Put"}).then(res =>{
+        console.log(res)
+        ObtenerBiologos()
+    })
+}
+
+function AprobarBiologo(id) {
+    fetch(baseUrl + "/administrativo/cambiarEstado/" + id + "/" + 1, {method: "Put"}).then(res =>{
+        console.log(res)
+        ObtenerBiologos()
+    })
 }

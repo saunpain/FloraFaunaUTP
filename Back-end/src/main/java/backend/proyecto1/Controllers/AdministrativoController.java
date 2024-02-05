@@ -40,4 +40,9 @@ public class AdministrativoController {
     public Administrativo ObtenerAdmin(@PathVariable("nombre_admin") String nomb){
         return new AdministrativoDb().ObtenerAdmin(nomb);
     }
+
+    @PutMapping("administrativo/cambiarEstado/{id}/{nuevoEstado}")
+    public int CambiarEstadoBiologo(@PathVariable int id, @PathVariable int nuevoEstado) {
+        return new AdministrativoDb().CambiarEstadoBiologo(id, nuevoEstado);
+    }
 }

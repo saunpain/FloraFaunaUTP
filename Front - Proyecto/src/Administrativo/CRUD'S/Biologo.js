@@ -43,7 +43,7 @@ function ActualizarBiologo(id) {
         estado: document.getElementById('input4').value,
     };
 
-    console.log('Datos a enviar:', data); // Imprimir datos en la consola
+    console.log('Datos a enviar:', data);
 
     fetch(baseUrl + "/biologo", {
         method: 'PUT',
@@ -52,7 +52,7 @@ function ActualizarBiologo(id) {
             'Content-type': 'application/json; charset=UTF-8',
         },
     }).then(res => {
-        console.log(res); // Imprimir respuesta del servidor
+        console.log(res);
         ObtenerBiologos();
     })
 }
