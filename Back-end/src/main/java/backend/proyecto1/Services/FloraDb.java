@@ -128,6 +128,25 @@ public class FloraDb {
         return resultado;
     }
 
-    
+     public int ActualizarNombreCFlora(Flora f){
+        int resultado = 0;
+
+        System.out.println(f.getNombre_cientifico_flora());
+        System.out.println(f.getNombre_planta());
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "UPDATE Flora SET nombre_cientifico_flora = '"
+            + f.getNombre_cientifico_flora() + "' WHERE nombre_planta = '"
+            + f.getNombre_planta() + "'";
+            
+            resultado = stmt.executeUpdate(query);
+            stmt.close();
+            return resultado;
+        }catch (Exception e){
+
+        }
+        return resultado;
+    }
 
 }

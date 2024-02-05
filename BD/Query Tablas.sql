@@ -216,6 +216,7 @@ SELECT * FROM Estudiante
 SELECT * FROM Estudiante_Publicacion
 SELECT * FROM Publicaciones
 SELECT * FROM Fauna
+SELECT * FROM Flora
 SELECT * FROM Solicitud
 
 CREATE VIEW VistaPublicacionesFauna AS 
@@ -224,6 +225,18 @@ FROM Estudiante e JOIN Estudiante_Publicacion ep
 ON e.id_estudiante = ep.id_estudiante JOIN Publicaciones p
 ON ep.id_publicacion = p.id_publicacion JOIN Fauna f
 ON p.id_fauna = f.id_fauna;
+
+DELIMITER //
+CREATE TRIGGER after_fauna_update
+AFTER UPDATE ON Fauna FOR EACH ROW
+BEGIN
+    UPDATE VistaPubGlobal
+    SET nombre_cientifico_fauna = NEW.nombre_cientifico_fauna
+    WHERE id_fauna = NEW.id_fauna;
+END;
+//
+DELIMITER ;
+
 
 SELECT * FROM Biologo
 

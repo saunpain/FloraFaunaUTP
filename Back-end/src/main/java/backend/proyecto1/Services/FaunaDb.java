@@ -118,7 +118,6 @@ public class FaunaDb {
         return resultado;
     }
 
-
     public int EliminarFauna( int id){
         int resultado = 0;
         try{
@@ -128,6 +127,28 @@ public class FaunaDb {
 
             return resultado;
         } catch(Exception e){
+
+        }
+        return resultado;
+    }
+
+    public int ActualizarNombreCFauna(Fauna f){
+        int resultado = 0;
+
+        System.out.println(f.getId_fauna());
+        System.out.println(f.getNombre_cientifico_fauna());
+        System.out.println(f.getNombre_animal());
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "UPDATE Fauna SET nombre_cientifico_fauna = '"
+            + f.getNombre_cientifico_fauna() + "' WHERE nombre_animal = '"
+            + f.getNombre_animal() + "'";
+            
+            resultado = stmt.executeUpdate(query);
+            stmt.close();
+            return resultado;
+        }catch (Exception e){
 
         }
         return resultado;

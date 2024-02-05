@@ -43,8 +43,6 @@ function mapearEstado(estado) {
 
 }
 
-
-
 //Función para activar y desactivar aside en celulares
 document.addEventListener('DOMContentLoaded', function () {
   var toggleButton = document.getElementById('toggleButton');
@@ -164,7 +162,9 @@ function guardarCambios(id) {
   var btnCancel = document.getElementById("cancelar-" + id);
   var botonVisto = document.getElementById("cambioG-" + id);
 
-  nombreCElemento.innerText = nombreCinput.value;
+  var nuevoNombreCientifico = nombreCinput.value;
+
+  nombreCElemento.innerText = nuevoNombreCientifico;
   nombreCElemento.style.display = "inline-block";
   nombreCinput.style.display = "none";
   nombreCinput.setAttribute("disabled", true); // Deshabilitar el input
@@ -174,7 +174,65 @@ function guardarCambios(id) {
 
   // Eliminar el atributo data-original-value
   nombreCinput.removeAttribute('data-original-value');
+  DiferenciarFF(id);
 }
+
+function DiferenciarFF(id){
+  fetch(baseUrl + '/vista/all').then(res => {
+    res.json().then(json => {
+      publicaciones = json;
+      publicaciones.forEach((publicacion) => {
+      if(publicacion.nombre_planta !== null && publicacion.nombre_planta !== "" && publicacion.id_publicacion == id){
+          ActualizarNombreCFlora(id);
+      }
+      if(publicacion.nombre_animal !== null && publicacion.nombre_animal !== "" && publicacion.id_publicacion == id){
+          ActualizarNombreCFauna(id);
+      }
+      })
+    }
+    );
+  });
+}
+
+function ActualizarNombreCFauna(id) {
+  let data = {
+    nombre_animal: document.getElementById("animal-" + id).textContent,
+    nombre_cientifico_fauna: document.getElementById("input-" + id).value
+  };
+
+  console.log('Datos a enviar:', data);
+
+  fetch(baseUrl + "/faunaNombreC", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).catch(error => {
+    console.log("No se ha podido completar su solicitud.", error);
+  });
+}
+
+function ActualizarNombreCFlora(id) {
+  let data = {
+    nombre_planta: document.getElementById("planta-" + id).textContent,
+    nombre_cientifico_flora: document.getElementById("input-" + id).value
+  };
+
+  console.log('Datos a enviar:', data);
+
+  fetch(baseUrl + "/floraNombreC", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).catch(error => {
+    console.log("No se ha podido completar su solicitud.", error);
+  });
+}
+
+
 
 function cancelarEdicion(id) {
   var nombreCElemento = document.getElementById("nombreC-" + id);
@@ -343,78 +401,10 @@ document.getElementById('mostrarPerfil').addEventListener('click', function(even
   mostrarPerfil();
 });
 
-/***************FUNCIONES PARA LA SOLICITUD DE VERIFICACION*******************************/ 
+function MostrarPub(id) {
+  // Construye la URL con el parámetro
+  let url = "Publicacion.html?id=" + id;
 
-function mostrarVerificacion() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('verificacion');
-  var verificacionContainer = document.getElementById('contenedor-verificacion');
-  var verificacionContent = document.getElementById('verificacion-contenido');
-
-  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
-  fetch('http://localhost:5501/Front - Proyecto/src/Biologo/Solicitud.html')
-    .then(response => response.text())
-    .then(data => {
-      verificacionContent.innerHTML = data;
-      overlay.style.display = 'block'; // Mostrar la capa oscura
-      
-      verificacionContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
-    })
-    .catch(error => console.error('Error al cargar el perfil:', error));
+  // Redirige a la página de destino
+  window.location.href = url;
 }
-
-// Función para cerrar el cuadro de perfil y quitar la capa oscura
-function cerrarVerificacion() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('verificacion');
-  var verificacionContainer = document.getElementById('contenedor-verificacion');
-
-  overlay.style.display = 'none'; // Ocultar la capa oscura
-  verificacionContainer.style.display = 'none'; // Ocultar el cuadro de perfil
-}
-
-// Asignar evento al clic en la imagen de perfil
-document.getElementById('mostrarVerificacion').addEventListener('click', function(event) {
-  event.preventDefault(); // Evitar que la página se recargue
-
-  mostrarVerificacion();
-});
-
-/************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
-
-async function subirArchivo() {
-  const tituloInput = document.getElementById('tituloInput');
-  const archivoInput = document.getElementById('archivoInput');
-  const botonSubir = document.getElementById('botonSubir');
-
-  botonSubir.disabled = true;
-
-  const formData = new FormData();
-  formData.append('file', archivoInput.files[0]);
-  formData.append('titulo', tituloInput.value);
-
-  const backendURL = 'http://localhost:8080/upload';
-
-  try {
-    const response = await fetch(backendURL, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const message = await response.text();
-    console.log(message);
-    alert("La solicitud fue enviada.");
-  } catch (error) {
-    console.error('Error:', error);
-    alert("Error, no se pudo enviar la solicitud.");
-  } finally {
-    botonSubir.disabled = false;
-  }
-}
-

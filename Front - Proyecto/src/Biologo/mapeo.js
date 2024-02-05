@@ -1,7 +1,8 @@
 /*************FUNCIONES PARA MAPEAR PUBLICACIONES ********************/
 
 let categoria = "";
-let estado = localStorage.getItem('estado_biologo')
+
+let estado = localStorage.getItem('estado_biologo');
 
 function ObtenerPublicaciones() {
     fetch(baseUrl + '/vista/all').then(res => {
@@ -11,19 +12,24 @@ function ObtenerPublicaciones() {
       });
     });
   }
-
+  
 function ObtenerComentarios() {
   return fetch(baseUrl + '/comentario/' + id_usuario)
       .then(res => res.json())
       .then(json => {
           comentarios = json;
-          //ImprimirComentarios(comentarios);
+          ///ImprimirComentarios(comentarios);
       })
       .catch(error => {
           console.error('Error:', error);
           throw error;
       });
 }
+/*
+function ImprimirCrearComentario() {
+  const contenedor = document.getElementById("AgregarComent");
+  contenedor.innerHTML = MapAgregarComentario();
+} */
 
 function ObtenerFlora(){
   fetch(baseUrl + "/vista_flora").then( res => {
@@ -92,33 +98,32 @@ function menuCategoria(categoria){
 }
 
 function ImprimirPublicaciones(publicaciones) {
-    let contenedor = document.getElementById("pub");
-    contenedor.innerHTML = "";
-  
-    publicaciones.forEach((publicacion, index) => {
-      if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-        if(estado === "Aprobado"){
-          contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
-        }else{
-          contenedor.innerHTML += MapearPublicacionesSinFlora(publicacion);
-        }
-      }
-      if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
-        if(estado === "Aprobado"){
-          contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
-        }else{
-          contenedor.innerHTML += MapearPublicacionesSinFauna(publicacion);
-        }
+  let contenedor = document.getElementById("pub");
+  contenedor.innerHTML = "";
 
+  publicaciones.forEach((publicacion, index) => {
+    if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
+      if(estado === "Aprobado"){
+        contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
+      }else{
+        contenedor.innerHTML += MapearPublicacionesSinFlora(publicacion);
       }
-  
-      if (index === publicaciones.length - 1) {
-        contenedor.innerHTML += Subir();
+    }
+    if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
+      if(estado === "Aprobado"){
+        contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
+      }else{
+        contenedor.innerHTML += MapearPublicacionesSinFauna(publicacion);
       }
-    });
-  }
 
- 
+    }
+
+    if (index === publicaciones.length - 1) {
+      contenedor.innerHTML += Subir();
+    }
+  });
+}
+
 function MapearPublicacionesFauna(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
   <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">
@@ -139,7 +144,7 @@ function MapearPublicacionesFauna(publicacion) {
       </button>
       <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_fauna}</span></span>
       <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
-      <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
+      <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: <span id="animal-${publicacion.id_publicacion}">${publicacion.nombre_animal}</span></span>
 
       <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
           <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
@@ -218,14 +223,14 @@ function MapearPublicacionesFlora(publicacion) {
         </button>
         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_flora}</span></span>
         <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
-        <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
+        <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: <span id="planta-${publicacion.id_publicacion}">${publicacion.nombre_planta}</span></span>
   
         <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
-            <button onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
+        <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
                 <span id="cambioG-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
             </button>
-            <button id="cancelar-${publicacion.id_publicacion}" class="relative ml-4">
+        <button onmouseenter="mouseenterCancelar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelar('${publicacion.id_publicacion}')" onclick="cancelarEdicion('${publicacion.id_publicacion}')" id="cancelar-${publicacion.id_publicacion}" class="relative ml-4">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
                 <span id="cambioC-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
             </button>
@@ -243,11 +248,11 @@ function MapearPublicacionesFlora(publicacion) {
                     </a>
                 </button>
                 <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
-                  <div class="flex bg-white px-2 py-1 text-sm border border-black border-t-0 text-left hover:bg-gray-200">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Chat_search_light.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                    <p>Editar Descripción</p>
-                </div>
-              </button>
+                <div class="flex bg-white px-2 py-1 text-sm border border-black border-t-0 text-left hover:bg-gray-200">
+                  <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Chat_search_light.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
+                  <p>Editar Descripción</p>
+              </div>
+            </button>
             </div>
         </div>
     </div>
@@ -278,6 +283,7 @@ function MapearPublicacionesFlora(publicacion) {
   </div>`;
   }
 
+  
 function MapAgregarComentario() {
   return `<div class="mt-2 mb-2 w-full">
       <hr class="mt-2 ml-10 mr-10 mb-4">
@@ -305,7 +311,13 @@ function MostrarPub(id) {
   // Redirige a la página de destino
   window.location.href = url;
 }
-
+  
+function subirBoton(sectionId) {
+  var section = document.getElementById(sectionId);
+  if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 /*
 function GuardarSolicitud() {
   let data = {
@@ -382,10 +394,3 @@ function ObtenerPublicacionesFauna() {
       console.error(error);
     });
 } */
-
-function subirBoton(sectionId) {
-  var section = document.getElementById(sectionId);
-  if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-  }
-}
