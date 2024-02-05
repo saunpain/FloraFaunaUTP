@@ -1,6 +1,6 @@
 let usuario = []
-
 let usuario_name = localStorage.getItem("nombreusuario");
+let id_usuario = localStorage.getItem('id_usuario');
 let perfil = "";
 
 function mostrarPerfil() {
@@ -8,7 +8,6 @@ function mostrarPerfil() {
     fetch(baseUrl + "/biologo/" + user).then((res) => {
         res.json().then((json) => {
         usuario = json;
-
         let fotoPerfil = usuario.perfil_biologo;
         perfil = fotoPerfil;
         ImprimirPerfil(usuario);
@@ -48,11 +47,17 @@ function ImprimirPerfil(usuario) {
     let perfilContent = document.getElementById("userProfile-contenido");
     overlay.style.display = "block";
     perfilContainer.style.display = "flex";
-    perfilContent.innerHTML = MapearPerfil(usuario);
+    if(estado === "Aprobado"){
+        perfilContent.innerHTML = MapearPerfilAprobado(usuario);
+    }
+    else{
+        perfilContent.innerHTML = MapearPerfilSolicitud(usuario);
+    }
+    
 }
 
-function MapearPerfil(usuario) {
-    return `<div class="w-80 h-[24rem] text-lg">
+function MapearPerfilAprobado(usuario) {
+    return `<div class="w-80 h-[28rem] text-lg">
     <div class="ml-6 mr-6">
         <div class="flex justify-center">
             <h1 class="text-2xl">Perfil de usuario</h1>
@@ -61,7 +66,7 @@ function MapearPerfil(usuario) {
             </button>
         </div>
         <div class="flex mt-5 items-center">
-            <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="rounded-full w-16 h-16">
+            <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="w-16 h-16">
             <p class="ml-5">Avatar de perfil</p>
         </div>
         <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_biologo}">${usuario.nombre_biologo}</p>
@@ -77,7 +82,7 @@ function MapearPerfil(usuario) {
         </div>
         <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
             <button id="cancelar" class="hidden focus:outline-none" onclick="cancelarNuevoNombre('${usuario.id_biologo}')">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="¡">
             </button>
             <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
                 <p class="text-sm">Cancelar</p>
@@ -92,6 +97,64 @@ function MapearPerfil(usuario) {
         
         <p class="mt-6">Correo</p>
         <p class="mt-2 underline" id="correo">${usuario.correo_biologo}</p>
+        <div class="flex mt-6">
+            <p class="mr-2">Solicitud: ${usuario.estado}</p>
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/plantaAprobado.png?raw=true" alt="" class="w-6 h-6 mr-2">
+        </div>
+        <button class="mt-10">
+            <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
+                <p>Cerrar Sesión</p>
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cerrar%20sesi%C3%B3n%20perfil.png?raw=true" alt="" class="ml-4 h-6 w-6">
+            </a>
+        </button>
+    </div>
+</div>`;
+}
+
+function MapearPerfilSolicitud(usuario) {
+    return `<div class="w-80 h-[28rem] text-lg">
+    <div class="ml-6 mr-6">
+        <div class="flex justify-center">
+            <h1 class="text-2xl">Perfil de usuario</h1>
+            <button onclick="cerrarPerfil()" class="absolute ml-80 -mt-5">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Close_profile.png?raw=true" alt="cerrar" class="h-10 w-10">
+            </button>
+        </div>
+        <div class="flex mt-5 items-center">
+            <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="w-16 h-16">
+            <p class="ml-5">Avatar de perfil</p>
+        </div>
+        <p class="mt-6 text-center mb-2 usuario" id="${usuario.id_biologo}">${usuario.nombre_biologo}</p>
+        <input type="text" id="input" class="hidden mt-6 w-full text-center" disabled/>
+        <hr class="h-px border-0 dark:bg-gray-600">
+        <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+            <button id="guardar" class="hidden focus:outline-none" onclick="guardarNuevoNombre('${usuario.id_biologo}')">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar">
+            </button>
+            <div class="absolute bg-white border rounded -ml-5 w-[8rem] p-1" x-show="open" @click.away="open = false">
+                <p class="text-sm">Guardar cambios</p>
+            </div>
+        </div>
+        <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+            <button id="cancelar" class="hidden focus:outline-none" onclick="cancelarNuevoNombre('${usuario.id_biologo}')">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="¡">
+            </button>
+            <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
+                <p class="text-sm">Cancelar</p>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <p>Editar</p>
+            <button onclick="editarUsuario('${usuario.id_biologo}')">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/editar-perfil.png?raw=true" class="h-6 w-6 ml-5">
+            </button>
+        </div>
+        
+        <p class="mt-6">Correo</p>
+        <p class="mt-2 underline" id="correo">${usuario.correo_biologo}</p>
+        <div class="flex mt-6">
+            <p class="mr-2">Solicitud: ${usuario.estado}</p>
+        </div>
         <button class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>

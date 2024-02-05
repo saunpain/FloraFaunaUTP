@@ -18,24 +18,6 @@ function ObtenerEstudiante(){
   ImprimirCrearComentario();
 }
 
-//Función para agregar like a las publicaciones
-function DarLike(id) {
-  var boton = document.getElementById(id);
-  var imagen = boton.getElementsByTagName('img')[0];
-
-  // Verifica la URL actual de la imagen
-  var Unlike = imagen.src;
-  
-  // Define la imagen que se mostrará
-  var Like = (Unlike.includes('favorite.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Like-Icon-03brf3.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true';
-
-  // Cambia la URL de la imagen al dar click
-  imagen.src = Like;
-}
-
-
-
-
 //Funcion para la seeccion de cateegorías y subcategorías a la hora de hacer una publicación
 function seleccionCategoria() {
   var categoria = document.getElementById("categoria").value;
@@ -60,6 +42,14 @@ function seleccionCategoria() {
   // Habilita el select de subcategoría una vez se ha seleccionado la categoría
   subcategoria.style.display = "block";
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  let bton_cerrarSesion = document.getElementById('cerrar_S');
+  bton_cerrarSesion.addEventListener('click', function () {
+    localStorage.removeItem("nombreusuario");
+  })
+})
 
 document.addEventListener('DOMContentLoaded', function () {
 

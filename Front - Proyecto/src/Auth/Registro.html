@@ -67,27 +67,29 @@
             </tbody>
           </table>
         </div>
-      <div class="mt-4 ml-1">
-        <label class="text-white text-sm">Ingrese su correo electrónico</label>
-        <input type="text" id="correoUsuario" class="p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold tracking-normal text-left text-white placeholder-white placeholder-opacity-[0.75] focus:outline-none mt-2" placeholder="Correo electrónico" required>
-      </div>
-      <div class="mt-4 ml-1">
-        <label class="text-white text-sm">Cree su nombre de usuario</label>
-        <input type="text" id="nombreUsuario" class="mt-2 p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold tracking-normal text-left text-white placeholder-white  placeholder-opacity-[0.75] focus:outline-none" placeholder="Nombre de usuario" required>
-      </div>
-      <div class="mt-4 ml-1">
-        <label class="text-white text-sm">Ingrese su contraseña</label>
-        <div class="flex items-center">
-          <input type="password" id="contrasena" class="mt-2 p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold tracking-normal text-left text-white placeholder-white  placeholder-opacity-[0.75] focus:outline-none" placeholder="Contraseña" required>
-          <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/OjoClose.png?raw=true" id="ojito" onclick="VerOcultar()" class="flex absolute cursor-pointer mt-2 md:ml-[22rem]">
-        </div>
-      </div>
-      <p id="mensaje2" class="w-auto p-2 m-1 text-[#e28686] text-[10px] md:text-xs lg:text-sm"></p>
-      <div class="mt-6 text-center">
-        <button onclick="RegistrarUsuario(perfilUser())" type="submit" class="mt-2 bg-white bg-opacity-15 text-white py-2 px-4 rounded-full hover:text-ind font-bold opacity-70 text-xs md:text-sm lg:text-base active:bg-[#50a48c] hover:bg-[#5e9f9f]">
-          Registrarse
-        </button>
-      </div>
+        <form action="#" onsubmit="return false;">
+          <div class="mt-4 ml-1">
+            <label class="text-white text-sm">Ingrese su correo electrónico</label>
+            <input type="text" id="correoUsuario" class="p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold tracking-normal text-left text-white placeholder-white placeholder-opacity-[0.75] focus:outline-none mt-2" placeholder="Correo electrónico" required>
+          </div>
+          <div class="mt-4 ml-1">
+            <label class="text-white text-sm">Cree su nombre de usuario</label>
+            <input type="text" id="nombreUsuario" class="mt-2 p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold tracking-normal text-left text-white placeholder-white  placeholder-opacity-[0.75] focus:outline-none" placeholder="Nombre de usuario" required>
+          </div>
+          <div class="mt-4 ml-1">
+            <label class="text-white text-sm">Ingrese su contraseña</label>
+            <div class="flex items-center">
+              <input type="password" id="contrasena" class="mt-2 p-2 w-full h-12 rounded-full bg-white bg-opacity-15 font-inter text-xs md:text-sm lg:text-base font-bold tracking-normal text-left text-white placeholder-white  placeholder-opacity-[0.75] focus:outline-none" placeholder="Contraseña" required>
+              <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/OjoClose.png?raw=true" id="ojito" onclick="VerOcultar()" class="flex absolute cursor-pointer mt-2 md:ml-[22rem]">
+            </div>
+          </div>
+          <p id="mensaje2" class="w-auto p-2 m-1 text-[#e28686] text-[10px] md:text-xs lg:text-sm"></p>
+          <div class="mt-6 text-center">
+            <button onclick="RegistrarUsuario(perfilUser())" type="submit" class="mt-2 bg-white bg-opacity-15 text-white py-2 px-4 rounded-full hover:text-ind font-bold opacity-70 text-xs md:text-sm lg:text-base active:bg-[#50a48c] hover:bg-[#5e9f9f]">
+              Registrarse
+            </button>
+          </div>
+        </form>
     </div>
   </div>
   <script src="/Front - Proyecto/src/index.js"></script>

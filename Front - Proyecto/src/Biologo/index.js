@@ -1,56 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".slider li");
-  const menu = document.querySelectorAll(".menu li a");
+let baseUrl = "http://localhost:8080";
 
-  let slideActual = 0;
+function ObtenerBiologo() {
+  const user = usuario_name;
+  let estado;
 
-  //Muestra los Slides uno por uno
-  function mostrarSlide(index) {
-    slides.forEach((slide, i) => {
-      if (i === index) {
-        slide.style.opacity = 1;
-      } else {
-        slide.style.opacity = 0;
-      }
+  fetch(baseUrl + "/biologo/" + user)
+    .then(res => res.json())
+    .then(data => {
+      const fotoPerfil = data.perfil_biologo;
+      estado = data.estado;
+      var img = document.getElementById("imgPerfil");
+      img.src = fotoPerfil;
+      localStorage.setItem('id_usuario', data.id_biologo)
+      localStorage.setItem('estado_biologo', estado)
+    })
+    .catch(error => {
+      console.error(error);
+    })
+    .finally(() => {
+      ObtenerPublicaciones();
+      ObtenerComentarios();
+      mapearEstado(estado);
     });
+}
 
-    // Permite reconocer qué Slide está presentandose
-    menu.forEach((menuItem, i) => {
-      if (i === index) {
-        menuItem.classList.add("active");
-      } else {
-        menuItem.classList.remove("active");
-      }
-    });
+function mapearEstado(estado) {
+  var estadoB = document.getElementById("estado");
+  estadoB.innerHTML = "";
+
+  if (estado !== "Aprobado") {
+    estadoB.insertAdjacentHTML('beforeend', `<button onclick="mostrarVerificacion()" id="mostrarVerificacion" class="text-[#FFFFFF] mr-6 text-sm md:text-lg lg:text-lg xl:text-lg hover:text-[#99E0FF] font-semibold">
+                Enviar Solicitud de Verificación
+            </button>`);
+  }
+  else if(estado === "Aprobado") {
+    estadoB.insertAdjacentHTML('beforeend', `<div class="flex mr-5">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/plantaAprobado.png?raw=true" alt="" class="w-8 h-8 mr-2">
+            <p class="text-[#FFFFFF] text-sm md:text-lg lg:text-lg xl:text-lg mt-2">Biólogo verificado</p>
+        </div>`);
+
   }
 
-  // Cambia de Slide al tocar los botones
-  function cambiarSlide(index) {
-    slideActual = index;
-    mostrarSlide(slideActual);
-  }
-  menu.forEach((menuItem, index) => {
-    menuItem.addEventListener("click", function (event) {
-      event.preventDefault();
-      cambiarSlide(index);
-    });
-  });
+}
 
-  // Cambia los Slides cada determinado tiempo
-  function autocambiarSlide() {
-    slideActual = (slideActual + 1) % slides.length;
-    mostrarSlide(slideActual);
-  }
 
-  var body = document.body;
-  if (body.classList.contains('inicio')) {
-    setInterval(autocambiarSlide, 4000);
-  } else {
-    setInterval(autocambiarSlide, 15000);
-  }
-
-  mostrarSlide(slideActual);
-});
 
 //Función para activar y desactivar aside en celulares
 document.addEventListener('DOMContentLoaded', function () {
@@ -424,3 +417,4 @@ async function subirArchivo() {
     botonSubir.disabled = false;
   }
 }
+

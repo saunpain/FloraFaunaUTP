@@ -3,10 +3,8 @@ package backend.proyecto1.Controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
-
 import backend.proyecto1.Models.Publicaciones;
 import backend.proyecto1.Services.PublicacionesDb;
-import backend.proyecto1.Models.Vista_Pub;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -17,10 +15,6 @@ public class PublicacionesController {
     @GetMapping("/publicaciones/all")
     public List<Publicaciones> TodasLasPublicaciones(){
         return new PublicacionesDb().ObtenerTodasLasPublicaciones();
-    }
-    @GetMapping("/publicacion/{id_publicacion}")
-    public Vista_Pub ObtenerPublicacion(@PathVariable ("id_publicacion") int id) {
-        return new PublicacionesDb().ObtenerPublicacion(id);
     }
     
     @PostMapping("/publicacion/flora")

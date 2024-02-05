@@ -94,94 +94,16 @@
         </div>
     </div>
     
-    <nav class="fixed lg:top-[5.4rem] top-[4rem]  md:px-10 w-full z-[1] lg:bg-white bg-[#F8F5F5]">
-        <div class="flex md:text-[16px] text-[12.5px] justify-around mt-2 mb-2 h-[2.5rem] md:h-auto">
-            <a href="Admin - Inicio.html" class="hover:bg-[#D7EFFF] bg-[#D7EFFF] md:p-1 md:px-4 rounded-[50px] lg:block hidden">
-                <div class="flex items-center">
-                    <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
-                    <p class="lg:ml-2">Inicio</p>
-                </div>
-            </a>
-
-            <a href="/src/Administrativo/VerificarBiologo/Solicitudes.html" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-[5px] md:mt-0">Verificar biólogos</a>
-            <a href="/src/Administrativo/Reportes_Admin.html" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-[5px] md:mt-0">Ver reportes</a>
-            <a href="/src/Administrativo/CRUD'S/Estudiante.html" class="hover:bg-[#D7EFFF] md:p-1 p-2 md:px-4 rounded-[50px] mt-[5px] md:mt-0">Administrar página</a>
-        </div>
-        <hr class="">
-    </nav>
-    
     <aside id="aside" class="fixed top-[4rem] h-screen w-screen bg-[#276B58] text-[#FFFFFF] z-[1] lg:hidden xl:hidden 2xl:hidden hidden">
         <div class="mt-5 ml-10 mr-10">
             <div class="flex items-center mb-3">
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/home-white.png?raw=true">
                 <a href="Admin - Inicio.html" class="ml-2 text-lg font-bold">Inicio</a>
             </div>
-            
-            <div class="grid rounded-[10px] p-1">
-                <h3 class="font-bold">Categorias</h3>
-                <ul class="ml-2">
-                    <li>
-                        <button onclick="menuCategoria('flora')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                            Flora
-                        </button>
-                        <div>
-                            <ul class="grid ml-4">
-                                <li>
-                                    <button onclick="menuCategoria('hierbas')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                        Hierbas
-                                    </button>
-                                </li>
-                                <li>
-                                    <button onclick="menuCategoria('planta')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                        Planta
-                                    </button>
-                                </li>
-                                <li>
-                                    <button onclick="menuCategoria('arboles')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                        Árboles
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <hr>
-                    <li class="mt-3 mb-3">
-                        <li>
-                            <button onclick="menuCategoria('fauna')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                Fauna
-                            </button>
-                            <div>
-                                <ul class="grid ml-4">
-                                    <li>
-                                        <button onclick="menuCategoria('aves')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                            Aves
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('reptiles')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                            Reptiles
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('artropodos')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                            Artrópodos
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('mamiferos')" class="hover:underline cursor-pointer hover:text-[#c6d7d2]" >
-                                            Mamíferos
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </li>
-                </ul>
-            </div>
+            <hr>
             <div class="mt-4 mb-6">
-                <hr>
                 <div class="flex mt-6">
-                    <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
+                    <a id="cerrar_S" href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Sign_out_squre_light.png?raw=true" class="ml-3" alt="Sing out">
                 </div>
             </div>
@@ -207,70 +129,41 @@
     </aside>
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row "> <!--Contenido completo-->
         <section class="lg:w-48 xl:w-48 2xl:w-48 lg:flex-shrink-0 xl:flex-shrink-0 2xl:flex-shrink-0">
-            <div class="hidden lg:block xl:block 2xl:block fixed top-36 left-10 w-48">
-                <div class="bg-[#F0FEF8] grid mt-3 rounded-[10px] p-4 border-[1.5px] border-slate-300">
-                    <h3 class="text-lg">Categorias</h3>
-                    <ul class="ml-2">
-                        <li>
-                            <button onclick="menuCategoria('flora')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                Flora
-                            </button>
-                            <div>
-                                <ul class="grid ml-4">
-                                    <li>
-                                        <button onclick="menuCategoria('hierbas')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Hierbas
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('planta')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Planta
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('arboles')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Árboles
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <hr>
-                        <li>
-                            <button onclick="menuCategoria('fauna')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                Fauna
-                            </button>
-                            <div>
-                                <ul class="grid ml-4">
-                                    <li>
-                                        <button onclick="menuCategoria('aves')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Aves
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('reptiles')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Reptiles
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('artropodos')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Artrópodos
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button onclick="menuCategoria('mamiferos')" class="hover:underline cursor-pointer hover:text-[#276B58]" >
-                                            Mamíferos
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="hidden lg:block xl:block 2xl:block fixed top-28 left-10 w-48">
+                
+                <div class="bg-[#F0FEF8] grid mt-8 rounded-[10px] p-2 border-[1.5px] border-slate-300">
+                    <a href="Admin - Inicio.html">
+                        <div class="flex items-center mb-2 hover:bg-[#7EBBAA] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">
+                            <img src="https://raw.githubusercontent.com/saunpain/FloraFaunaUTP/50daf7ed36a5a8015d324c85c61abd28b9c2f15a/img/home-03.svg">
+                            <p  class="ml-2 mt-2 text-lg">Inicio</p>
+                        </div>
+                    </a>
+                    
+                    <a href="VerificarBiologo/Solicitudes.html">
+                        <div class="flex items-center mb-2 hover:bg-[#7EBBAA] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">
+                            <p  class="ml-2 mt-2 text-base">Verificar biologos</p>
+                        </div>
+                    </a>
+                    
+                    
+                    <a  href="Reportes_Admin.html">
+                        <div class="flex items-center mb-2 hover:bg-[#7EBBAA] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">
+                            <p class="ml-2 mt-2 text-base">Ver reportes</p>
+                        </div>
+                    </a>
+                    
+                    
+                    <a href="CRUD'S/Estudiante.html" >
+                        <div class="flex items-center mb-2 hover:bg-[#7EBBAA] md:p-1 p-2 md:px-4 rounded-[50px] mt-1.5 md:mt-0">
+                            <p class="ml-2 mt-2 text-base">CRUD'S</p>
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-36 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
-            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
+        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+            <div class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6 mb-10">
                 <div id="publicacion" class="w-full relative flex flex-col items-center">
 
                 </div>
@@ -282,7 +175,7 @@
             
         </section>
         <div class="relative">
-            <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] h-[300px] right-0 mr-10 mt-[9.6rem] hidden lg:block xl:block 2xl:block">
+            <section class="fixed border-[1.5px] border-slate-300 rounded-xl w-64 lg:w-64 xl:h-[380px] h-[300px] right-0 mr-10 mt-32 hidden lg:block xl:block 2xl:block">
                 <ul class="slider w-64 h-[290px] overflow-hidden">
                     <li id="slide1" class="absolute">
                         <div class="bg-[#F0FEF8] h-8 rounded-t-xl w-[15.9rem]">

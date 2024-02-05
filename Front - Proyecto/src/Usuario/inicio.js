@@ -4,6 +4,7 @@
 let fauna = [];
 let flora = [];
 let publicaciones = [];
+let categoria = "";
 
 function ObtenerPublicaciones() {
   fetch(baseUrl + '/vista/all').then(res => {
@@ -15,33 +16,112 @@ function ObtenerPublicaciones() {
 }
 
 
-function ImprimirPublicaciones(publicaciones) {
+function ObtenerFlora(){
+    fetch(baseUrl + "/vista_flora").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFauna(){
+    fetch(baseUrl + "/vista_fauna").then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFloraCategoria(categoria){
+    fetch(baseUrl + "/vista_flora/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+function ObtenerFaunaCategoria(categoria){
+    fetch(baseUrl + "/vista_fauna/" + categoria).then( res => {
+        res.json().then(json => {
+            publicaciones = json;
+            ImprimirPublicaciones(publicaciones);
+        })
+    })
+}
+
+
+
+function menuCategoria(categoria){
     let contenedor = document.getElementById("pub");
     contenedor.innerHTML = "";
-  
+
+    if(categoria === "flora"){
+        ObtenerFlora()
+    }
+    if(categoria === "fauna"){
+        ObtenerFauna()
+    }
+    if(categoria === "planta"){
+        ObtenerFloraCategoria("Planta")
+    }
+    if(categoria === "hierbas"){
+        ObtenerFloraCategoria("Hierbas")
+    }
+    if(categoria === "arboles"){
+        ObtenerFloraCategoria("Arboles")
+    }
+    if(categoria === "aves"){
+        ObtenerFaunaCategoria("Aves")
+    }
+    if(categoria === "reptiles"){
+        ObtenerFaunaCategoria("Reptiles")
+    }
+    if(categoria === "artropodos"){
+        ObtenerFaunaCategoria("Artrópodos")
+    }
+    if(categoria === "mamiferos"){
+        ObtenerFaunaCategoria("Mamíferos")
+    }
+}
+
+
+function ImprimirPublicaciones(publicaciones) {
+
+    let contenedor = document.getElementById("pub");
+    contenedor.innerHTML = "";
+
     publicaciones.forEach((publicacion, index) => {
-      if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-        if (usuario_name === publicacion.nombre_estudiante) {
-          contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion);
-        } else {
-          contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
+        if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
+            if (usuario_name === publicacion.nombre_estudiante) {
+            contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion);
+            } else {
+            contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
+            }
         }
-      }
-  
-      if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
-        if (usuario_name === publicacion.nombre_estudiante) {
-          contenedor.innerHTML += MapearPublicacionUsusarioFauna(publicacion);
-        } else {
-          contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
+    
+        if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
+            if (usuario_name === publicacion.nombre_estudiante) {
+            contenedor.innerHTML += MapearPublicacionUsusarioFauna(publicacion);
+            } else {
+            contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
+            }
         }
-      }
-  
-      if (index === publicaciones.length - 1) {
-        contenedor.innerHTML += Subir();
-      }
+    
+        if (index === publicaciones.length - 1) {
+            contenedor.innerHTML += Subir();
+        }
     });
-  }
-  
+}
+
+function Subir(){
+    return `<div id="subir" class="mt-10 flex justify-center">
+                  <div class="mt-10 flex justify-center">
+                  <a href="javascript:void(0);" onclick="regresarInicioS('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center absolute text-white bottom-0">
+                      Ir arriba
+                  </a>
+                  </div>
+              </div>`
+}
 
 function MapearPublicacionUsusarioFlora(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
@@ -51,7 +131,7 @@ function MapearPublicacionUsusarioFlora(publicacion) {
                     <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.fecha_estudiante}</span>
                     <span id="lugar-${publicacion.id_publicacion}"class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">${publicacion.lugar}</span>
                 </div>
-            </a>        
+            </a>
                 <div class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">
                     <span id="comentario-${publicacion.id_publicacion}">${publicacion.titulo}</span>
                     <input type="text" id="input-${publicacion.id_publicacion}" class="hidden w-full mb-2" disabled/>
@@ -78,23 +158,15 @@ function MapearPublicacionUsusarioFlora(publicacion) {
                 </div>
             </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex items-center">
-                        <div class="flex items-center">
-                            <button id="${publicacion.id_publicacion}" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('${publicacion.id_publicacion}')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                            </button>
-                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                        </div>
-                        
-                        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
-                        </button>
+                   
+                    <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
+                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
+                    </button>
+                
+                    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
+                    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
                     
-                        <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
-                        <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
-                    </div>
-                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative inline-block ml-2" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
                         <button class="top-1 right-3 relative " @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
                         </button>
@@ -125,15 +197,8 @@ function MapearPublicacionesFlora(publicacion) {
       </div>
   </a>
   <div class="flex justify-around items-center mb-2">
-      <div class="flex items-center">
-          <button id="2" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('2')">
-              <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-          </button>
-          <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-2">15</span>
-      </div>
         <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-            <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
         </button>
       <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
       <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
@@ -176,21 +241,12 @@ function MapearPublicacionUsusarioFauna(publicacion) {
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                    <div class="flex items-center">
-                        <div class="flex items-center">
-                            <button id="${publicacion.id_publicacion}" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('${publicacion.id_publicacion}')">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-                            </button>
-                            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-1">35</span>
-                        </div>
-                            <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                                <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
-                            </button>
+                        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
+                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
+                        </button>
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
-                    </div>
-                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative inline-block ml-2" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
                         <button class="top-1 right-3 relative " @click="open = !open">
                             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
                         </button>
@@ -221,32 +277,15 @@ function MapearPublicacionUsusarioFauna(publicacion) {
         </div>
     </a>
     <div class="flex justify-around items-center mb-2">
-        <div class="flex items-center">
-            <button id="2" class="w-6 lg:w-6 lg:h-6" onclick="DarLike('2')">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true" class="w-5 h-5 lg:w-6 lg:h-6">
-            </button>
-            <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] xl:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px] ml-2">15</span>
-        </div>
-            <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                <span class="textito font-bold text-[#241111] ml-2 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] md:mt-[2px] lg:mt-[4px] mt-[4px]">14</span>
-            </button>
+        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
+        </button>
         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
     </div>
   </div>`;
   }
 
-
-function Subir(){
-  return `<div class="mt-10 flex justify-center">
-                <div class="mt-10 flex justify-center">
-                    <a href="#pub" class="bg-[#276B58] w-full h-7 text-center text-white absolute bottom-0">
-                        Ir arriba
-                    </a>
-                </div>
-            </div>`
-}
 function ActualizarPub(id) {
     let data = {
       id_publicacion: id,
@@ -336,4 +375,12 @@ function MostrarPub(id) {
 
     // Redirige a la página de destino
     window.location.href = url;
+}
+
+
+function regresarInicioS(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
 }
