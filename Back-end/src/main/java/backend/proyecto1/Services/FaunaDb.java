@@ -118,6 +118,7 @@ public class FaunaDb {
         return resultado;
     }
 
+
     public int EliminarFauna( int id){
         int resultado = 0;
         try{
@@ -130,6 +131,94 @@ public class FaunaDb {
 
         }
         return resultado;
+    }
+
+    public int ReporteFauna() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Fauna";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
+    public int ReporteReptiles() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Fauna WHERE categoria_fauna = 'Reptiles'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+    public int ReporteArtropodos() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Fauna WHERE categoria_fauna = 'Artrópodos'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
+    public int ReporteAves() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Fauna WHERE categoria_fauna = 'Aves'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+    public int ReporteMamiferos() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Fauna WHERE categoria_fauna = 'Mamíferos'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
     }
 
     public int ActualizarNombreCFauna(Fauna f){

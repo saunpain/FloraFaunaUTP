@@ -123,13 +123,14 @@ function Subir(){
               </div>`
 }
 
+
 function MapearPublicacionUsusarioFlora(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
             <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">
                 <div class="mt-2">
                     <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.nombre_estudiante}</span>
                     <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.fecha_estudiante}</span>
-                    <span id="lugar-${publicacion.id_publicacion}"class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">${publicacion.lugar}</span>
+                    <span id="lugar-${publicacion.id_publicacion}" class="textito text-gray-400 float-right xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1 xl:ml-10 xl:mr-10 lg:mr-0">${publicacion.lugar}</span>
                 </div>
             </a>
                 <div class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">
@@ -158,10 +159,6 @@ function MapearPublicacionUsusarioFlora(publicacion) {
                 </div>
             </a>
                 <div class="flex justify-around items-center mb-2">
-                   
-                    <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                    </button>
                 
                     <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
                     <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
@@ -197,9 +194,6 @@ function MapearPublicacionesFlora(publicacion) {
       </div>
   </a>
   <div class="flex justify-around items-center mb-2">
-        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-        </button>
       <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
       <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
   </div>
@@ -212,7 +206,7 @@ function MapearPublicacionUsusarioFauna(publicacion) {
                     <div class="mt-2">
                       <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.nombre_estudiante}</span>
                       <span class="textito text-gray-400 md:ml-6 ml-4 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.fecha_estudiante}</span>
-                      <span id="lugar-${publicacion.id_publicacion}" class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">${publicacion.lugar}</span>
+                      <span id="lugar-${publicacion.id_publicacion}" class="textito text-gray-400 float-right xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1 xl:ml-10 xl:mr-10 lg:mr-0">${publicacion.lugar}</span>
                     </div>
                 </a> 
                     <div class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">
@@ -241,9 +235,6 @@ function MapearPublicacionUsusarioFauna(publicacion) {
                     </div>
                 </a>
                 <div class="flex justify-around items-center mb-2">
-                        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-                        </button>
                         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
                         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
                     <div class="relative inline-block ml-2" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
@@ -277,9 +268,6 @@ function MapearPublicacionUsusarioFauna(publicacion) {
         </div>
     </a>
     <div class="flex justify-around items-center mb-2">
-        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-        </button>
         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
     </div>

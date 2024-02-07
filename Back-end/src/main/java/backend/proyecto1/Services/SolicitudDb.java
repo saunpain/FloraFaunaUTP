@@ -29,8 +29,7 @@ public class SolicitudDb {
                 Solicitud s =  new Solicitud(
                     rs.getInt("id_solicitud"),
                     rs.getString("archivo"),
-                    rs.getString("usuario"),
-                    rs.getString("correo"),
+                    rs.getInt("id_biologo"),
                     rs.getString("titulo")
                 );
 
@@ -52,8 +51,7 @@ public class SolicitudDb {
             Statement stmt = cn.createStatement();
             String query = "Call AgregarSolicitud('"
                 + s.getArchivo() + "','"
-                + s.getUsuario() + "','"
-                + s.getCorreo() + "','"
+                + s.getId_biologo() + "','"
                 + s.getTitulo() + "')";
 
             resultado = stmt.executeUpdate(query);
@@ -73,8 +71,7 @@ public class SolicitudDb {
             String query = "Call ActualizarSolicitud('"
                 + s.getId_solicitud() + "','"
                 + s.getArchivo() + "','"
-                + s.getUsuario() + "','"
-                + s.getCorreo() + "','"
+                + s.getId_biologo() + "','"
                 + s.getTitulo() + "')";
 
             resultado = stmt.executeUpdate(query);
@@ -100,4 +97,30 @@ public class SolicitudDb {
         }
         return resultado;
     }
+
+    public Solicitud ObtenerSolicitud(int id){
+        Solicitud s = null;
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "SELECT * FROM Solicitud where id_biologo= '" + id + "'";
+            ResultSet rs = stmt.executeQuery(query);
+
+            if(rs.next()){
+                s =  new Solicitud(
+                    rs.getInt("id_solicitud"),
+                    rs.getString("archivo"),
+                    rs.getInt("id_biologo"),
+                    rs.getString("titulo")
+                );
+            }
+
+            stmt.close();
+            rs.close();
+        } catch (Exception e){
+
+        }
+        return s;
+    }
+
 }

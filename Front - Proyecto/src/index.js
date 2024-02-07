@@ -91,9 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-document.getElementById('pub').addEventListener('mouseleave', function () {
-this.querySelector('.absolute').classList.add('hidden');
-});
+
 
 function mostrarInicioS() {
   document.body.style.overflow = 'hidden';
@@ -101,7 +99,6 @@ function mostrarInicioS() {
   var overlay = document.getElementById('login');
   var loginContainer = document.getElementById('contenedor-login');
   var loginContent = document.getElementById('login-contenido');
-
   // Cargar dinámicamente el contenido
   fetch('/Front - Proyecto/src/Auth/login.html')
     .then(response => response.text())
@@ -123,7 +120,6 @@ function mostrarRegistro(event) {
   var registroContent = document.getElementById('registro-contenido');
 
   cerrarLogin();
-  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
   fetch('/Front - Proyecto/src/Auth/Registro.html')
     .then(response => response.text())
     .then(data => {

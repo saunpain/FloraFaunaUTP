@@ -128,6 +128,24 @@ public class AdministrativoDb {
         return admin;
     }
 
+    public int ReporteAdmin() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Administrativo";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
     public int CambiarEstadoBiologo(int id, int estado) {
         int resultado = 0;
 
@@ -143,5 +161,4 @@ public class AdministrativoDb {
         }
         return resultado;
     }
-    
 }

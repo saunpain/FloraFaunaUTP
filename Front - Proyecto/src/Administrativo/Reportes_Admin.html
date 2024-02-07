@@ -68,12 +68,6 @@
                 <img class="object-cover h-[68px] top-[13.3px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
-                
-            <div class="flex items-center" id="busqueda"> <!--Barra de busqueda-->
-                <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[30rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
-                <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
-                <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
-            </div>
             
             <button id="mostrarPerfil">
                 <a href="">
@@ -117,99 +111,134 @@
             <div class="mt-4 mb-6">
                 <hr>
                 <div class="flex mt-6">
-                    <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
+                    <a onclick="CerrarSesion()" href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Sign_out_squre_light.png?raw=true" class="ml-3" alt="Sing out">
                 </div>
             </div>
         </div>
     </aside>
     
-    <div class="w-[80%] min-h-screen mx-auto relative grid lg:grid-cols-3 md:grid-cols-2">
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-40">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_usua_online.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Usuarios Online</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
-                </div>
-            </div>
+    <div class="w-[80%] min-h-screen mx-auto relative items-center grid lg:grid-cols-3 md:grid-cols-2">
             
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10 md:mt-40">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_usua_registrados.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Usuarios registrados</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-40 md:mt-40">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_usua_registrados.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Usuarios registrados</h3>
+                    <h1 id="usuarios_registrados" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
+        </div>
 
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10 md:mt-10 lg:mt-40">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_visitas.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Visitas a la página</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10 md:mt-40">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_biologosV.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Biólogos verificados</h3>
+                    <h1 id="biologos_verificados" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10 lg:mt-40">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_pub.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Publicaciones</h3>
+                    <h1 id="cantidad_publicaciones" class="text-[2rem] font-bold"></h1>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_coment.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Comentarios</h3>
+                    <h1 id="cantidad_comentarios" class="text-[2rem] font-bold"></h1>
+                </div>
+            </div>
+        </div>
     
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_biologosV.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Biólogos verificados</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_animalesR.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Fauna registrada</h3>
+                    <h1 id="cantidad_fauna" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_pub.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Publicaciones</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_plantasR.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Flora registrada</h3>
+                    <h1 id="cantidad_flora" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_coment.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Comentarios</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/planta.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Plantas registradas</h3>
+                    <h1 id="cantidad_plantas" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
-        
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_animalesR.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Animales registrados</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/arbol.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Árboles registrados</h3>
+                    <h1 id="cantidad_arboles" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_plantasR.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Plantas registradas</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cesped.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Hierbas registradas</h3>
+                    <h1 id="cantidad_hierbas" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
-            <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
-                <div class="m-3">
-                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reporte_Megustas.png?raw=true" alt="usuarios online" class="w-16">
-                    <div class="flex justify-between items-center mt-2">
-                        <h3 class="text-lg">Me gustas</h3>
-                        <h1 class="text-[2rem] font-bold">41</h1>
-                    </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pajaro.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Aves registradas</h3>
+                    <h1 id="cantidad_aves" class="text-[2rem] font-bold"></h1>
                 </div>
             </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/ardilla.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Mamíferos registrados</h3>
+                    <h1 id="cantidad_mamiferos" class="text-[2rem] font-bold"></h1>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reptil.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Reptiles registrados</h3>
+                    <h1 id="cantidad_reptiles" class="text-[2rem] font-bold"></h1>
+                </div>
+            </div>
+        </div>
+        <div class="p-2 bg-[#D7EFFF] rounded-md text-slate-950 ml-10 mr-10 mt-10">
+            <div class="m-3">
+                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/hormiga.png?raw=true" class="w-16">
+                <div class="flex justify-between items-center mt-2">
+                    <h3 class="text-lg">Artrópodos registrados</h3>
+                    <h1 id="cantidad_artropodos" class="text-[2rem] font-bold"></h1>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="w-full bg-[#184136] text-[#FFFFFF] text-sm p-2 md:flex justify-around relative mt-8">
@@ -230,6 +259,7 @@
         </div>
     </footer>
     <script src="index.js"></script>
+    <script src="Reportes.js"></script>
     <script src="perfil_admin.js"></script>
     <script src="/Front - Proyecto/src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>

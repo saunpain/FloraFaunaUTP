@@ -1,8 +1,9 @@
 let baseUrl = "http://localhost:8080";
 
+
 function ObtenerBiologo() {
   const user = usuario_name;
-  let estado;
+  let estado = "";
 
   fetch(baseUrl + "/biologo/" + user)
     .then(res => res.json())
@@ -12,15 +13,15 @@ function ObtenerBiologo() {
       var img = document.getElementById("imgPerfil");
       img.src = fotoPerfil;
       localStorage.setItem('id_usuario', data.id_biologo)
-      localStorage.setItem('estado_biologo', estado)
+      localStorage.setItem('estado_biologo', data.estado)
+      console.log(estado)
     })
     .catch(error => {
       console.error(error);
+      window.location.href = "/Front - Proyecto/src/Flora y Fauna UTP - inicio.html";
     })
     .finally(() => {
-      ObtenerPublicaciones();
-      ObtenerComentarios();
-      mapearEstado(estado);
+      mapearEstado(estado)
     });
 }
 
@@ -28,10 +29,16 @@ function mapearEstado(estado) {
   var estadoB = document.getElementById("estado");
   estadoB.innerHTML = "";
 
-  if (estado !== "Aprobado") {
+  if (estado !== "Aprobado" && estado !== "En espera") {
     estadoB.insertAdjacentHTML('beforeend', `<button onclick="mostrarVerificacion()" id="mostrarVerificacion" class="text-[#FFFFFF] mr-6 text-sm md:text-lg lg:text-lg xl:text-lg hover:text-[#99E0FF] font-semibold">
                 Enviar Solicitud de Verificación
             </button>`);
+  }
+  else if(estado === "En espera"){
+    estadoB.insertAdjacentHTML('beforeend', `<div class="flex mr-5 items-center">
+              <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/reloj.png?raw=true" alt="" class="w-7 h-7 mr-2">
+              <p class="text-[#FFFFFF] text-sm md:text-lg lg:text-lg xl:text-lg mt-2">Solicitud en espera</p>
+          </div>`);
   }
   else if(estado === "Aprobado") {
     estadoB.insertAdjacentHTML('beforeend', `<div class="flex mr-5">
@@ -362,27 +369,6 @@ function cancelarDescripcion(divPub) {
   descripcionInput.removeAttribute('data-original-value');
 }
 
-/****************FUNCIONES PARA MOSTRAR EL PERFIL DEL BIOLOGO*************************/
-
-function mostrarPerfil() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('perfil');
-  var perfilContainer = document.getElementById('contenedor-Perfil');
-  var perfilContent = document.getElementById('userProfile-contenido');
-
-  // Cargar dinámicamente el contenido del perfil desde pantallaPerfil.html
-  fetch('http://localhost:5501/Front - Proyecto/src/Biologo/PerfilBiologo.html')
-    .then(response => response.text())
-    .then(data => {
-      perfilContent.innerHTML = data;
-      overlay.style.display = 'block'; // Mostrar la capa oscura
-      
-      perfilContainer.style.display = 'flex'; // Mostrar el cuadro de perfil
-    })
-    .catch(error => console.error('Error al cargar el perfil:', error));
-}
-
 // Función para cerrar el cuadro de perfil y quitar la capa oscura
 function cerrarPerfil() {
   document.body.style.overflow = 'auto';
@@ -408,3 +394,4 @@ function MostrarPub(id) {
   // Redirige a la página de destino
   window.location.href = url;
 }
+

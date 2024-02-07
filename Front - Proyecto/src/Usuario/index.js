@@ -12,10 +12,8 @@ function ObtenerEstudiante(){
         })
         .catch(error => {
             console.error(error);
+            window.location.href = "/Front - Proyecto/src/Flora y Fauna UTP - inicio.html";
         });
-  ObtenerPublicaciones();
-  ObtenerComentarios();
-  ImprimirCrearComentario();
 }
 
 //Funcion para la seeccion de cateegorías y subcategorías a la hora de hacer una publicación
@@ -107,3 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function CerrarSesion(){
+  console.log("cerrando sesion")
+  localStorage.removeItem('id_usuario');
+  localStorage.removeItem("nombreusuario");
+}

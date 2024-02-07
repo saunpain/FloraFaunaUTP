@@ -76,7 +76,8 @@ public class BiologoDb {
                 + b.getId_biologo() + "','"
                 + b.getNombre_biologo() + "','"
                 + b.getCorreo_biologo() + "','"
-                + b.getEstado()+ "')";
+                + b.getPerfil_biologo() + "','"
+                + b.getEstado()+"')";
 
             resultado = stmt.executeUpdate(query);
             stmt.close();
@@ -130,4 +131,70 @@ public class BiologoDb {
     
         return b;
     }
+
+    public Biologo ObtenerBiologoID(int id) {
+        Biologo b = null;
+    
+        try {
+            String query = "SELECT * FROM Biologo WHERE id_biologo = '" + id + "'";
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+    
+            if (rs.next()) {
+                b= new Biologo(
+                    rs.getInt("id_biologo"),
+                    rs.getString("nombre_biologo"),
+                    rs.getString("correo_biologo"),
+                    rs.getString("contraseña_biologo"),
+                    rs.getString("perfil_biologo"),
+                    rs.getString("estado")
+                );
+            }
+    
+            stmt.close();
+            rs.close();
+            return b;
+        } catch (Exception ex) {
+            
+        }
+    
+        return b;
+    }
+
+    public int ReporteBiologo() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Biologo";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
+    public int ReporteBiologosVerificados() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Biologo WHERE estado = 'Aprobado'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+    
 }

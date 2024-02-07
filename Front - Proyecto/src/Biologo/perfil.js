@@ -3,11 +3,13 @@ let usuario_name = localStorage.getItem("nombreusuario");
 let id_usuario = localStorage.getItem('id_usuario');
 let perfil = "";
 
+
 function mostrarPerfil() {
     const user = usuario_name;
     fetch(baseUrl + "/biologo/" + user).then((res) => {
         res.json().then((json) => {
         usuario = json;
+
         let fotoPerfil = usuario.perfil_biologo;
         perfil = fotoPerfil;
         ImprimirPerfil(usuario);
@@ -16,32 +18,44 @@ function mostrarPerfil() {
 }
 
 function ActualizarNombreUsuario(usuario) {
+    const estado = localStorage.getItem('estado_biologo');
 
     let data = {
         id_biologo: usuario.id,
-        perfil_biologo: perfil,
-        correo_biologo: document.getElementById("correo").textContent,
         nombre_biologo: document.getElementById("input").value,
+        correo_biologo: document.getElementById("correo").textContent,
+        estado: estado,
+        perfil_biologo: perfil,
     };
+
     console.log('Datos a enviar:', data);
+
     fetch(baseUrl + "/biologo", {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
-    }).then(res => {
-        console.log(res);
+    })
+    .then(res => {
+        console.log('Respuesta del servidor:', res);
         usuario_name = data.nombre_biologo;
         localStorage.setItem("nombreusuario", usuario_name);
         mostrarPerfil();
+    })
+    .catch(error => {
+        console.error('Error en la solicitud:', error);
+        // Maneja el error de manera específica según sea necesario
     });
 }
 
 
+
 function ImprimirPerfil(usuario) {
     document.body.style.overflow = "hidden";
-
+    
+    const estado = localStorage.getItem('estado_biologo');
+    console.log(estado)
     var overlay = document.getElementById("perfil");
     var perfilContainer = document.getElementById("contenedor-Perfil");
     let perfilContent = document.getElementById("userProfile-contenido");
@@ -101,7 +115,7 @@ function MapearPerfilAprobado(usuario) {
             <p class="mr-2">Solicitud: ${usuario.estado}</p>
             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/plantaAprobado.png?raw=true" alt="" class="w-6 h-6 mr-2">
         </div>
-        <button class="mt-10">
+        <button onclick="CerrarSesion()" id="cerrar_S" class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cerrar%20sesi%C3%B3n%20perfil.png?raw=true" alt="" class="ml-4 h-6 w-6">
@@ -155,7 +169,7 @@ function MapearPerfilSolicitud(usuario) {
         <div class="flex mt-6">
             <p class="mr-2">Solicitud: ${usuario.estado}</p>
         </div>
-        <button class="mt-10">
+        <button onclick="CerrarSesion()" id="cerrar_S" class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cerrar%20sesi%C3%B3n%20perfil.png?raw=true" alt="" class="ml-4 h-6 w-6">
@@ -163,6 +177,13 @@ function MapearPerfilSolicitud(usuario) {
         </button>
     </div>
 </div>`;
+}
+
+function CerrarSesion(){
+    console.log("cerrando sesion")
+    localStorage.removeItem('id_usuario');
+    localStorage.removeItem("estado_biologo");
+    localStorage.removeItem("nombreusuario");
 }
 
 // Función para cerrar el cuadro de perfil y quitar la capa oscura
@@ -242,3 +263,4 @@ function cancelarNuevoNombre(id) {
 
     nuevoNombre.removeAttribute("data-original-value");
 }
+

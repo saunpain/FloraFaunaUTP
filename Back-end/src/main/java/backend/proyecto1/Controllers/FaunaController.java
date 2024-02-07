@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import backend.proyecto1.Models.Fauna;
 import backend.proyecto1.Services.FaunaDb;
 
-
 @RestController
 public class FaunaController {
     
@@ -45,6 +44,28 @@ public class FaunaController {
     @GetMapping("/fauna/{nombre_animal}")
     public Fauna ObtenerFauna(@PathVariable("nombre_animal")String nomb){
         return new FaunaDb().ObtenerFauna(nomb);
+    }
+
+    @GetMapping("/cantidadFauna")
+    public int obtenerReporteFlora() {
+        return new FaunaDb().ReporteFauna();
+    }
+    @GetMapping("/cantidadReptiles")
+    public int obtenerReporteReptiles() {
+        return new FaunaDb().ReporteReptiles();
+    }
+    @GetMapping("/cantidadArtropodos")
+    public int obtenerReporteArtropodos() {
+        return new FaunaDb().ReporteArtropodos();
+    }
+
+    @GetMapping("/cantidadAves")
+    public int obtenerReporteAves() {
+        return new FaunaDb().ReporteAves();
+    }
+    @GetMapping("/cantidadMamiferos")
+    public int obtenerReporteMamiferos() {
+        return new FaunaDb().ReporteMamiferos();
     }
 
 }

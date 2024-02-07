@@ -13,42 +13,11 @@ function ObtenerAdmin(){
         })
         .catch(error => {
             console.error(error);
+            window.location.href = "/Front - Proyecto/src/Flora y Fauna UTP - inicio.html";
         });
-    ObtenerPublicaciones();
-    ObtenerComentarios();
-}
-
-//Función para agregar like a las publicaciones
-function DarLike(id) {
-  var boton = document.getElementById(id);
-  var imagen = boton.getElementsByTagName('img')[0];
-
-  // Verifica la URL actual de la imagen
-  var Unlike = imagen.src;
-  
-  // Define la imagen que se mostrará
-  var Like = (Unlike.includes('favorite.png')) ? 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Like-Icon-03brf3.png?raw=true' : 'https://github.com/saunpain/FloraFaunaUTP/blob/main/img/favorite.png?raw=true';
-
-  // Cambia la URL de la imagen al dar click
-  imagen.src = Like;
 }
 
 
-function togglePasswordVisibility() {
-  var passwordDisplay = document.getElementById("passwordDisplay");
-  var passwordInput = document.getElementById("passwordInput");
-  var toggleIcon = document.getElementById("togglePassword");
-
-  if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/visible%20pass.png?raw=true";
-      toggleIcon.alt = "Ocultar contraseña";
-  } else {
-      passwordInput.type = "password";
-      toggleIcon.src = "https://github.com/saunpain/FloraFaunaUTP/blob/main/img/hidden%20pass.png?raw=true";
-      toggleIcon.alt = "Mostrar contraseña";
-  }
-}
 
 function toggleEditMode() {
   var passwordDisplay = document.getElementById("passwordDisplay");
@@ -119,4 +88,10 @@ function cancelarEdicion(id) {
 
   // Eliminar el atributo data-original-value
   comentarioInput.removeAttribute('data-original-value');
+}
+
+function CerrarSesion(){
+  console.log("cerrando sesion")
+  localStorage.removeItem('id_usuario');
+  localStorage.removeItem("nombreusuario");
 }

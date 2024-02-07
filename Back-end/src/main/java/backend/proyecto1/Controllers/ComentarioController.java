@@ -40,4 +40,8 @@ public class ComentarioController {
     public int Delete(@PathVariable("id") int id){
         return new ComentarioDb().EliminarComentario(id);
     }
+    @GetMapping("/cantidadComentarios")
+    public int obtenerReporteComentarios() {
+        return new ComentarioDb().ReporteComentarios();
+    }
 }

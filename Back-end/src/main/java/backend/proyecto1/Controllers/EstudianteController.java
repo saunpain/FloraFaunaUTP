@@ -40,5 +40,8 @@ public class EstudianteController {
     public Estudiante ObtenerEstudiante(@PathVariable("nombre_estudiante") String nomb){
         return new EstudianteDb().ObtenerEstudiante(nomb);
     }
-    
+    @GetMapping("/cantidadEstudiante")
+    public int obtenerReporteEstudiante() {
+        return new EstudianteDb().ReporteEstudiante();
+    }
 }

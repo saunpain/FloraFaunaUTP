@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import backend.proyecto1.Models.Solicitud;
 import backend.proyecto1.Services.SolicitudDb;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 public class SolicitudController {
@@ -29,4 +30,9 @@ public class SolicitudController {
     public int Delete(@PathVariable("id") int id){
         return new SolicitudDb().EliminarSolicitud(id);
     }
+    @GetMapping("/solicitud_biologo/{id_biologo}")
+    public Solicitud obtenerSolitudBiologo(@PathVariable("id_biologo")int id){
+        return new SolicitudDb().ObtenerSolicitud(id);
+    }
+    
 }

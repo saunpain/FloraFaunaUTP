@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import backend.proyecto1.Models.Biologo;
 import backend.proyecto1.Services.BiologoDb;
 
+
 @RestController
 public class BiologoController {
     
@@ -35,9 +36,21 @@ public class BiologoController {
     public int Delete(@PathVariable("id") int id){
         return new BiologoDb().EliminarBiologo(id);
     }
-    
     @GetMapping("/biologo/{nombre_biologo}")
     public Biologo ObtenerBiologo(@PathVariable("nombre_biologo") String nomb){
         return new BiologoDb().ObtenerBiologo(nomb);
+    }
+    
+    @GetMapping("/cantidadBiologo")
+    public int obtenerReporteBio() {
+        return new BiologoDb().ReporteBiologo();
+    }
+    @GetMapping("/cantidadBiologosV")
+    public int obtenerReporteBioVerificado() {
+        return new BiologoDb().ReporteBiologosVerificados();
+    }
+    @GetMapping("/biologo_id/{id_biologo}")
+    public Biologo ObtenerBiologoID(@PathVariable("id_biologo") int id){
+        return new BiologoDb().ObtenerBiologoID(id);
     }
 }

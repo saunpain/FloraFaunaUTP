@@ -88,20 +88,31 @@ function menuCategoria(categoria){
 function ImprimirPublicaciones(publicaciones) {
         let contenedor = document.getElementById("pub");
         contenedor.innerHTML = "";
-        publicaciones.forEach((publicacion, index) => {
-        if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-            contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
-        }
-        
-        if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
-            contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
-        }
 
-        if (index === publicaciones.length - 1) {
-            contenedor.innerHTML += Subir();
-        }
+        publicaciones.forEach((publicacion, index) => {
+            if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
+                contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
+            }
+            
+            if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
+                contenedor.innerHTML += MapearPublicacionesFauna(publicacion);
+            }
+
+            if (index === publicaciones.length - 1) {
+                contenedor.innerHTML += Subir();
+            }
     });
 }
+function Subir(){
+    return `<div id="subir" class="mt-10 flex justify-center">
+                  <div class="mt-10 flex justify-center">
+                  <a href="javascript:void(0);" onclick="regresarInicioS('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center absolute text-white bottom-0">
+                      Ir arriba
+                  </a>
+                  </div>
+              </div>`
+}
+
 
 function MapearPublicacionesFlora(publicacion) {
   return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
@@ -117,9 +128,6 @@ function MapearPublicacionesFlora(publicacion) {
         </div>
     </a>
     <div class="flex justify-around items-center mb-2">
-        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-        </button>
         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_flora}</span>
         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Planta: ${publicacion.nombre_planta}</span>
     </div>
@@ -141,9 +149,6 @@ function MapearPublicacionesFlora(publicacion) {
         </div>
     </a>
     <div class="flex justify-around items-center mb-2">
-        <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
-        </button>
         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre científico: ${publicacion.nombre_cientifico_fauna}</span>
         <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-10">Animal: ${publicacion.nombre_animal}</span>
     </div>
@@ -151,28 +156,18 @@ function MapearPublicacionesFlora(publicacion) {
   }
 
 
-function Subir(){
-  return `<div id="subir" class="mt-10 flex justify-center">
-                <div class="mt-10 flex justify-center">
-                <a href="javascript:void(0);" onclick="regresarInicioS('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center absolute text-white bottom-0">
-                    Ir arriba
-                </a>
-                </div>
-            </div>`
+  function MostrarPub(id) {
+    // Construye la URL con el parámetro
+    let url = "Publicacion.html?id=" + id;
+
+    // Redirige a la página de destino
+    window.location.href = url;
 }
+
 
 function regresarInicioS(sectionId) {
     var section = document.getElementById(sectionId);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
-}
-
-function MostrarPub(id) {
-    // Guarda la posición actual de desplazamiento y el id de la publicación
-    sessionStorage.setItem('scrollPosition', window.scrollY);
-    sessionStorage.setItem('currentPostId', id);
-    console.log(id);
-    // Redirige a la página de destino
-    window.location.href = "Publicacion.html?id=" + id;
 }

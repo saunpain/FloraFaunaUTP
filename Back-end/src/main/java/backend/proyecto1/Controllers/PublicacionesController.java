@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import backend.proyecto1.Models.Publicaciones;
 import backend.proyecto1.Services.PublicacionesDb;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
 
@@ -47,5 +46,8 @@ public class PublicacionesController {
     public Publicaciones ObtenerPubFauna(@PathVariable ("id_fauna") int id) {
         return new PublicacionesDb().ObtenerPubFauna(id);
     }
-
+     @GetMapping("/cantidadPub")
+    public int obtenerReportePub() {
+        return new PublicacionesDb().ReportePublicaciones();
+    }
 }

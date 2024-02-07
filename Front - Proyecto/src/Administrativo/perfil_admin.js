@@ -92,7 +92,7 @@ function MapearPerfil(usuario) {
         
         <p class="mt-6">Correo</p>
         <p class="mt-2 underline" id="correo">${usuario.correo_admin}</p>
-        <button class="mt-10">
+        <button onclick="CerrarSesion()" class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cerrar%20sesi%C3%B3n%20perfil.png?raw=true" alt="" class="ml-4 h-6 w-6">
@@ -179,3 +179,9 @@ function cancelarNuevoNombre(id) {
 
     nuevoNombre.removeAttribute("data-original-value");
 }
+
+function CerrarSesion(){
+    console.log("cerrando sesion")
+    localStorage.removeItem('id_usuario');
+    localStorage.removeItem("nombreusuario");
+  }

@@ -130,4 +130,23 @@ public class EstudianteDb {
         return resultado;
     }
 
+    public int ReporteEstudiante() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Estudiante";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+    
+
 }

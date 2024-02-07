@@ -105,12 +105,6 @@
                 <img class="object-cover h-[68px] top-[13.3px] lg:ml-[24px]  xl:ml-[24px] 2xl:ml-[24px] absolute hidden lg:block xl:Block" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-3.png?raw=true" />
                 <h1 class="text-[#FFFFFF] text-2xl ml-12 hidden lg:block xl:block">Flora y Fauna UTP</h1> <!--Titulo-->
             </div>
-                
-            <div class="flex items-center" id="busqueda"> <!--Barra de busqueda-->
-            <img id="lupota" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/image-1.png?raw=true" class="absolute xl:ml-[32rem] lg:ml-[30rem] md:ml-[22rem] lg:block md:block xl:block ml-[10rem] hidden h-5">
-            <img id="lupita" src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/lupa%20blanca.png?raw=true" class="block md:hidden lg:hidden xl:hidden h-6 ml-2" alt="">
-            <input type="search" class="bg-[#F0FEF8] xl:h-10 lg:h-10 h-8 rounded-[30px] xl:w-[32rem] lg:w-[30rem] md:w-[22rem] w-[10rem] ml-8 hidden lg:block xl:block md:block border-none object-cover text-slate-500 p-3 hover:bg-[#ffffff] focus:outline-none" placeholder="Buscar">
-            </div>
             
             <button id="mostrarPerfil">
                 <a href="">
@@ -155,7 +149,7 @@
             <div class="mt-4 mb-6">
                 <hr>
                 <div class="flex mt-6">
-                    <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
+                    <a onclick="CerrarSesion()" href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Sign_out_squre_light.png?raw=true" class="ml-3" alt="Sing out">
                 </div>
             </div>
@@ -180,54 +174,19 @@
         </div>
     </aside>
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row"> <!--Contenido completo-->   <!--top-28 md:top-24 md:py-8 lg:top-[130px] xl:top-0-->                                                                                                              
-        <section id="pub" class="bg-[#F8F5F5] relative w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:left-32 h-screen justify-center"> <!--Publicaciones-->
-            <div class="relative flex justify-center top-48 md:top-52 lg:top-40 xl:top-44">
-                <table class="w-[80%] lg:w-[90%] border border-gray-300 rounded-lg overflow-hidden">
+        <section id="pub" class="bg-[#F8F5F5] relative w-full lg:w-[52%] 2xl:min-w-[58%] 2xl:w-[60%] lg:left-20 h-screen justify-center"> <!--Publicaciones-->
+            <div id="tabla-solicitudes" class="relative flex justify-center top-48 md:top-52 lg:top-40 xl:top-44">
+                <table class="w-[80%] lg:w-[90%]  rounded-lg">
                     <tbody id="cuerpo-tabla">
                         
                     </tbody>
-                </table>  
+                </table>
             </div>
             <div id="solicitud" class="flex items-center justify-center relative">
-                <div class="w-[80%] lg:w-[90%] bg-[#FFFFFF] rounded-lg hidden">
-                    <div class="flex p-4 ml-3">
-                        <button class="flex bg-[#D7EFFF] p-2 rounded-md" onclick="Deshacer()">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Regresar.png?raw=true" class="mr-1">
-                            Regresar
-                        </button>
-                        <button id="solicitud-00001-A" class="flex bg-[#D7EFFF] ml-3 p-2 rounded-md" onclick="toggleEstado('00001-A', 'A')" data-fila-id="00002">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi.png?raw=true" class="mr-1">
-                            Aprobar
-                        </button>
-                        <button id="solicitud-00001-R" class="flex bg-[#D7EFFF] ml-3 p-2 rounded-md" onclick="toggleEstado('00001-R', 'R')" data-fila-id="00002">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o.png?raw=true" class="h-5 w-5 mt-[3px] mr-1">
-                            Rechazar
-                        </button>
-                    </div>
-                    <div class="flex justify-center">
-                        <hr class="w-11/12">
-                    </div>
-                    <div class="mt-2 ml-10 lg:ml-16 text-lg">
-                        <h2> Solicitud para ser biologo verificado uwu </h2>
-                    </div>
-                    <div class="flex mt-3 ml-6">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Charles%20Darwin.png?raw=true">
-                        <div class="ml-3">
-                            <p class="text-sm">Charles Darwin</p>
-                            <p class="text-sm">charles.darwin@utp.ac.pa</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <hr class="w-11/12 mt-4">
-                    </div>
-                    <div class="flex mt-3 p-2 flex-col items-center">
-                        <p class="font-bold">Solicitud adjunta</p>
-                        <img src="" alt="Imagen aquí">
-                    </div>
-                </div>
+
             </div>
-        </section>  
-        <section class="fixed lg:top-40 top-28 lg:w-64 w-full lg:right-36 lg:block">
+        </section>
+        <section class="fixed lg:top-40 top-28 lg:w-64 w-full lg:right-20 lg:block">
             <div class="bg-[#F0FEF8] mt-3 md:mt-2 lg:mt-3 lg:rounded-[10px] p-2 lg:p-4 md:pb-3 border-[1.5px] border-slate-300">
                 <div class="flex justify-center">
                     <span class="text-lg hidden lg:block"> Bandeja de entrada</span>
@@ -285,6 +244,7 @@
     <script src="/Front - Proyecto/src/Administrativo/perfil_admin.js"></script>
     <script src="/Front - Proyecto/src/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="Solicitudes.js"></script>
 </body>
 </html>

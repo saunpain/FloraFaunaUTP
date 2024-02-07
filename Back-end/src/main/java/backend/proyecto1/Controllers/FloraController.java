@@ -31,7 +31,7 @@ public class FloraController {
         return new FloraDb().ActualizarFlora(f);
     }
 
-        @PutMapping("/floraNombreC")
+    @PutMapping("/floraNombreC")
     public int ActualizarNombreCFlora(@RequestBody Flora f) {
         return new FloraDb().ActualizarNombreCFlora(f);
     }
@@ -44,5 +44,21 @@ public class FloraController {
     @GetMapping("/flora/{nombre_planta}")
     public Flora ObtenerFlora(@PathVariable("nombre_planta")String nomb){
         return new FloraDb().ObtenerFlora(nomb);
+    }
+    @GetMapping("/cantidadFlora")
+    public int obtenerReporteFlora() {
+        return new FloraDb().ReporteFlora();
+    }
+    @GetMapping("/cantidadArboles")
+    public int obtenerReporteArboles() {
+        return new FloraDb().ReporteArboles();
+    }
+    @GetMapping("/cantidadPlantas")
+    public int obtenerReportePlantas() {
+        return new FloraDb().ReportePlantas();
+    }
+    @GetMapping("/cantidadHierbas")
+    public int obtenerReporteHierbas() {
+        return new FloraDb().ReporteHierbas();
     }
 }

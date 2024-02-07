@@ -91,7 +91,7 @@ function MapearPerfil(usuario) {
         
         <p class="mt-6">Correo</p>
         <p class="mt-2 underline" id="correo">${usuario.correo_estudiante}</p>
-        <button id="cerrar_S" class="mt-10">
+        <button onclick="CerrarSesion()" id="cerrar_S" class="mt-10">
             <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html" class="flex">
                 <p>Cerrar Sesión</p>
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/cerrar%20sesi%C3%B3n%20perfil.png?raw=true" alt="" class="ml-4 h-6 w-6">
@@ -100,12 +100,11 @@ function MapearPerfil(usuario) {
     </div>
 </div>`;
 }
-document.addEventListener('DOMContentLoaded', function() {
-    let bton_cerrarSesion = document.getElementById('cerrar_S');
-    bton_cerrarSesion.addEventListener('click', function () {
-        localStorage.removeItem("nombreusuario");
-    })
-})
+function CerrarSesion(){
+    console.log("cerrando sesion")
+    localStorage.removeItem('id_usuario');
+    localStorage.removeItem("nombreusuario");
+}
 
 // Función para cerrar el cuadro de perfil y quitar la capa oscura
 function cerrarPerfil() {
@@ -118,13 +117,11 @@ function cerrarPerfil() {
 }
 
 // Asignar evento al clic en la imagen de perfil
-document
-    .getElementById("mostrarPerfil")
+document.getElementById("mostrarPerfil")
     .removeEventListener("click", mostrarPerfil);
 
 // Luego, agrega el nuevo evento
-document
-    .getElementById("mostrarPerfil")
+document.getElementById("mostrarPerfil")
     .addEventListener("click", function (event) {
         event.preventDefault(); 
         mostrarPerfil();

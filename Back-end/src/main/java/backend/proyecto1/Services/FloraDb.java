@@ -128,7 +128,78 @@ public class FloraDb {
         return resultado;
     }
 
-     public int ActualizarNombreCFlora(Flora f){
+    public int ReporteFlora() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Flora";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
+    public int ReporteArboles() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Flora WHERE categoria_flora = 'Árboles'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
+    public int ReportePlantas() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Flora WHERE categoria_flora = 'Planta'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+    public int ReporteHierbas() {
+        int cantidad = 0;
+    
+        try {
+            Statement stmt = cn.createStatement();
+            String query = "SELECT COUNT(*) FROM Flora WHERE categoria_flora = 'Hierbas'";
+            ResultSet resultSet = stmt.executeQuery(query);
+            
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt(1);
+            }
+            return cantidad;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cantidad;
+    }
+
+    public int ActualizarNombreCFlora(Flora f){
         int resultado = 0;
 
         System.out.println(f.getNombre_cientifico_flora());

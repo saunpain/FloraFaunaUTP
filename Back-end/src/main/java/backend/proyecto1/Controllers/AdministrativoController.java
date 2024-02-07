@@ -45,4 +45,9 @@ public class AdministrativoController {
     public int CambiarEstadoBiologo(@PathVariable int id, @PathVariable int nuevoEstado) {
         return new AdministrativoDb().CambiarEstadoBiologo(id, nuevoEstado);
     }
+
+    @GetMapping("/cantidadAdmin")
+    public int obtenerReporteAdmin() {
+        return new AdministrativoDb().ReporteAdmin();
+    }
 }

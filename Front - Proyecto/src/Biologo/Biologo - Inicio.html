@@ -59,7 +59,7 @@
         }
         </style>
     </head>
-<body onload="ObtenerBiologo()" class="bg-white w-full h-full box-border inicio">
+<body onload="ObtenerBiologo(), ObtenerPublicaciones()" class="bg-white w-full h-full box-border inicio">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2">
             <div class="flex items-center md:ml-4 ">
@@ -72,7 +72,6 @@
 
             <div class="flex items-center">
             <div id="estado"></div>
-            <button id="mostrarVerificacion" class="text-[#FFFFFF] mr-6 text-sm md:text-lg lg:text-lg xl:text-lg hover:text-[#99E0FF] font-semibold">Enviar Solicitud de Verificación</button>
 
             <button id="mostrarPerfil">
                 <a href="">
@@ -174,7 +173,7 @@
             <div class="mt-4 mb-6">
                 <hr>
                 <div class="flex mt-6">
-                    <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
+                    <a onclick="CerrarSesion()" id="cerrar_S" href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Sign_out_squre_light.png?raw=true" class="ml-3" alt="Sing out">
                 </div>
             </div>

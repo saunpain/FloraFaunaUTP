@@ -10,7 +10,6 @@ function ObtenerPublicaciones(){
     fetch(baseUrl + "/publicaciones/all").then( res => {
         res.json().then(json => {
             pub = json
-            console.log(pub)
             ImprimirPublicaciones(pub)
         })
     })
@@ -36,7 +35,6 @@ function GuardarPublicaciones() {
             "Content-type": "application/json; charset=UTF-8"
         }
     }).then(res => {
-        console.log(res)
         ObtenerPublicaciones()
     })
 }
@@ -55,7 +53,6 @@ function ActualizarPublicaciones(id) {
             'Content-type': 'application/json; charset=UTF-8',
         },
     }).then(res => {
-        console.log(res);
         ObtenerPublicaciones();
     })
 }
@@ -98,46 +95,6 @@ function MapearPublicaciones(p){
 </tr>`
 }
 
-
-function mostrarAside() {
-    var body = document.body;
-    var overlay = document.getElementById('aside-active');
-    var miAside = document.getElementById('aside');
-    var toggleButton = document.getElementById('toggleButton');
-
-    if (miAside.classList.contains('hidden')) {
-        // Si el aside está oculto, lo mostramos
-        body.style.overflow = 'hidden';
-        miAside.classList.remove('hidden');
-        overlay.classList.remove('hidden');
-        toggleButton.classList.add('opened');
-        toggleButton.classList.remove('closed');
-    } else {
-        // Si el aside está visible, lo ocultamos
-        body.style.overflow = 'auto';
-        miAside.classList.add('hidden');
-        overlay.classList.add('hidden');
-        toggleButton.classList.remove('opened');
-        toggleButton.classList.add('closed');
-    }
-}
-
-// Asegúrate de cerrar el aside al cambiar de pantalla
-window.addEventListener('resize', function () {
-    var miAside = document.getElementById('aside');
-    var overlay = document.getElementById('aside-active');
-    var toggleButton = document.getElementById('toggleButton');
-    var body = document.body;
-
-    if (window.innerWidth >= 1024) {
-        // Ajusta el comportamiento en pantallas más grandes
-        body.style.overflow = 'auto';
-        miAside.classList.add('hidden');
-        overlay.classList.add('hidden');
-        toggleButton.classList.remove('opened');
-        toggleButton.classList.add('closed');
-    }
-});
 
 /* Función para añadir celdas a las tablas */
 function añadirRegistro() {
@@ -194,10 +151,10 @@ function hacerEditable(id) {
     // Obtiene el id de la fila donde se realizarán cambios
     const fila = document.getElementById(id);
 
-    // Crear celdas de entrada para las celdas deseadas en la fila
+    // Crea celdas de entrada para las celdas deseadas en la fila
     const celdas = fila.getElementsByTagName('td');
 
-    for (let i = 4; i < celdas.length - 2; i++) { // a partir de la tecrcera celda, las priemras dos no son editables
+    for (let i = 4; i < celdas.length - 2; i++) { // a partir de la quinta celda, las 4 primeras no son editables
         var cell = celdas[i];
         
         const input = document.createElement('input');
@@ -212,7 +169,7 @@ function hacerEditable(id) {
 
     }
 
-    // Reemplazar el botón de editar por botones de enviar y deshacer
+    // Reemplaza el botón de editar por botones de enviar y deshacer
     const botones = celdas[celdas.length - 1];
     const enviar = document.createElement('button');
     enviar.innerHTML = '<img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/a%C3%B1adir.png?raw=true" class="w-[18px] h-[18px] mt-[2px]">';
@@ -236,7 +193,7 @@ function hacerEditable(id) {
 
 // Función para quitar el modo edición y deshacer los cambios realizados
 function DeshacerCambios(id, celdas) {
-    // Restaurar los valores originales en las celdas
+    // Restaura los valores originales en las celdas
     for (let i = 4; i < celdas.length - 2; i++) {
         var cell = celdas[i];
         var valorOriginal = cell.getAttribute('data-original-value');
@@ -244,7 +201,46 @@ function DeshacerCambios(id, celdas) {
         cell.removeAttribute('data-original-value');
     }
 
-    // Reemplazar los botones de enviar y deshacer por el botón de editar original
+    // Reemplaza los botones de enviar y deshacer por el botón de editar original
     const botones = celdas[celdas.length - 1];
     botones.innerHTML = '<div class="flex items-center"><button onclick="hacerEditable(\'' + id + '\')"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/pen%201.png?raw=true" class="w-5 max-w-none"></button><button class="xl:ml-3 lg:ml-2"><img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/trash%201.png?raw=true" class="w-5 max-w-none"></button></div>';
 }
+
+function mostrarAside() {
+    var body = document.body;
+    var overlay = document.getElementById('aside-active');
+    var miAside = document.getElementById('aside');
+    var toggleButton = document.getElementById('toggleButton');
+
+    if (miAside.classList.contains('hidden')) {
+        // Si el aside está oculto, lo mostramos
+        body.style.overflow = 'hidden';
+        miAside.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+        toggleButton.classList.add('opened');
+        toggleButton.classList.remove('closed');
+    } else {
+        // Si el aside está visible, lo ocultamos
+        body.style.overflow = 'auto';
+        miAside.classList.add('hidden');
+        overlay.classList.add('hidden');
+        toggleButton.classList.remove('opened');
+        toggleButton.classList.add('closed');
+    }
+}
+
+window.addEventListener('resize', function () {
+    var miAside = document.getElementById('aside');
+    var overlay = document.getElementById('aside-active');
+    var toggleButton = document.getElementById('toggleButton');
+    var body = document.body;
+
+    if (window.innerWidth >= 1024) {
+        
+        body.style.overflow = 'auto';
+        miAside.classList.add('hidden');
+        overlay.classList.add('hidden');
+        toggleButton.classList.remove('opened');
+        toggleButton.classList.add('closed');
+    }
+});

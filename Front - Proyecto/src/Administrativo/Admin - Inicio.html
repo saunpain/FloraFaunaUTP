@@ -58,7 +58,7 @@
     }
     </style>
 </head>
-<body class="bg-white w-full h-full box-border inicio" onload="ObtenerAdmin()">
+<body class="bg-white w-full h-full box-border inicio" onload="ObtenerAdmin(), ObtenerPublicaciones()">
     <header class="w-full bg-[#276B58] fixed z-[2]">
         <div class="flex items-center justify-between px-4 py-2 ">
             <div class="flex items-center md:ml-4 ">
@@ -180,7 +180,7 @@
             <div class="mt-4 mb-6">
                 <hr>
                 <div class="flex mt-6">
-                    <a href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
+                    <a onclick="CerrarSesion()" href="/Front - Proyecto/src/Flora y Fauna UTP - inicio.html">Cerrar Sesión</a>
                     <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Sign_out_squre_light.png?raw=true" class="ml-3" alt="Sing out">
                 </div>
             </div>
@@ -268,7 +268,7 @@
                 </div>
             </div>
         </section>                                                                                                                 <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
-        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-32 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
+        <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-28 md:top-24 md:py-8 lg:top-[130px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
             
         </section>
         <div class="relative">
