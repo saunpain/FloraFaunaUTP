@@ -31,6 +31,11 @@ public class FaunaController {
         return new FaunaDb().ActualizarNombreCFauna(f);
     }
 
+    @PutMapping("/faunaDescripcion")
+    public int ActualizarDescripcion(@RequestBody Fauna f) {
+        return new FaunaDb().ActualizarDescripcion(f);
+    }
+
     @DeleteMapping("/fauna/{id}")
     public int Delete(@PathVariable("id") int id){
         return new FaunaDb().EliminarFauna(id);

@@ -282,3 +282,5 @@ WHERE nombre_planta = 'Guayacán'
 
 SELECT * FROM Biologo
 SELECT * FROM Solicitud
+SELECT * FROM Fauna
+SELECT * FROM Flora

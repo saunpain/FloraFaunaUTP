@@ -267,91 +267,139 @@ function cancelarEdicion(id) {
 
 //************INICIO DE LAS FUNCIONES PARA EDITAR DESCRIPCION*******************
 
-function detectarEditarDescripcion(boton){
-    // Obtener el elemento padre con la clase 'pub'
-    var divPub = boton.closest('.pub');
+function editarDescripcion(id){
 
-    // Verificar si se encontró un elemento con la clase 'pub'
-    if (divPub) {
-        // Ejecutar la función editarNombreC con el div pub como argumento
-        editarDescripcion(divPub);
-    } else {
-        console.log("No se encontró el elemento 'pub' asociado al botón.");
-    }
-}
-
-function editarDescripcion(divPub){
-
-    var contenedor = divPub.querySelector('.contenedorEdicion');
-    var descripcion = divPub.querySelector('.descripcion');
-    var descripcionInput = divPub.querySelector('.descripcionInput');
-    var btnEnviar = divPub.querySelector('.guardar');
-    var btnCancel = divPub.querySelector('.cancelar');
+  var contenedor = document.getElementById('contenedorEdicionD-' + id)
+  var descripcion = document.getElementById('descripcion-'+ id);
+  var descripcionInput = document.getElementById('inputD-'+ id);
+  var btnEnviar = document.getElementById('guardarD-'+ id);
+  var btnCancel = document.getElementById('cancelarD-'+ id);
   
     // Guardar el valor original en el atributo data-original-value
     descripcionInput.setAttribute('data-original-value', descripcion.innerText);
   
     contenedor.classList.remove('hidden');
-    divPub.classList.remove('hidden');
     descripcion.style.display = "none";
+    descripcionInput.classList.remove('hidden');
     descripcionInput.style.display = "block";
     descripcionInput.value = descripcion.innerText;
     descripcionInput.removeAttribute("disabled"); // Habilitar el input
     btnEnviar.style.display = "inline-block";
     btnCancel.style.display = "inline-block";
-  
     descripcionInput.focus();
   
 }
 
-function detectarGuardarDescripcion(boton) {
-  // Obtener el elemento padre con la clase 'pub'
-  var divPub = boton.closest('.pub');
+/*Funcion que permite seleccionar el boton guardar al que se le esta haciendo hover*/ 
+/*GUARDAR*/
 
-  // Verificar si se encontró un elemento con la clase 'pub'
-  if (divPub) {
-      // Ejecutar la función editarNombreC con el div pub como argumento
-      guardarDescripcion(divPub);
-  } else {
-      console.log("No se encontró el elemento 'pub' asociado al botón.");
-  }
+function mouseenterGuardarD(id){
+  boton = document.getElementById("cambioGD-"+ id);
+  boton.classList.remove("hidden");
 }
 
-function guardarDescripcion(divPub) {
-  var descripcion = divPub.querySelector(".descripcion");
-  var descripcionInput = divPub.querySelector(".descripcionInput");
-  var btnEnviar = divPub.querySelector(".guardar");
-  var btnCancel = divPub.querySelector(".cancelar");
+function mouseleaveGuardarD(id) {
+boton = document.getElementById('cambioGD-' + id);
+boton.classList.add('hidden');
+}
 
-  descripcion.innerText = descripcionInput.value;
-  descripcion.style.display = "inline-block";
+
+/*Funcion que permite seleccionar el boton cancelar al que se le esta haciendo hover*/ 
+/*CANCELAR*/
+
+function mouseenterCancelarD(id){
+boton = document.getElementById("cambioCD-"+ id);
+boton.classList.remove("hidden");
+}
+
+function mouseleaveCancelarD(id) {
+boton = document.getElementById('cambioCD-' + id);
+boton.classList.add('hidden');
+}
+
+function guardarDescripcion(id) {
+  var descripcionElemento = document.getElementById("descripcion-" + id);
+  var descripcionInput = document.getElementById("inputD-" + id);
+  var btnEnviar = document.getElementById("guardarD-" + id);
+  var btnCancel = document.getElementById("cancelarD-" + id);
+  var botonVisto = document.getElementById("cambioGD-" + id);
+
+  var nuevaDescripcion = descripcionInput.value;
+
+  descripcionElemento.innerText = nuevaDescripcion;
+  descripcionElemento.style.display = "inline-block";
   descripcionInput.style.display = "none";
   descripcionInput.setAttribute("disabled", true); // Deshabilitar el input
   btnEnviar.style.display = "none";
   btnCancel.style.display = "none";
+  botonVisto.classList.add("hidden");
 
   // Eliminar el atributo data-original-value
   descripcionInput.removeAttribute('data-original-value');
+  DiferenciarFFD(id);
 }
 
-function detectarCancelarDescripcion(boton) {
-  // Obtener el elemento padre con la clase 'pub'
-  var divPub = boton.closest('.pub');
-
-  // Verificar si se encontró un elemento con la clase 'pub'
-  if (divPub) {
-      // Ejecutar la función editarNombreC con el div pub como argumento
-      cancelarDescripcion(divPub);
-  } else {
-      console.log("No se encontró el elemento 'pub' asociado al botón.");
-  }
+function DiferenciarFFD(id){
+  fetch(baseUrl + '/vista/all').then(res => {
+    res.json().then(json => {
+      publicaciones = json;
+      publicaciones.forEach((publicacion) => {
+      if(publicacion.nombre_planta !== null && publicacion.nombre_planta !== "" && publicacion.id_publicacion == id){
+          ActualizarDescripcionFlora(id);
+      }
+      if(publicacion.nombre_animal !== null && publicacion.nombre_animal !== "" && publicacion.id_publicacion == id){
+          ActualizarDescripcionFauna(id);
+      }
+      })
+    }
+    );
+  });
 }
 
-function cancelarDescripcion(divPub) {
-  var descripcion = divPub.querySelector(".descripcion");
-  var descripcionInput = divPub.querySelector(".descripcionInput");
-  var btnEnviar = divPub.querySelector(".guardar");
-  var btnCancel = divPub.querySelector(".cancelar");
+function ActualizarDescripcionFauna(id) {
+  let data = {
+    nombre_animal: document.getElementById("animal-" + id).textContent,
+    descripcion_cientifica_fauna: document.getElementById("inputD-" + id).value
+  };
+
+  console.log('Datos a enviar:', data);
+
+  fetch(baseUrl + "/faunaDescripcion", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).catch(error => {
+    console.log("No se ha podido completar su solicitud.", error);
+  });
+}
+
+function ActualizarDescripcionFlora(id) {
+  let data = {
+    nombre_planta: document.getElementById("planta-" + id).textContent,
+    descripcion_cientifica_flora: document.getElementById("inputD-" + id).value
+  };
+
+  console.log('Datos a enviar:', data);
+
+  fetch(baseUrl + "/floraDescripcion", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).catch(error => {
+    console.log("No se ha podido completar su solicitud.", error);
+  });
+}
+
+function cancelarDescripcion(id) {
+  var descripcionElemento = document.getElementById("descripcion-" + id);
+  var descripcionInput = document.getElementById("inputD-" + id);
+  var btnEnviar = document.getElementById("guardarD-" + id);
+  var btnCancel = document.getElementById("cancelarD-" + id);
+  var botonEquis = document.getElementById("cambioCD-" + id);
 
   // Obtener el valor original del atributo data-original-value
   var originalValue = descripcionInput.getAttribute('data-original-value');
@@ -359,11 +407,12 @@ function cancelarDescripcion(divPub) {
   // Restaurar el valor original
   descripcionInput.value = originalValue;
 
-  descripcion.style.display = "inline-block";
+  descripcionElemento.style.display = "inline-block";
   descripcionInput.style.display = "none";
   descripcionInput.setAttribute("disabled", true); // Deshabilitar el input
   btnEnviar.style.display = "none";
   btnCancel.style.display = "none";
+  botonEquis.classList.add("hidden");
 
   // Eliminar el atributo data-original-value
   descripcionInput.removeAttribute('data-original-value');
