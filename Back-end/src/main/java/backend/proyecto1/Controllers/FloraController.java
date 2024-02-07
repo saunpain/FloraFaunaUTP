@@ -31,9 +31,14 @@ public class FloraController {
         return new FloraDb().ActualizarFlora(f);
     }
 
-        @PutMapping("/floraNombreC")
+    @PutMapping("/floraNombreC")
     public int ActualizarNombreCFlora(@RequestBody Flora f) {
         return new FloraDb().ActualizarNombreCFlora(f);
+    }
+
+    @PutMapping("/floraDescripcion")
+    public int ActualizarDescripcion(@RequestBody Flora f) {
+        return new FloraDb().ActualizarDescripcion(f);
     }
 
     @DeleteMapping("/flora/{id}")

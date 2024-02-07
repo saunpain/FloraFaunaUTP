@@ -149,4 +149,25 @@ public class FloraDb {
         return resultado;
     }
 
+        public int ActualizarDescripcion(Flora f){
+        int resultado = 0;
+
+        System.out.println(f.getDescripcion_cientifica_flora());
+        System.out.println(f.getNombre_planta());
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "UPDATE Flora SET descripcion_cientifica_flora = '"
+            + f.getDescripcion_cientifica_flora() + "' WHERE nombre_planta = '"
+            + f.getNombre_planta() + "'";
+            
+            resultado = stmt.executeUpdate(query);
+            stmt.close();
+            return resultado;
+        }catch (Exception e){
+
+        }
+        return resultado;
+    }
+
 }

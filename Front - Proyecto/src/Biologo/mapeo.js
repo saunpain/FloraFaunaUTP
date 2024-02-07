@@ -25,11 +25,7 @@ function ObtenerComentarios() {
           throw error;
       });
 }
-/*
-function ImprimirCrearComentario() {
-  const contenedor = document.getElementById("AgregarComent");
-  contenedor.innerHTML = MapAgregarComentario();
-} */
+
 
 function ObtenerFlora(){
   fetch(baseUrl + "/vista_flora").then( res => {
@@ -274,7 +270,8 @@ function MapearPublicacionesFlora(publicacion) {
     </a>
     <div class="flex justify-around items-center">
         <button onclick="MostrarPub('${publicacion.id_publicacion}')" class="w-6 lg:w-6 lg:h-6 flex mr-5">
-          <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
+          <img src="https://github.com/saunpain/FloraFauna
+          UTP/blob/main/img/chat-alt-2.png?raw=true" class="md:h-6 md:w-6 h-5 ml-2">
         </button>
         <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_flora}</span></span>
         <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>

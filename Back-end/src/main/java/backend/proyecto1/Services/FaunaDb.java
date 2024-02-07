@@ -154,4 +154,25 @@ public class FaunaDb {
         return resultado;
     }
 
+    public int ActualizarDescripcion(Fauna f){
+        int resultado = 0;
+
+        System.out.println(f.getDescripcion_cientifica_fauna());
+        System.out.println(f.getNombre_animal());
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "UPDATE Fauna SET descripcion_cientifica_fauna = '"
+            + f.getDescripcion_cientifica_fauna() + "' WHERE nombre_animal = '"
+            + f.getNombre_animal() + "'";
+            
+            resultado = stmt.executeUpdate(query);
+            stmt.close();
+            return resultado;
+        }catch (Exception e){
+
+        }
+        return resultado;
+    }
+
 }

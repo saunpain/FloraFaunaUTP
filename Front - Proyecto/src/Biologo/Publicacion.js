@@ -97,34 +97,34 @@ function MapearPublicacionFlora(publicacion){
     </div>
     <div class="flex items-center justify-between ml-2 mr-8">
 
-        <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_flora}</span></span>
-        <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
-        <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-5">Planta: ${publicacion.nombre_planta}</span>
+    <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_flora}</span></span>
+    <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
+    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-5">Animal:<span id="animal-${publicacion.id_publicacion}">${publicacion.nombre_planta}</span></span>
 
-        <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
-            <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
-                <span id="cambioG-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
-            </button>
-            <button onmouseenter="mouseenterCancelar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelar('${publicacion.id_publicacion}')" onclick="cancelarEdicion('${publicacion.id_publicacion}')" id="cancelar-${publicacion.id_publicacion}" class="relative ml-4">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
-                <span id="cambioC-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
+    <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
+        <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
+            <span id="cambioG-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
+        </button>
+        <button onmouseenter="mouseenterCancelar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelar('${publicacion.id_publicacion}')" onclick="cancelarEdicion('${publicacion.id_publicacion}')" id="cancelar-${publicacion.id_publicacion}" class="relative ml-4">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
+            <span id="cambioC-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
+        </button>
+    </div>
+
+    <div class="relative inline-block ml-2">
+        <button id="boton-principal" class="top-1 right-3 relative ">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
+        </button>
+        <div class="absolute -mt-3 -ml-44">
+            <button onclick="editarNombreC('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
+                <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
+                    <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
+                    <p>Editar Nombre Científico</p>
+                </a>
             </button>
         </div>
-
-        <div class="relative inline-block ml-2">
-            <button id="boton-principal" class="top-1 right-3 relative ">
-                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
-            </button>
-            <div class="absolute -mt-3 -ml-44">
-                <button onclick="editarNombreC('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
-                    <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
-                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                        <p>Editar Nombre Científico</p>
-                    </a>
-                </button>
-            </div>
-        </div>
+    </div>
         
     </div>
     
@@ -136,7 +136,7 @@ function MapearPublicacionFlora(publicacion){
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
             </button>
             <div class="absolute -mt-3 -ml-44">
-                <button onclick="editarDescrip('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
+                <button onclick="editarDescripcion('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
                     <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
                         <p>Editar Descripción</p>
@@ -144,7 +144,19 @@ function MapearPublicacionFlora(publicacion){
                 </button>
             </div>
         </div>
-        <p class="textito text-justify text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> ${publicacion.descripcion_cientifica_flora}</p>
+        <p id="descripcion-${publicacion.id_publicacion}" class="textito text-justify text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> ${publicacion.descripcion_cientifica_flora}</p>
+        <textarea id="inputD-${publicacion.id_publicacion}" type="text" class="hidden  h-[9rem] w-full mt-3 ml-2"></textarea>
+
+        <div id="contenedorEdicionD-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
+        <button onmouseenter="mouseenterGuardarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardarD('${publicacion.id_publicacion}')" onclick="guardarDescripcion('${publicacion.id_publicacion}')" id="guardarD-${publicacion.id_publicacion}" class="relative">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
+            <span id="cambioGD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
+        </button>
+        <button onmouseenter="mouseenterCancelarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelarD('${publicacion.id_publicacion}')" onclick="cancelarDescripcion('${publicacion.id_publicacion}')" id="cancelarD-${publicacion.id_publicacion}" class="relative ml-4">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
+            <span id="cambioCD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
+        </button>
+        </div>
     </div>`
 }
 
@@ -185,7 +197,7 @@ function MapearPublicacionFauna(publicacion){
 
     <span class="textito font-bold text-[#241111] md:ml-8 ml-9 xl:text-sm md:text-[14px] lg:text-[10px] text-[10px] mt-[2px]">Nombre Científico:<span id="nombreC-${publicacion.id_publicacion}">${publicacion.nombre_cientifico_fauna}</span></span>
     <input id="input-${publicacion.id_publicacion}" type="text" class="hidden h-6 w-80 mt-3 ml-2"/>
-    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-5">Animal: ${publicacion.nombre_animal}</span>
+    <span class="textito font-bold text-[#241111] ml-8 lg:text-[10px] xl:text-sm md:text-[14px] text-[10px] mt-[2px] lg:mr-0 xl:mr-10 mr-5">Animal:<span id="animal-${publicacion.id_publicacion}">${publicacion.nombre_animal}</span></span>
 
     <div id="contenedorEdicion-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
         <button onmouseenter="mouseenterGuardar('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardar('${publicacion.id_publicacion}')" onclick="guardarCambios('${publicacion.id_publicacion}')" id="guardar-${publicacion.id_publicacion}" class="relative">
@@ -222,7 +234,7 @@ function MapearPublicacionFauna(publicacion){
                 <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true">
             </button>
             <div class="absolute -mt-3 -ml-44">
-                <button onclick="editarDescrip('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
+                <button onclick="editarDescripcion('${publicacion.id_publicacion}')" class="opciones invisible block w-[13rem]">
                     <a class="flex bg-white px-2 py-1 text-sm border border-black text-left hover:bg-gray-200">
                         <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
                         <p>Editar Descripción</p>
@@ -230,7 +242,19 @@ function MapearPublicacionFauna(publicacion){
                 </button>
             </div>
         </div>
-        <p class="textito text-justify text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> ${publicacion.descripcion_cientifica_fauna}</p>
+        <p id="descripcion-${publicacion.id_publicacion}" class="textito text-justify text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> ${publicacion.descripcion_cientifica_fauna}</p>
+        <textarea id="inputD-${publicacion.id_publicacion}" type="text" class="hidden  h-[9rem] w-full mt-3 ml-2"></textarea>
+
+        <div id="contenedorEdicionD-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
+        <button onmouseenter="mouseenterGuardarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardarD('${publicacion.id_publicacion}')" onclick="guardarDescripcion('${publicacion.id_publicacion}')" id="guardarD-${publicacion.id_publicacion}" class="relative">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
+            <span id="cambioGD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
+        </button>
+        <button onmouseenter="mouseenterCancelarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelarD('${publicacion.id_publicacion}')" onclick="cancelarDescripcion('${publicacion.id_publicacion}')" id="cancelarD-${publicacion.id_publicacion}" class="relative ml-4">
+            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
+            <span id="cambioCD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
+        </button>
+        </div>
     </div>`
 }
 
