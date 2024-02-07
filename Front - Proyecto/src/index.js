@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function mostrarInicioS() {
+function mostrarInicioS(event) {
+  event.preventDefault();
   document.body.style.overflow = 'hidden';
 
   var overlay = document.getElementById('login');

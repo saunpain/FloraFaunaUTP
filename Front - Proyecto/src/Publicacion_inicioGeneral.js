@@ -137,5 +137,5 @@ function MapAgregarComentario() {
 
 
 function AgregarComentario() {
-    mostrarInicioS();
+    mostrarInicioS(event);
 }

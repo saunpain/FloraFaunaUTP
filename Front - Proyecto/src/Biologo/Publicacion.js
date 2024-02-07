@@ -130,8 +130,8 @@ function MapearPublicacionFlora(publicacion){
         </div>
     </div>
     
-    <hr class="mt-2 xl:ml-10 xl:mr-10 lg:ml-0 lg:mr-0">
-    <div class="mt-2 mb-2 xl:ml-10 xl:mr-10 md:ml-0">
+    <hr class="mt-4 xl:ml-10 xl:mr-10 lg:ml-0 lg:mr-0">
+    <div class="mt-4 mb-2 xl:ml-10 xl:mr-10 md:ml-0">
         <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">Descripción científica</span>
         <div class="relative inline-block float-right">
             <button id="boton-principal" class="-mt-3">
@@ -147,14 +147,14 @@ function MapearPublicacionFlora(publicacion){
             </div>
         </div>
         <p id="descripcion-${publicacion.id_publicacion}" class="textito text-justify text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> ${publicacion.descripcion_cientifica_flora}</p>
-        <textarea id="inputD-${publicacion.id_publicacion}" type="text" class="hidden  h-[9rem] w-full mt-3 ml-2"></textarea>
+        <textarea id="inputD-${publicacion.id_publicacion}" type="text" class="hidden h-20 w-full mt-3 ml-2"></textarea>
 
-        <div id="contenedorEdicionD-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
+        <div id="contenedorEdicionD-${publicacion.id_publicacion}" class="flex hidden absolute z-10">
         <button onmouseenter="mouseenterGuardarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardarD('${publicacion.id_publicacion}')" onclick="guardarDescripcion('${publicacion.id_publicacion}')" id="guardarD-${publicacion.id_publicacion}" class="relative">
             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
             <span id="cambioGD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
         </button>
-        <button onmouseenter="mouseenterCancelarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelarD('${publicacion.id_publicacion}')" onclick="cancelarDescripcion('${publicacion.id_publicacion}')" id="cancelarD-${publicacion.id_publicacion}" class="relative ml-4">
+        <button onmouseenter="mouseenterCancelarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelarD('${publicacion.id_publicacion}')" onclick="cancelarDescripcion('${publicacion.id_publicacion}')" id="cancelarD-${publicacion.id_publicacion}" class="relative ml-2">
             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
             <span id="cambioCD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
         </button>
@@ -233,7 +233,7 @@ function MapearPublicacionFauna(publicacion){
     </div>
     
     <hr class="mt-2 xl:ml-10 xl:mr-10 lg:ml-0 lg:mr-0">
-    <div class="mt-2 mb-2 xl:ml-10 xl:mr-10 md:ml-0">
+    <div class="mt-4 mb-2 xl:ml-10 xl:mr-10 md:ml-0">
         <span class="textito font-bold text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">Descripción científica</span>
         <div class="relative inline-block float-right">
             <button id="boton-principal" class="-mt-3">
@@ -249,14 +249,14 @@ function MapearPublicacionFauna(publicacion){
             </div>
         </div>
         <p id="descripcion-${publicacion.id_publicacion}" class="textito text-justify text-[#241111] xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2"> ${publicacion.descripcion_cientifica_fauna}</p>
-        <textarea id="inputD-${publicacion.id_publicacion}" type="text" class="hidden  h-[9rem] w-full mt-3 ml-2"></textarea>
+        <textarea id="inputD-${publicacion.id_publicacion}" type="text" class="hidden  h-20 w-full mt-3 ml-2"></textarea>
 
-        <div id="contenedorEdicionD-${publicacion.id_publicacion}" class="flex hidden absolute mt-10">
+        <div id="contenedorEdicionD-${publicacion.id_publicacion}" class="flex hidden absolute z-10">
         <button onmouseenter="mouseenterGuardarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveGuardarD('${publicacion.id_publicacion}')" onclick="guardarDescripcion('${publicacion.id_publicacion}')" id="guardarD-${publicacion.id_publicacion}" class="relative">
             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar" class="w-6 h-6">
             <span id="cambioGD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded right-3 w-[8rem] p-1 text-sm">Guardar cambios</span>
         </button>
-        <button onmouseenter="mouseenterCancelarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelarD('${publicacion.id_publicacion}')" onclick="cancelarDescripcion('${publicacion.id_publicacion}')" id="cancelarD-${publicacion.id_publicacion}" class="relative ml-4">
+        <button onmouseenter="mouseenterCancelarD('${publicacion.id_publicacion}')" onmouseleave="mouseleaveCancelarD('${publicacion.id_publicacion}')" onclick="cancelarDescripcion('${publicacion.id_publicacion}')" id="cancelarD-${publicacion.id_publicacion}" class="relative ml-2">
             <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar" class="w-6 h-6">
             <span id="cambioCD-${publicacion.id_publicacion}" class="hidden absolute bg-white border rounded p-1 text-sm">Cancelar</span>
         </button>
@@ -287,63 +287,12 @@ function MapearPublicacionSinFauna(publicacion){
 }
 
 function MapearComentarios(comentario){
-return `<div id="${comentario.id_comentario}" class= "w-full">
-            <hr class="mt-2 md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10">
+return `<div id="${comentario.id_comentario}" class= "w-full mt-2">
+            <hr class="mt-2 mb-2 md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10">
             <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${comentario.nombre_estudiante}</span>
             <span class="textito text-gray-400 float-right md:ml-10 lg:mr-0 md:mr-6 xl:ml-10 xl:mr-10 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">${comentario.fecha_comentario}</span>
             <p class="textito text-justify text-[#241111] md:ml-10 lg:ml-0 ml-6 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[13px] mt-2">${comentario.comentario}</p>
         </div>`
-}
-function MapearComentarioUsuario(comentario){
-    return `<div id=${comentario.id_comentario} class="w-full">
-            <hr class="mt-2 md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10">
-                <div class="mt-2 md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10">
-                    <div class="">
-                        <span class="textito font-semibold ml-0 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">Comentaste: </span>
-                        <span id="fecha-${comentario.id_comentario}" class="textito text-gray-400 ml-10 md:mr-6 xl:text-sm lg:text-[12px] md:text-[14px] text-[12px] mt-1">${comentario.fecha_comentario}</span>
-                        <div class="relative inline-block float-right" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false"> <!--Menú desplegable implementando lógica de Framework Alpine.js-->
-                            <button class="-mt-3" @click="open = !open">
-                                <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/edit%20pub.png?raw=true" alt="">
-                            </button>
-                            <div class="absolute bg-white border rounded -mt-3 -ml-36" x-show="open" @click.away="open = false">
-                                <button class="block w-[11rem]" onclick="editarTitComentario('${comentario.id_comentario}')">
-                                    <a class="flex px-2 py-1 text-sm">
-                                        <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Edit.png?raw=true" alt="" class="h-4 w-4 ml-2 mr-2">
-                                        <p>Editar comentario</p>
-                                    </a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <span id="comentarioC-${comentario.id_comentario}" class="mt-2">${comentario.comentario}</span>
-                    <input type="text" id="inputC-${comentario.id_comentario}" class="hidden w-full mb-2" disabled/>
-                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button id="guardarC-${comentario.id_comentario}" class="hidden focus:outline-none" onclick="guardarCambioComentario('${comentario.id_comentario}')">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/Shi_Color.png?raw=true" alt="Enviar">
-                        </button>
-                        <div class="absolute bg-white border rounded -ml-5 w-[8rem] p-1" x-show="open" @click.away="open = false">
-                            <p>Guardar cambios</p>
-                        </div>
-                    </div>
-                    <div class="relative inline-block" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-                        <button id="cancelarC-${comentario.id_comentario}" class="hidden focus:outline-none" onclick="cancelarEdicionComentario('${comentario.id_comentario}')">
-                            <img src="https://github.com/saunpain/FloraFaunaUTP/blob/main/img/%C3%91o_Color.png?raw=true" alt="Cancelar">
-                        </button>
-                        <div class="absolute bg-white border rounded p-1" x-show="open" @click.away="open = false">
-                            <p>Cancelar</p>
-                        </div>
-                    </div>
-                </div>`
-    }
-
-function MapAgregarComentario() {
-    return `<div class="mt-2 mb-2 w-full">
-        <hr class="mt-2 ml-10 mr-10 mb-4">
-        <textarea id="text-coment" class="w-full h-28 shadow-md p-2 border rounded mb-4 focus:outline-none" placeholder="Escribe tu comentario..."></textarea>
-        <button onclick="AgregarComentario()" class="bg-[#276B58] text-white py-2 px-4 rounded hover:bg-[#2e5c5c] focus:outline-none focus:shadow-outline-blue active:bg-[#4b927e]">
-            Publicar comentario
-        </button>
-    </div>`;
 }
 
 

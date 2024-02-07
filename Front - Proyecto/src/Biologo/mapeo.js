@@ -106,7 +106,7 @@ function ImprimirPublicaciones(publicaciones) {
 }
 
 function MapearPublicacionesFauna(publicacion) {
-  return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
+  return `<div id="${publicacion.id_publicacion}" class="bg-white md:p-4 p-6 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
   <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">
     <div class="mt-2">
         <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.nombre_estudiante}</span>
@@ -186,7 +186,7 @@ function MapearPublicacionesSinFauna(publicacion) {
 }
 
 function MapearPublicacionesFlora(publicacion) {
-    return `<div id="${publicacion.id_publicacion}" class="bg-white p-4 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
+    return `<div id="${publicacion.id_publicacion}" class="bg-white md:p-4 p-6 sm:rounded-lg border-2 border-gray-300 mt-7 w-screen sm:w-9/12 lg:w-5/6">
     <a class="cursor-pointer" onclick="MostrarPub(${publicacion.id_publicacion})">
       <div class="mt-2">
           <span class="textito font-bold text-[#241111] md:ml-10 lg:ml-0 xl:ml-10 xl:mr-10 xl:text-sm md:text-[14px] lg:text-[12px] text-[12px]">${publicacion.nombre_estudiante}</span>
