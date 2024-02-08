@@ -284,3 +284,8 @@ SELECT * FROM Biologo
 SELECT * FROM Solicitud
 SELECT * FROM Fauna
 SELECT * FROM Flora
+SELECT * FROM Comentario
+SELECT * FROM Publicaciones
+
+CALL AgregarSolicitud('asdasd', 'prueba', 'correo@gmail.com', 'holaaa', '8007')
+CALL EliminarSolicitud('1005')
