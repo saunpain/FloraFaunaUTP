@@ -32,11 +32,11 @@ function MapearSolicitud(usuario) {
     <form enctype="multipart/form-data">
         <div class="flex mt-5 items-center justify-around">
             <img src="${usuario.perfil_biologo}" alt="foto de perfil" class="rounded-full w-16 h-16">
-            <p>${usuario.nombre_biologo}</p>
+            <p id="nombre">${usuario.nombre_biologo}</p>
         </div>
         
         <p class="mt-6">Correo</p>
-        <p class="mt-2 underline">${usuario.correo_biologo}</p>
+        <p id="correo" class="mt-2 underline">${usuario.correo_biologo}</p>
        
     
         <p class="mt-2">Ingrese el título</p>
@@ -46,13 +46,15 @@ function MapearSolicitud(usuario) {
         </div>
 
         <p class="mt-2">Adjunte su archivo pdf</p>
-        <input id="archivoInput" name="file" class="w-80 mt-4 block" type="file" accept=".pdf">
-        <button id="botonSubir" onclick="subirArchivo()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
+        <input id="archivoInput" name="file" class="w-80 mt-4 block" type="file">
+        <button id="botonSubir" onclick="subirSolicitud()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
     </div>
     </form>
+    <div id="id_biologo" class="hidden">${usuario.id_biologo}</div>
     
 </div> `;
-}
+}//El último div colocado en el mapeo es un div auxiliar que ayuda a enviar la solicitud, SIEMPRE debe ser hidden
+
 
 /***************FUNCIONES PARA LA SOLICITUD DE VERIFICACION*******************************/ 
 
@@ -88,53 +90,17 @@ function mostrarVerificacion() {
   });
   
   /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
-  
-  async function subirArchivo() {
-    const tituloInput = document.getElementById('tituloInput');
-    const archivoInput = document.getElementById('archivoInput');
-    const botonSubir = document.getElementById('botonSubir');
-  
-    botonSubir.disabled = true;
-  
-    const formData = new FormData();
-    formData.append('file', archivoInput.files[0]);
-    formData.append('titulo', tituloInput.value);
-  
-    const backendURL = 'http://localhost:8080/upload';
-  
-    try {
-      const response = await fetch(backendURL, {
-        method: 'POST',
-        body: formData,
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const message = await response.text();
-      console.log(message);
-      alert("La solicitud fue enviada.");
-    } catch (error) {
-      console.error('Error:', error);
-      alert("Error, no se pudo enviar la solicitud.");
-    } finally {
-      botonSubir.disabled = false;
-    }
-  }
-  
-/*
-  function guardarArchivo() {
-    const apiKey = "a8d6381e4d2a45ac047ad919c1de17a2";
-    const fileInput = document.getElementById('imagen');
+
+function subirSolicitud() {
+    const apiKey = "80b2ba3d040f866ef2a220b5b7b96ebc";
+    const fileInput = document.getElementById('archivoInput');
     const file = fileInput.files[0];
 
     const formData = new FormData();
     formData.append('key', apiKey);
-    formData.append('image', file);
+    formData.append('archivo', file);
 
-    const apiUrl = 'https://api.imgbb.com/1/upload';
-
+    const apiUrl = 'https://api.imgbb.com/1/upload"';
 
     fetch(apiUrl, {
         method: 'POST',
@@ -142,128 +108,44 @@ function mostrarVerificacion() {
     })
     .then(response => response.json())
     .then(data => {
-        const img_pub = data.data.url;
+        const archivo = data.data.url;
 
-        const titulo = document.getElementById("titulo_pub").value;
-        const nombre = document.getElementById("nombre").value;
-        const nombre_cientifico = document.getElementById("n_cientifico").value;
-        const lugar = document.getElementById("lugar").value;
-        const categoria = document.getElementById("categoria").value;
-        const sub_cat = document.getElementById("subcategoria").value;
-        const descripcion = document.getElementById("descrip_cientifica").value;
-        console.log("Datos a enviar al servidor:", { img_pub, titulo, nombre, nombre_cientifico, lugar, categoria, sub_cat, descripcion });
+        const nombre = document.getElementById('nombre').value;
+        const correo = document.getElementById('correo').value;
+        const titulo = document.getElementById('tituloInput').value;
+        const id_biologo = document.getElementById('id_biologo').value;
+        console.log("Datos a enviar al servidor:", archivo, nombre, correo, titulo, id_biologo);
 
-        if(titulo === "" || nombre === "" || nombre_cientifico === "" || lugar === "Seleccione un lugar" || categoria === "Seleccione categoría" || sub_cat === "Seleccione subcategoría" || descripcion === ""){
-            Swal.fire({
-                title: "Debe completar todos los campos para proceder con el registro.",
-                confirmButtonText: "OK",
-                confirmButtonColor: "#276B58",
-            });
-        }
-        else{
-            if (categoria === "flora") {
-                fetch(baseUrl + '/flora/' + nombre)
-                    .then(res => res.json())
-                    .then(json => {
-                        flora = json;
-                        console.log("Respuesta de la API de flora:", flora);
-                        if (flora) {
-                            Swal.fire({
-                                title: "La flora que intenta publicar ya ha sido registrada.",
-                                confirmButtonText: "OK",
-                                confirmButtonColor: "#276B58",
-                            });
-                        }
-                    })
-                .catch(error => {
-                    AgregarFlora(nombre, nombre_cientifico, sub_cat, descripcion, img_pub, lugar, titulo,)
-
-                });
-            
-            }
-            else{
-                fetch(baseUrl + '/fauna/' + nombre)
-                    .then(res => res.json())
-                    .then(json => {
-                        flora = json;
-                        console.log("Respuesta de la API de fauna:", fauna);
-                        if (fauna) {
-                            Swal.fire({
-                                title: "La fauna que intenta publicar ya ha sido registrada.",
-                                confirmButtonText: "OK",
-                                confirmButtonColor: "#276B58",
-                            });
-                        }
-                    })
-                .catch(error => {
-                    console.log("datos a agregar", nombre, lugar, titulo, nombre_cientifico, descripcion, sub_cat, img_pub)
-                    AgregarFauna(nombre, nombre_cientifico, sub_cat, descripcion, img_pub, lugar, titulo,)
-                });
-            }
-        }
-    }).catch(error =>{
-        Swal.fire({
-            title: "Para proceder con el registro debe subir una foto y llenar todos los campos.",
-            confirmButtonText: "OK",
-            confirmButtonColor: "#276B58",
+        // Enviar datos del formulario junto con el enlace del archivo al servidor backend
+        fetch(baseUrl + '/solicitud', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                archivo: archivo,
+                nombre: nombre,
+                correo: correo,
+                titulo: titulo,
+                id_biologo: id_biologo,
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Respuesta del servidor backend:', data);
+            // Aquí puedes realizar cualquier otra acción después de recibir la respuesta del backend
+        })
+        .catch(error => {
+            console.error('Error al enviar datos al backend:', error);
+            alert('Error al enviar la solicitud');
         });
+    })
+    .catch(error =>{
+        console.error('Error al subir archivo a ImgBB:', error);
+        alert('Error al enviar la solicitud');
     });
-    
 }
 
-function AgregarFlora(nombre, nombre_cientifico, sub_cat, descripcion, img_pub, lugar, titulo,){
-    const data_flora = {
-        nombre_planta: nombre,
-        nombre_cientifico_flora: nombre_cientifico,
-        categoria_flora: sub_cat,
-        descripcion_cientifica_flora: descripcion,
-        foto_flora: img_pub,
-    };
-    console.log("Datos pa flora ", data_flora)
-    
-    fetch(baseUrl + "/flora", {
-        method: "POST",
-        body: JSON.stringify(data_flora),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        },
-    })
-    .then(res => {
-        console.log(data_flora);
-        if (res.ok) {
-            fetch(baseUrl + '/flora/' + nombre)
-                .then(res => res.json())
-                .then(buscar_Flora => {
-                    const id_flora = buscar_Flora.id_flora;
-                    const data_pub_flora = {
-                        titulo: titulo,
-                        lugar: lugar,
-                        id_flora: id_flora,
-                    };
-                    console.log(data_pub_flora);
-                    fetch(baseUrl + "/publicacion/flora", {
-                        method: "POST",
-                        body: JSON.stringify(data_pub_flora),
-                        headers: {
-                            "Content-type": "application/json; charset=UTF-8"
-                        },
-                    }).then(res => {
-                        if (!res.ok) {
-                            throw new Error('Error en solicitud POST');
-                        }
-                        console.log("Insercion de publicacion flora completada");
-                        var crearPub = document.getElementById('publicar');
-                        crearPub.style.display = 'none';
-                        BuscarPublicacionFlora(data_pub_flora.id_flora)
-                    })
-            }).catch(error => {
-                Swal.fire({
-                    title: "La flora que intenta publicar ya ha sido registrada.",
-                    confirmButtonText: "OK",
-                    confirmButtonColor: "#276B58",
-                });
-            });
-        }
-    })
-}
-*/
+
+
+

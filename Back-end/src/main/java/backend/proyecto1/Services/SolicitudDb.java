@@ -29,8 +29,10 @@ public class SolicitudDb {
                 Solicitud s =  new Solicitud(
                     rs.getInt("id_solicitud"),
                     rs.getString("archivo"),
-                    rs.getInt("id_biologo"),
-                    rs.getString("titulo")
+                    rs.getString("usuario"),
+                    rs.getString("correo"),
+                    rs.getString("titulo"),
+                    rs.getInt("id_biologo")
                 );
 
                 solicitudes.add(s);
@@ -47,12 +49,20 @@ public class SolicitudDb {
     public int GuardarSolicitud(Solicitud s){
         int resultado = 0;
 
+        System.out.println(s.getArchivo());
+        System.out.println(s.getUsuario());
+        System.out.println(s.getCorreo());
+        System.out.println(s.getTitulo());
+        System.out.println(s.getId_biologo());
+
         try{
             Statement stmt = cn.createStatement();
             String query = "Call AgregarSolicitud('"
                 + s.getArchivo() + "','"
-                + s.getId_biologo() + "','"
-                + s.getTitulo() + "')";
+                + s.getUsuario() + "','"
+                + s.getCorreo() + "','"
+                + s.getTitulo() + "','"
+                + s.getId_biologo() + "')";
 
             resultado = stmt.executeUpdate(query);
 
@@ -110,8 +120,10 @@ public class SolicitudDb {
                 s =  new Solicitud(
                     rs.getInt("id_solicitud"),
                     rs.getString("archivo"),
-                    rs.getInt("id_biologo"),
-                    rs.getString("titulo")
+                    rs.getString("usuario"),
+                    rs.getString("correo"),
+                    rs.getString("titulo"),
+                    rs.getInt("id_biologo")
                 );
             }
 
