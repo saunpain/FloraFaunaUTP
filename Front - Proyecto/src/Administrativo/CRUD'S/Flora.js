@@ -1,5 +1,5 @@
-
 let flora = []
+let floraFiltro = []
 let usuario_name = localStorage.getItem("nombreusuario");
 document.getElementById('nombreAdmin').textContent = usuario_name;
 let foto = localStorage.getItem("perfil_Admin");
@@ -240,3 +240,23 @@ window.addEventListener('resize', function () {
         toggleButton.classList.add('closed');
     }
 });
+
+function FiltrarFlora() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirFlora(flora)
+    }
+    else{
+        fetch(baseUrl + "/flora/filtrar?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                floraFiltro = json
+                console.log(busqueda)
+                console.log(floraFiltro)
+                ImprimirFlora(floraFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}

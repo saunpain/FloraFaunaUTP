@@ -1,5 +1,6 @@
 
 let admin = []
+let administrativosFiltro = []
 let usuario_name = localStorage.getItem("nombreusuario");
 document.getElementById('nombreAdmin').textContent = usuario_name;
 let foto = localStorage.getItem("perfil_Admin");
@@ -235,3 +236,22 @@ window.addEventListener('resize', function () {
     }
 });
 
+function FiltrarAdministrativos() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirAdministrativos(admin)
+    }
+    else{
+        fetch(baseUrl + "/administrativo/filtrar?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                administrativosFiltro = json
+                console.log(busqueda)
+                console.log(administrativosFiltro)
+                ImprimirAdministrativos(administrativosFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}

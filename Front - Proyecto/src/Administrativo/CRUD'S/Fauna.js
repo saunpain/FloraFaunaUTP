@@ -1,4 +1,5 @@
 let fauna = []
+let faunaFiltro = []
 let usuario_name = localStorage.getItem("nombreusuario");
 document.getElementById('nombreAdmin').textContent = usuario_name;
 let foto = localStorage.getItem("perfil_Admin");
@@ -249,3 +250,23 @@ window.addEventListener('resize', function () {
         toggleButton.classList.add('closed');
     }
 });
+
+function FiltrarFauna() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirFauna(fauna)
+    }
+    else{
+        fetch(baseUrl + "/fauna/filtrar?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                faunaFiltro = json
+                console.log(busqueda)
+                console.log(faunaFiltro)
+                ImprimirFauna(faunaFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}

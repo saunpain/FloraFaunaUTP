@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.proyecto1.Models.Flora;
@@ -50,20 +51,31 @@ public class FloraController {
     public Flora ObtenerFlora(@PathVariable("nombre_planta")String nomb){
         return new FloraDb().ObtenerFlora(nomb);
     }
+
     @GetMapping("/cantidadFlora")
     public int obtenerReporteFlora() {
         return new FloraDb().ReporteFlora();
     }
+
     @GetMapping("/cantidadArboles")
     public int obtenerReporteArboles() {
         return new FloraDb().ReporteArboles();
     }
+
     @GetMapping("/cantidadPlantas")
     public int obtenerReportePlantas() {
         return new FloraDb().ReportePlantas();
     }
+
     @GetMapping("/cantidadHierbas")
     public int obtenerReporteHierbas() {
         return new FloraDb().ReporteHierbas();
+    }
+
+    @GetMapping("/flora/filtrar")
+    public List<Flora> FiltrarFlora(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new FloraDb().FiltrarFlora(busqueda);
     }
 }

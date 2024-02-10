@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.proyecto1.Models.Administrativo;
@@ -49,5 +50,12 @@ public class AdministrativoController {
     @GetMapping("/cantidadAdmin")
     public int obtenerReporteAdmin() {
         return new AdministrativoDb().ReporteAdmin();
+    }
+
+    @GetMapping("/administrativo/filtrar")
+    public List<Administrativo> FiltrarAdministrativo(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new AdministrativoDb().FiltrarAdministrativo(busqueda);
     }
 }

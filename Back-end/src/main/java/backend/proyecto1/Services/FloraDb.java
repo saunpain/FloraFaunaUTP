@@ -241,4 +241,31 @@ public class FloraDb {
         return resultado;
     }
 
+    public List<Flora> FiltrarFlora(String busqueda){
+        List<Flora> flora = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "CALL FiltrarFlora('" + busqueda + "')";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                Flora f = new Flora(
+                    rs.getInt("id_flora"),
+                    rs.getString("nombre_planta"),
+                    rs.getString("nombre_cientifico_flora"),
+                    rs.getString("descripcion_cientifica_flora"),
+                    rs.getString("categoria_flora"),
+                    rs.getString("foto_flora")
+                );
+
+                flora.add(f);
+            }
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return flora;
+    }
 }

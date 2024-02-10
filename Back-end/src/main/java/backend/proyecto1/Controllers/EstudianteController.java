@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.proyecto1.Models.Estudiante;
@@ -43,5 +44,12 @@ public class EstudianteController {
     @GetMapping("/cantidadEstudiante")
     public int obtenerReporteEstudiante() {
         return new EstudianteDb().ReporteEstudiante();
+    }
+
+    @GetMapping("/estudiante/filtrar")
+    public List<Estudiante> FiltrarEstudiantes(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new EstudianteDb().FiltrarEstudiantes(busqueda);
     }
 }

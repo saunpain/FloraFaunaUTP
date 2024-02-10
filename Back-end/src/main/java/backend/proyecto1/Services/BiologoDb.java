@@ -197,4 +197,32 @@ public class BiologoDb {
         return cantidad;
     }
     
+    public List<Biologo> FiltrarBiologos(String busqueda){
+        List<Biologo> biologos = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "CALL FiltrarBiologo('" + busqueda + "')";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                Biologo b = new Biologo(
+                    rs.getInt("id_biologo"),
+                    rs.getString("nombre_biologo"),
+                    rs.getString("correo_biologo"),
+                    rs.getString("contraseña_biologo"),
+                    rs.getString("perfil_biologo"),
+                    rs.getString("estado")
+                );
+
+                biologos.add(b);
+            }
+
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return biologos;
+    }
 }

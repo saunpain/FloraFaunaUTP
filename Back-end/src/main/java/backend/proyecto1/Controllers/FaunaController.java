@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.proyecto1.Models.Fauna;
@@ -55,10 +56,12 @@ public class FaunaController {
     public int obtenerReporteFlora() {
         return new FaunaDb().ReporteFauna();
     }
+
     @GetMapping("/cantidadReptiles")
     public int obtenerReporteReptiles() {
         return new FaunaDb().ReporteReptiles();
     }
+
     @GetMapping("/cantidadArtropodos")
     public int obtenerReporteArtropodos() {
         return new FaunaDb().ReporteArtropodos();
@@ -68,9 +71,16 @@ public class FaunaController {
     public int obtenerReporteAves() {
         return new FaunaDb().ReporteAves();
     }
+    
     @GetMapping("/cantidadMamiferos")
     public int obtenerReporteMamiferos() {
         return new FaunaDb().ReporteMamiferos();
     }
 
+    @GetMapping("/fauna/filtrar")
+    public List<Fauna> FiltrarFauna(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new FaunaDb().FiltrarFauna(busqueda);
+    }
 }

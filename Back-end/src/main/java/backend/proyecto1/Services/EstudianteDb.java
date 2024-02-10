@@ -148,5 +148,31 @@ public class EstudianteDb {
         return cantidad;
     }
     
+    public List<Estudiante> FiltrarEstudiantes(String busqueda){
+        List<Estudiante> estudiantes = new ArrayList<>();
 
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "CALL FiltrarEstudiante('" + busqueda + "')";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                Estudiante e = new Estudiante(
+                    rs.getInt("id_estudiante"),
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("correo_estudiante"),
+                    rs.getString("contraseña_estudiante"),
+                    rs.getString("perfil_estudiante")
+                );
+
+                estudiantes.add(e);
+            }
+
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return estudiantes;
+    }
 }

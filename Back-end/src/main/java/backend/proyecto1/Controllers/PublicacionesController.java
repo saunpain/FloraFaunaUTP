@@ -3,6 +3,7 @@ package backend.proyecto1.Controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
+
 import backend.proyecto1.Models.Publicaciones;
 import backend.proyecto1.Services.PublicacionesDb;
 
@@ -38,16 +39,26 @@ public class PublicacionesController {
     public int Delete(@PathVariable("id") int id){
         return new PublicacionesDb().EliminarPublicaciones(id);
     }
+
     @GetMapping("/publicacion_flora/{id_flora}")
     public Publicaciones ObtenerPubFlora(@PathVariable ("id_flora") int id) {
         return new PublicacionesDb().ObtenerPubFlora(id);
     }
+
     @GetMapping("/publicacion_fauna/{id_fauna}")
     public Publicaciones ObtenerPubFauna(@PathVariable ("id_fauna") int id) {
         return new PublicacionesDb().ObtenerPubFauna(id);
     }
+
      @GetMapping("/cantidadPub")
     public int obtenerReportePub() {
         return new PublicacionesDb().ReportePublicaciones();
+    }
+
+    @GetMapping("/publicacion/filtrar")
+    public List<Publicaciones> FiltrarPublicaciones(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new PublicacionesDb().FiltrarPublicaciones(busqueda);
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import backend.proyecto1.Models.Biologo;
@@ -45,12 +46,21 @@ public class BiologoController {
     public int obtenerReporteBio() {
         return new BiologoDb().ReporteBiologo();
     }
+
     @GetMapping("/cantidadBiologosV")
     public int obtenerReporteBioVerificado() {
         return new BiologoDb().ReporteBiologosVerificados();
     }
+
     @GetMapping("/biologo_id/{id_biologo}")
     public Biologo ObtenerBiologoID(@PathVariable("id_biologo") int id){
         return new BiologoDb().ObtenerBiologoID(id);
+    }
+
+    @GetMapping("/biologo/filtrar")
+    public List<Biologo> FiltrarBiologo(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new BiologoDb().FiltrarBiologos(busqueda);
     }
 }

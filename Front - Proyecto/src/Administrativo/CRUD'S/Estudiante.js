@@ -1,4 +1,5 @@
 let estudiantes = []
+let estudiantesFiltro = []
 let usuario_name = localStorage.getItem("nombreusuario");
 document.getElementById('nombreAdmin').textContent = usuario_name;
 let foto = localStorage.getItem("perfil_Admin");
@@ -245,3 +246,23 @@ window.addEventListener('resize', function () {
         toggleButton.classList.add('closed');
     }
 });
+
+function FiltrarEstudiantes() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirEstudiantes(estudiantes)
+    }
+    else{
+        fetch(baseUrl + "/estudiante/filtrar?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                estudiantesFiltro = json
+                console.log(busqueda)
+                console.log(estudiantesFiltro)
+                ImprimirEstudiantes(estudiantesFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}

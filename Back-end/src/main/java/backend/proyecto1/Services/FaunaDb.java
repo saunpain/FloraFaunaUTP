@@ -264,4 +264,31 @@ public class FaunaDb {
         return resultado;
     }
 
+    public List<Fauna> FiltrarFauna(String busqueda){
+        List<Fauna> fauna = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "CALL FiltrarFauna('" + busqueda + "')";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                Fauna f = new Fauna(
+                    rs.getInt("id_fauna"),
+                    rs.getString("nombre_animal"),
+                    rs.getString("foto_fauna"),
+                    rs.getString("nombre_cientifico_fauna"),
+                    rs.getString("descripcion_cientifica_fauna"),
+                    rs.getString("categoria_fauna")
+                );
+
+                fauna.add(f);
+            }
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return fauna;
+    }
 }

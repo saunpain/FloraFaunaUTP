@@ -1,5 +1,6 @@
 
 let biologos = []
+let biologosFiltro = []
 let usuario_name = localStorage.getItem("nombreusuario");
 document.getElementById('nombreAdmin').textContent = usuario_name;
 let foto = localStorage.getItem("perfil_Admin");
@@ -243,3 +244,23 @@ window.addEventListener('resize', function () {
         toggleButton.classList.add('closed');
     }
 });
+
+function FiltrarBiologos() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirBiologos(biologos)
+    }
+    else{
+        fetch(baseUrl + "/biologo/filtrar?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                biologosFiltro = json
+                console.log(busqueda)
+                console.log(biologosFiltro)
+                ImprimirBiologos(biologosFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}
