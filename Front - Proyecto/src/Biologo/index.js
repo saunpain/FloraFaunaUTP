@@ -30,7 +30,7 @@ function mapearEstado(estado) {
   estadoB.innerHTML = "";
 
   if (estado !== "Aprobado" && estado !== "En espera") {
-    estadoB.insertAdjacentHTML('beforeend', `<button onclick="mostrarVerificacion()" id="mostrarVerificacion" class="text-[#FFFFFF] mr-6 text-sm md:text-lg lg:text-lg xl:text-lg hover:text-[#99E0FF] font-semibold">
+    estadoB.insertAdjacentHTML('beforeend', `<button onclick="mostrarVerificacion()" id="mostrarVerificacion" class="text-[#FFFFFF] ml-4 mr-4 text-xs md:text-lg lg:text-lg xl:text-lg hover:text-[#99E0FF] font-semibold">
                 Enviar Solicitud de Verificación
             </button>`);
   }
@@ -49,21 +49,6 @@ function mapearEstado(estado) {
   }
 
 }
-
-//Función para activar y desactivar aside en celulares
-document.addEventListener('DOMContentLoaded', function () {
-  var toggleButton = document.getElementById('toggleButton');
-  var miAside = document.getElementById('aside');
-
-  toggleButton.addEventListener('click', function () {
-      miAside.classList.toggle('hidden');
-
-      // Cambia las clases del botón
-      toggleButton.classList.toggle('opened');
-      toggleButton.classList.toggle('closed');
-  });
-});
-
 
 /*Funcion para que aparezcan y desaparezcan los botones*/
 document.addEventListener('DOMContentLoaded', function () {

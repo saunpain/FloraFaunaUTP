@@ -57,13 +57,23 @@ document.addEventListener("DOMContentLoaded", function () {
   var lupaNeg = document.getElementById('lupota');
   var lupaBlanc = document.getElementById('lupita');
   var buscar = document.querySelector('#busqueda input[type="search"]');
+  
   // Agregar el evento de clic a la imagen de la lupa
   lupaBlanc.addEventListener('click', function() {
     if(window.innerWidth <1024){
         // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.style.display = 'block';
-        lupaBlanc.style.display = 'none';
-        lupaNeg.style.display = 'block';
+        buscar.classList.remove("hidden");
+        lupaBlanc.classList.add("hidden");
+        lupaNeg.classList.remove("hidden");
+    }
+  });
+
+  lupaBlanc.addEventListener('DOMContentLoaded', function() {
+    if(window.innerWidth >1024){
+        // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
+        buscar.classList.remove("hidden");
+        lupaBlanc.classList.add("hidden");
+        lupaNeg.classList.remove("hidden");
     }
   });
 
@@ -71,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
   lupaNeg.addEventListener('click', function() {
     if(window.innerWidth <1024){
         // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
-        buscar.style.display = 'none';
-        lupaBlanc.style.display = 'block';
-        lupaNeg.style.display = 'none';
+        buscar.classList.add("hidden");
+        lupaBlanc.classList.remove("hidden");
+        lupaNeg.classList.add("hidden");
     }
   });
 
