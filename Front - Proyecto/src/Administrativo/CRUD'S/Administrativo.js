@@ -254,7 +254,9 @@ function FiltrarAdministrativos() {
             console.error("Error en la solicitud:", error);
         });
     }
+}
 
+function FiltrarAdministrativos2(){
     let busqueda2 = document.getElementById("busqueda-input2").value.trim()
 
     if(busqueda == null){
@@ -272,5 +274,4 @@ function FiltrarAdministrativos() {
             console.error("Error en la solicitud:", error);
         });
     }
-    
 }

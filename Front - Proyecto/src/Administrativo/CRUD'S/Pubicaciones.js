@@ -264,7 +264,9 @@ function FiltrarPublicaciones() {
             console.error("Error en la solicitud:", error);
         });
     }
+}
 
+function FiltrarPublicaciones2(){
     let busqueda2 = document.getElementById("busqueda-input2").value.trim()
 
     if(busqueda2 == null){
