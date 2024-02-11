@@ -269,4 +269,22 @@ function FiltrarFauna() {
             console.error("Error en la solicitud:", error);
         });
     }
+
+    let busqueda2 = document.getElementById("busqueda-input2").value.trim()
+
+    if(busqueda2 == null){
+        ImprimirFauna(fauna)
+    }
+    else{
+        fetch(baseUrl + "/fauna/filtrar?busqueda=" + busqueda2).then(res => {
+            res.json().then(json =>{
+                faunaFiltro = json
+                console.log(busqueda2)
+                console.log(faunaFiltro)
+                ImprimirFauna(faunaFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
 }

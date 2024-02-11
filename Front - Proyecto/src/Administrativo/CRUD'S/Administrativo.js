@@ -254,4 +254,23 @@ function FiltrarAdministrativos() {
             console.error("Error en la solicitud:", error);
         });
     }
+
+    let busqueda2 = document.getElementById("busqueda-input2").value.trim()
+
+    if(busqueda == null){
+        ImprimirAdministrativos(admin)
+    }
+    else{
+        fetch(baseUrl + "/administrativo/filtrar?busqueda=" + busqueda2).then(res => {
+            res.json().then(json =>{
+                administrativosFiltro = json
+                console.log(busqueda2)
+                console.log(administrativosFiltro)
+                ImprimirAdministrativos(administrativosFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+    
 }

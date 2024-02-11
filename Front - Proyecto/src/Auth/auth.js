@@ -180,39 +180,51 @@ function loginUser() {
         fetch(baseUrl + "/estudiante/" + nombreUsuario)
             .then(res => res.json())
             .then(user => {
-                if (user) {
+                if (user && user.nombre_estudiante === nombreUsuario) {
                     if (contrasena === user.contraseña_estudiante) {
                         localStorage.setItem('nombreusuario', nombreUsuario);
                         window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
                         return;
                     } else {
-                        mostrarMensaje("El usuario o contraseña ingresadas no son correctas.");
+                        mostrarMensaje("La contraseña ingresada no es correcta.");
                     }
+                }
+                else{
+                    mostrarMensaje("El nombre de usuario ingresado es incorrecto.");
                 }
             })
             .catch(() => {
                 return fetch(baseUrl + "/administrativo/" + nombreUsuario)
                     .then(res => res.json())
                     .then(user => {
-                        if (user && contrasena === user.contraseña_admin) {
-                            localStorage.setItem('nombreusuario', nombreUsuario);
-                            window.location.href = "/Front - Proyecto/src/Administrativo/Admin - Inicio.html";
-                            return;
+                        if (user && user.nombre_admin === nombreUsuario){
+                            if (contrasena === user.contraseña_admin) {
+                                localStorage.setItem('nombreusuario', nombreUsuario);
+                                window.location.href = "/Front - Proyecto/src/Administrativo/Admin - Inicio.html";
+                                return;
+                            } else {
+                                mostrarMensaje("La contraseña ingresada no es correcta.");
+                            }
                         } else {
-                            mostrarMensaje("El usuario o contraseña ingresadas no son correctas.");
+                            mostrarMensaje("El nombre de usuario ingresado es incorrecto.");
                         }
+                        
                     });
             })
             .catch(() => {
                 return fetch(baseUrl + "/biologo/" + nombreUsuario)
                     .then(res => res.json())
                     .then(user => {
-                        if (user && contrasena === user.contraseña_biologo) {
-                            localStorage.setItem('nombreusuario', nombreUsuario);
-                            window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html";
-                            return;
-                        } else {
-                            mostrarMensaje("El usuario o contraseña ingresadas no son correctas.");
+                        if (user && user.nombre_biologo === nombreUsuario){
+                            if (user && contrasena === user.contraseña_biologo) {
+                                localStorage.setItem('nombreusuario', nombreUsuario);
+                                window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html";
+                                return;
+                            } else {
+                                mostrarMensaje("La contraseña ingresada no es correcta.");
+                            }
+                        }else {
+                            mostrarMensaje("El nombre de usuario ingresado es incorrecto.");
                         }
                     });
             })
@@ -226,9 +238,15 @@ function mostrarMensajeRegistro(msj) {
     var mensajeElemento = document.getElementById("mensaje2");
     mensajeElemento.innerHTML = msj;
 }
+
 function mostrarMensaje(mensaje) {
     var mensajeElemento = document.getElementById("mensaje");
     mensajeElemento.innerHTML = mensaje;
+}
+
+function mostrarMensajeRP(msj) {
+    var mensajeElemento = document.getElementById("mensaje3");
+    mensajeElemento.innerHTML = msj;
 }
 
 document.getElementById('PerfilEstudiante').checked = true;
@@ -281,4 +299,194 @@ function VerOcultar(){
         }
 }
 
+function mostrarInicioS(event) {
+    event.preventDefault();
+    document.body.style.overflow = 'hidden';
+  
+    var overlay = document.getElementById('login');
+    var loginContainer = document.getElementById('contenedor-login');
+    var loginContent = document.getElementById('login-contenido');
+    // Cargar dinámicamente el contenido
+    fetch('/Front - Proyecto/src/Auth/login.html')
+      .then(response => response.text())
+      .then(data => {
+        loginContent.innerHTML = data;
+        overlay.style.display = 'block';
+        
+        loginContainer.style.display = 'flex';
+      })
+      .catch(error => console.error(error));
+  }
+  
+  function mostrarRegistro(event) {
+    event.preventDefault();
+    document.body.style.overflow = 'hidden';
+  
+    var overlay = document.getElementById('registro');
+    var registroContainer = document.getElementById('contenedor-registro');
+    var registroContent = document.getElementById('registro-contenido');
+  
+    cerrarLogin();
+    fetch('/Front - Proyecto/src/Auth/Registro.html')
+      .then(response => response.text())
+      .then(data => {
+        registroContent.innerHTML = data;
+        overlay.style.display = 'block';
+        
+        registroContainer.style.display = 'flex';
+      })
+      .catch(error => console.error(error));
+  }
+  
+  function mostrarR1() {
+    document.body.style.overflow = 'hidden';
+  
+    var overlay = document.getElementById('reestablecer1');
+    var rpContainer = document.getElementById('contenedor-reestablecer1');
+    var rpContent = document.getElementById('reestablecer1-contenido');
+  
+    cerrarLogin();
+    // Cargar dinámicamente el contenido
+    fetch('/Front - Proyecto/src/Auth/Reestablecer_contraseña.html')
+      .then(response => response.text())
+      .then(data => {
+        rpContent.innerHTML = data;
+        overlay.style.display = 'block';
+        
+        rpContainer.style.display = 'flex'; 
+      })
+      .catch(error => console.error(error));
+  }
+  
+  
+  function mostrarR2() {
+    const usuario = document.getElementById('reestablecer_usuario').value;
 
+    if (usuario === '') {
+        mostrarMensajeRP("Por favor ingrese su nombre de usuario o correo.");
+        return;
+    } else {
+        fetch(baseUrl + "/estudiante/all")
+            .then(res => res.json())
+            .then(estudiantes => {
+                const usuarioEncontrado = estudiantes.find(estudiante => estudiante.nombre_estudiante === usuario);
+                const correoEncontrado = estudiantes.find(estudiante => estudiante.correo_estudiante === usuario);
+
+                if (usuarioEncontrado || correoEncontrado) {
+                    ReesContraseña();
+                } else {
+                    fetch(baseUrl + "/biologo/all")
+                    .then(res => res.json())
+                    .then(biologos => {
+                        const usuarioEncontrado = biologos.find(biologo => biologo.nombre_biologo === usuario);
+                        const correoEncontrado = biologos.find(biologo => biologo.correo_biologo === usuario);
+
+                        if (usuarioEncontrado || correoEncontrado) {
+                            ReesContraseña();
+                        } else {
+                            mostrarMensajeRP("No se ha encontrado usuario ni correo existente.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error al obtener datos ", error);
+                mostrarMensajeRP("No se ha encontrado usuario ni correo existente.");
+            });
+    }
+}
+
+
+function ReesContraseña(){
+    document.body.style.overflow = 'hidden';
+  
+var overlay = document.getElementById('reestablecer2');
+var rp2Container = document.getElementById('contenedor-reestablecer2');
+var rp2Content = document.getElementById('reestablecer2-contenido');
+  
+    cerrarR1();
+    fetch('/Front - Proyecto/src/Auth/Revisa_tu_bandeja.html')
+      .then(response => response.text())
+      .then(data => {
+        rp2Content.innerHTML = data;
+        overlay.style.display = 'block';
+        
+        rp2Container.style.display = 'flex'; 
+      })
+      .catch(error => console.error(error));
+}
+
+  
+  function mostrarR3() {
+    document.body.style.overflow = 'hidden';
+  
+    var overlay = document.getElementById('reestablecer3');
+    var rp3Container = document.getElementById('contenedor-reestablecer3');
+    var rp3Content = document.getElementById('reestablecer3-contenido');
+  
+    cerrarLogin();
+    // Cargar dinámicamente el contenido
+    fetch('/Front - Proyecto/src/Auth/Reestablezca_contraseña.html')
+      .then(response => response.text())
+      .then(data => {
+        rp3Content.innerHTML = data;
+        overlay.style.display = 'block';
+        
+        rp3Container.style.display = 'flex'; 
+      })
+      .catch(error => console.error(error));
+  }
+  
+  
+  function cerrarRegistro() {
+    document.body.style.overflow = 'auto';
+  
+    var overlay = document.getElementById('registro');
+    var registroContainer = document.getElementById('contenedor-registro');
+  
+    overlay.style.display = 'none';
+    registroContainer.style.display = 'none';
+}
+  
+  function cerrarLogin() {
+    document.body.style.overflow = 'auto';
+  
+    var overlay = document.getElementById('login');
+    var loginContainer = document.getElementById('contenedor-login');
+  
+    overlay.style.display = 'none';
+    loginContainer.style.display = 'none';
+  }
+  
+  function cerrarR1() {
+    document.body.style.overflow = 'auto';
+  
+    var overlay = document.getElementById('reestablecer1');
+    var rpContainer = document.getElementById('contenedor-reestablecer1');
+  
+    overlay.style.display = 'none';
+    rpContainer.style.display = 'none';
+  }
+  
+  function cerrarR2() {
+    document.body.style.overflow = 'auto';
+
+    var overlay = document.getElementById('reestablecer2');
+    var rp2Container = document.getElementById('contenedor-reestablecer2');
+
+    overlay.style.display = 'none';
+    rp2Container.style.display = 'none';
+}
+
+function cerrarR3() {
+    document.body.style.overflow = 'auto';
+
+    var overlay = document.getElementById('reestablecer3');
+    var rp3Container = document.getElementById('contenedor-reestablecer3');
+
+    overlay.style.display = 'none';
+    rp3Container.style.display = 'none';
+}

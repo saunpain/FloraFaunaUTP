@@ -263,4 +263,22 @@ function FiltrarBiologos() {
             console.error("Error en la solicitud:", error);
         });
     }
+
+    let busqueda2 = document.getElementById("busqueda-input2").value.trim()
+
+    if(busqueda2 == null){
+        ImprimirBiologos(biologos)
+    }
+    else{
+        fetch(baseUrl + "/biologo/filtrar?busqueda=" + busqueda2).then(res => {
+            res.json().then(json =>{
+                biologosFiltro = json
+                console.log(busqueda2)
+                console.log(biologosFiltro)
+                ImprimirBiologos(biologosFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
 }

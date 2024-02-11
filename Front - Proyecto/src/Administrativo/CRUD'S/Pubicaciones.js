@@ -264,4 +264,22 @@ function FiltrarPublicaciones() {
             console.error("Error en la solicitud:", error);
         });
     }
+
+    let busqueda2 = document.getElementById("busqueda-input2").value.trim()
+
+    if(busqueda2 == null){
+        ImprimirPublicaciones(pub)
+    }
+    else{
+        fetch(baseUrl + "/publicacion/filtrar?busqueda=" + busqueda2).then(res => {
+            res.json().then(json =>{
+                pubFiltro = json
+                console.log(busqueda2)
+                console.log(pubFiltro)
+                ImprimirPublicaciones(pubFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
 }

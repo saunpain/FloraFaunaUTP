@@ -265,4 +265,22 @@ function FiltrarEstudiantes() {
             console.error("Error en la solicitud:", error);
         });
     }
+    
+    let busqueda2 = document.getElementById("busqueda-input2").value.trim()
+
+    if(busqueda2 == null){
+        ImprimirEstudiantes(estudiantes)
+    }
+    else{
+        fetch(baseUrl + "/estudiante/filtrar?busqueda=" + busqueda2).then(res => {
+            res.json().then(json =>{
+                estudiantesFiltro = json
+                console.log(busqueda2)
+                console.log(estudiantesFiltro)
+                ImprimirEstudiantes(estudiantesFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
 }

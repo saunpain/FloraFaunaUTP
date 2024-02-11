@@ -89,63 +89,7 @@ function mostrarVerificacion() {
     mostrarVerificacion();
   });
   
-  /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
-
-function subirSolicitud() {
-    const apiKey = "80b2ba3d040f866ef2a220b5b7b96ebc";
-    const fileInput = document.getElementById('archivoInput');
-    const file = fileInput.files[0];
-
-    const formData = new FormData();
-    formData.append('key', apiKey);
-    formData.append('archivo', file);
-
-    const apiUrl = 'https://api.imgbb.com/1/upload"';
-
-    fetch(apiUrl, {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-        const archivo = data.data.url;
-
-        const nombre = document.getElementById('nombre').value;
-        const correo = document.getElementById('correo').value;
-        const titulo = document.getElementById('tituloInput').value;
-        const id_biologo = document.getElementById('id_biologo').value;
-        console.log("Datos a enviar al servidor:", archivo, nombre, correo, titulo, id_biologo);
-
-        // Enviar datos del formulario junto con el enlace del archivo al servidor backend
-        fetch(baseUrl + '/solicitud', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                archivo: archivo,
-                nombre: nombre,
-                correo: correo,
-                titulo: titulo,
-                id_biologo: id_biologo,
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Respuesta del servidor backend:', data);
-            // Aquí puedes realizar cualquier otra acción después de recibir la respuesta del backend
-        })
-        .catch(error => {
-            console.error('Error al enviar datos al backend:', error);
-            alert('Error al enviar la solicitud');
-        });
-    })
-    .catch(error =>{
-        console.error('Error al subir archivo a ImgBB:', error);
-        alert('Error al enviar la solicitud');
-    });
-}
 
 
-
-
+    /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
+  

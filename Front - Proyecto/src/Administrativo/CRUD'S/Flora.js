@@ -259,4 +259,22 @@ function FiltrarFlora() {
             console.error("Error en la solicitud:", error);
         });
     }
+
+    let busqueda2 = document.getElementById("busqueda-input2").value.trim()
+
+    if(busqueda2 == null){
+        ImprimirFlora(flora)
+    }
+    else{
+        fetch(baseUrl + "/flora/filtrar?busqueda=" + busqueda2).then(res => {
+            res.json().then(json =>{
+                floraFiltro = json
+                console.log(busqueda2)
+                console.log(floraFiltro)
+                ImprimirFlora(floraFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
 }

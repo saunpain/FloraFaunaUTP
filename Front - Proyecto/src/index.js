@@ -57,23 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var lupaNeg = document.getElementById('lupota');
   var lupaBlanc = document.getElementById('lupita');
   var buscar = document.querySelector('#busqueda input[type="search"]');
-  
   // Agregar el evento de clic a la imagen de la lupa
   lupaBlanc.addEventListener('click', function() {
     if(window.innerWidth <1024){
         // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.classList.remove("hidden");
-        lupaBlanc.classList.add("hidden");
-        lupaNeg.classList.remove("hidden");
-    }
-  });
-
-  lupaBlanc.addEventListener('DOMContentLoaded', function() {
-    if(window.innerWidth >1024){
-        // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.classList.remove("hidden");
-        lupaBlanc.classList.add("hidden");
-        lupaNeg.classList.remove("hidden");
+        buscar.style.display = 'block';
+        lupaBlanc.style.display = 'none';
+        lupaNeg.style.display = 'block';
     }
   });
 
@@ -81,9 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
   lupaNeg.addEventListener('click', function() {
     if(window.innerWidth <1024){
         // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
-        buscar.classList.add("hidden");
-        lupaBlanc.classList.remove("hidden");
-        lupaNeg.classList.add("hidden");
+        buscar.style.display = 'none';
+        lupaBlanc.style.display = 'block';
+        lupaNeg.style.display = 'none';
     }
   });
 
@@ -102,155 +92,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-function mostrarInicioS(event) {
-  event.preventDefault();
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('login');
-  var loginContainer = document.getElementById('contenedor-login');
-  var loginContent = document.getElementById('login-contenido');
-  // Cargar dinámicamente el contenido
-  fetch('/Front - Proyecto/src/Auth/login.html')
-    .then(response => response.text())
-    .then(data => {
-      loginContent.innerHTML = data;
-      overlay.style.display = 'block';
-      
-      loginContainer.style.display = 'flex';
-    })
-    .catch(error => console.error(error));
-}
-
-function mostrarRegistro(event) {
-  event.preventDefault();
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('registro');
-  var registroContainer = document.getElementById('contenedor-registro');
-  var registroContent = document.getElementById('registro-contenido');
-
-  cerrarLogin();
-  fetch('/Front - Proyecto/src/Auth/Registro.html')
-    .then(response => response.text())
-    .then(data => {
-      registroContent.innerHTML = data;
-      overlay.style.display = 'block';
-      
-      registroContainer.style.display = 'flex';
-    })
-    .catch(error => console.error(error));
-}
-
-function mostrarR1() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('reestablecer1');
-  var rpContainer = document.getElementById('contenedor-reestablecer1');
-  var rpContent = document.getElementById('reestablecer1-contenido');
-
-  cerrarLogin();
-  // Cargar dinámicamente el contenido
-  fetch('/Front - Proyecto/src/Auth/Reestablecer_contraseña.html')
-    .then(response => response.text())
-    .then(data => {
-      rpContent.innerHTML = data;
-      overlay.style.display = 'block';
-      
-      rpContainer.style.display = 'flex'; 
-    })
-    .catch(error => console.error(error));
-}
-
-
-function mostrarR2() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('reestablecer2');
-  var rp2Container = document.getElementById('contenedor-reestablecer2');
-  var rp2Content = document.getElementById('reestablecer2-contenido');
-
-  cerrarR1();
-  // Cargar dinámicamente el contenido
-  fetch('/Front - Proyecto/src/Auth/Revisa_tu_bandeja.html')
-    .then(response => response.text())
-    .then(data => {
-      rp2Content.innerHTML = data;
-      overlay.style.display = 'block';
-      
-      rp2Container.style.display = 'flex'; 
-    })
-    .catch(error => console.error(error));
-}
-
-function mostrarR3() {
-  document.body.style.overflow = 'hidden';
-
-  var overlay = document.getElementById('reestablecer3');
-  var rp3Container = document.getElementById('contenedor-reestablecer3');
-  var rp3Content = document.getElementById('reestablecer3-contenido');
-
-  cerrarLogin();
-  // Cargar dinámicamente el contenido
-  fetch('/Front - Proyecto/src/Auth/Reestablezca_contraseña.html')
-    .then(response => response.text())
-    .then(data => {
-      rp3Content.innerHTML = data;
-      overlay.style.display = 'block';
-      
-      rp3Container.style.display = 'flex'; 
-    })
-    .catch(error => console.error(error));
-}
-
-
-function cerrarRegistro() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('registro');
-  var registroContainer = document.getElementById('contenedor-registro');
-
-  overlay.style.display = 'none';
-  registroContainer.style.display = 'none';
-}
-
-function cerrarLogin() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('login');
-  var loginContainer = document.getElementById('contenedor-login');
-
-  overlay.style.display = 'none';
-  loginContainer.style.display = 'none';
-}
-
-function cerrarR1() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('reestablecer1');
-  var rpContainer = document.getElementById('contenedor-reestablecer1');
-
-  overlay.style.display = 'none';
-  rpContainer.style.display = 'none';
-}
-
-function cerrarR2() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('reestablecer2');
-  var rp2Container = document.getElementById('contenedor-reestablecer2');
-
-  overlay.style.display = 'none';
-  rp2Container.style.display = 'none';
-}
-
-function cerrarR3() {
-  document.body.style.overflow = 'auto';
-
-  var overlay = document.getElementById('reestablecer3');
-  var rp3Container = document.getElementById('contenedor-reestablecer3');
-
-  overlay.style.display = 'none';
-  rp3Container.style.display = 'none';
-}
 
