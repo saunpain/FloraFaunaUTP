@@ -231,4 +231,33 @@ public class PublicacionesDb {
         }
         return publicaciones;
     }
+
+    public List<Publicaciones> FiltrarPublicacionesGlob(String busqueda){
+        List<Publicaciones> publicaciones = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "CALL FiltrarPublicacionesGlob('" + busqueda + "')";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                Publicaciones p = new Publicaciones(
+                    rs.getInt("id_publicacion"),
+                    rs.getString("titulo"),
+                    rs.getString("lugar"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getInt("id_flora"),
+                    rs.getInt("id_fauna"),
+                    rs.getInt("id_estudiante")
+                );
+
+                publicaciones.add(p);
+            }
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return publicaciones;
+    }
 }

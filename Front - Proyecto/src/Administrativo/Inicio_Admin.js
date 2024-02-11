@@ -340,4 +340,24 @@ function subirBoton(sectionId) {
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+}
+
+function FiltrarPublicaciones() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirPublicaciones(pub)
+    }
+    else{
+        fetch(baseUrl + "/publicacion/filtrarGlob?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                pubFiltro = json
+                console.log(busqueda)
+                console.log(pubFiltro)
+                ImprimirPublicaciones(pubFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}

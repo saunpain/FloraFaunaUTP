@@ -61,4 +61,11 @@ public class PublicacionesController {
     ){
         return new PublicacionesDb().FiltrarPublicaciones(busqueda);
     }
+
+    @GetMapping("/publicacion/filtrarGlob")
+    public List<Publicaciones> FiltrarPublicacionesGlob(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new PublicacionesDb().FiltrarPublicaciones(busqueda);
+    }
 }
