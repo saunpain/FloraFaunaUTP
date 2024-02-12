@@ -110,3 +110,17 @@ function CerrarSesion(){
   localStorage.removeItem('id_usuario');
   localStorage.removeItem("nombreusuario");
 }
+
+//Función para activar y desactivar aside en celulares
+document.addEventListener('DOMContentLoaded', function () {
+  var toggleButton = document.getElementById('toggleButton');
+  var miAside = document.getElementById('aside');
+
+  toggleButton.addEventListener('click', function () {
+      miAside.classList.toggle('hidden');
+
+      // Cambia las clases del botón
+      toggleButton.classList.toggle('opened');
+      toggleButton.classList.toggle('closed');
+  });
+});
