@@ -28,7 +28,7 @@ public class ArchivosController {
     public String handleFileUpload(@RequestParam("archivo") MultipartFile archivo, String usuario, String correo, String titulo, int id_biologo) {
         try {
             // Autenticación con tu token de acceso personal de GitHub
-            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
+            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
 
             // Obtener el repositorio existente (debes conocer su nombre y propietario)
             GHRepository repository = github.getRepository("saunpain/FloraFaunaUTP");
