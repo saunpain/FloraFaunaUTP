@@ -107,23 +107,29 @@ function mostrarVerificacion() {
     formData.append('titulo', titulo);
     formData.append('id_biologo', idBiologo);
 
-    // Subir el archivo a tu servidor Spring
-    fetch('http://localhost:8080/upload', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error al subir el archivo a GitHub: ' + response.status);
-        }
-        return response.text();  // Cambiado a text ya que el servidor devuelve una cadena
-    })
-    .then(data => {
-        // Aquí data contendrá el mensaje del servidor
-        console.log(data);
-        alert("Se subió el archivo y se registró la solicitud exitosamente");
-    })
-    .catch(error => {
-        alert("La solicitud ha sido enviada exitosamente");
-    });
+    if(titulo == null || titulo == "" || archivoInput == null){
+        alert("Debes llenar todos los datos antes de enviar el formulario")
+    }
+    else{
+        // Subir el archivo a tu servidor Spring
+        fetch('http://localhost:8080/upload', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al subir el archivo a GitHub: ' + response.status);
+            }
+            return response.text();  // Cambiado a text ya que el servidor devuelve una cadena
+        })
+        .then(data => {
+            // Aquí data contendrá el mensaje del servidor
+            console.log(data);
+            alert("Se subió el archivo y se registró la solicitud exitosamente");
+        })
+        .catch(error => {
+            alert("La solicitud ha sido enviada exitosamente");
+        });
+    }
+
 }

@@ -19,9 +19,12 @@ public class GitHubFileUploader {
         URL url = uri.toURL();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-        connection.setRequestMethod("PUT");
+        connection.setRequestMethod("POST");  // Cambiar a POST
         connection.setRequestProperty("Authorization", "Bearer " + token);
-        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Content-Type", "application/vnd.github.v3+json");  // Cambiar el tipo de contenido
+
+        // Asegurarse de incluir el encabezado Accept
+        connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
 
         connection.setDoOutput(true);
 
@@ -62,4 +65,3 @@ public class GitHubFileUploader {
         return bytes;
     }
 }
-

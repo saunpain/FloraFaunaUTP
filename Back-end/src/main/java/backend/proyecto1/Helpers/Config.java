@@ -10,6 +10,6 @@ public class Config implements WebMvcConfigurer{
     public void addCorsMappings(CorsRegistry cors){
     cors.addMapping("/**").allowedMethods(
       "*"
-    );
+    ).allowedOrigins("*");;
   }
 }
