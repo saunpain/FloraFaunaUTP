@@ -372,3 +372,38 @@ function regresarInicioS(sectionId) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+function FiltrarPublicaciones() {
+    let busqueda = document.getElementById("busqueda-input").value.trim()
+
+    if(busqueda == null){
+        ImprimirPublicaciones(pub)
+    }
+    else{
+        fetch(baseUrl + "/vista/filtrarGlob?busqueda=" + busqueda).then(res => {
+            res.json().then(json =>{
+                pubFiltro = json
+                console.log(busqueda)
+                console.log(pubFiltro)
+                ImprimirPublicaciones(pubFiltro)
+            })
+        }).catch(error => {
+            console.error("Error en la solicitud:", error);
+        });
+    }
+}
+
+
+//Función para activar y desactivar aside en celulares
+document.addEventListener('DOMContentLoaded', function () {
+    var toggleButton = document.getElementById('toggleButton');
+    var miAside = document.getElementById('aside');
+  
+    toggleButton.addEventListener('click', function () {
+        miAside.classList.toggle('hidden');
+  
+        // Cambia las clases del botón
+        toggleButton.classList.toggle('opened');
+        toggleButton.classList.toggle('closed');
+    });
+  });

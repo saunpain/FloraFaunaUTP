@@ -34,4 +34,10 @@ public class VistaController {
     public List<VistaPubGlobal> ObtenerFaunaCategoria(@PathVariable ("categoria_fauna") String cat){
         return new VistaDb().VistaFaunaCat(cat);
     }
+    @GetMapping("/vista/filtrarGlob")
+    public List<VistaPubGlobal> FiltrarPublicacionesGlob(
+        @RequestParam(required = true) String busqueda
+    ){
+        return new VistaDb().FiltrarPublicaciones(busqueda);
+    }
 }

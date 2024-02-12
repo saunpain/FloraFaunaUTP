@@ -387,10 +387,10 @@ function FiltrarPublicaciones() {
       ImprimirPublicaciones(pub)
   }
   else{
-      fetch(baseUrl + "/publicacion/filtrarGlob?busqueda=" + busqueda).then(res => {
-          res.json().then(json =>{
-              pubFiltro = json
-              console.log(busqueda)
+    fetch(baseUrl + "/vista/filtrarGlob?busqueda=" + busqueda).then(res => {
+      res.json().then(json =>{
+          pubFiltro = json
+          console.log(busqueda)
               console.log(pubFiltro)
               ImprimirPublicaciones(pubFiltro)
           })

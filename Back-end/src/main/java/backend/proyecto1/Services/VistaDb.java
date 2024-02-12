@@ -209,4 +209,37 @@ public class VistaDb {
         return FaunaCat;
     }
 
+    public List<VistaPubGlobal> FiltrarPublicaciones(String busqueda){
+        List<VistaPubGlobal> vistaG = new ArrayList<>();
+
+        try{
+            Statement stmt = cn.createStatement();
+            String query = "CALL FiltrarPublicacionesGlob('" + busqueda + "')";
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                VistaPubGlobal p = new VistaPubGlobal(
+                    rs.getString("nombre_estudiante"),
+                    rs.getString("fecha_estudiante"),
+                    rs.getString("lugar"),
+                    rs.getString("titulo"),
+                    rs.getString("foto_flora"),
+                    rs.getString("nombre_cientifico_flora"),
+                    rs.getString("nombre_planta"),
+                    rs.getInt("id_publicacion"),
+                    rs.getString("foto_fauna"),
+                    rs.getString("nombre_cientifico_fauna"),
+                    rs.getString("nombre_animal")
+                );
+
+                vistaG.add(p);
+            }
+
+            stmt.close();
+            rs.close();
+        } catch(Exception e){
+
+        }
+        return vistaG;
+    }
 }
