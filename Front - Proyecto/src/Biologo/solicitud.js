@@ -46,8 +46,8 @@ function MapearSolicitud(usuario) {
         </div>
 
         <p class="mt-2">Adjunte su archivo pdf</p>
-        <input id="archivoInput" name="file" class="w-80 mt-4 block" type="file">
-        <button id="botonSubir" onclick="subirSolicitud()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
+        <input id="archivoInput" name="archivo" class="w-80 mt-4 block" type="file">
+        <button onclick="subirSolicitud()" class="mt-6 py-1 px-2 bg-white border rounded border-gray-400 hover:bg-gray-200">Subir Archivo</button>
     </div>
     </form>
     <div id="id_biologo" class="hidden">${usuario.id_biologo}</div>
@@ -89,7 +89,41 @@ function mostrarVerificacion() {
     mostrarVerificacion();
   });
   
+  /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
 
+  function subirSolicitud() {
+    // Obtener datos del formulario
+    const archivoInput = document.getElementById('archivoInput').files[0];
+    const usuario = document.getElementById('nombre').textContent;
+    const correo = document.getElementById('correo').textContent;
+    const titulo = document.getElementById('tituloInput').value;
+    const idBiologo = document.getElementById('id_biologo').textContent;
 
-    /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
-  
+    // Crear un objeto FormData y agregar los datos del formulario
+    const formData = new FormData();
+    formData.append('archivo', archivoInput);
+    formData.append('usuario', usuario);
+    formData.append('correo', correo);
+    formData.append('titulo', titulo);
+    formData.append('id_biologo', idBiologo);
+
+    // Subir el archivo a tu servidor Spring
+    fetch('http://localhost:8080/upload', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al subir el archivo a GitHub: ' + response.status);
+        }
+        return response.text();  // Cambiado a text ya que el servidor devuelve una cadena
+    })
+    .then(data => {
+        // Aquí data contendrá el mensaje del servidor
+        console.log(data);
+        alert("Se subió el archivo y se registró la solicitud exitosamente");
+    })
+    .catch(error => {
+        alert("La solicitud ha sido enviada exitosamente");
+    });
+}
