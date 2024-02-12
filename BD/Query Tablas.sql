@@ -288,4 +288,17 @@ SELECT * FROM Comentario
 SELECT * FROM Publicaciones
 
 CALL AgregarSolicitud('asdasd', 'prueba', 'correo@gmail.com', 'holaaa', '8007')
-CALL EliminarSolicitud('1005')
+CALL EliminarSolicitud('1012')
+
+DELIMITER //
+CREATE TRIGGER CambiarEstadoTrigger
+AFTER INSERT ON Solicitud
+FOR EACH ROW
+BEGIN
+    UPDATE Biologo
+    SET estado = 'En espera'
+    WHERE id_biologo = NEW.id_biologo;
+END;
+//
+DELIMITER ;
+
