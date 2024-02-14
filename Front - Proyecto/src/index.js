@@ -53,38 +53,38 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
    //Funcion para desplegar barra de busqueda en celulares
-  var lupaNeg = document.getElementById('lupota');
-  var lupaBlanc = document.getElementById('lupita');
-  var buscar = document.querySelector('#busqueda input[type="search"]');
-
-  // Agregar el evento de clic a la imagen de la lupa
-  lupaBlanc.addEventListener('click', function() {
-    if(window.innerWidth <1024){
-        // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.classList.remove("hidden");
-        lupaBlanc.classList.add("hidden");
-        lupaNeg.classList.remove("hidden");
-    }
-  });
-
-  lupaBlanc.addEventListener('DOMContentLoaded', function() {
-    if(window.innerWidth >1024){
-        // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.classList.remove("hidden");
-        lupaBlanc.classList.add("hidden");
-        lupaNeg.classList.remove("hidden");
-    }
-  });
-
+   var lupaNeg = document.getElementById('lupota');
+   var lupaBlanc = document.getElementById('lupita');
+   var buscar = document.querySelector('#busqueda input[type="search"]');
+   
+   // Agregar el evento de clic a la imagen de la lupa
+   lupaBlanc.addEventListener('click', function() {
+     if(window.innerWidth <1024){
+         // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
+         buscar.classList.remove("hidden");
+         lupaBlanc.classList.add("hidden");
+         lupaNeg.classList.remove("hidden");
+     }
+   });
+ 
+   lupaBlanc.addEventListener('DOMContentLoaded', function() {
+     if(window.innerWidth >1024){
+         // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
+         buscar.classList.remove("hidden");
+         lupaBlanc.classList.add("hidden");
+         lupaNeg.classList.remove("hidden");
+     }
+   });
+ 
    // Agregar el evento de clic a la imagen de la otra
-  lupaNeg.addEventListener('click', function() {
-    if(window.innerWidth <1024){
-        // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
-        buscar.classList.add("hidden");
-        lupaBlanc.classList.remove("hidden");
-        lupaNeg.classList.add("hidden");
-    }
-  });
+   lupaNeg.addEventListener('click', function() {
+     if(window.innerWidth <1024){
+         // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
+         buscar.classList.add("hidden");
+         lupaBlanc.classList.remove("hidden");
+         lupaNeg.classList.add("hidden");
+     }
+   });
 
 //Función para activar y desactivar aside en celulares
 document.addEventListener('DOMContentLoaded', function () {
