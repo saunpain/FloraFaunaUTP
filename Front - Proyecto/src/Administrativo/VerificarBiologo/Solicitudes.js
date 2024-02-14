@@ -84,7 +84,7 @@ function Deshacer() {
 }
 
 function MapearBiologos(b, s) {
-    return `<tr id="${b.id_biologo}" class="border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF] flex justify-around items-center">
+    return `<tr id="${b.id_biologo}" class="border-y-2 hover:bg-[#7EBBAA] bg-[#FFFFFF] flex justify-between px-4 items-center">
         <td class="">${b.nombre_biologo}</td>
         <td class="text-gray-700 max-w-64 truncate hidden md:block">${s.titulo}</td>
         <td class="">
@@ -185,7 +185,7 @@ function MapearSolicitudBiologo(s, b){
     <div class="flex justify-center">
         <hr class="w-11/12">
     </div>
-    <div class="mt-2 ml-10 lg:ml-16 text-lg">
+    <div class="mt-2 ml-6 mr-6 text-lg">
         <h2>Título: ${s.titulo}</h2>
     </div>
     <div class="flex mt-3 ml-6 items-center">

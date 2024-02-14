@@ -42,13 +42,6 @@ function seleccionCategoria() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  let bton_cerrarSesion = document.getElementById('cerrar_S');
-  bton_cerrarSesion.addEventListener('click', function () {
-    localStorage.removeItem("nombreusuario");
-  })
-})
-
 document.addEventListener('DOMContentLoaded', function () {
 
   var botonCrearPub = document.getElementById('crearPub');

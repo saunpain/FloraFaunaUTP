@@ -47,7 +47,7 @@ function ImprimirPublicacion(publicacion) {
         }
 
 }
-
+//funcion para mapear un boton de regresar al inicio
 function MapRegresar(){
     return `<a href="Flora y Fauna UTP - inicio.html">
                 <button class="flex p-2 rounded-md ml-4 sm:ml-16 mt-2 md:mt-0 hover:bg-[#D7EFFF]">
@@ -135,7 +135,7 @@ function MapAgregarComentario() {
     </div>`;
 }
 
-
+//Ya que cuando no se ha iniciado sesion no se puede comentar esta funcion tiene como papel que al tratar de comentar se muestre el cuadro de registro
 function AgregarComentario() {
     mostrarInicioS(event);
 }

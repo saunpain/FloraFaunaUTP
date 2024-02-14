@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5501") 
+@CrossOrigin(origins = "http://localhost:5500")
 public class ArchivosController {
 
     private Connection cn;
@@ -27,20 +27,20 @@ public class ArchivosController {
     @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("archivo") MultipartFile archivo, String usuario, String correo, String titulo, int id_biologo) {
         try {
-            // Autenticación con tu token de acceso personal de GitHub
-            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
+            //Autenticación con el token de acceso personal proporcionado por GitHub
+            GitHub github = new GitHubBuilder().withOAuthToken("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").build();
 
-            // Obtener el repositorio existente (debes conocer su nombre y propietario)
+            //Obtiende el repositorio
             GHRepository repository = github.getRepository("saunpain/FloraFaunaUTP");
 
-            // Construir la ruta y nombre del archivo basado en fecha y hora
+            //Construye la ruta y nombre del archivo basado en fecha y hora
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String filePath = "Solicitudes/" + "archivo_" + timeStamp + ".pdf";  // Ajusta la ruta según tu estructura
+            String filePath = "Solicitudes/" + "archivo_" + timeStamp + ".pdf";
 
-            // Subir el archivo al repositorio
+            // Sube el archivo al repositorio GitHub
             uploadFileToRepository(repository, archivo, filePath, usuario, correo, titulo, id_biologo);
 
-            return "Archivo subido exitosamente!";
+            return "Archivo subido con éxito";
         }  catch (IOException e) {
             return "Error al subir el archivo: " + e.getMessage();
         } catch (Exception ex) {
@@ -49,7 +49,7 @@ public class ArchivosController {
     }
 
     private int uploadFileToRepository(GHRepository repository, MultipartFile archivo, String filePathh, String usuario, String correo, String titulo, int id_biologo) throws IOException {
-        // Ruta directa sin carpeta adicional "Solicitudes"
+        // Ruta directa a la carpeta de "Solicitudes" del repo en GitHub
         String filePath = filePathh;
         
         GHContentBuilder contentBuilder = repository.createContent()

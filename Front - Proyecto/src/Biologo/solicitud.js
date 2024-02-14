@@ -91,7 +91,7 @@ function mostrarVerificacion() {
   
   /************FUNCIONES PARA LA SUBIDA DE SOLICITUD *******************/
 
-  function subirSolicitud() {
+function subirSolicitud() {
     // Obtener datos del formulario
     const archivoInput = document.getElementById('archivoInput').files[0];
     const usuario = document.getElementById('nombre').textContent;
@@ -117,19 +117,22 @@ function mostrarVerificacion() {
             body: formData,
         })
         .then(response => {
+
             if (!response.ok) {
                 throw new Error('Error al subir el archivo a GitHub: ' + response.status);
             }
             return response.text();  // Cambiado a text ya que el servidor devuelve una cadena
         })
         .then(data => {
+            location.reload();
             // Aquí data contendrá el mensaje del servidor
             console.log(data);
             alert("Se subió el archivo y se registró la solicitud exitosamente");
         })
         .catch(error => {
-            alert("La solicitud ha sido enviada exitosamente");
+            console.log(data);
+            alert("Error al enviar solicitud");
         });
-    }
 
+    }
 }

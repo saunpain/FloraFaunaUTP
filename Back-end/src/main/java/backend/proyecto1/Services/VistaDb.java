@@ -153,7 +153,7 @@ public class VistaDb {
         List<VistaPubGlobal> FloraCat = new ArrayList<>();
     
         try {
-            String query = "SELECT * FROM VistaPublicacionesFlora WHERE categoria_flora = '" + cat + "'";
+            String query = "SELECT * FROM VistaPublicacionesFlora WHERE categoria_flora = '" + cat + "' order by fecha_estudiante DESC";
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
     
@@ -183,7 +183,7 @@ public class VistaDb {
         List<VistaPubGlobal> FaunaCat = new ArrayList<>();
     
         try {
-            String query = "SELECT * FROM VistaPublicacionesFauna WHERE categoria_fauna = '" + cat + "'";
+            String query = "SELECT * FROM VistaPublicacionesFauna WHERE categoria_fauna = '" + cat + "' order by fecha_estudiante DESC";
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
     

@@ -5,22 +5,22 @@ function GuardarEstudiante() {
     let data = {
         nombre_estudiante: document.getElementById("nombreUsuario").value,
         contraseña_estudiante: document.getElementById("contrasena").value,
-        correo_estudiante: document.getElementById("correoUsuario").value.toLowerCase(), //convierte las letras en minusculas
+        correo_estudiante: document.getElementById("correoUsuario").value.replace(/\s/g, "").toLowerCase(), //convierte las letras en minusculas y quita los espacios
     }
 
-    if (data.nombre_estudiante === "" || data.contraseña_estudiante === "" || data.correo_estudiante === "") {
+    if (data.nombre_estudiante === "" || data.contraseña_estudiante === "" || data.correo_estudiante === "") { //Se valida que todos los campos estèn cpmpletos
         mostrarMensajeRegistro("Debe completar todos los campos para registrarse.");
     }
     else{
         const correoValid = data.correo_estudiante.split('@'); //Divide el correo ingresado en dos desde el @ para hacer validaciones
     
-        if (correoValid.length !== 2 || correoValid[0] === "" || correoValid[1] === "") { //Valida que el @ exista, y que hayan dos partes del correo ingresado.
+        if (correoValid.length !== 2 || correoValid[0] === "" || correoValid[1] === "") { //Valida que el @ exista, y que hayan dos partes del correo ingresado, también verifica que las dos partes no estén vacías.
             mostrarMensajeRegistro("Por favor ingrese un correo electrónico válido.");
         } else {
-            const dominioValido = correoValid[1];
+            const dominioValido = correoValid[1]; //El contenido después del @
 
-            if (dominioValido === "" || dominioValido !== "utp.ac.pa" && dominioValido !== "gmail.com" && dominioValido !== "hotmail.com") {
-                mostrarMensajeRegistro("Correo electrónico no válido. Utilice alguno de estos dominios: utp.ac.pa, gmail.com, hotmail.com");
+            if (dominioValido === "" || dominioValido !== "utp.ac.pa" && dominioValido !== "gmail.com") { //Valida que el dominio del correo sea vàlido.
+                mostrarMensajeRegistro("Correo electrónico no válido. Utilice alguno de estos dominios: utp.ac.pa, gmail.com");
             }
             else{
                 // Hacer una petición para obtener la lista de estudiantes y verificar si ya existe el nombre de usuario y correo
@@ -31,27 +31,27 @@ function GuardarEstudiante() {
                         const usuarioExistente = estudiantes.find(estudiante => estudiante.nombre_estudiante === data.nombre_estudiante);
                         const correoExiste = estudiantes.find(estudiante => estudiante.correo_estudiante === data.correo_estudiante);
 
-                        // Si el nombre de usuario ya existe, mostrar mensaje y salir
+                        // Si el nombre de usuario ya existe, muestra el mensaje.
                         if (usuarioExistente) {
                             mostrarMensajeRegistro("El nombre de usuario ya está siendo usado. Ingrese otro nombre de usuario.");
                         } else if (correoExiste) {
                             mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
                         } else {
-                            // Si el nombre de usuario y correo no existen para estudiantes, hacer la misma verificación para biólogos
+                            // Si el nombre de usuario y correo no existen para estudiantes, repite el proceso de validaciones para biólogos
                             fetch(baseUrl + '/biologo/all')
                                 .then(res => res.json())
                                 .then(biologos => {
-                                    // Verificar si el nombre de usuario ya existe para biólogos
+                                    // Verifica si el nombre de usuario ya existe para biólogos
                                     const biologoUsuarioExistente = biologos.find(biologo => biologo.nombre_biologo === data.nombre_estudiante);
                                     const biologoCorreoExiste = biologos.find(biologo => biologo.correo_biologo === data.correo_estudiante);
 
-                                    // Si el nombre de usuario ya existe para biólogos, mostrar mensaje y salir
+                                    // Si el nombre de usuario ya existe para biólogos, muestra el mensaje
                                     if (biologoUsuarioExistente) {
                                         mostrarMensajeRegistro("El nombre de usuario ya está siendo usado. Ingrese otro nombre de usuario.");
                                     } else if (biologoCorreoExiste) {
                                         mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
                                     } else {
-                                        // Si el nombre de usuario y correo no existen para biólogos, continuar con el registro
+                                        // Si el nombre de usuario y correo no existen para biólogos, continua con el registro
                                         fetch(baseUrl + "/estudiante", {
                                             method: "POST",
                                             body: JSON.stringify(data),
@@ -74,12 +74,12 @@ function GuardarEstudiante() {
                                     }
                                 })
                                 .catch(error => {
-                                    mostrarMensajeRegistro("Error al obtener la lista de biólogos.");
+                                    mostrarMensajeRegistro("Algo ha salido mal. No se ha podido completar su registro");
                                 });
                         }
                     })
                     .catch(error => {
-                        mostrarMensajeRegistro("Error al obtener la lista de estudiantes.");
+                        mostrarMensajeRegistro("Algo ha salido mal. No se ha podido completar su registro");
                     });
                 }
             }
@@ -91,7 +91,7 @@ function GuardarBiologo() {
     let data = {
         nombre_biologo: document.getElementById("nombreUsuario").value,
         contraseña_biologo: document.getElementById("contrasena").value,
-        correo_biologo: document.getElementById("correoUsuario").value.toLowerCase(), //convierte las letras en minusculas
+        correo_biologo: document.getElementById("correoUsuario").value.replace(/\s/g, "").toLowerCase(), //convierte las letras en minusculas y quita los espacios
     }
 
     if(data.nombre_biologo === "" || data.contraseña_biologo === "" || data.correo_biologo === ""){
@@ -122,7 +122,7 @@ function GuardarBiologo() {
                 } else if (correoExiste) {
                     mostrarMensajeRegistro("El correo ingresado ya se encuentra registrado.");
                 } else {
-                    // Si el nombre de usuario y correo no existen para estudiantes, verificar biologo
+                    // Si el nombre de usuario y correo no existen para estudiantes, verifica en biologo
                     fetch(baseUrl + '/biologo/all')
                         .then(res => res.json())
                         .then(biologos => {
@@ -173,7 +173,7 @@ function loginUser() {
     var nombreUsuario = document.getElementById("nombreusuario").value;
     var contrasena = document.getElementById("password").value;
 
-    if (nombreUsuario === "" || contrasena === "") {
+    if (nombreUsuario === "" || contrasena === "") { //Valida que ambos campos no estén vacíos
         mostrarMensaje("Por favor complete ambos campos.");
         return;
     } else {
@@ -182,8 +182,8 @@ function loginUser() {
             .then(user => {
                 if (user && user.nombre_estudiante === nombreUsuario) {
                     if (contrasena === user.contraseña_estudiante) {
-                        localStorage.setItem('nombreusuario', nombreUsuario);
-                        window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html";
+                        localStorage.setItem('nombreusuario', nombreUsuario); //Guarda el nombre de usuario localmente para mapear el perfil de usuario posteriormente
+                        window.location.href = "/Front - Proyecto/src/Usuario/Usuario - Inicio.html"; //Lo llleva al perfil de usuario estudiante
                         return;
                     } else {
                         mostrarMensaje("La contraseña ingresada no es correcta.");
@@ -193,14 +193,14 @@ function loginUser() {
                     mostrarMensaje("El nombre de usuario ingresado es incorrecto.");
                 }
             })
-            .catch(() => {
+            .catch(() => { //Si no se encuentra en estudiante, busca en administrativo
                 return fetch(baseUrl + "/administrativo/" + nombreUsuario)
                     .then(res => res.json())
                     .then(user => {
                         if (user && user.nombre_admin === nombreUsuario){
                             if (contrasena === user.contraseña_admin) {
-                                localStorage.setItem('nombreusuario', nombreUsuario);
-                                window.location.href = "/Front - Proyecto/src/Administrativo/Admin - Inicio.html";
+                                localStorage.setItem('nombreusuario', nombreUsuario); //Guarda el nombre de usuario localmente para mapear su perfil posteriormente
+                                window.location.href = "/Front - Proyecto/src/Administrativo/Admin - Inicio.html"; //Muestra el perfil de usuario administrativo
                                 return;
                             } else {
                                 mostrarMensaje("La contraseña ingresada no es correcta.");
@@ -211,14 +211,14 @@ function loginUser() {
                         
                     });
             })
-            .catch(() => {
+            .catch(() => { //Si el usuario no se encontró tampoco en administrativo, procede a buscar en biólogos
                 return fetch(baseUrl + "/biologo/" + nombreUsuario)
                     .then(res => res.json())
                     .then(user => {
                         if (user && user.nombre_biologo === nombreUsuario){
                             if (user && contrasena === user.contraseña_biologo) {
-                                localStorage.setItem('nombreusuario', nombreUsuario);
-                                window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html";
+                                localStorage.setItem('nombreusuario', nombreUsuario); //Guarda el nombre localmente
+                                window.location.href = "/Front - Proyecto/src/Biologo/Biologo - Inicio.html"; //Muestra el perfil de usuario biólogo
                                 return;
                             } else {
                                 mostrarMensaje("La contraseña ingresada no es correcta.");
@@ -234,6 +234,7 @@ function loginUser() {
     }
 }
 
+// Muestra los mensajes de errores para el usuario en autenticación
 function mostrarMensajeRegistro(msj) {
     var mensajeElemento = document.getElementById("mensaje2");
     mensajeElemento.innerHTML = msj;
@@ -249,29 +250,29 @@ function mostrarMensajeRP(msj) {
     mensajeElemento.innerHTML = msj;
 }
 
-document.getElementById('PerfilEstudiante').checked = true;
+document.getElementById('PerfilEstudiante').checked = true; //En caso de que en el registro no se seleccione un usuario, por defecto será estudiante
 
-function perfilUser() {
-    const selectedProfile = document.querySelector('input[name="perfil"]:checked');
-    return selectedProfile ? selectedProfile.id : null;
+function perfilUser() { //Esta función obtiene el perfil de usuario seleccionado en el Registro
+    const perfilSelect = document.querySelector('input[name="perfil"]:checked'); //Obtiene el input seleccionado con atributo perfil
+    return perfilSelect ? perfilSelect.id : null; //En caso de que no haya perfil seleccionadoo, devuelve null
 }
 
 function RegistrarUsuario(id) {
-    const selectedProfile = perfilUser();
+    const perfilSelect = perfilUser(); //Obtiene el perfil seleccionado y lo asigna
 
     const usuario = document.getElementsByName('perfil');
-    usuario.forEach(usua => {
+    usuario.forEach(usua => { //Este forEach verifica que el usuario seleccionado sea diferente al que se está recorriendo, impidiendo que ambos input puedan ser seleccionados a la vez.
         if (usua.id !== id) {
             usua.checked = false;
         }
     });
 
-    if (selectedProfile === 'PerfilEstudiante') {
-        GuardarEstudiante();
-    } else if (selectedProfile === 'PerfilBiologo') {
-        GuardarBiologo();
+    if (perfilSelect === 'PerfilEstudiante') {
+        GuardarEstudiante(); //Si el perfil seleccionado es de estudiante, lo lleva al registro de estudiante
+    } else if (perfilSelect === 'PerfilBiologo') {
+        GuardarBiologo(); //Si el perfil seleccionado es de biólogo, lo lleva al registro de biólogo
     } else {
-        GuardarEstudiante();
+        GuardarEstudiante(); //Por defecto, si no hay un perfil seleccionado, se hace el registro como estudiante
     }
 }
 
@@ -299,7 +300,7 @@ function VerOcultar(){
         }
 }
 
-function mostrarInicioS(event) {
+function mostrarInicioS(event) { //Carga el contenido de login sobre el contenido de la página
     event.preventDefault();
     document.body.style.overflow = 'hidden';
   
@@ -318,7 +319,7 @@ function mostrarInicioS(event) {
       .catch(error => console.error(error));
   }
   
-  function mostrarRegistro(event) {
+  function mostrarRegistro(event) { //Carga el contenido de registro sobre el contenido de la página
     event.preventDefault();
     document.body.style.overflow = 'hidden';
   
@@ -338,7 +339,7 @@ function mostrarInicioS(event) {
       .catch(error => console.error(error));
   }
   
-  function mostrarR1() {
+  function mostrarR1() { //Carga el contenido de reestablecer contraseña sobre el contenido de la página
     document.body.style.overflow = 'hidden';
   
     var overlay = document.getElementById('reestablecer1');
@@ -441,6 +442,7 @@ var rp2Content = document.getElementById('reestablecer2-contenido');
   }
   
   
+// funciones ara cerrar las pantallas de autenticación
   function cerrarRegistro() {
     document.body.style.overflow = 'auto';
   

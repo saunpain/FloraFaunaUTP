@@ -52,7 +52,7 @@ function ObtenerFaunaCategoria(categoria){
 
 
 
-function menuCategoria(categoria){
+function menuCategoria(categoria){ /* Mapea las publicaciones dependiendo de la categoria seleccionada en el menú de inicio*/
     let contenedor = document.getElementById("pub");
     contenedor.innerHTML = "";
 
@@ -103,7 +103,7 @@ function ImprimirPublicaciones(publicaciones) {
             }
     });
 }
-function Subir(){
+function Subir(){ //Mapea un boton de subir al final de las publicaciones
     return `<div id="subir" class="mt-10 flex justify-center">
                   <div class="mt-10 flex justify-center">
                   <a href="javascript:void(0);" onclick="regresarInicioS('pub')" class="bg-[#276B58] active:bg-[#50a48c] hover:bg-[#5e9f9f] w-full h-7 text-center absolute text-white bottom-0">
@@ -155,7 +155,7 @@ function MapearPublicacionesFlora(publicacion) {
   </div>`;
   }
 
-
+//Redirige a la publicacion seleccionada 
   function MostrarPub(id) {
     // Construye la URL con el parámetro
     let url = "Publicacion.html?id=" + id;
@@ -164,7 +164,7 @@ function MapearPublicacionesFlora(publicacion) {
     window.location.href = url;
 }
 
-
+//Regresa al principio de las publicaciones con un scroll suave
 function regresarInicioS(sectionId) {
     var section = document.getElementById(sectionId);
     if (section) {

@@ -55,6 +55,12 @@ function ImprimirComentarios(comentarios) {
 
 }
 
+function EliminarPublicaciones(id){
+    fetch(baseUrl + "/publicaciones/" + id, {method: "Delete"}).then(res =>{
+        window.location.href = "Admin - Inicio.html";
+    })
+}
+
 function MapearPublicacionFlora(publicacion){
     return `<div id="${publicacion.id_publicacion}" class="w-full">
                 <div class="mt-2">

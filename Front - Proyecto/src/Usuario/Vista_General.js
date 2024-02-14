@@ -156,12 +156,12 @@ function ImprimirComentarios(comentarios) {
     const contenedor = document.getElementById("comentarios");
     contenedor.innerHTML = '';
 
-    comentarios.forEach(comentario => {
+    comentarios.forEach(comentario => { //Muestra los comentarios hechos por el usuario
         contenedor.innerHTML += MapearComentarios(comentario);
     });
 
     if (comentarios.length === 0) {
-        const contenedor = document.getElementById("comentarios");
+        const contenedor = document.getElementById("comentarios"); // si el usuario no ha comentado en ninguna publicacion se muestra el mensaje
         contenedor.innerHTML = usuario_name + " no ha realizado comentarios.";
         contenedor.style.fontWeight = 'bold';
     }
@@ -178,13 +178,13 @@ function ImprimirPublicacionesUsuario(publicaciones) {
     });
 
     if (publicacionesEstudiante.length === 0) {
-        const contenedor = document.getElementById("publicaciones");
+        const contenedor = document.getElementById("publicaciones"); //si el usuario no ha hecho publicaciones se muestra el mensaje
         contenedor.innerHTML = usuario_name + " no ha realizado publicaciones.";
         contenedor.style.fontWeight = 'bold';
         contenedor.style.margin = '15px'
     }
 
-    publicacionesEstudiante.forEach(publicacion => {
+    publicacionesEstudiante.forEach(publicacion => {// si el estudiante tiene publicaciones se muestra las publicaciones hechas por el usuario
         if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
             contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion);
         }

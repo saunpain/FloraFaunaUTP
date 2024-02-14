@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".slider li");
   const menu = document.querySelectorAll(".menu li a");
@@ -44,36 +43,46 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var body = document.body;
-  if (body.classList.contains('inicio')) {
+  if (body.classList.contains('inicio')) { //Si reconoce que se está mostrando en inicio, tarda 4 segundos en cambiar de slide
     setInterval(autocambiarSlide, 4000);
   } else {
-    setInterval(autocambiarSlide, 15000);
+    setInterval(autocambiarSlide, 15000); //De lo contrario, tarda 15 segundos ya que tiene información
   }
 
   mostrarSlide(slideActual);
 });
 
-  //Funcion para desplegar barra de busqueda en celulares
+   //Funcion para desplegar barra de busqueda en celulares
   var lupaNeg = document.getElementById('lupota');
   var lupaBlanc = document.getElementById('lupita');
   var buscar = document.querySelector('#busqueda input[type="search"]');
+
   // Agregar el evento de clic a la imagen de la lupa
   lupaBlanc.addEventListener('click', function() {
     if(window.innerWidth <1024){
         // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
-        buscar.style.display = 'block';
-        lupaBlanc.style.display = 'none';
-        lupaNeg.style.display = 'block';
+        buscar.classList.remove("hidden");
+        lupaBlanc.classList.add("hidden");
+        lupaNeg.classList.remove("hidden");
     }
   });
 
-  // Agregar el evento de clic a la imagen de la otra
+  lupaBlanc.addEventListener('DOMContentLoaded', function() {
+    if(window.innerWidth >1024){
+        // Mostrar el campo de búsqueda y ocultar la imagen de la lupa
+        buscar.classList.remove("hidden");
+        lupaBlanc.classList.add("hidden");
+        lupaNeg.classList.remove("hidden");
+    }
+  });
+
+   // Agregar el evento de clic a la imagen de la otra
   lupaNeg.addEventListener('click', function() {
     if(window.innerWidth <1024){
         // Ocultar el campo de búsqueda y mostrar la imagen de la lupa
-        buscar.style.display = 'none';
-        lupaBlanc.style.display = 'block';
-        lupaNeg.style.display = 'none';
+        buscar.classList.add("hidden");
+        lupaBlanc.classList.remove("hidden");
+        lupaNeg.classList.add("hidden");
     }
   });
 

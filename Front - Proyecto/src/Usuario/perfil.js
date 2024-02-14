@@ -1,5 +1,5 @@
 let usuario = []
-let usuario_name = localStorage.getItem("nombreusuario");
+let usuario_name = localStorage.getItem("nombreusuario"); // se obtine el valor del nombre de usuario de la autenticacion a traves del localStorage.getItem
 let perfil = "";
 
 function mostrarPerfil() {
@@ -100,6 +100,7 @@ function MapearPerfil(usuario) {
     </div>
 </div>`;
 }
+//funcion que al darle click al boton de cerrar sesion remueve los valores del id_usuario y el nombre de usuario 
 function CerrarSesion(){
     console.log("cerrando sesion")
     localStorage.removeItem('id_usuario');

@@ -27,7 +27,7 @@
     aside ul li p{
         font-family: 'Montserrat', sans-serif;
     }
-    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-cancel-button, /* Quita el boton que sale por predeterminado al utilizar un input tipo search*/
     input[type="search"]::-webkit-search-clear-button {
         -webkit-appearance: none;
         appearance: none;
@@ -42,7 +42,7 @@
 
 
     .menu li a.active {
-        background-color: #403d3d;
+        background-color: #403d3d; /* Cuando el aside está activo, la pantalla de contenido se torna ocura */
     }
     /*sm=640px md=768px lg=1024px xl=1280px 2xl=1536px*/
     @media only screen and (min-width: 1280px) and (max-width: 1495.20px){
@@ -149,7 +149,6 @@
         </div>
     </aside>
     <div class="bg-[#FFFFFF] flex flex-col lg:flex-row min-w-full"> <!--Contenido completo-->
-                                                                                                                       <!--lg:w-[23rem] xl:w-[52%] xl:max-w-[58%] 2xl:min-w-[58%] 2xl:w-[60%]-->
         <section id="pub" class="bg-[#F8F5F5] relative flex flex-col items-center top-12 md:top-8 md:py-8 lg:top-[86px] w-full lg:w-[41%] 2xl:min-w-[58%] 2xl:w-[60%] lg:ml-[5rem] xl:ml-[6rem] mr-5"> <!--Publicaciones-->
             <div id="regresar" class="w-full relative flex justify-start"></div>
             
@@ -225,8 +224,6 @@
                 </footer>
             </section>
         </div>
-        
-                                                                           <!--xl:min-w-[54rem] para pantalla normal    lg:min-w-[20rem] lg:max-w-xl xl:min-w-[54rem] xl:max-w-[60rem] 2xl:min-w-[58rem]--> <!--lg:w-[25rem] xl:min-w-[42rem] 2xl:w-[60rem] md:w-[28rem]-->
     </div>
     
     <script src="index.js"></script>

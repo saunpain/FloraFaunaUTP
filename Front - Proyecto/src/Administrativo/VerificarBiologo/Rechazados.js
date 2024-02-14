@@ -17,7 +17,7 @@ function ObtenerBiologos() {
                     });
             } else {
                 let contenedor = document.getElementById("cuerpo-tabla");
-                contenedor.innerHTML = "<h2 class='font-semibold'>Sin solicitudes aprobadas.</h2>";
+                contenedor.innerHTML = "<h2 class='font-semibold'>Sin solicitudes rechazadas.</h2>";
             }
         })
         .catch(error => {

@@ -1,7 +1,7 @@
 /*************FUNCIONES PARA MAPEAR PUBLICACIONES ********************/
 
 let categoria = "";
-function ObtenerPublicaciones() {
+function ObtenerPublicaciones() {//Función para obtener las publicaciones con toda su info
     fetch(baseUrl + '/vista/all').then(res => {
       res.json().then(json => {
         publicaciones = json;
@@ -11,7 +11,7 @@ function ObtenerPublicaciones() {
   }
 
 
-function ObtenerFlora(){
+function ObtenerFlora(){//Función para obtener la Flora con toda su info
   fetch(baseUrl + "/vista_flora").then( res => {
       res.json().then(json => {
           publicaciones = json;
@@ -19,7 +19,7 @@ function ObtenerFlora(){
       })
   })
 }
-function ObtenerFauna(){
+function ObtenerFauna(){//Función para obtener la Fauna con toda su info
   fetch(baseUrl + "/vista_fauna").then( res => {
       res.json().then(json => {
           publicaciones = json;
@@ -27,7 +27,7 @@ function ObtenerFauna(){
       })
   })
 }
-function ObtenerFloraCategoria(categoria){
+function ObtenerFloraCategoria(categoria){//Obtener la flora por categoría
   fetch(baseUrl + "/vista_flora/" + categoria).then( res => {
       res.json().then(json => {
           publicaciones = json;
@@ -35,7 +35,7 @@ function ObtenerFloraCategoria(categoria){
       })
   })
 }
-function ObtenerFaunaCategoria(categoria){
+function ObtenerFaunaCategoria(categoria){//Obtener la fauna por categoría
   fetch(baseUrl + "/vista_fauna/" + categoria).then( res => {
       res.json().then(json => {
           publicaciones = json;
@@ -44,7 +44,7 @@ function ObtenerFaunaCategoria(categoria){
   })
 }
 
-function menuCategoria(categoria){
+function menuCategoria(categoria){//Función para saber que categoría se va a mapear de las que están en el aside
   let contenedor = document.getElementById("pub");
   contenedor.innerHTML = "";
 
@@ -77,16 +77,16 @@ function menuCategoria(categoria){
   }
 }
 
-function ImprimirPublicaciones(publicaciones) {
+function ImprimirPublicaciones(publicaciones) {//Función para mapear publicaciones según el estado del biologo
   const estado = localStorage.getItem('estado_biologo');
   let contenedor = document.getElementById("pub");
   contenedor.innerHTML = "";
 
   publicaciones.forEach((publicacion, index) => {
     if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-      if(estado === "Aprobado"){
+      if(estado === "Aprobado"){//Si el estado del biólogo es "Aprobado" se mapean las publicaciones con opciones para editar
         contenedor.innerHTML += MapearPublicacionesFlora(publicacion);
-      }else{
+      }else{//Sino está Aprobado mapea las publicaciones sin opciones para editar
         contenedor.innerHTML += MapearPublicacionesSinFlora(publicacion);
       }
     }
@@ -99,7 +99,7 @@ function ImprimirPublicaciones(publicaciones) {
 
     }
 
-    if (index === publicaciones.length - 1) {
+    if (index === publicaciones.length - 1) {//Mapea la opción para subir hasta la primera publicación
       contenedor.innerHTML += Subir();
     }
   });
@@ -282,117 +282,52 @@ function Subir(){
           </div>`    
 }
 
-function MostrarPub(id) {
-  // Construye la URL con el parámetro
+function MostrarPub(id) {//Función que muestra la publicación clickeada según su id
+  //Construye la URL con el parámetro
   let url = "Publicacion.html?id=" + id;
 
-  // Redirige a la página de destino
+  //Redirige a la página de destino
   window.location.href = url;
 }
   
+//Función para desplazar la vista de la página hacia arriba
 function subirBoton(sectionId) {
   var section = document.getElementById(sectionId);
+  
   if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    //Utilizar el método scrollIntoView para desplazar la vista hacia la sección con un efecto suave
+    section.scrollIntoView({ behavior: 'smooth' });
   }
 }
-/*
-function GuardarSolicitud() {
-  let data = {
-    nombre: document.getElementById("nombre").value,
-    precio: document.getElementById("precio").value,
-    categoriaId: document.getElementById("categoriaId").value,
-    foto: document.getElementById("foto").value,
-    fechaProduccion: document.getElementById("fechaProduccion").value,
-    fechaCaducidad: document.getElementById("fechaCaducidad").value
-  };
-
-  fetch(baseUrl + "/producto", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-type": 'application/json; charset=UTF-8'
-    }
-  }).then(res => {
-    ObtenerProductos();
-  });
-}
-
-*/
-
-/*
-function ObtenerPublicacionesFauna() {
-  // Array para almacenar las promesas de fetch
-  const promesasFetch = [];
-
-  // Primer fetch para obtener datos de fauna
-  const fetchFauna = fetch(baseUrl + '/fauna/all').then(res => {
-    if (!res.ok) {
-      throw new Error('Error al obtener datos de fauna');
-    }
-    return res.json();
-  });
-
-  // Segundo fetch para obtener datos de publicaciones
-  const fetchPublicaciones = fetch(baseUrl + '/publicaciones/all').then(res => {
-    if (!res.ok) {
-      throw new Error('Error al obtener datos de publicaciones');
-    }
-    return res.json();
-  });
-
-    // Tercer fetch para obtener datos de estudiantes
-    const fetchEstudiante = fetch(baseUrl + '/estudiante/all').then(res => {
-      if (!res.ok) {
-        throw new Error('Error al obtener datos de estudiante');
-      }
-      return res.json();
-    });
-
-  // Agregar las promesas al array
-  promesasFetch.push(fetchFauna, fetchPublicaciones, fetchEstudiante);
-
-  // Ejecutar Promise.all cuando ambas promesas estén resueltas
-  Promise.all(promesasFetch)
-    .then(resultados => {
-      // resultados[0] contendrá los datos de fauna
-      // resultados[1] contendrá los datos de publicaciones
-      // resultados[2] contendrá los datos de estudiante
-      const fauna = resultados[0];
-      const publicaciones = resultados[1];
-      const estudiante = resultados[2];
-
-      // Aquí puedes combinar ambos conjuntos de datos o realizar otras acciones según tus necesidades
-      const datosCombinados = { fauna, publicaciones, estudiante };
-
-      // Llamar a tu método ImprimirPublicacionesFauna con los datos combinados
-      ImprimirPublicacionesFauna(datosCombinados);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-} */
 
 function CerrarSesion(){
-  console.log("cerrando sesion")
+  console.log("cerrando sesion");
+  
+  //Remover los elementos relacionados con la sesión del usuario en el almacenamiento local
   localStorage.removeItem('id_usuario');
   localStorage.removeItem("estado_biologo");
   localStorage.removeItem("nombreusuario");
 }
 
+//Función para filtrar las publicaciones según el término de búsqueda ingresado
 function FiltrarPublicaciones() {
+  //Obtener el valor de la entrada de búsqueda y eliminar espacios en blanco al principio y al final
   let busqueda = document.getElementById("busqueda-input").value.trim()
 
-  if(busqueda == null){
-      ImprimirPublicaciones(pub)
-  }
-  else{
+  if(busqueda == "") {
+      // Si la búsqueda está vacía, imprimir todas las publicaciones sin filtrar
+      ImprimirPublicaciones(pub);
+  } else {
+      // Si hay un término de búsqueda, realizar una solicitud fetch al servidor para obtener las publicaciones filtradas
       fetch(baseUrl + "/vista/filtrarGlob?busqueda=" + busqueda).then(res => {
           res.json().then(json =>{
-              pubFiltro = json
-              console.log(busqueda)
-              console.log(pubFiltro)
-              ImprimirPublicaciones(pubFiltro)
+              // Almacenar las publicaciones filtradas en la variable pubFiltro
+              pubFiltro = json;
+              console.log(busqueda);
+              console.log(pubFiltro);
+              
+              // Imprimir las publicaciones filtradas
+              ImprimirPublicaciones(pubFiltro);
           })
       }).catch(error => {
           console.error("Error en la solicitud:", error);

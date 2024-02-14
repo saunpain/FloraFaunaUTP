@@ -1,5 +1,5 @@
 
-/*************FUNCIONES PARA MAPEAR PUBLICACIONES VISTA GENERAL********************/
+/*************FUNCIONES PARA MAPEAR PUBLICACIONES********************/
 
 let fauna = [];
 let flora = [];
@@ -82,31 +82,31 @@ function menuCategoria(categoria){
         ObtenerFaunaCategoria("Mamíferos")
     }
 }
-function ImprimirPublicacionesUsuario(publicaciones) {
+function ImprimirPublicacionesUsuario(publicaciones) { //Imprime las publicaiones del usuario
     let contenedor = document.getElementById("publicacion");
     contenedor.innerHTML = "";
 
     
     const publicacionesEstudiante = publicaciones.filter(publicacion => {
-        return usuario_name === publicacion.nombre_estudiante &&
+        return usuario_name === publicacion.nombre_estudiante && //Verifica si el usuario tiene pubicaciones en flora o en fauna
             (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "" ||
             publicacion.nombre_animal !== null && publicacion.nombre_animal !== "");
     });
     
 
-    if (publicacionesEstudiante.length === 0) {
+    if (publicacionesEstudiante.length === 0) { //En caso de que el usuario no tenga publicaciones, se muestra este mensaje
         contenedor.innerHTML = usuario_name + " no ha realizado publicaciones.";
         contenedor.style.fontWeight = 'bold';
         contenedor.style.margin = '15px'
         return;
     }
 
-    publicacionesEstudiante.forEach(publicacion => {
+    publicacionesEstudiante.forEach(publicacion => { //Si la publicacion no tiene null el nombre de la planta pero es null el nombre de animal, significa que la publicación es de Flora
         if (publicacion.nombre_planta !== null && publicacion.nombre_planta !== "") {
-            contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion);
+            contenedor.innerHTML += MapearPublicacionUsusarioFlora(publicacion); //Mapea la publicación de flora
         }
-        if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") {
-            contenedor.innerHTML += MapearPublicacionUsusarioFauna(publicacion);
+        if (publicacion.nombre_animal !== null && publicacion.nombre_animal !== "") { ////Si la publicacion no tiene null el nombre de la animal pero es null el nombre de plata, significa que la publicación es de Fauna
+            contenedor.innerHTML += MapearPublicacionUsusarioFauna(publicacion); //Mapea la publicaión de Fauna
         }
     });
 }
@@ -227,40 +227,43 @@ function MapearPublicacionUsusarioFauna(publicacion) {
     }
     
 
-function mostrarImagen() {
+function mostrarImagen() { //Muestra la imagen en el contenedor para hacer una breve preview de esta
     var input = document.getElementById('imagen');
     var imagenSubida = document.getElementById('preview');
-    //Primero se verifica si se subió una imagen
+
+    //Se verifica que se haya subido alguna imagen
     if (input.files && input.files[0]) {
-        var imagen = new FileReader();
-        imagen.onload = function (e) {
-            // Mostrar la nueva imagen seleccionada
+
+        var imagen = new FileReader(); //Crea un objeto fileReader
+
+        imagen.onload = function (e) { //Este evento onload se ejecuta al leer la foto subida
+            // Muestra la nueva imagen subida
             imagenSubida.src = e.target.result;
         };
-        imagen.readAsDataURL(input.files[0]); // Convertir la imagen a base64
+        imagen.readAsDataURL(input.files[0]); // Convierte la imagen a base64 (el archivo se lee como una caderna de caracteres para representar la imagen)
     }
 }
 
 
-function guardarPublicacion() {
-    const apiKey = "a8d6381e4d2a45ac047ad919c1de17a2";
-    const fileInput = document.getElementById('imagen');
-    const file = fileInput.files[0];
+function guardarPublicacion() { //Función para guardar publicaión
+    const llave = "a8d6381e4d2a45ac047ad919c1de17a2"; //Llave proporcionada por imgBB
+    const imagen = document.getElementById('imagen');
+    const file = imagen.files[0];
 
     const formData = new FormData();
-    formData.append('key', apiKey);
+    formData.append('key', llave);
     formData.append('image', file);
 
-    const apiUrl = 'https://api.imgbb.com/1/upload';
+    const apiUrl = 'https://api.imgbb.com/1/upload'; //Enlace de la api img para subir iiamgenes al servidor
 
 
     fetch(apiUrl, {
-        method: 'POST',
+        method: 'POST', //Sube la imagen a imgBB mediante método post
         body: formData,
     })
     .then(response => response.json())
     .then(data => {
-        const img_pub = data.data.url;
+        const img_pub = data.data.url; //toma el valor de la url subiida anteriormente a imgBB
 
         const titulo = document.getElementById("titulo_pub").value;
         const nombre = document.getElementById("nombre").value;
@@ -273,7 +276,7 @@ function guardarPublicacion() {
 
         if(titulo === "" || nombre === "" || nombre_cientifico === "" || lugar === "Seleccione un lugar" || categoria === "Seleccione categoría" || sub_cat === "Seleccione subcategoría" || descripcion === ""){
             Swal.fire({
-                title: "Debe completar todos los campos para proceder con el registro.",
+                title: "Debe completar todos los campos para proceder con el registro.", //En caso de que no estèn completos todos los campos, muestra el mensaje
                 confirmButtonText: "OK",
                 confirmButtonColor: "#276B58",
             });
@@ -284,10 +287,9 @@ function guardarPublicacion() {
                     .then(res => res.json())
                     .then(json => {
                         flora = json;
-                        console.log("Respuesta de la API de flora:", flora);
                         if (flora) {
                             Swal.fire({
-                                title: "La flora que intenta publicar ya ha sido registrada.",
+                                title: "La flora que intenta publicar ya ha sido registrada.", //En caso de que la flora exista
                                 confirmButtonText: "OK",
                                 confirmButtonColor: "#276B58",
                             });
@@ -295,7 +297,6 @@ function guardarPublicacion() {
                     })
                 .catch(error => {
                     AgregarFlora(nombre, nombre_cientifico, sub_cat, descripcion, img_pub, lugar, titulo,)
-
                 });
             
             }
@@ -508,10 +509,7 @@ function BuscarPublicacionFauna(id_fauna) {
     });
 }
 
-
-
-
-
+//Actualiza el titulo de la publicacion segun el usuario que la ha publicado
 function ActualizarPub(id) {
     let data = {
         id_publicacion: id,
@@ -598,7 +596,7 @@ function cancelarEdicion(id) {
 
 function MostrarPub(id) {
     // Construye la URL con el parámetro
-    let url = "Publicacion.html?id=" + id;
+    let url = "Publicacion.html?id=" + id; //Este id de parámetro nos sirve posteriormnete para mapear la publicación completa con ese id
 
     // Redirige a la página de destino
     window.location.href = url;
